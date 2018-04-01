@@ -1,10 +1,22 @@
-﻿using System.Drawing;
+﻿using ImageProcessingLib.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public abstract class ImageBase
+    public abstract class ImageBase<T>
     {
+        protected T[][] data;
+        public T[][] Data
+        {
+            get { return data; }
+        }
+
         protected int width;
         public int Width
         {
@@ -17,23 +29,12 @@ namespace ImageProcessingLib
             get { return height; }
         }
 
-        protected byte[] data;
-        public byte[] Data
-        {
-            get { return data; }
-        }
-
-        public int DataSize
-        {
-            get { return Data.Length; }
-        }
-
         public int Size
         {
             get { return width * height; }
         }
 
-        protected void SetSizes(ImageBase img)
+        protected void SetSizes(ImageBase<T> img)
         {
             SetSizes(img.Width, img.Height);
         }
@@ -44,37 +45,33 @@ namespace ImageProcessingLib
             this.height = height;
         }
 
-        protected byte[] Data24To8(byte[] data24)
+        protected byte[][] RGBDataToBytes(RGBValue[][] data, int width, int height)
         {
-            var size = data24.Length;
-            var resultSize = size / 3;
-            var result = new byte[resultSize];
-            for(int i = 0;i < resultSize; i++)
+            var result = JaggedArrayUtils.Create<byte>(width, height);
+            for (int i = 0; i < width;i++)
             {
-                int index = 3 * i;
-                result[i] = (byte)(0.3d * data24[index + 2] + 0.59d * data24[index + 1] + 0.11d * data24[index]);
+                for (int j = 0;j < height;j++)
+                {
+                    var p = data[i][j];
+                    result[i][j] = (byte)(0.3d * p.r + 0.59d * p.g + 0.11d * p.b);
+                } 
             }
             return result;
         }
 
-        protected byte[] Data8To24(byte[] data8)
+        protected RGBValue[][] ByteDataToRGBValues(byte[][] data, int width, int height)
         {
-            var size = data8.Length;
-            var resultSize = size * 3;
-            var result = new byte[resultSize];
-            for(int i = 0;i < resultSize; i++)
+            var result = JaggedArrayUtils.Create<RGBValue>(width, height);
+            for (int i = 0; i < width; i++)
             {
-                int index = 3 * i;
-                result[index + 2] = data8[i];
-                result[index + 1] = data8[i];
-                result[index] = data8[i];
+                for (int j = 0; j < height; j++)
+                {
+                    var val = data[i][j];
+                    var p = new RGBValue(val, val, val);
+                    result[i][j] = p;
+                }
             }
             return result;
-        }
-
-        public byte[] DataCopy()
-        {
-            return data.Clone() as byte[];
         }
 
         public void ToFile(string filePath)
@@ -88,14 +85,33 @@ namespace ImageProcessingLib
             bmp.Save(filePath, imageFormat);
         }
 
-        public byte this[int index]
+        public T this[int index]
         {
-            get { return data[index]; }
-            set { data[index] = value; }
+            get
+            {
+                GetTwodimensionalIndexes(index, out int x, out int y);
+                return data[x][y];
+            }
+            set
+            {
+                GetTwodimensionalIndexes(index, out int x, out int y);
+                data[x][y] = value;
+            }
+        }
+
+        public T this[int x, int y]
+        {
+            get { return data[x][y]; }
+            set { data[x][y] = value; }
+        }
+
+        protected void GetTwodimensionalIndexes(int index, out int x, out int y)
+        {
+            y = index / width;
+            x = index % width;
         }
 
         protected abstract void FromBitmap(Bitmap bmp);
         protected abstract Bitmap ToBitmap();
-        protected abstract int GetDataIndex(int x, int y);
     }
 }

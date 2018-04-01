@@ -1,27 +1,28 @@
-﻿using System.Drawing;
+﻿using ImageProcessingLib.Utilities;
+using System.Drawing;
 
 namespace ImageProcessingLib
 {
-    public class Image8 : ImageBase
+    public class Image8 : ImageBase<byte>
     {
         #region Constructors
 
         public Image8(int width, int height)
         {
             SetSizes(width, height);
-            data = new byte[Size];
+            data = JaggedArrayUtils.Create<byte>(width, height);
         }
 
         public Image8(Image8 img)
         {
             SetSizes(img.Width, img.Height);
-            data = img.DataCopy();
+            data = JaggedArrayUtils.Copy(img.Data);
         }
 
         public Image8(Image24 img)
         {
-            SetSizes(img.Width, img.Height);
-            data = Data24To8(img.Data);
+            //SetSizes(img.Width, img.Height);
+            //data = RGBDataToBytes()
         }
 
         public Image8(Bitmap bmp)
@@ -44,40 +45,20 @@ namespace ImageProcessingLib
         protected override void FromBitmap(Bitmap bmp)
         {
             SetSizes(bmp.Width, bmp.Height);
-            var bmpData = BmpMarshal.DataFromBmp(bmp);
-            data = Data24To8(bmpData);
+            var bmpData = BmpUtils.RGBValuesFrom(bmp);
+            data = RGBDataToBytes(bmpData, width, height);
         }
 
         protected override Bitmap ToBitmap()
         {
-            var bmpData = Data8To24(data);
-            return BmpMarshal.DataToBmp(bmpData, width, height);
-        }
-
-        protected override int GetDataIndex(int x, int y)
-        {
-            return width * x + y;
+            var bmpData = ByteDataToRGBValues(data, width, height);
+            return BmpUtils.RGBValuesTo(bmpData, width, height);
         }
 
         #endregion
 
         #region Gets, sets and indexers
 
-        public byte Get(int x, int y)
-        {
-            return data[GetDataIndex(x, y)];
-        }
-
-        public void Set(int x, int y, byte value)
-        {
-            data[GetDataIndex(x, y)] = value;
-        }
-
-        public byte this[int x, int y]
-        {
-            get { return Get(x, y); }
-            set { Set(x, y, value); }
-        }
 
         #endregion
 
@@ -85,11 +66,15 @@ namespace ImageProcessingLib
 
         public bool IsBlackAndWhite()
         {
-            int len = DataSize;
-            for (int i = 0; i < len; i++)
+            
+            for (int i = 0; i < width; i++)
             {
-                if (data[i] != 0 && data[i] != 255)
-                    return false;
+                for (int j = 0;j < height;j++)
+                {
+                    var val = data[i][j];
+                    if (val != 0 && val != 255)
+                        return false;
+                }
             }
             return true;
         }
