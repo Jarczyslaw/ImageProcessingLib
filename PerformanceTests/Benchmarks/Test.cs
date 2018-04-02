@@ -1,4 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes.Jobs;
+using BenchmarkDotNet.Engines;
 using PerformanceTests.BenchmarksLauncher;
 using System;
 using System.Collections.Generic;
@@ -9,27 +11,60 @@ using System.Threading.Tasks;
 namespace PerformanceTests.Benchmarks
 {
     [ActiveBenchmark]
+    [SimpleJob(RunStrategy.Monitoring, launchCount: 0, warmupCount: 0, targetCount: 1)]
     public class _Test
     {
-        private int count = 1000000;
-        private long counter;
+        [Params(1, 2)]
+        public int param;
 
-        [Benchmark]
-        public void Test1()
+        [GlobalSetup]
+        public void Setup()
         {
-            if (counter == 0)
-                counter = int.MaxValue;
-            for (int i = 0; i < count; i++)
-                counter--;
+            // runs once per param before all benchmarks
+        }
+
+        [GlobalCleanup]
+        public void Cleanup()
+        {
+            // runs once per param after all benchmarks
+        }
+
+        [IterationSetup]
+        public void IterationSetup()
+        {
+            // runs before benchmarks for each warmup or target iteration
+        }
+
+        [IterationCleanup]
+        public void IterationCleanup()
+        {
+            // runs after benchmarks for each warmup or target iteration
         }
 
         [Benchmark]
-        public void Test2()
+        public void BenchmarkA()
         {
-            if (counter == count)
-                counter = 0;
-            for (int i = 0; i < count; i++)
-                counter++;
+            Dummy(1);
+        }
+
+        [Benchmark]
+        public void BenchmarkB()
+        {
+            Dummy(2);
+        }
+
+        [Benchmark]
+        public void BenchmarkC()
+        {
+            Dummy(3);
+        }
+
+        private void Dummy(int iters)
+        {
+            int cnt = iters * param * 10000000;
+            int x = 0;
+            for (int i = 0; i < cnt; i++)
+                x++;
         }
     }
 }
