@@ -1,84 +1,46 @@
-﻿using ImageProcessingLib.Utilities;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public class Image8 : ImageBase<byte>
+    public class Image8 : ImageBase
     {
-        #region Constructors
-
         public Image8(int width, int height)
         {
-            SetSizes(width, height);
-            data = JaggedArrayUtils.Create<byte>(width, height);
+            CreateNew(width, height);
         }
 
         public Image8(Image8 img)
         {
-            SetSizes(img.Width, img.Height);
-            data = JaggedArrayUtils.Copy(img.Data);
+            CreateFromExisting(img);
         }
 
         public Image8(Image24 img)
         {
-            //SetSizes(img.Width, img.Height);
-            //data = RGBDataToBytes()
+            CreateNew(img.Width, img.Height);
+            ToGrayscale(img);
         }
 
-        public Image8(Bitmap bmp)
+        private void ToGrayscale(Image24 img)
         {
-            FromBitmap(bmp);
-        }
-
-        public Image8(string filePath)
-        {
-            using (var bmp = new Bitmap(filePath))
+            for (int i = 0; i < img.Width; i++)
             {
-                FromBitmap(bmp);
-            }
-        }
-
-        #endregion
-
-        #region ImageBase implementation
-
-        protected override void FromBitmap(Bitmap bmp)
-        {
-            SetSizes(bmp.Width, bmp.Height);
-            var bmpData = BmpUtils.RGBValuesFrom(bmp);
-            data = RGBDataToBytes(bmpData, width, height);
-        }
-
-        protected override Bitmap ToBitmap()
-        {
-            var bmpData = ByteDataToRGBValues(data, width, height);
-            return BmpUtils.RGBValuesTo(bmpData, width, height);
-        }
-
-        #endregion
-
-        #region Gets, sets and indexers
-
-
-        #endregion
-
-        #region Additionals
-
-        public bool IsBlackAndWhite()
-        {
-            
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0;j < height;j++)
+                for (int j = 0; j < img.Height; j++)
                 {
-                    var val = data[i][j];
-                    if (val != 0 && val != 255)
-                        return false;
+                    var color = img[i, j];
+                    var grayscale = (byte)(0.3d * color.R + 0.59d * color.G + 0.11d * color.B);
+                    SetValue(i, j, grayscale);
                 }
             }
-            return true;
         }
 
-        #endregion
+        public byte this[int x, int y]
+        {
+            get { return GetValue(x, y).R; }
+            set { SetValue(x, y, value); }
+        }
     }
 }

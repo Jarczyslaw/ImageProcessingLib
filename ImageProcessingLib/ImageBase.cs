@@ -1,22 +1,18 @@
 ﻿using ImageProcessingLib.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public abstract class ImageBase<T>
+    public abstract class ImageBase : IDisposable
     {
-        protected T[][] data;
-        public T[][] Data
-        {
-            get { return data; }
-        }
-
         protected int width;
         public int Width
         {
@@ -34,9 +30,33 @@ namespace ImageProcessingLib
             get { return width * height; }
         }
 
-        protected void SetSizes(ImageBase<T> img)
+        protected int[] data;
+        public ReadOnlyCollection<int> Data
+        {
+            get { return Array.AsReadOnly(data); }
+        }
+
+        protected Bitmap bitmap;
+        public Bitmap Bitmap
+        {
+            get { return bitmap; }
+        }
+
+        private GCHandle dataHandle;
+        private bool disposed;
+
+        protected void CreateNew(int width, int height)
+        {
+            SetSizes(width, height);
+            Initialize(new int[width * height]);
+        }
+
+        protected void CreateFromExisting(ImageBase img)
         {
             SetSizes(img.Width, img.Height);
+            var data = new int[img.Data.Count];
+            img.Data.CopyTo(data, 0);
+            Initialize(data);
         }
 
         protected void SetSizes(int width, int height)
@@ -45,73 +65,39 @@ namespace ImageProcessingLib
             this.height = height;
         }
 
-        protected byte[][] RGBDataToBytes(RGBValue[][] data, int width, int height)
+        protected void Initialize(int[] data)
         {
-            var result = JaggedArrayUtils.Create<byte>(width, height);
-            for (int i = 0; i < width;i++)
-            {
-                for (int j = 0;j < height;j++)
-                {
-                    var p = data[i][j];
-                    result[i][j] = (byte)(0.3d * p.r + 0.59d * p.g + 0.11d * p.b);
-                } 
-            }
-            return result;
+            this.data = data;
+            dataHandle = GCHandle.Alloc(this.data, GCHandleType.Pinned);
+            bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
         }
 
-        protected RGBValue[][] ByteDataToRGBValues(byte[][] data, int width, int height)
+        protected void SetValue(int x, int y, Color value)
         {
-            var result = JaggedArrayUtils.Create<RGBValue>(width, height);
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    var val = data[i][j];
-                    var p = new RGBValue(val, val, val);
-                    result[i][j] = p;
-                }
-            }
-            return result;
+            int index = x + (y * Width);
+            data[index] = value.ToArgb();
         }
 
-        public void ToFile(string filePath)
+        protected void SetValue(int x, int y, byte value)
         {
-            ToFile(filePath, ImageFormat.Bmp);
+            int index = x + (y * Width);
+            data[index] = Color.FromArgb(value, value, value).ToArgb();
         }
 
-        public void ToFile(string filePath, ImageFormat imageFormat)
+        protected Color GetValue(int x, int y)
         {
-            var bmp = ToBitmap();
-            bmp.Save(filePath, imageFormat);
+            int index = x + (y * Width);
+            int col = data[index];
+            return Color.FromArgb(col);
         }
 
-        public T this[int index]
+        public void Dispose()
         {
-            get
-            {
-                GetTwodimensionalIndexes(index, out int x, out int y);
-                return data[x][y];
-            }
-            set
-            {
-                GetTwodimensionalIndexes(index, out int x, out int y);
-                data[x][y] = value;
-            }
+            if (disposed)
+                return;
+            disposed = true;
+            bitmap.Dispose();
+            dataHandle.Free();
         }
-
-        public T this[int x, int y]
-        {
-            get { return data[x][y]; }
-            set { data[x][y] = value; }
-        }
-
-        protected void GetTwodimensionalIndexes(int index, out int x, out int y)
-        {
-            y = index / width;
-            x = index % width;
-        }
-
-        protected abstract void FromBitmap(Bitmap bmp);
-        protected abstract Bitmap ToBitmap();
     }
 }

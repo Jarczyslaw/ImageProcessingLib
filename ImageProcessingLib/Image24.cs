@@ -1,96 +1,38 @@
-﻿using ImageProcessingLib.Utilities;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public class Image24 : ImageBase<RGBValue>
+    public class Image24 : ImageBase
     {
-        public readonly int bytesPerPixel = 3;
-
-        #region Constructors
-
         public Image24(int width, int height)
         {
-            SetSizes(width, height);
-            data = JaggedArrayUtils.Create<RGBValue>(width, height);
+            CreateNew(width, height);
         }
 
         public Image24(Image8 img)
         {
-            SetSizes(img.Width, img.Height);
-            data = ByteDataToRGBValues(img.Data, width, height);
+            CreateFromExisting(img);
         }
 
         public Image24(Image24 img)
         {
-            SetSizes(img.Width, img.Height);
-            data = JaggedArrayUtils.Copy(img.Data);
+            CreateFromExisting(img);
         }
 
-        public Image24(Bitmap bmp)
+        public void SetGrayscale(int x, int y, byte value)
         {
-            FromBitmap(bmp);
+            SetValue(x, y, value);
         }
 
-        public Image24(string filePath)
+        public Color this[int x, int y]
         {
-            using (var bmp = new Bitmap(filePath))
-            {
-                FromBitmap(bmp);
-            }
+            get { return GetValue(x, y); }
+            set { SetValue(x, y, value); }
         }
-
-        #endregion
-
-        #region ImageBase implementation
-
-        protected override void FromBitmap(Bitmap bmp)
-        {
-            SetSizes(bmp.Width, bmp.Height);
-            data = BmpUtils.RGBValuesFrom(bmp);
-        }
-
-        protected override Bitmap ToBitmap()
-        {
-            return BmpUtils.RGBValuesTo(data, width, height);
-        }
-
-        #endregion
-
-        #region Gets, sets and indexers
-
-        #endregion
-
-        #region Additionals
-
-        public bool IsGrayscale()
-        {
-            for(int i = 0;i < width; i++)
-            {
-                for(int j = 0;j < height; j++)
-                {
-                    var p = data[i][j];
-                    if (!p.IsInGrayscale())
-                        return false;
-                }
-            }
-            return true;
-        }
-
-        public bool IsBlackAndWhite()
-        {
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    var p = data[i][j];
-                    if (!p.IsBlackOrWhite())
-                        return false;
-                }
-            }
-            return true;
-        }
-
-        #endregion
     }
 }
