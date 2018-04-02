@@ -19,7 +19,7 @@ namespace PerformanceTests.BenchmarksLauncher
         public List<Type> GetAllBenchmarks()
         {
             var allTypes = currentAssembly.GetTypes();
-            return allTypes.Where(t => t.GetCustomAttribute<ActiveBenchmarkAttribute>() != null)
+            return allTypes.Where(t => t.GetCustomAttribute<AvailableBenchmarkAttribute>() != null)
                 .OrderBy(t => t.Name)
                 .ToList();
         }

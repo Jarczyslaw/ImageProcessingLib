@@ -137,11 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BenchmarksLauncher\BenchmarksCollector.cs" />
-    <Compile Include="BenchmarksLauncher\ActiveBenchmarkAttribute.cs" />
+    <Compile Include="BenchmarksLauncher\AvailableBenchmarkAttribute.cs" />
     <Compile Include="BenchmarksLauncher\Runner.cs" />
     <Compile Include="BenchmarksLauncher\RunnerInput.cs" />
     <Compile Include="BenchmarksLauncher\RunnerLog.cs" />
     <Compile Include="BenchmarksLauncher\RunnerOutput.cs" />
+    <Compile Include="Benchmarks\BitmapAccess.cs" />
     <Compile Include="Benchmarks\Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

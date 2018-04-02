@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
-    [ActiveBenchmark]
+    [AvailableBenchmark]
     public class TwodimensionalArrays
     {
         public class Array1D

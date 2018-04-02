@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.BenchmarksLauncher
 {
-    public class ActiveBenchmarkAttribute : Attribute
+    public class AvailableBenchmarkAttribute : Attribute
     {
     }
 }

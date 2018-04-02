@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
-    [ActiveBenchmark]
+    [AvailableBenchmark]
     [SimpleJob(RunStrategy.Monitoring, launchCount: 0, warmupCount: 0, targetCount: 1)]
     public class _Test
     {
