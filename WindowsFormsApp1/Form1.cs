@@ -19,19 +19,15 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
+            var path = @"C:\Users\JT\Desktop\lena.bmp";
+            var im = new Bitmap(path);
+            Image24 bmp = new Image24(im);
+            for (int i = 0; i < 512; i++)
+                bmp[i, i] = Color.Black;
 
-            Image24 bmp = new Image24(30, 20);
-            /*for (int i = 0;i < bmp.Width; i++)
-            {
-                for (int j = 0;j < bmp.Height; j++)
-                {
-                    bmp[i, j] = Color.Red;
-                }
-            }*/
-
-            var b = new Image8(bmp);
             
-            pictureBox1.Image = b.Bitmap;
+            
+            pictureBox1.Image = bmp.Bitmap;
         }
     }
 }

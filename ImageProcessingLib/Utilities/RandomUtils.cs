@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.BenchmarksLauncher
+namespace ImageProcessingLib.Utilities
 {
-    public class AvailableBenchmarkAttribute : Attribute
+    class RandomUtils
     {
     }
 }

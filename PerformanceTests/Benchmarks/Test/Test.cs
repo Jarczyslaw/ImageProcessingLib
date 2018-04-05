@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace PerformanceTests.Benchmarks.Test
 {
-    [AvailableBenchmark]
+    [BenchmarkSet]
     [SimpleJob(RunStrategy.Monitoring, launchCount: 0, warmupCount: 0, targetCount: 1)]
     public class _Test
     {

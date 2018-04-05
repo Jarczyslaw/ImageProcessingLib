@@ -39,7 +39,7 @@ namespace ImageProcessingLib
 
         public byte this[int x, int y]
         {
-            get { return GetValue(x, y).R; }
+            get { return GetValue(x, y).G; }
             set { SetValue(x, y, value); }
         }
     }

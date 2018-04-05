@@ -6,31 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace PerformanceTests.Benchmarks.TwodimensionalArrays
 {
-    [AvailableBenchmark]
+    /// <summary>
+    /// Comparison between different ways in accessing twodimensional data: 2D arrays, jagged arrays, 1D array mapping
+    /// </summary>
+    [BenchmarkSet]
     public class TwodimensionalArrays
     {
-        public class Array1D
-        {
-            private byte[] data;
-            private int width;
-            private int height;
-
-            public Array1D(int width, int height)
-            {
-                this.width = width;
-                this.height = height;
-                data = new byte[width * height];
-            }
-
-            public byte this[int x, int y]
-            {
-                get { return data[width * x + y]; }
-                set { data[width * x + y] = value; }
-            }
-        }
-
         [Params(200, 1000)]
         public int size;
 

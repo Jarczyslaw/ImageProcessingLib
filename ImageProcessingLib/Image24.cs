@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -22,6 +23,17 @@ namespace ImageProcessingLib
         public Image24(Image24 img)
         {
             CreateFromExisting(img);
+        }
+
+        public Image24(Bitmap bmp)
+        {
+            CreateNew(bmp.Width, bmp.Height);
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                var rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                g.DrawImage(bmp, rect, rect, GraphicsUnit.Pixel);
+            }
+            Initialize(data);
         }
 
         public void SetGrayscale(int x, int y, byte value)
