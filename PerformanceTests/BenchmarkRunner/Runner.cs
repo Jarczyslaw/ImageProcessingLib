@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.BenchmarksLauncher
+namespace PerformanceTests.BenchmarkRunner
 {
     public class Runner
     {
@@ -33,7 +33,7 @@ namespace PerformanceTests.BenchmarksLauncher
                 if (inputValue != -1)
                 {
                     var selectedBenchmark = availableBenchmarks[inputValue];
-                    BenchmarkRunner.Run(selectedBenchmark);
+                    BenchmarkDotNet.Running.BenchmarkRunner.Run(selectedBenchmark);
 
                     runnerOutput.ShowOpenLogPrompt();
                     if (runnerInput.GetOpenLogInput())

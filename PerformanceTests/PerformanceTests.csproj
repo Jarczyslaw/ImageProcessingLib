@@ -136,14 +136,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BenchmarksLauncher\BenchmarksCollector.cs" />
-    <Compile Include="BenchmarksLauncher\BenchmarkSetAttribute.cs" />
-    <Compile Include="BenchmarksLauncher\Runner.cs" />
-    <Compile Include="BenchmarksLauncher\RunnerInput.cs" />
-    <Compile Include="BenchmarksLauncher\RunnerLog.cs" />
-    <Compile Include="BenchmarksLauncher\RunnerOutput.cs" />
+    <Compile Include="BenchmarkRunner\BenchmarksCollector.cs" />
+    <Compile Include="BenchmarkRunner\BenchmarkSetAttribute.cs" />
+    <Compile Include="BenchmarkRunner\Runner.cs" />
+    <Compile Include="BenchmarkRunner\RunnerInput.cs" />
+    <Compile Include="BenchmarkRunner\RunnerLog.cs" />
+    <Compile Include="BenchmarkRunner\RunnerOutput.cs" />
     <Compile Include="Benchmarks\BitmapAccess\BitmapAccess.cs" />
     <Compile Include="Benchmarks\BitmapAccess\DirectBitmap.cs" />
+    <Compile Include="Benchmarks\ByteArrayVsIntArray\ByteArrayVsIntArray.cs" />
+    <Compile Include="Benchmarks\ColorVsRGBSet\ColorVsRGBSet.cs" />
     <Compile Include="Benchmarks\Test\Test.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\Array1D.cs" />
     <Compile Include="Program.cs" />
@@ -157,6 +159,12 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
+      <Project>{5fafc7ea-3827-42e8-8f7e-d1f988d97932}</Project>
+      <Name>ImageProcessingLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

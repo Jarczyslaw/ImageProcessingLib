@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using PerformanceTests.BenchmarksLauncher;
+using PerformanceTests.BenchmarkRunner;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

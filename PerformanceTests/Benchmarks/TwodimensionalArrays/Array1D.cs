@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks.TwodimensionalArrays
+namespace PerformanceTests.Benchmarks
 {
     public class Array1D
     {

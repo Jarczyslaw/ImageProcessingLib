@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Attributes.Jobs;
 using BenchmarkDotNet.Engines;
-using PerformanceTests.BenchmarksLauncher;
+using PerformanceTests.BenchmarkRunner;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,8 +11,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks.BitmapAccess
-{
+namespace PerformanceTests.Benchmarks
+{ 
     /// <summary>
     /// Comparison between pixel accessing between classic Bitmap Set/GetPixel and DirectBitmap's wrapper
     /// </summary>

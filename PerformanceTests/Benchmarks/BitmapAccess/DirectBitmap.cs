@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks.BitmapAccess
+namespace PerformanceTests.Benchmarks
 {
     public class DirectBitmap : IDisposable
     {

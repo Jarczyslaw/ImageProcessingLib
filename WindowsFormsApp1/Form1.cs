@@ -24,8 +24,6 @@ namespace WindowsFormsApp1
             Image24 bmp = new Image24(im);
             for (int i = 0; i < 512; i++)
                 bmp[i, i] = Color.Black;
-
-            
             
             pictureBox1.Image = bmp.Bitmap;
         }

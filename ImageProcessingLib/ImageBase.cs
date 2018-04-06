@@ -54,7 +54,7 @@ namespace ImageProcessingLib
         protected void CreateFromExisting(ImageBase img)
         {
             SetSizes(img.Width, img.Height);
-            var data = new int[img.Data.Count];
+            var data = new int[img.Size];
             img.Data.CopyTo(data, 0);
             Initialize(data);
         }
