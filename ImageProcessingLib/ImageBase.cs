@@ -48,7 +48,8 @@ namespace ImageProcessingLib
         protected void CreateNew(int width, int height)
         {
             SetSizes(width, height);
-            Initialize(new int[width * height]);
+            var data = new int[width * height];
+            Initialize(data);
         }
 
         protected void CreateFromExisting(ImageBase img)
@@ -72,23 +73,23 @@ namespace ImageProcessingLib
             bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
         }
 
-        protected void SetValue(int x, int y, Color value)
+        protected void SetValue(int x, int y, RGBSet value)
         {
-            int index = x + (y * Width);
-            data[index] = value.ToArgb();
+            int index = x + y * width;
+            data[index] = value.Value;
         }
 
         protected void SetValue(int x, int y, byte value)
         {
-            int index = x + (y * Width);
-            data[index] = Color.FromArgb(value, value, value).ToArgb();
+            int index = x + y * width;
+            data[index] = RGBSet.FromValue(value).Value;
         }
 
-        protected Color GetValue(int x, int y)
+        protected RGBSet GetValue(int x, int y)
         {
-            int index = x + (y * Width);
-            int col = data[index];
-            return Color.FromArgb(col);
+            int index = x + y * width;
+            int pixel = data[index];
+            return RGBSet.FromValue(pixel);
         }
 
         public void Dispose()

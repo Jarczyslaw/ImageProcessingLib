@@ -37,9 +37,19 @@ namespace ImageProcessingLib
             }
         }
 
+        public void Set(int x, int y, byte value)
+        {
+            SetValue(x, y, value);
+        }
+
+        public byte Get(int x, int y)
+        {
+            return GetValue(x, y).R;
+        }
+
         public byte this[int x, int y]
         {
-            get { return GetValue(x, y).G; }
+            get { return GetValue(x, y).R; }
             set { SetValue(x, y, value); }
         }
     }

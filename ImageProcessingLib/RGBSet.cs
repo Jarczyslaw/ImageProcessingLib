@@ -63,9 +63,24 @@ namespace ImageProcessingLib
             return new RGBSet(0);
         }
 
-        public static RGBSet Grayscale(byte value)
+        public static RGBSet FromValue(byte value)
         {
             return new RGBSet(value, value, value);
+        }
+
+        public static RGBSet FromValue(int value)
+        {
+            return new RGBSet(value);
+        }
+
+        public static RGBSet FromValue(byte r, byte g, byte b)
+        {
+            return new RGBSet(r, g, b);
+        }
+
+        public static RGBSet FromValue(int r, int g, int b)
+        {
+            return new RGBSet(r, g, b);
         }
     }
 }

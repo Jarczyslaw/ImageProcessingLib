@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingLib.Extensions
+namespace ImageProcessingLib.Utilities
 {
-    public static class GraphicsExtensions
+    public static class GraphicsUtils
     {
-        public static void CopyTo(this Graphics graphics, Bitmap source, Bitmap destination)
+        public static void CopyTo(Bitmap source, Bitmap destination)
         {
             if (source.Width != destination.Width || source.Height != destination.Height)
                 throw new ArgumentException("Invalid bitmaps sizes. They have to be the same size");

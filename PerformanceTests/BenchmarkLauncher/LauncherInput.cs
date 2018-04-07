@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.BenchmarkRunner
+namespace PerformanceTests.BenchmarkLauncher
 {
-    public class RunnerInput
+    public class LauncherInput
     {
         public int GetListInput(int maxValue)
         {

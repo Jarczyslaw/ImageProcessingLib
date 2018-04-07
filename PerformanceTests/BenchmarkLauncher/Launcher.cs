@@ -1,25 +1,25 @@
-﻿using BenchmarkDotNet.Running;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BenchmarkDotNet.Running;
 
-namespace PerformanceTests.BenchmarkRunner
+namespace PerformanceTests.BenchmarkLauncher
 {
-    public class Runner
+    public class Launcher
     {
         private List<Type> availableBenchmarks;
-        private RunnerInput runnerInput;
-        private RunnerOutput runnerOutput;
-        private RunnerLog runnerLog;
+        private LauncherInput runnerInput;
+        private LauncherOutput runnerOutput;
+        private LauncherLog runnerLog;
 
-        public Runner(List<Type> availableBenchmarks)
+        public Launcher(List<Type> availableBenchmarks)
         {
             this.availableBenchmarks = availableBenchmarks;
-            runnerInput = new RunnerInput();
-            runnerOutput = new RunnerOutput();
-            runnerLog = new RunnerLog();
+            runnerInput = new LauncherInput();
+            runnerOutput = new LauncherOutput();
+            runnerLog = new LauncherLog();
         }
 
         public void Run()
@@ -33,7 +33,7 @@ namespace PerformanceTests.BenchmarkRunner
                 if (inputValue != -1)
                 {
                     var selectedBenchmark = availableBenchmarks[inputValue];
-                    BenchmarkDotNet.Running.BenchmarkRunner.Run(selectedBenchmark);
+                    BenchmarkRunner.Run(selectedBenchmark);
 
                     runnerOutput.ShowOpenLogPrompt();
                     if (runnerInput.GetOpenLogInput())

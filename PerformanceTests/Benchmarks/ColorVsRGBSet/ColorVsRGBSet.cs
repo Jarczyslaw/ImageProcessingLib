@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using ImageProcessingLib;
-using PerformanceTests.BenchmarkRunner;
+using PerformanceTests.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

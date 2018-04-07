@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.BenchmarkRunner
+namespace PerformanceTests.BenchmarkLauncher
 {
-    public class RunnerOutput
+    public class LauncherOutput
     {
         public void ShowList(List<Type> availableBenchmarks)
         {

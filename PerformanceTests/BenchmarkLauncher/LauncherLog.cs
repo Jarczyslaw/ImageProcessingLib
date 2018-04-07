@@ -7,14 +7,14 @@ using System.Reflection;
 using System.IO;
 using System.Diagnostics;
 
-namespace PerformanceTests.BenchmarkRunner
+namespace PerformanceTests.BenchmarkLauncher
 {
-    public class RunnerLog
+    public class LauncherLog
     {
         private string assemblyPath;
         private string artifactsPath;
 
-        public RunnerLog()
+        public LauncherLog()
         {
             var assemblyLocation = Assembly.GetEntryAssembly().Location;
             assemblyPath = Path.GetDirectoryName(assemblyLocation);

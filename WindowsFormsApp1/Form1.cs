@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             var im = new Bitmap(path);
             Image24 bmp = new Image24(im);
             for (int i = 0; i < 512; i++)
-                bmp[i, i] = Color.Black;
+                bmp[i, i] = RGBSet.Black();
             
             pictureBox1.Image = bmp.Bitmap;
         }

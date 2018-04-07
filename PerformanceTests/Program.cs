@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using PerformanceTests.BenchmarkRunner;
+using PerformanceTests.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,8 +14,8 @@ namespace PerformanceTests
     {
         static void Main(string[] args)
         {
-            var collector = new BenchmarksCollector();
-            var runner = new Runner(collector.GetAllBenchmarks());
+            var collector = new BenchmarkCollector();
+            var runner = new Launcher(collector.GetAllBenchmarks());
             runner.Run();
         }
     }

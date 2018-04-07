@@ -5,13 +5,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.BenchmarkRunner
+namespace PerformanceTests.BenchmarkLauncher
 {
-    public class BenchmarksCollector
+    public class BenchmarkCollector
     {
         private Assembly currentAssembly;
 
-        public BenchmarksCollector()
+        public BenchmarkCollector()
         {
             currentAssembly = Assembly.GetExecutingAssembly();
         }

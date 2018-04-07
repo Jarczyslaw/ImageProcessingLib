@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Attributes.Jobs;
 using BenchmarkDotNet.Engines;
-using PerformanceTests.BenchmarkRunner;
+using PerformanceTests.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Linq;

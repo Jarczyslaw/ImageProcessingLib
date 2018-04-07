@@ -28,20 +28,25 @@ namespace ImageProcessingLib
         public Image24(Bitmap bmp)
         {
             CreateNew(bmp.Width, bmp.Height);
-            using (var g = Graphics.FromImage(bitmap))
-            {
-                var rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
-                g.DrawImage(bmp, rect, rect, GraphicsUnit.Pixel);
-            }
-            Initialize(data);
+            GraphicsUtils.CopyTo(bmp, bitmap);
         }
 
-        public void SetGrayscale(int x, int y, byte value)
+        public void Set(int x, int y, byte value)
         {
             SetValue(x, y, value);
         }
 
-        public Color this[int x, int y]
+        public void Set(int x, int y, RGBSet color)
+        {
+            SetValue(x, y, color);
+        }
+
+        public RGBSet Get(int x, int y)
+        {
+            return GetValue(x, y);
+        }
+
+        public RGBSet this[int x, int y]
         {
             get { return GetValue(x, y); }
             set { SetValue(x, y, value); }
