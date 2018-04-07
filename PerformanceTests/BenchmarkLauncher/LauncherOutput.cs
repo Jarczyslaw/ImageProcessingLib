@@ -45,5 +45,11 @@ namespace PerformanceTests.BenchmarkLauncher
         {
             Console.Write(Environment.NewLine);
         }
+
+        public void ShowException(Exception exception)
+        {
+            Console.WriteLine("An exception occured: " + exception.Message);
+            Console.WriteLine(exception.StackTrace);
+        }
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib.ImageProcessing
 {
-    public static class ToGrayscale
+    public enum ToGrayscaleMethod
     {
-        
+        Average,
+        Lightness,
+        Luminance
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,8 +31,8 @@ namespace ImageProcessingLib
             {
                 for (int j = 0; j < img.Height; j++)
                 {
-                    var color = img[i, j];
-                    var grayscale = (byte)(0.3d * color.R + 0.59d * color.G + 0.11d * color.B);
+                    var rgb = img.Get(i, j);
+                    var grayscale = MathUtils.RoundToByte(0.3d * rgb.R + 0.59d * rgb.G + 0.11d * rgb.B);
                     SetValue(i, j, grayscale);
                 }
             }

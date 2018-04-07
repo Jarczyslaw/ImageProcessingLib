@@ -33,11 +33,17 @@ namespace PerformanceTests.BenchmarkLauncher
                 if (inputValue != -1)
                 {
                     var selectedBenchmark = availableBenchmarks[inputValue];
-                    BenchmarkRunner.Run(selectedBenchmark);
-
-                    runnerOutput.ShowOpenLogPrompt();
-                    if (runnerInput.GetOpenLogInput())
-                        runnerLog.OpenLog(selectedBenchmark);
+                    try
+                    {
+                        BenchmarkRunner.Run(selectedBenchmark);
+                        runnerOutput.ShowOpenLogPrompt();
+                        if (runnerInput.GetOpenLogInput())
+                            runnerLog.OpenLog(selectedBenchmark);
+                    }
+                    catch(Exception e)
+                    {
+                        runnerOutput.ShowException(e);
+                    }
                 }
                 else
                     runnerOutput.ShowInvalidValue();

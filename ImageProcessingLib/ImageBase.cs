@@ -45,6 +45,13 @@ namespace ImageProcessingLib
         private GCHandle dataHandle;
         private bool disposed;
 
+        public void ForEach(Action<int, int> action)
+        {
+            for (int i = 0; i < height; i++)
+                for (int j = 0; j < width; j++)
+                    action(j, i);
+        }
+
         protected void CreateNew(int width, int height)
         {
             SetSizes(width, height);

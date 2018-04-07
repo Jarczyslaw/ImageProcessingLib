@@ -10,17 +10,17 @@ namespace ImageProcessingLib.Utilities
     {
         public static byte RoundToByte(double value)
         {
-            return Clamp((byte)Math.Round(value));
+            return (byte)Math.Round(value);
         }
 
-        public static byte Clamp(int value)
+        public static byte Max(byte val1, byte val2, byte val3)
         {
-            if (value < 0)
-                return 0;
-            else if (value > 255)
-                return 255;
-            else
-                return (byte)value;
+            return Math.Max(val1, Math.Max(val2, val3));
+        }
+
+        public static byte Min(byte val1, byte val2, byte val3)
+        {
+            return Math.Min(val1, Math.Min(val2, val3));
         }
     }
 }

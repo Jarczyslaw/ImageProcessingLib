@@ -146,6 +146,7 @@
     <Compile Include="Benchmarks\BitmapAccess\DirectBitmap.cs" />
     <Compile Include="Benchmarks\ByteArrayVsIntArray\ByteArrayVsIntArray.cs" />
     <Compile Include="Benchmarks\ColorVsRGBSet\ColorVsRGBSet.cs" />
+    <Compile Include="Benchmarks\DoubleVsFloat\DoubleVsFloat.cs" />
     <Compile Include="Benchmarks\ForEachPixel\ForEachPixel.cs" />
     <Compile Include="Benchmarks\Test\Test.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\Array1D.cs" />
