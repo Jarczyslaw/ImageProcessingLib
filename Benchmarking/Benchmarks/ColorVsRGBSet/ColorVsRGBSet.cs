@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
+    /// <summary>
+    /// Performance difference between default Color struct and custom RGBSet
+    /// </summary>
     [BenchmarkSet]
     public class ColorVsRGBSet
     {

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
+    /// <summary>
+    /// Comparison between accessing byte and int array
+    /// </summary>
     [BenchmarkSet]
     public class ByteArrayVsIntArray
     {

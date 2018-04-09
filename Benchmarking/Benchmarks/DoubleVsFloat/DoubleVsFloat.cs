@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
+    /// <summary>
+    /// Float vs double operations in color -> grayscale convertion
+    /// </summary>
     [BenchmarkSet]
     public class DoubleVsFloat
     {

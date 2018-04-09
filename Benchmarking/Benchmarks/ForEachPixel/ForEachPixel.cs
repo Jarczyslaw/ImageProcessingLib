@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
+    /// <summary>
+    /// Benchmarks to show performance loss with using actions for each element in array
+    /// </summary>
     [BenchmarkSet]
     public class ForEachPixel
     {
