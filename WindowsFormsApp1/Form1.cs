@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,13 +21,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            var path = @"C:\Users\JT\Desktop\lena.bmp";
-            var im = new Bitmap(path);
-            Image24 bmp = new Image24(im);
-            for (int i = 0; i < 512; i++)
-                bmp[i, i] = RGBSet.Black();
-            
-            pictureBox1.Image = bmp.Bitmap;
+            var img = new Image8(@"C:\Users\JT\Desktop\lena_trans.png");
+
+
+            pictureBox1.Image = img.Bitmap;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ImageProcessingLib.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace ImageProcessingLib
         public Image8(int width, int height)
         {
             CreateNew(width, height);
+            Clear();
         }
 
         public Image8(Image8 img)
@@ -25,16 +27,34 @@ namespace ImageProcessingLib
             ToGrayscale(img);
         }
 
-        private void ToGrayscale(Image24 img)
+        public Image8(Bitmap bmp)
         {
-            for (int i = 0; i < img.Width; i++)
+            FromBitmap(bmp);
+        }
+
+        public Image8(string filePath)
+        {
+            using (var bmp = new Bitmap(filePath))
             {
-                for (int j = 0; j < img.Height; j++)
-                {
-                    var rgb = img.Get(i, j);
-                    var grayscale = MathUtils.RoundToByte(0.3d * rgb.R + 0.59d * rgb.G + 0.11d * rgb.B);
-                    SetValue(i, j, grayscale);
-                }
+                FromBitmap(bmp);
+            }
+        }
+
+        private void FromBitmap(Bitmap bmp)
+        {
+            CreateNew(bmp.Width, bmp.Height);
+            GraphicsUtils.Copy(bmp, bitmap);
+            ToGrayscale(this);
+        }
+
+        private void ToGrayscale(ImageBase img)
+        {
+            var len = img.Size;
+            for (int i = 0; i < len; i++)
+            {
+                var rgb = RGBSet.FromValue(img.Data[i]);
+                var grayscale = MathUtils.RoundToByte(0.3d * rgb.R + 0.59d * rgb.G + 0.11d * rgb.B);
+                data[i] = RGBSet.FromValue(grayscale).Value;
             }
         }
 

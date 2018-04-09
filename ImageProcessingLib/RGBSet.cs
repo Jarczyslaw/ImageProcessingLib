@@ -38,29 +38,29 @@ namespace ImageProcessingLib
             b = (byte)(value & 0xFF);
         }
 
-        public static RGBSet Red()
+        public static RGBSet Red
         {
-            return new RGBSet(255, 0, 0);
+            get { return new RGBSet(255, 0, 0); }
         }
 
-        public static RGBSet Green()
+        public static RGBSet Green
         {
-            return new RGBSet(0, 255, 0);
+            get { return new RGBSet(0, 255, 0); }
         }
 
-        public static RGBSet Blue()
+        public static RGBSet Blue
         {
-            return new RGBSet(0, 0, 255);
+            get { return new RGBSet(0, 0, 255); }
         }
 
-        public static RGBSet White()
+        public static RGBSet White
         {
-            return new RGBSet(255);
+            get { return new RGBSet(255); }
         }
 
-        public static RGBSet Black()
+        public static RGBSet Black
         {
-            return new RGBSet(0);
+            get { return new RGBSet(0); }
         }
 
         public static RGBSet FromValue(byte value)

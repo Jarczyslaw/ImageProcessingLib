@@ -9,7 +9,7 @@ namespace ImageProcessingLib.Utilities
 {
     public static class GraphicsUtils
     {
-        public static void CopyTo(Bitmap source, Bitmap destination)
+        public static void Copy(Bitmap source, Bitmap destination)
         {
             if (source.Width != destination.Width || source.Height != destination.Height)
                 throw new ArgumentException("Invalid bitmaps sizes. They have to be the same size");

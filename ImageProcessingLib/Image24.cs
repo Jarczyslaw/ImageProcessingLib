@@ -13,6 +13,7 @@ namespace ImageProcessingLib
         public Image24(int width, int height)
         {
             CreateNew(width, height);
+            Clear();
         }
 
         public Image24(Image8 img)
@@ -27,8 +28,22 @@ namespace ImageProcessingLib
 
         public Image24(Bitmap bmp)
         {
+            FromBitmap(bmp);
+        }
+
+        public Image24(string filePath)
+        {
+            using (var bmp = new Bitmap(filePath))
+            {
+                FromBitmap(bmp);
+            }
+        }
+
+        private void FromBitmap(Bitmap bmp)
+        {
             CreateNew(bmp.Width, bmp.Height);
-            GraphicsUtils.CopyTo(bmp, bitmap);
+            GraphicsUtils.Copy(bmp, bitmap);
+            RemoveAlpha();
         }
 
         public void Set(int x, int y, byte value)

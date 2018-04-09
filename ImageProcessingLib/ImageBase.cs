@@ -30,6 +30,11 @@ namespace ImageProcessingLib
             get { return width * height; }
         }
 
+        public int DataSize
+        {
+            get { return data.Length; }
+        }
+
         protected int[] data;
         public ReadOnlyCollection<int> Data
         {
@@ -80,6 +85,22 @@ namespace ImageProcessingLib
             bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
         }
 
+        public void Clear()
+        {
+            int value = RGBSet.Black.Value;
+            int len = data.Length;
+            for (int i = 0; i < len; i++)
+                data[i] = value;
+        }
+
+        public void RemoveAlpha()
+        {
+            int mask = 0xFF << 24;
+            int len = data.Length;
+            for (int i = 0; i < len; i++)
+                data[i] |= mask; 
+        }
+
         protected void SetValue(int x, int y, RGBSet value)
         {
             int index = x + y * width;
@@ -95,8 +116,7 @@ namespace ImageProcessingLib
         protected RGBSet GetValue(int x, int y)
         {
             int index = x + y * width;
-            int pixel = data[index];
-            return RGBSet.FromValue(pixel);
+            return RGBSet.FromValue(data[index]);
         }
 
         public void Dispose()

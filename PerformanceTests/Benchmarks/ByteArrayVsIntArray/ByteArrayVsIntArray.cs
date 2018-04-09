@@ -29,14 +29,14 @@ namespace PerformanceTests.Benchmarks
         }
 
         [Benchmark]
-        public void BytesSet()
+        public void IntsSet()
         {
             for (int i = 0; i < size; i++)
                 ints[i] = intValue;
         }
 
         [Benchmark]
-        public void IntsSet()
+        public void BytesSet()
         {
             for (int i = 0;i < size; i++)
             {
