@@ -8,7 +8,7 @@ namespace PerformanceTests.BenchmarkLauncher
 {
     public class LauncherOutput
     {
-        public void ShowList(List<Type> availableBenchmarks)
+        public void ShowList(List<AvailableBenchmark> availableBenchmarks)
         {
             if (availableBenchmarks == null || availableBenchmarks.Count == 0)
                 throw new Exception("No available benchmarks here");
@@ -18,7 +18,7 @@ namespace PerformanceTests.BenchmarkLauncher
             for (int i = 0; i < availableBenchmarks.Count; i++)
             {
                 var benchmark = availableBenchmarks[i];
-                sb.AppendFormat("   {0}. {1}", i + 1, benchmark.Name);
+                sb.AppendFormat("   {0}. {1}", i + 1, benchmark.Title);
                 sb.AppendLine(string.Empty);
             }
             Console.Write(sb.ToString());

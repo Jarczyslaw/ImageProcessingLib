@@ -9,14 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{25D4827B-6A24-4271-A45E-DB0E1FA17D29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{B98595E9-7C26-4738-8025-3217FD91CD40}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Old", "ImageProcessingLib.Old\ImageProcessingLib.Old.csproj", "{EE469227-3B86-4E9F-A1C4-98EB0AF6B21E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9998C677-B578-4A74-BBD2-EF6C6543E5AA}"
 	ProjectSection(SolutionItems) = preProject
 		SolutionItems\jt_icon.ico = SolutionItems\jt_icon.ico
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApps", "TestApps\TestApps.csproj", "{F7631C6B-E30C-4528-AEFC-87014C459814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +36,14 @@ Global
 		{25D4827B-6A24-4271-A45E-DB0E1FA17D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25D4827B-6A24-4271-A45E-DB0E1FA17D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25D4827B-6A24-4271-A45E-DB0E1FA17D29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B98595E9-7C26-4738-8025-3217FD91CD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B98595E9-7C26-4738-8025-3217FD91CD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B98595E9-7C26-4738-8025-3217FD91CD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B98595E9-7C26-4738-8025-3217FD91CD40}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE469227-3B86-4E9F-A1C4-98EB0AF6B21E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE469227-3B86-4E9F-A1C4-98EB0AF6B21E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE469227-3B86-4E9F-A1C4-98EB0AF6B21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE469227-3B86-4E9F-A1C4-98EB0AF6B21E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7631C6B-E30C-4528-AEFC-87014C459814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7631C6B-E30C-4528-AEFC-87014C459814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7631C6B-E30C-4528-AEFC-87014C459814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7631C6B-E30C-4528-AEFC-87014C459814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

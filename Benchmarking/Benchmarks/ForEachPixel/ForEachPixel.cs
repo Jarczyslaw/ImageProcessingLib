@@ -11,7 +11,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Benchmarks to show performance loss with using actions for each element in array
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("ForEachPixel")]
     public class ForEachPixel
     {
         private int width = 1000;

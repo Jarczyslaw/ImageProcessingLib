@@ -16,12 +16,24 @@ namespace PerformanceTests.BenchmarkLauncher
             currentAssembly = Assembly.GetExecutingAssembly();
         }
 
-        public List<Type> GetAllBenchmarks()
+        public List<AvailableBenchmark> GetAllBenchmarks()
         {
-            var allTypes = currentAssembly.GetTypes();
-            return allTypes.Where(t => t.GetCustomAttribute<BenchmarkSetAttribute>() != null)
-                .OrderBy(t => t.Name)
-                .ToList();
+            var result = new List<AvailableBenchmark>();
+            var types = currentAssembly.GetTypes();
+            foreach(var type in types)
+            {
+                var attr = type.GetCustomAttribute<BenchmarkSetAttribute>();
+                if (attr != null && !attr.Hidden)
+                {
+                    var benchmark = new AvailableBenchmark()
+                    {
+                        Title = attr.Title,
+                        BenchmarkSet = type
+                    };
+                    result.Add(benchmark);
+                }
+            }
+            return result.OrderBy(b => b.Title).ToList();
         }
     }
 }

@@ -9,12 +9,12 @@ namespace PerformanceTests.BenchmarkLauncher
 {
     public class Launcher
     {
-        private List<Type> availableBenchmarks;
+        private List<AvailableBenchmark> availableBenchmarks;
         private LauncherInput runnerInput;
         private LauncherOutput runnerOutput;
         private LauncherLog runnerLog;
 
-        public Launcher(List<Type> availableBenchmarks)
+        public Launcher(List<AvailableBenchmark> availableBenchmarks)
         {
             this.availableBenchmarks = availableBenchmarks;
             runnerInput = new LauncherInput();
@@ -35,10 +35,10 @@ namespace PerformanceTests.BenchmarkLauncher
                     var selectedBenchmark = availableBenchmarks[inputValue];
                     try
                     {
-                        BenchmarkRunner.Run(selectedBenchmark);
+                        BenchmarkRunner.Run(selectedBenchmark.BenchmarkSet);
                         runnerOutput.ShowOpenLogPrompt();
                         if (runnerInput.GetOpenLogInput())
-                            runnerLog.OpenLog(selectedBenchmark);
+                            runnerLog.OpenLog(selectedBenchmark.BenchmarkSet);
                     }
                     catch(Exception e)
                     {

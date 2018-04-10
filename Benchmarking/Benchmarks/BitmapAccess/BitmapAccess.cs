@@ -16,7 +16,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Comparison between pixel accessing between classic Bitmap Set/GetPixel and DirectBitmap's wrapper
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("BitmapAccess")]
     [SimpleJob(RunStrategy.Throughput, launchCount: 0, warmupCount: 1, targetCount: 3)]
     public class BitmapAccess
     {

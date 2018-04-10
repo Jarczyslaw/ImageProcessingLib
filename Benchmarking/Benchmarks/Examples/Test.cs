@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace PerformanceTests.Benchmarks
 {
-    [BenchmarkSet]
+    [BenchmarkSet("Test", true)]
     [SimpleJob(RunStrategy.Monitoring, launchCount: 0, warmupCount: 0, targetCount: 1)]
-    public class _Test
+    public class Test
     {
         [Params(1, 2)]
         public int param;

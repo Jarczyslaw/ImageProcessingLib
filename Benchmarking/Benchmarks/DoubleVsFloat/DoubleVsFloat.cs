@@ -11,7 +11,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Float vs double operations in color -> grayscale convertion
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("DoubleVsFloat")]
     public class DoubleVsFloat
     {
         private int r = 10;

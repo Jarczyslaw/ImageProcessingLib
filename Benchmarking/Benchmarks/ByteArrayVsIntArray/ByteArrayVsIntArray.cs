@@ -12,7 +12,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Comparison between accessing byte and int array
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("ByteArrayVsIntArray")]
     public class ByteArrayVsIntArray
     {
         private int size = 1000000;

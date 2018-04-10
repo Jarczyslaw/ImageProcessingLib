@@ -13,7 +13,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Performance difference between default Color struct and custom RGBSet
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("ColorVsRGBSet")]
     public class ColorVsRGBSet
     {
         private int size = 1000000;

@@ -123,9 +123,10 @@ namespace ImageProcessingLib
         {
             if (disposed)
                 return;
-            disposed = true;
+
             bitmap.Dispose();
             dataHandle.Free();
+            disposed = true;
         }
     }
 }

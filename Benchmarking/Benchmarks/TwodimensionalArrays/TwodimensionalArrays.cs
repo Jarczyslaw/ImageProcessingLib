@@ -11,7 +11,7 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Comparison between different ways in accessing twodimensional data: 2D arrays, jagged arrays, 1D array mapping
     /// </summary>
-    [BenchmarkSet]
+    [BenchmarkSet("TwodimensionalArrays")]
     public class TwodimensionalArrays
     {
         [Params(200, 1000)]
