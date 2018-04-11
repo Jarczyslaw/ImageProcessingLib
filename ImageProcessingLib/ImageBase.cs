@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public abstract class ImageBase : IDisposable
+    public abstract class ImageBase : IDisposable, IEquatable<ImageBase>
     {
         protected int width;
         public int Width
@@ -87,7 +87,11 @@ namespace ImageProcessingLib
 
         public void Clear()
         {
-            int value = RGBSet.Black.Value;
+            Clear(RGBSet.Black.Value);
+        }
+
+        public void Clear(int value)
+        {
             int len = data.Length;
             for (int i = 0; i < len; i++)
                 data[i] = value;
@@ -127,6 +131,45 @@ namespace ImageProcessingLib
             bitmap.Dispose();
             dataHandle.Free();
             disposed = true;
+        }
+
+        public bool Equals(ImageBase other)
+        {
+            return Equals((object)other);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, null))
+                return false;
+            if (ReferenceEquals(obj, this))
+                return true;
+            if (obj.GetType() != GetType())
+                return false;
+
+            var other = (ImageBase)obj;
+            if (other.width != width || other.height != height)
+                return false;
+            return Enumerable.SequenceEqual(other.data, data);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 0;
+            int len = data.Length;
+            for (int i = 0; i < len; i++)
+                hash ^= data[i].GetHashCode();
+            return hash;
+        }
+
+        public static bool operator ==(ImageBase image1, ImageBase image2)
+        {
+            return image1.Equals(image2);
+        }
+
+        public static bool operator !=(ImageBase image1, ImageBase image2)
+        {
+            return !(image1 == image2);
         }
     }
 }

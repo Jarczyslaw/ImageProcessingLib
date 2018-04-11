@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public struct RGBSet
+    public struct RGBSet : IEquatable<RGBSet>
     {
         private int value;
         public int Value { get { return value; } }
@@ -81,6 +81,44 @@ namespace ImageProcessingLib
         public static RGBSet FromValue(int r, int g, int b)
         {
             return new RGBSet(r, g, b);
+        }
+
+        public bool Equals(RGBSet other)
+        {
+            return Equals((object)other);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, null))
+                return false;
+            if (ReferenceEquals(obj, this))
+                return true;
+            if (obj.GetType() != GetType())
+                return false;
+
+            var other = (RGBSet)obj;
+            return other.value == value;
+        }
+
+        public override int GetHashCode()
+        {
+            return value;
+        }
+
+        public static bool operator ==(RGBSet set1, RGBSet set2)
+        {
+            return set1.Equals(set2);
+        }
+
+        public static bool operator !=(RGBSet set1, RGBSet set2)
+        {
+            return !(set1 == set2);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Red: {0}, Green: {1}, Blue: {2}, HEX: 0x{3:X8}", r, g, b, value);
         }
     }
 }
