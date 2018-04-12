@@ -8,13 +8,13 @@ using System.Drawing;
 
 namespace PerformanceTests.Benchmarks
 {
-    [BenchmarkSet("VsOld_GrayscaleImagesCreation")]
+    [BenchmarkSet("VsOld_GrayscaleImages")]
     public class GrayscaleImagesCreation
     {
         private const string createNewCategory = "CreateNew";
         private const string createFromBitmapCategory = "CreateFromBitmap";
-        private const string createFromRGBImageCategory = "CreateFromRGBImageCategory";
-        private const string valueChanging = "ValueChanging";
+        private const string createFromRGBImageCategory = "CreateFromRGBImage";
+        private const string valueChangingCategory = "ValueChanging";
 
         private int width = 1000;
         private int height = 2000;
@@ -83,7 +83,7 @@ namespace PerformanceTests.Benchmarks
         }
 
         [Benchmark]
-        [BenchmarkCategory(valueChanging)]
+        [BenchmarkCategory(valueChangingCategory)]
         public void ValueChanging()
         {
             var img8 = new Img8(width, height);
@@ -96,7 +96,7 @@ namespace PerformanceTests.Benchmarks
         }
 
         [Benchmark]
-        [BenchmarkCategory(valueChanging)]
+        [BenchmarkCategory(valueChangingCategory)]
         public void ValueChangingWithOld()
         {
             var image8 = new Image8(image24);

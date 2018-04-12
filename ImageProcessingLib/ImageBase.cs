@@ -50,11 +50,33 @@ namespace ImageProcessingLib
         private GCHandle dataHandle;
         private bool disposed;
 
+        public void ToFile(string filePath)
+        {
+            ToFile(filePath, ImageFormat.Bmp);
+        }
+
+        public void ToFile(string filePath, ImageFormat format)
+        {
+            bitmap.Save(filePath, format);
+        }
+
         public void ForEach(Action<int, int> action)
         {
             for (int i = 0; i < height; i++)
                 for (int j = 0; j < width; j++)
                     action(j, i);
+        }
+
+        public void ForSegment(int segment, int segmentsCount, Action<int, int> action)
+        {
+            float len = (float)height / segmentsCount;
+            int start = (int)Math.Round(segment * len);
+            int end = (int)Math.Round((segment + 1) * len);
+            for (int i = start; i < end; i++)
+            {
+                for (int j = 0; j < width; j++)
+                    action(j, i);
+            }
         }
 
         protected void CreateNew(int width, int height)
@@ -102,7 +124,7 @@ namespace ImageProcessingLib
             int mask = 0xFF << 24;
             int len = data.Length;
             for (int i = 0; i < len; i++)
-                data[i] |= mask; 
+                data[i] |= mask;
         }
 
         protected void SetValue(int x, int y, RGBSet value)

@@ -15,20 +15,29 @@ namespace PerformanceTests.Benchmarks
         private int height = 2000;
         private int[] data;
 
-        private int[][] lookupTable;
+        private int[][] lookupTableJagged;
+        private int[,] lookupTable;
 
         [GlobalSetup]
         public void Setup()
         {
             data = new int[width * height];
-            lookupTable = new int[width][];
+
+            lookupTableJagged = new int[width][];
             for (int i = 0; i < width; i++)
             {
-                lookupTable[i] = new int[height];
+                lookupTableJagged[i] = new int[height];
                 for (int j = 0; j < height; j++)
                 {
-                    lookupTable[i][j] = i + j * width;
+                    lookupTableJagged[i][j] = i + j * width;
                 }
+            }
+
+            lookupTable = new int[width, height];
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                    lookupTable[i, j] = i + j * width;
             }
         }
 
@@ -47,13 +56,27 @@ namespace PerformanceTests.Benchmarks
         }
 
         [Benchmark]
+        public void WithLookupJagged()
+        {
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    var index = lookupTableJagged[i][j];
+                    int value = data[index];
+                    data[index] = value;
+                }
+            }
+        }
+
+        [Benchmark]
         public void WithLookup()
         {
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    var index = lookupTable[i][j];
+                    var index = lookupTable[i, j];
                     int value = data[index];
                     data[index] = value;
                 }
