@@ -152,6 +152,8 @@
     <Compile Include="Benchmarks\ColorVsRGBSet\ColorVsRGBSet.cs" />
     <Compile Include="Benchmarks\DoubleVsFloat\DoubleVsFloat.cs" />
     <Compile Include="Benchmarks\Examples\Template.cs" />
+    <Compile Include="Benchmarks\FieldsVsProperties\AccessorsTest.cs" />
+    <Compile Include="Benchmarks\FieldsVsProperties\FieldsVsProperties.cs" />
     <Compile Include="Benchmarks\ForEachPixel\ForEachPixel.cs" />
     <Compile Include="Benchmarks\Examples\Test.cs" />
     <Compile Include="Benchmarks\LookupTable\LookupTable.cs" />

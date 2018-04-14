@@ -42,7 +42,7 @@ namespace ImageProcessingLib
         private void FromBitmap(Bitmap bmp)
         {
             CreateNew(bmp.Width, bmp.Height);
-            GraphicsUtils.Copy(bmp, bitmap);
+            GraphicsUtils.Copy(bmp, Bitmap);
             RemoveAlpha();
         }
 
@@ -59,6 +59,13 @@ namespace ImageProcessingLib
         public RGBSet Get(int x, int y)
         {
             return GetValue(x, y);
+        }
+
+        public void Swap(int sourceX, int sourceY, int destinationX, int destinationY)
+        {
+            var temp = GetValue(sourceX, sourceY);
+            SetValue(sourceX, sourceY, GetValue(destinationX, destinationY));
+            SetValue(destinationX, destinationY, temp);
         }
 
         public RGBSet this[int x, int y]

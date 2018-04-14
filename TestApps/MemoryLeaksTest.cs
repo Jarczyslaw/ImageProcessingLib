@@ -24,6 +24,7 @@ namespace TestApp
         public MemoryLeaksTest()
         {
             InitializeComponent();
+            UpdateStartStopButton();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -82,6 +83,22 @@ namespace TestApp
             //var img = new Bitmap(size, size);
             var img = new Image24(size, size);
             images.Add(img);
+        }
+
+        private void ToggleTimer()
+        {
+            timer1.Enabled = !timer1.Enabled;
+            UpdateStartStopButton();
+        }
+
+        private void UpdateStartStopButton()
+        {
+            btnStartStop.Text = timer1.Enabled ? "STOP" : "START";
+        }
+
+        private void btnStartStop_Click(object sender, EventArgs e)
+        {
+            ToggleTimer();
         }
 
         private void DisposeAll()

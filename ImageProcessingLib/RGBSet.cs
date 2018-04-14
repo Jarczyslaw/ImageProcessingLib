@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,22 +9,18 @@ namespace ImageProcessingLib
 {
     public struct RGBSet : IEquatable<RGBSet>
     {
-        private int value;
-        public int Value { get { return value; } }
-        private byte r;
-        public byte R { get { return r; } }
-        private byte g;
-        public byte G { get { return g; } }
-        private byte b;
-        public byte B { get { return b; } }
+        public int Value { get; }
+        public byte R { get; }
+        public byte G { get; }
+        public byte B { get; }
 
 
         public RGBSet(byte r, byte g, byte b)
         {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            value = 0xFF << 24 | r << 16 | g << 8 | b;
+            R = r;
+            G = g;
+            B = b;
+            Value = 0xFF << 24 | r << 16 | g << 8 | b;
         }
 
         public RGBSet(int r, int g, int b) : this((byte)r, (byte)g, (byte)b) { }
@@ -32,10 +29,16 @@ namespace ImageProcessingLib
 
         public RGBSet(int value)
         {
-            this.value = value | (0xFF << 24);
-            r = (byte)((value >> 16) & 0xFF);
-            g = (byte)((value >> 8) & 0xFF);
-            b = (byte)(value & 0xFF);
+            Value = value | (0xFF << 24);
+            R = (byte)((value >> 16) & 0xFF);
+            G = (byte)((value >> 8) & 0xFF);
+            B = (byte)(value & 0xFF);
+        }
+
+        public RGBSet ToGrayscale()
+        {
+            var grayscale = MathUtils.RoundToByte(0.3d * R + 0.59d * G + 0.11d * B);
+            return FromValue(grayscale);
         }
 
         public static RGBSet Red
@@ -98,12 +101,12 @@ namespace ImageProcessingLib
                 return false;
 
             var other = (RGBSet)obj;
-            return other.value == value;
+            return other.Value == Value;
         }
 
         public override int GetHashCode()
         {
-            return value;
+            return Value;
         }
 
         public static bool operator ==(RGBSet set1, RGBSet set2)
@@ -118,7 +121,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Red: {0}, Green: {1}, Blue: {2}, HEX: 0x{3:X8}", r, g, b, value);
+            return string.Format("Red: {0}, Green: {1}, Blue: {2}, HEX: 0x{3:X8}", R, G, B, Value);
         }
     }
 }

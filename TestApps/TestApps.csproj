@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>jt_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormsLoader.cs" />
+    <Compile Include="ImageTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageTest.Designer.cs">
+      <DependentUpon>ImageTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemoryLeaksTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ImageTest.resx">
+      <DependentUpon>ImageTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemoryLeaksTest.resx">
       <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +105,9 @@
       <Project>{5FAFC7EA-3827-42E8-8F7E-D1F988D97932}</Project>
       <Name>ImageProcessingLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="jt_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,6 +44,7 @@
     <Compile Include="Image24.cs" />
     <Compile Include="ImageBase.cs" />
     <Compile Include="Image8.cs" />
+    <Compile Include="ImageProcessing\FlipExtension.cs" />
     <Compile Include="ImageProcessing\ToGrayscaleExtension.cs" />
     <Compile Include="ImageProcessing\ToGrayscaleMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

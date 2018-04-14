@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbIteration = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnStartStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbMemoryUsage
@@ -53,7 +54,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
@@ -121,7 +121,7 @@
             // 
             // tbIteration
             // 
-            this.tbIteration.Location = new System.Drawing.Point(153, 155);
+            this.tbIteration.Location = new System.Drawing.Point(153, 145);
             this.tbIteration.Name = "tbIteration";
             this.tbIteration.ReadOnly = true;
             this.tbIteration.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -131,17 +131,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 158);
+            this.label5.Location = new System.Drawing.Point(99, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Iteration:";
+            // 
+            // btnStartStop
+            // 
+            this.btnStartStop.Location = new System.Drawing.Point(24, 116);
+            this.btnStartStop.Name = "btnStartStop";
+            this.btnStartStop.Size = new System.Drawing.Size(229, 23);
+            this.btnStartStop.TabIndex = 11;
+            this.btnStartStop.Text = "button1";
+            this.btnStartStop.UseVisualStyleBackColor = true;
+            this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
             // 
             // MemoryLeaksTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 187);
+            this.Controls.Add(this.btnStartStop);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbIteration);
             this.Controls.Add(this.label4);
@@ -172,6 +183,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbIteration;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnStartStop;
     }
 }
 

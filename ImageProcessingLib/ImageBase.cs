@@ -13,27 +13,11 @@ namespace ImageProcessingLib
 {
     public abstract class ImageBase : IDisposable, IEquatable<ImageBase>
     {
-        protected int width;
-        public int Width
-        {
-            get { return width; }
-        }
-
-        protected int height;
-        public int Height
-        {
-            get { return height; }
-        }
-
-        public int Size
-        {
-            get { return width * height; }
-        }
-
-        public int DataSize
-        {
-            get { return data.Length; }
-        }
+        public int Width { get; protected set; }
+        public int Height { get; protected set; }
+        public int Size { get { return Width * Height; } }
+        public int DataSize { get { return data.Length; } }
+        public Bitmap Bitmap { get; protected set; }
 
         protected int[] data;
         public ReadOnlyCollection<int> Data
@@ -41,14 +25,16 @@ namespace ImageProcessingLib
             get { return Array.AsReadOnly(data); }
         }
 
-        protected Bitmap bitmap;
-        public Bitmap Bitmap
-        {
-            get { return bitmap; }
-        }
-
         private GCHandle dataHandle;
         private bool disposed;
+
+        public void Graphics(Action<Graphics> action)
+        {
+            using (var graphics = System.Drawing.Graphics.FromImage(Bitmap))
+            {
+                action(graphics);
+            }
+        }
 
         public void ToFile(string filePath)
         {
@@ -57,24 +43,24 @@ namespace ImageProcessingLib
 
         public void ToFile(string filePath, ImageFormat format)
         {
-            bitmap.Save(filePath, format);
+            Bitmap.Save(filePath, format);
         }
 
         public void ForEach(Action<int, int> action)
         {
-            for (int i = 0; i < height; i++)
-                for (int j = 0; j < width; j++)
+            for (int i = 0; i < Height; i++)
+                for (int j = 0; j < Width; j++)
                     action(j, i);
         }
 
         public void ForSegment(int segment, int segmentsCount, Action<int, int> action)
         {
-            float len = (float)height / segmentsCount;
+            float len = (float)Height / segmentsCount;
             int start = (int)Math.Round(segment * len);
             int end = (int)Math.Round((segment + 1) * len);
             for (int i = start; i < end; i++)
             {
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j < Width; j++)
                     action(j, i);
             }
         }
@@ -96,15 +82,15 @@ namespace ImageProcessingLib
 
         protected void SetSizes(int width, int height)
         {
-            this.width = width;
-            this.height = height;
+            Width = width;
+            Height = height;
         }
 
         protected void Initialize(int[] data)
         {
             this.data = data;
             dataHandle = GCHandle.Alloc(this.data, GCHandleType.Pinned);
-            bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
+            Bitmap = new Bitmap(Width, Height, Width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
         }
 
         public void Clear()
@@ -129,19 +115,19 @@ namespace ImageProcessingLib
 
         protected void SetValue(int x, int y, RGBSet value)
         {
-            int index = x + y * width;
+            int index = x + y * Width;
             data[index] = value.Value;
         }
 
         protected void SetValue(int x, int y, byte value)
         {
-            int index = x + y * width;
+            int index = x + y * Width;
             data[index] = RGBSet.FromValue(value).Value;
         }
 
         protected RGBSet GetValue(int x, int y)
         {
-            int index = x + y * width;
+            int index = x + y * Width;
             return RGBSet.FromValue(data[index]);
         }
 
@@ -150,7 +136,7 @@ namespace ImageProcessingLib
             if (disposed)
                 return;
 
-            bitmap.Dispose();
+            Bitmap.Dispose();
             dataHandle.Free();
             disposed = true;
         }
@@ -170,7 +156,7 @@ namespace ImageProcessingLib
                 return false;
 
             var other = (ImageBase)obj;
-            if (other.width != width || other.height != height)
+            if (other.Width != Width || other.Height != Height)
                 return false;
             return Enumerable.SequenceEqual(other.data, data);
         }

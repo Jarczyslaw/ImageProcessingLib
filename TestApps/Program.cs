@@ -16,7 +16,7 @@ namespace TestApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MemoryLeaksTest());
+            Application.Run(new MainForm());
         }
     }
 }
