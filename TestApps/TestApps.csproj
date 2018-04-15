@@ -49,33 +49,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormsLoader.cs" />
-    <Compile Include="ImageTest.cs">
+    <Compile Include="Forms\ImageTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageTest.Designer.cs">
+    <Compile Include="Forms\ImageTest.Designer.cs">
       <DependentUpon>ImageTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryLeaksTest.cs">
+    <Compile Include="Forms\MemoryLeaksTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MemoryLeaksTest.Designer.cs">
+    <Compile Include="Forms\MemoryLeaksTest.Designer.cs">
       <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxEx.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ImageTest.resx">
+    <EmbeddedResource Include="Forms\ImageTest.resx">
       <DependentUpon>ImageTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemoryLeaksTest.resx">
+    <EmbeddedResource Include="Forms\MemoryLeaksTest.resx">
       <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -104,6 +105,10 @@
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{5FAFC7EA-3827-42E8-8F7E-D1F988D97932}</Project>
       <Name>ImageProcessingLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImagesFolder\ImagesFolder.csproj">
+      <Project>{be7e0f7a-ea93-4a0f-81b7-0774726e411a}</Project>
+      <Name>ImagesFolder</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

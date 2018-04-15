@@ -1,4 +1,4 @@
-﻿namespace TestApp
+﻿namespace TestApp.Forms
 {
     partial class ImageTest
     {
@@ -38,9 +38,10 @@
             this.pbImage.Location = new System.Drawing.Point(0, 0);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(689, 450);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
+            this.pbImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseClick);
             // 
             // ImageTest
             // 
@@ -50,9 +51,9 @@
             this.Controls.Add(this.pbImage);
             this.Name = "ImageTest";
             this.Text = "ImageTest";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImageTest_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

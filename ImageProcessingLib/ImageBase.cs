@@ -131,6 +131,15 @@ namespace ImageProcessingLib
             return RGBSet.FromValue(data[index]);
         }
 
+        public void Swap(int sourceX, int sourceY, int destinationX, int destinationY)
+        {
+            int sourceIndex = sourceX + sourceY * Width;
+            int destinationIndex = destinationX + destinationY * Width;
+            var temp = data[sourceIndex];
+            data[sourceIndex] = data[destinationIndex];
+            data[destinationIndex] = temp;
+        }
+
         public void Dispose()
         {
             if (disposed)

@@ -2,7 +2,7 @@
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ImageProcessingLib.Tests.CoreLibrary
+namespace ImageProcessingLib.Tests
 {
     [TestClass]
     public class RGBSetTests

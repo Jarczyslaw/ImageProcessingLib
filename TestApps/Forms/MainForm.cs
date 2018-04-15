@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApp
+namespace TestApp.Forms
 {
     public partial class MainForm : Form
     {
@@ -49,7 +49,7 @@ namespace TestApp
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxEx.ShowError(e.ToString());
                 }
             };
             return button;

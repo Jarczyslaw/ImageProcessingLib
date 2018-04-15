@@ -1,4 +1,4 @@
-﻿namespace TestApp
+﻿namespace TestApp.Forms
 {
     partial class MemoryLeaksTest
     {
