@@ -8,13 +8,13 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class FlipVerticalExtension
     {
-        public static Image8 FlipHorizontal(this Image8 image)
+        public static Image8 FlipVertical(this Image8 image)
         {
             Flip(image);
             return image;
         }
 
-        public static Image8 FlipVertical(this Image8 image)
+        public static Image24 FlipVertical(this Image24 image)
         {
             Flip(image);
             return image;
