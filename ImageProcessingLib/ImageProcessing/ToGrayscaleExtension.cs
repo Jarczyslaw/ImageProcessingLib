@@ -9,7 +9,7 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class ToGrayscaleExtension
     {
-        public static Image24 ToGrayscale(this Image24 img, ToGrayscaleMethod method = ToGrayscaleMethod.Luminance)
+        public static Image32 ToGrayscale(this Image32 img, ToGrayscaleMethod method = ToGrayscaleMethod.Luminance)
         {
             switch (method)
             {
@@ -26,17 +26,17 @@ namespace ImageProcessingLib.ImageProcessing
             return img;
         }
 
-        private static void ByLuminance(Image24 img)
+        private static void ByLuminance(Image32 img)
         {
             img.ForEach((x, y) =>
             {
                 var rgb = img.Get(x, y);
                 var grayscale = MathUtils.RoundToByte(0.3d * rgb.R + 0.59d * rgb.G + 0.11d * rgb.B);
-                img.Set(x, y, grayscale);
+                img.Set(x, y, new Pixel32());
             });
         }
 
-        private static void ByLightness(Image24 img)
+        private static void ByLightness(Image32 img)
         {
             img.ForEach((x, y) =>
             {
@@ -44,18 +44,18 @@ namespace ImageProcessingLib.ImageProcessing
                 var max = MathUtils.Max(rgb.R, rgb.G, rgb.B);
                 var min = MathUtils.Min(rgb.R, rgb.G, rgb.B);
                 var grayscale = MathUtils.RoundToByte(0.5d * (max + min));
-                img.Set(x, y, grayscale);
+                img.Set(x, y, new Pixel32(grayscale));
             });
         }
 
-        private static void ByAverage(Image24 img)
+        private static void ByAverage(Image32 img)
         {
             double q = 1d / 3d;
             img.ForEach((x, y) =>
             {
                 var rgb = img.Get(x, y);
                 var grayscale = MathUtils.RoundToByte(q * (rgb.R + rgb.G + rgb.B));
-                img.Set(x, y, grayscale);
+                img.Set(x, y, new Pixel32(grayscale));
             });
         }
     }

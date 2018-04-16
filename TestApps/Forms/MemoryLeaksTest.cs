@@ -81,7 +81,7 @@ namespace TestApp.Forms
         {
             var size = 2000;
             //var img = new Bitmap(size, size);
-            var img = new Image24(size, size);
+            var img = new Image32(size, size);
             images.Add(img);
         }
 

@@ -8,19 +8,7 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class FlipHorizontalExtension
     {
-        public static Image8 FlipHorizontal(this Image8 image)
-        {
-            Flip(image);
-            return image;
-        }
-
-        public static Image24 FlipHorizontal(this Image24 image)
-        {
-            Flip(image);
-            return image;
-        }
-
-        private static void Flip(ImageBase image)
+        public static Image32 FlipHorizontal(this Image32 image)
         {
             int width = image.Width;
             int height = image.Height;
@@ -31,6 +19,7 @@ namespace ImageProcessingLib.ImageProcessing
                 for (int j = 0; j < width; j++)
                     image.Swap(j, i, j, tempHeight);
             }
+            return image;
         }
     }
 }

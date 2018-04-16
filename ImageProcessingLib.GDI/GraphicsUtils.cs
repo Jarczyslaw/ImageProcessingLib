@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingLib.Utilities
+namespace ImageProcessingLib.GDI
 {
     public static class GraphicsUtils
     {

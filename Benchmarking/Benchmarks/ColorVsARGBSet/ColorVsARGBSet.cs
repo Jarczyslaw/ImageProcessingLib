@@ -13,14 +13,14 @@ namespace PerformanceTests.Benchmarks
     /// <summary>
     /// Performance difference between default Color struct and custom RGBSet
     /// </summary>
-    [BenchmarkSet("ColorVsRGBSet")]
-    public class ColorVsRGBSet
+    [BenchmarkSet("ColorVsARGBSet")]
+    public class ColorVsARGBSet
     {
         private int size = 1000000;
         private int startColor = -10185016; // #FF6496C8
 
         private Color[] colorArray;
-        private RGBSet[] rgbSetArray;
+        private Pixel32[] rgbSetArray;
 
         [Benchmark]
         [BenchmarkCategory("Initialization")]
@@ -34,11 +34,11 @@ namespace PerformanceTests.Benchmarks
 
         [Benchmark]
         [BenchmarkCategory("Initialization")]
-        public RGBSet[] RGBSetInitialization()
+        public Pixel32[] ARGBSetInitialization()
         {
-            var arr = new RGBSet[size];
+            var arr = new Pixel32[size];
             for (int i = 0; i < size; i++)
-                arr[i] = new RGBSet(startColor);
+                arr[i] = new Pixel32(startColor);
             return arr;
         }
 
@@ -48,10 +48,10 @@ namespace PerformanceTests.Benchmarks
             colorArray = ColorInitialization();
         }
 
-        [GlobalSetup(Target = nameof(RGBSetIterating))]
-        public void RGBSetIteratingSetup()
+        [GlobalSetup(Target = nameof(ARGBSetIteratingSetup))]
+        public void ARGBSetIteratingSetup()
         {
-            rgbSetArray = RGBSetInitialization();
+            rgbSetArray = ARGBSetInitialization();
         }
 
         [Benchmark]
@@ -68,12 +68,12 @@ namespace PerformanceTests.Benchmarks
 
         [Benchmark]
         [BenchmarkCategory("Iterating")]
-        public void RGBSetIterating()
+        public void ARGBSetIterating()
         {
             for (int i = 0; i < size; i++)
             {
                 var rgb = rgbSetArray[i];
-                var newRgb = new RGBSet(rgb.R, rgb.G, rgb.B);
+                var newRgb = new Pixel32(rgb.R, rgb.G, rgb.B);
                 rgbSetArray[i] = newRgb;
             }
         }

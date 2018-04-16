@@ -149,7 +149,10 @@
     <Compile Include="Benchmarks\BitmapAccess\BitmapAccess.cs" />
     <Compile Include="Benchmarks\BitmapAccess\DirectBitmap.cs" />
     <Compile Include="Benchmarks\ByteArrayVsIntArray\ByteArrayVsIntArray.cs" />
-    <Compile Include="Benchmarks\ColorVsRGBSet\ColorVsRGBSet.cs" />
+    <Compile Include="Benchmarks\ClassVsStruct\PixelClass.cs" />
+    <Compile Include="Benchmarks\ClassVsStruct\PixelStruct.cs" />
+    <Compile Include="Benchmarks\ClassVsStruct\ClassVsStruct.cs" />
+    <Compile Include="Benchmarks\ColorVsARGBSet\ColorVsARGBSet.cs" />
     <Compile Include="Benchmarks\DoubleVsFloat\DoubleVsFloat.cs" />
     <Compile Include="Benchmarks\Examples\Template.cs" />
     <Compile Include="Benchmarks\FieldsVsProperties\AccessorsTest.cs" />

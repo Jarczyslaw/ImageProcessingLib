@@ -102,6 +102,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
+      <Project>{fcbfae93-563b-4c22-ac03-9169f44f736d}</Project>
+      <Name>ImageProcessingLib.GDI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{5FAFC7EA-3827-42E8-8F7E-D1F988D97932}</Project>
       <Name>ImageProcessingLib</Name>

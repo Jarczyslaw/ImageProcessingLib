@@ -1,4 +1,5 @@
 ﻿using ImageProcessingLib;
+using ImageProcessingLib.GDI;
 using ImageProcessingLib.ImageProcessing;
 using System;
 using System.Collections.Generic;
@@ -14,20 +15,21 @@ namespace TestApp.Forms
 {
     public partial class ImageTest : Form
     {
-        private ImageBase image;
+        private GDImage image;
 
         public ImageTest()
         {
             InitializeComponent();
             image = GetImage();
             pbImage.Image = image.Bitmap;
-            ResizeTo(image.Width, image.Height);
+            ResizeTo(image.Bitmap.Width, image.Bitmap.Height);
         }
 
-        private ImageBase GetImage()
+        private GDImage GetImage()
         {
-            var image = new Image24(ImagesFolder.Images.Lena);
-            return image.FlipVertical();
+            var image = new GDImage(ImagesFolder.Images.Lena);
+            image.Image.FlipVertical();
+            return image;
         }
 
         private void ResizeTo(int width, int height)

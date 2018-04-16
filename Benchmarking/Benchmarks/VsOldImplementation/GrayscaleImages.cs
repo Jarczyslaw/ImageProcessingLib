@@ -21,20 +21,20 @@ namespace PerformanceTests.Benchmarks
 
         private Bitmap bmp;
         private Img24 img24;
-        private Image24 image24;
+        //private ImageProcessingLib.Image image24;
 
         [GlobalSetup]
         public void Setup()
         {
             bmp = new Bitmap(width, height);
             img24 = new Img24(width, height);
-            image24 = new Image24(width, height);
+            //image24 = new ImageProcessingLib.Image(width, height);
         }
 
         [GlobalCleanup]
         public void Cleanup()
         {
-            image24.Dispose();
+            //image32.Dispose();
         }
 
         [Benchmark]
@@ -48,8 +48,9 @@ namespace PerformanceTests.Benchmarks
         [BenchmarkCategory(createNewCategory)]
         public void CreateNewWithOld()
         {
-            var image8 = new Image8(width, height);
-            image8.Dispose();
+            // TODO
+            //var image8 = new Image8(width, height);
+            //image8.Dispose();
         }
 
         [Benchmark]
@@ -63,8 +64,9 @@ namespace PerformanceTests.Benchmarks
         [BenchmarkCategory(createFromBitmapCategory)]
         public void CreateFromBitmapWithOld()
         {
-            var image8 = new Image8(bmp);
-            image8.Dispose();
+            // TODO
+            //var image8 = new Image8(bmp);
+            //image8.Dispose();
         }
 
         [Benchmark]
@@ -78,8 +80,9 @@ namespace PerformanceTests.Benchmarks
         [BenchmarkCategory(createFromRGBImageCategory)]
         public void CreateFromRGBWithOld()
         {
-            var image8 = new Image8(image24);
-            image8.Dispose();
+            // TODO
+            //var image8 = new Image8(image24);
+            //image8.Dispose();
         }
 
         [Benchmark]
@@ -99,14 +102,15 @@ namespace PerformanceTests.Benchmarks
         [BenchmarkCategory(valueChangingCategory)]
         public void ValueChangingWithOld()
         {
-            var image8 = new Image8(image24);
+            // TODO
+            /*var image8 = new Image8(image24);
             image8.ForEach((x, y) =>
             {
                 var value = image8.Get(x, y);
                 value = 255;
                 image8.Set(x, y, value);
             });
-            image8.Dispose();
+            image8.Dispose();*/
         }
     }
 }
