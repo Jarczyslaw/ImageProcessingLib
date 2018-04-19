@@ -7,7 +7,7 @@ using System.Reflection;
 using System.IO;
 using System.Diagnostics;
 
-namespace PerformanceTests.BenchmarkLauncher
+namespace Benchmarking.BenchmarkLauncher
 {
     public class LauncherLog
     {

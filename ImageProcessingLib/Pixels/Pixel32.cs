@@ -39,7 +39,9 @@ namespace ImageProcessingLib
             B = (byte)(data & 0xFF);
         }
 
-        public Pixel32 FromData(int data)
+        public Pixel32(Pixel32 pixel) : this(pixel.A, pixel.R, pixel.G, pixel.B) { }
+
+        public Pixel32 From(int data)
         {
             return new Pixel32(data);
         }

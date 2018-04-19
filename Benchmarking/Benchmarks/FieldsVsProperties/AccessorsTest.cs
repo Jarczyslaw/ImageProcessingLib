@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace Benchmarking.Benchmarks
 {
     public class AccessorsTest
     {

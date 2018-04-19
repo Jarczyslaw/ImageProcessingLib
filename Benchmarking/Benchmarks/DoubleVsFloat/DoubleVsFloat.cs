@@ -1,12 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
-using PerformanceTests.BenchmarkLauncher;
+using Benchmarking.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace Benchmarking.Benchmarks
 {
     /// <summary>
     /// Float vs double operations in color -> grayscale convertion

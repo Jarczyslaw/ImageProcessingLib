@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Running;
 
-namespace PerformanceTests.BenchmarkLauncher
+namespace Benchmarking.BenchmarkLauncher
 {
     public class Launcher
     {

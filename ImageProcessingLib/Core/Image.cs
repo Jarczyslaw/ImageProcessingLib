@@ -99,7 +99,7 @@ namespace ImageProcessingLib
         public TPixelType Get(int x, int y)
         {
             var data = GetData(x, y);
-            return pixelSource.FromData(data);
+            return pixelSource.From(data);
         }
 
         public TPixelType this[int x, int y]

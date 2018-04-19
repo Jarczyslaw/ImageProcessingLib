@@ -167,7 +167,7 @@
     <Compile Include="Benchmarks\ClassVsStruct\ClassVsStruct.cs" />
     <Compile Include="Benchmarks\ClassVsStruct\PixelClass.cs" />
     <Compile Include="Benchmarks\ClassVsStruct\PixelStruct.cs" />
-    <Compile Include="Benchmarks\ColorVsARGBSet\ColorVsARGBSet.cs" />
+    <Compile Include="Benchmarks\ColorVsPixel32\ColorVsPixel32.cs" />
     <Compile Include="Benchmarks\DoubleVsFloat\DoubleVsFloat.cs" />
     <Compile Include="Benchmarks\Examples\Template.cs" />
     <Compile Include="Benchmarks\Examples\Test.cs" />
@@ -177,7 +177,9 @@
     <Compile Include="Benchmarks\LookupTable\LookupTable.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\Array1D.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\TwodimensionalArrays.cs" />
+    <Compile Include="Benchmarks\VsOldImplementation\ColorImages.cs" />
     <Compile Include="Benchmarks\VsOldImplementation\GrayscaleImages.cs" />
+    <Compile Include="Benchmarks\VsOldImplementation\VsOldImplementationBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -198,9 +200,7 @@
   <ItemGroup>
     <Content Include="jt_icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Benchmarks\ColorVsRGBSet\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />

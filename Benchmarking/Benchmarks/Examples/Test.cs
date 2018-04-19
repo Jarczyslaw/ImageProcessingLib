@@ -1,14 +1,14 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Attributes.Jobs;
 using BenchmarkDotNet.Engines;
-using PerformanceTests.BenchmarkLauncher;
+using Benchmarking.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace Benchmarking.Benchmarks
 {
     [BenchmarkSet("Test", true)]
     [SimpleJob(RunStrategy.Monitoring, launchCount: 0, warmupCount: 0, targetCount: 1)]

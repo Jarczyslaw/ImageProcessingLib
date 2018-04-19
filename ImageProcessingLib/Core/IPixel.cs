@@ -9,7 +9,7 @@ namespace ImageProcessingLib
     public interface IPixel<TPixelType>
     {
         int Data { get; }
-        TPixelType FromData(int data);
+        TPixelType From(int data);
         TPixelType Blank { get; }
     }
 }

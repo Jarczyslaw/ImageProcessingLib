@@ -1,12 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
-using PerformanceTests.BenchmarkLauncher;
+using Benchmarking.BenchmarkLauncher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerformanceTests.Benchmarks
+namespace Benchmarking.Benchmarks
 {
     /// <summary>
     /// Comparison between different ways in accessing twodimensional data: 2D arrays, jagged arrays, 1D array mapping

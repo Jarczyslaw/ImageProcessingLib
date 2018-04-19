@@ -16,12 +16,14 @@ namespace ImageProcessingLib
             Value = value;
         }
 
+        public Pixel8(Pixel8 pixel) : this(pixel.Value) { }
+
         public Pixel8 Blank
         {
             get { return Black; }
         }
 
-        public Pixel8 FromData(int data)
+        public Pixel8 From(int data)
         {
             return new Pixel8((byte)data);
         }
