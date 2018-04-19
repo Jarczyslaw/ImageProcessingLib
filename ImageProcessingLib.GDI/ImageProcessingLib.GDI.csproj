@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCBFAE93-563B-4C22-AC03-9169F44F736D}</ProjectGuid>
+    <ProjectGuid>{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImageProcessingLib.GDI</RootNamespace>
@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GDImage32.cs" />
     <Compile Include="GraphicsUtils.cs" />
-    <Compile Include="GDImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
-      <Project>{5fafc7ea-3827-42e8-8f7e-d1f988d97932}</Project>
+      <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
     </ProjectReference>
   </ItemGroup>

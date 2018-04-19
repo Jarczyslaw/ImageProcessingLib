@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,25 +17,6 @@ namespace ImageProcessingLib
         public int Size { get { return Width * Height; } }
         public int[] Data { get; protected set; }
         public int DataLength { get { return Data.Length; } }
-
-        public void ForEach(Action<int, int> action)
-        {
-            for (int i = 0; i < Height; i++)
-                for (int j = 0; j < Width; j++)
-                    action(j, i);
-        }
-
-        public void ForSegment(int segment, int segmentsCount, Action<int, int> action)
-        {
-            float len = (float)Height / segmentsCount;
-            int start = (int)Math.Round(segment * len);
-            int end = (int)Math.Round((segment + 1) * len);
-            for (int i = start; i < end; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                    action(j, i);
-            }
-        }
 
         protected void CreateNew(int width, int height)
         {
@@ -53,6 +35,24 @@ namespace ImageProcessingLib
         {
             Width = width;
             Height = height;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected int GetIndex(int x, int y)
+        {
+            return x + y * Width;
+        }
+
+        public int GetData(int x, int y)
+        {
+            var index = GetIndex(x, y);
+            return Data[index];
+        }
+
+        public void SetData(int x, int y, int data)
+        {
+            var index = GetIndex(x, y);
+            Data[index] = data;
         }
 
         public void Swap(int sourceX, int sourceY, int destinationX, int destinationY)

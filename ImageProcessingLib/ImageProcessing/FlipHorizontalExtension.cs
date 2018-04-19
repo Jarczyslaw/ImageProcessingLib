@@ -8,7 +8,7 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class FlipHorizontalExtension
     {
-        public static Image32 FlipHorizontal(this Image32 image)
+        public static Image<Pixel32> FlipHorizontal(this Image<Pixel32> image)
         {
             int width = image.Width;
             int height = image.Height;

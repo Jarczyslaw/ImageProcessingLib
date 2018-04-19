@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestApp.Properties
+namespace TestApps.Properties
 {
 
 

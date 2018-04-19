@@ -49,9 +49,9 @@ namespace ImageProcessingLib.Tests
             Assert.IsTrue(result);
         }
 
-        private Image32 CreateSmallRGB()
+        private Image<Pixel32> CreateSmallRGB()
         {
-            var image = new Image32(3, 2);
+            var image = new Image<Pixel32>(3, 2);
             image.Set(0, 0, Pixel32.Red);
             image.Set(1, 0, Pixel32.Green);
             image.Set(2, 0, Pixel32.Blue);

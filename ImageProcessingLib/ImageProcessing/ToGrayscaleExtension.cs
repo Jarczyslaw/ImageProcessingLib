@@ -9,7 +9,7 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class ToGrayscaleExtension
     {
-        public static Image32 ToGrayscale(this Image32 img, ToGrayscaleMethod method = ToGrayscaleMethod.Luminance)
+        public static Image<Pixel32> ToGrayscale(this Image<Pixel32> img, ToGrayscaleMethod method = ToGrayscaleMethod.Luminance)
         {
             switch (method)
             {
@@ -26,7 +26,7 @@ namespace ImageProcessingLib.ImageProcessing
             return img;
         }
 
-        private static void ByLuminance(Image32 img)
+        private static void ByLuminance(Image<Pixel32> img)
         {
             img.ForEach((x, y) =>
             {
@@ -36,7 +36,7 @@ namespace ImageProcessingLib.ImageProcessing
             });
         }
 
-        private static void ByLightness(Image32 img)
+        private static void ByLightness(Image<Pixel32> img)
         {
             img.ForEach((x, y) =>
             {
@@ -48,7 +48,7 @@ namespace ImageProcessingLib.ImageProcessing
             });
         }
 
-        private static void ByAverage(Image32 img)
+        private static void ByAverage(Image<Pixel32> img)
         {
             double q = 1d / 3d;
             img.ForEach((x, y) =>

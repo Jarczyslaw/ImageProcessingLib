@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7631C6B-E30C-4528-AEFC-87014C459814}</ProjectGuid>
+    <ProjectGuid>{B530B733-12A5-4155-BF3A-0AF3E718E34B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TestApp</RootNamespace>
-    <AssemblyName>TestApp</AssemblyName>
+    <RootNamespace>TestApps</RootNamespace>
+    <AssemblyName>TestApps</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -102,21 +102,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="jt_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
-      <Project>{fcbfae93-563b-4c22-ac03-9169f44f736d}</Project>
+      <Project>{523c535d-5b0c-4c0d-af72-c3bfd14c2269}</Project>
       <Name>ImageProcessingLib.GDI</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
-      <Project>{5FAFC7EA-3827-42E8-8F7E-D1F988D97932}</Project>
+      <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImagesFolder\ImagesFolder.csproj">
-      <Project>{be7e0f7a-ea93-4a0f-81b7-0774726e411a}</Project>
+      <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="jt_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

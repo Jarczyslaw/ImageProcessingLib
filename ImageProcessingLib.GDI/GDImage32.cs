@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib.GDI
 {
-    public class GDImage : IDisposable
+    public class GDImage32 : IDisposable
     {
-        public Image32 Image { get; private set; }
+        public Image<Pixel32> Image { get; private set; }
         public Bitmap Bitmap { get; private set; }
 
         private GCHandle dataHandle;
 
         private bool disposed = false;
 
-        public GDImage(int width, int height)
+        public GDImage32(int width, int height)
         {
-            Image = new Image32(width, height);
+            Image = new Image<Pixel32>(width, height);
             Initialize();
         }
 
-        public GDImage(Image32 image)
+        public GDImage32(Image<Pixel32> image)
         {
             Image = image;
             Initialize();
         }
 
-        public GDImage(string filePath)
+        public GDImage32(string filePath)
         {
             using (var bmp = new Bitmap(filePath))
             {
@@ -38,14 +38,14 @@ namespace ImageProcessingLib.GDI
             }
         }
 
-        public GDImage(Bitmap bitmap)
+        public GDImage32(Bitmap bitmap)
         {
             FromBitmap(bitmap);
         }
 
         private void FromBitmap(Bitmap bitmap)
         {
-            Image = new Image32(bitmap.Width, bitmap.Height);
+            Image = new Image<Pixel32>(bitmap.Width, bitmap.Height);
             Initialize();
             GraphicsUtils.Copy(bitmap, Bitmap);
         }

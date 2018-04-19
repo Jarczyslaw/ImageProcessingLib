@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E2B10E0-5650-4982-A2B3-1F42AB438AA2}</ProjectGuid>
+    <ProjectGuid>{A3C253BE-B4C4-457E-9B0C-1C40E79C1FF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImageProcessingLib.Tests</RootNamespace>
@@ -49,21 +49,21 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Image8Tests.cs" />
+    <Compile Include="ImageBaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RGBSetTests.cs" />
-    <Compile Include="ImageBaseTests.cs" />
-    <Compile Include="Image8Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
-      <Project>{5fafc7ea-3827-42e8-8f7e-d1f988d97932}</Project>
+      <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImagesFolder\ImagesFolder.csproj">
-      <Project>{be7e0f7a-ea93-4a0f-81b7-0774726e411a}</Project>
+      <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
     </ProjectReference>
   </ItemGroup>

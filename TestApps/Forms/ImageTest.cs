@@ -15,7 +15,7 @@ namespace TestApp.Forms
 {
     public partial class ImageTest : Form
     {
-        private GDImage image;
+        private GDImage32 image;
 
         public ImageTest()
         {
@@ -25,9 +25,9 @@ namespace TestApp.Forms
             ResizeTo(image.Bitmap.Width, image.Bitmap.Height);
         }
 
-        private GDImage GetImage()
+        private GDImage32 GetImage()
         {
-            var image = new GDImage(ImagesFolder.Images.Lena);
+            var image = new GDImage32(ImagesFolder.Images.Lena);
             image.Image.FlipVertical();
             return image;
         }

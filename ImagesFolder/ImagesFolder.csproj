@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE7E0F7A-EA93-4A0F-81B7-0774726E411A}</ProjectGuid>
+    <ProjectGuid>{3B4B5C35-BAC6-4166-885C-C9788A3DF32C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImagesFolder</RootNamespace>
@@ -50,22 +50,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\lena.bmp" />
+    <Content Include="Resources\lena_gray.bmp" />
+    <Content Include="Resources\lena_trans.png" />
+    <Content Include="Resources\test.bmp" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lena.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lena_gray.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lena_trans.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\test.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
