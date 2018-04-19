@@ -28,34 +28,31 @@ namespace ImageProcessingLib.ImageProcessing
 
         private static void ByLuminance(Image<Pixel32> img)
         {
-            img.ForEach((x, y) =>
+            img.ForEach((x, y, pixel) =>
             {
-                var rgb = img.Get(x, y);
-                var grayscale = MathUtils.RoundToByte(0.3d * rgb.R + 0.59d * rgb.G + 0.11d * rgb.B);
-                img.Set(x, y, new Pixel32());
+                var grayscale = MathUtils.RoundToByte(0.3d * pixel.R + 0.59d * pixel.G + 0.11d * pixel.B);
+                return new Pixel32(grayscale);
             });
         }
 
         private static void ByLightness(Image<Pixel32> img)
         {
-            img.ForEach((x, y) =>
+            img.ForEach((x, y, pixel) =>
             {
-                var rgb = img.Get(x, y);
-                var max = MathUtils.Max(rgb.R, rgb.G, rgb.B);
-                var min = MathUtils.Min(rgb.R, rgb.G, rgb.B);
+                var max = MathUtils.Max(pixel.R, pixel.G, pixel.B);
+                var min = MathUtils.Min(pixel.R, pixel.G, pixel.B);
                 var grayscale = MathUtils.RoundToByte(0.5d * (max + min));
-                img.Set(x, y, new Pixel32(grayscale));
+                return new Pixel32(grayscale);
             });
         }
 
         private static void ByAverage(Image<Pixel32> img)
         {
             double q = 1d / 3d;
-            img.ForEach((x, y) =>
+            img.ForEach((x, y, pixel) =>
             {
-                var rgb = img.Get(x, y);
-                var grayscale = MathUtils.RoundToByte(q * (rgb.R + rgb.G + rgb.B));
-                img.Set(x, y, new Pixel32(grayscale));
+                var grayscale = MathUtils.RoundToByte(q * (pixel.R + pixel.G + pixel.B));
+                return new Pixel32(grayscale);
             });
         }
     }

@@ -22,5 +22,10 @@ namespace ImageProcessingLib.Utilities
         {
             return Math.Min(val1, Math.Min(val2, val3));
         }
+
+        public static byte Negative(byte value)
+        {
+            return (byte)(255 - value);
+        }
     }
 }
