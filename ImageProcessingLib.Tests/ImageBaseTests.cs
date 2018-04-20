@@ -1,4 +1,5 @@
 ﻿using System;
+using ImageProcessingLib.GDI;
 using ImagesFolder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,56 +9,38 @@ namespace ImageProcessingLib.Tests
     public class ImageBaseTests
     {
         [TestMethod]
-        public void ClearCheck()
+        public void CreateNew()
         {
-            var result = true;
-            /*using (var image = CreateSmallRGB())
-            {
-                image.Clear();
-                var blackValue = Pixel32.Black.Value;
-                foreach (var pixel in image.Data)
-                {
-                    if (pixel != blackValue)
-                    {
-                        result = false;
-                        break;
-                    }
-                }
-            }*/
-            Assert.IsTrue(result);
+            int width = 1000;
+            int height = 2000;
+            var image = new Image<Pixel32>(width, height);
+            Assert.AreEqual(width, image.Width);
+            Assert.AreEqual(height, image.Height);
+            Assert.AreEqual(image.DataLength, width * height);
+        }
+        
+        [TestMethod]
+        public void CreateFromExisting()
+        {
+            var source = CreateTestImage();
+            var image = new Image<Pixel32>(source);
+            Assert.AreEqual(image, image);
         }
 
         [TestMethod]
-        public void RemoveAlphaCheck()
+        public void Swap()
         {
-            var result = true;
-            using (var lena = Images.LenaTrans)
-            {
-                // TODO
-                /*using (var image = new Image24(lena))
-                {
-                    foreach(var pixel in image.Data)
-                    {
-                        if ((pixel >> 24 & 0xFF) != 0xFF)
-                        {
-                            result = false;
-                            break;
-                        }
-                    }
-                }*/
-            }
-            Assert.IsTrue(result);
+            var image = CreateTestImage();
+            image.Swap(1, 2, 2, 3);
+            Assert.AreEqual(image.Get(2, 3), Pixel32.Red);
+            Assert.AreEqual(image.Get(1, 2), Pixel32.Green);
         }
 
-        private Image<Pixel32> CreateSmallRGB()
+        private Image<Pixel32> CreateTestImage()
         {
-            var image = new Image<Pixel32>(3, 2);
-            image.Set(0, 0, Pixel32.Red);
-            image.Set(1, 0, Pixel32.Green);
-            image.Set(2, 0, Pixel32.Blue);
-            image.Set(0, 1, Pixel32.White);
-            image.Set(1, 1, new Pixel32(128));
-            image.Set(2, 1, Pixel32.Black);
+            var image = new Image<Pixel32>(3, 4);
+            image.Set(1, 2, Pixel32.Red);
+            image.Set(2, 3, Pixel32.Green);
             return image;
         }
     }

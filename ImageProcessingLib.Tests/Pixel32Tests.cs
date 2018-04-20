@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ImageProcessingLib.Tests
 {
     [TestClass]
-    public class RGBSetTests
+    public class Pixel32Tests
     {
         [TestMethod]
         public void CreateNewFromRGB()
@@ -13,19 +13,18 @@ namespace ImageProcessingLib.Tests
             byte r = 123;
             byte g = 98;
             byte b = 40;
-            var rgbSet = new Pixel32(r, g, b);
+            var pixel = new Pixel32(r, g, b);
             var color = Color.FromArgb(r, g, b);
-            // TODO
-            // Assert.AreEqual(color.ToArgb(), rgbSet.Value);
+            Assert.AreEqual(color.ToArgb(), pixel.Data);
         }
 
         [TestMethod]
         public void CreateFromGrayscale()
         {
             byte value = 128;
-            var rgbSet = new Pixel32(value);
+            var pixel = new Pixel32(value);
             var color = Color.FromArgb(value, value, value);
-            //Assert.AreEqual(color.ToArgb(), rgbSet.Value);
+            Assert.AreEqual(color.ToArgb(), pixel.Data);
         }
 
         [TestMethod]

@@ -49,15 +49,18 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Image8Tests.cs" />
     <Compile Include="ImageBaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RGBSetTests.cs" />
+    <Compile Include="Pixel32Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
+      <Project>{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}</Project>
+      <Name>ImageProcessingLib.GDI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
