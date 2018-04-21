@@ -8,7 +8,8 @@ namespace ImageProcessingLib.ImageProcessing
 {
     public static class FlipVerticalExtension
     {
-        public static Image<Pixel32> FlipVertical(this Image<Pixel32> image)
+        public static Image<TPixelType> FlipVertical<TPixelType>(this Image<TPixelType> image)
+            where TPixelType : struct, IPixel<TPixelType>
         {
             int width = image.Width;
             int height = image.Height;

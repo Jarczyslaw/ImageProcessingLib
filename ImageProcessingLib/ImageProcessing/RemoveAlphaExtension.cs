@@ -8,9 +8,10 @@ namespace ImageProcessingLib.ImageProcessing
     {
         public static Image<Pixel32> RemoveAlpha(this Image<Pixel32> image)
         {
-            return image.ForEach((x, y, pixel) =>
+            return image.ForEach((x, y) =>
             {
-                return pixel.SetAlpha(255);
+                var pixel = image.Get(x, y);
+                image.Set(x, y, pixel.SetAlpha(255));
             });
         }
     }

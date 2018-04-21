@@ -27,9 +27,10 @@ namespace TestApp.Forms
 
         private GDImage32 GetImage()
         {
-            var image = new GDImage32(ImagesFolder.Images.Lena);
-            image.Image.FlipVertical();
-            return image;
+            var gdimage = new GDImage32(ImagesFolder.Images.Lena);
+            var image = gdimage.Image;
+            image.Sampling(2);
+            return gdimage;
         }
 
         private void ResizeTo(int width, int height)

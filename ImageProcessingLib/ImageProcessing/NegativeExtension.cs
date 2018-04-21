@@ -9,12 +9,13 @@ namespace ImageProcessingLib.ImageProcessing
     {
         public static Image<Pixel32> Negative(this Image<Pixel32> image)
         {
-            return image.ForEach((x, y, pixel) =>
+            return image.ForEach((x, y) =>
             {
+                var pixel = image.Get(x, y);
                 var r = MathUtils.Negative(pixel.R);
                 var g = MathUtils.Negative(pixel.G);
                 var b = MathUtils.Negative(pixel.B);
-                return new Pixel32(pixel.A, r, g, b);
+                image.Set(x, y, new Pixel32(r, g, b));
             });
         }
     }

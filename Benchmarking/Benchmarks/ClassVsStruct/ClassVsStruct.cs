@@ -11,16 +11,24 @@ namespace Benchmarking.Benchmarks
     [BenchmarkSet("ClassVsStruct")]
     public class ClassVsStruct
     {
+        private int len = 1000000;
+
         [Benchmark]
         public void Classes()
         {
-            var pixel = new PixelClass(255, 255, 255, 255);
+            for (int i = 0; i < len; i++)
+            {
+                var pixel = new PixelClass(255, 255, 255, 255);
+            }    
         }
 
         [Benchmark]
         public void Structs()
         {
-            var pixel = new PixelStruct(255, 255, 255, 255);
+            for (int i = 0; i < len; i++)
+            {
+                var pixel = new PixelStruct(255, 255, 255, 255);
+            }
         }
     }
 }
