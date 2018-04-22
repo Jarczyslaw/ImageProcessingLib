@@ -18,16 +18,15 @@ namespace ImageProcessingLib
         public int[] Data { get; protected set; }
         public int DataLength { get { return Data.Length; } }
 
-        protected void CreateNew(int width, int height)
+        public void InitializeNew(int width, int height)
         {
             SetSizes(width, height);
-            Data = new int[width * height];
+            Data = new int[Size];
         }
 
-        protected void CreateFromExisting(ImageBase img)
+        public void InitializeFrom(ImageBase img)
         {
-            SetSizes(img.Width, img.Height);
-            Data = new int[img.Size];
+            InitializeNew(img.Width, img.Height);
             img.Data.CopyTo(Data, 0);
         }
 

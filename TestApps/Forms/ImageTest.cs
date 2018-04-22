@@ -29,7 +29,7 @@ namespace TestApp.Forms
         {
             var gdimage = new GDImage32(ImagesFolder.Images.Lena);
             var image = gdimage.Image;
-            image.Sampling(2);
+            image.Resize(768, 768, ResizeMethod.BilinearInterpolation);
             return gdimage;
         }
 

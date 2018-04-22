@@ -6,7 +6,7 @@ namespace ImageProcessingLib
 {
     public static class ForExtension
     {
-        public static Image<TPixelType> ForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height, Action<int, int> action)
+        public static Image<TPixelType> ForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height, ForHandler action)
             where TPixelType : struct, IPixel<TPixelType>
         {
             int widthEnd = x + width;
@@ -17,13 +17,13 @@ namespace ImageProcessingLib
             return image;
         }
 
-        public static Image<TPixelType> ForEach<TPixelType>(this Image<TPixelType> image, Action<int, int> action)
+        public static Image<TPixelType> ForEach<TPixelType>(this Image<TPixelType> image, ForHandler action)
             where TPixelType : struct, IPixel<TPixelType>
         {
             return image.ForBlock(0, 0, image.Width, image.Height, action);
         }
 
-        public static Image<TPixelType> ForStripe<TPixelType>(this Image<TPixelType> image, int segment, int segmentsCount, Action<int, int> action)
+        public static Image<TPixelType> ForStripe<TPixelType>(this Image<TPixelType> image, int segment, int segmentsCount, ForHandler action)
             where TPixelType : struct, IPixel<TPixelType>
         {
             float len = (float)image.Height / segmentsCount;

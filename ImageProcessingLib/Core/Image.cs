@@ -6,21 +6,23 @@ namespace ImageProcessingLib
     public class Image<TPixelType> : ImageBase
         where TPixelType : struct, IPixel<TPixelType>
     {
+        public event ResizeHandler OnResize;
+
         protected TPixelType pixelSource = new TPixelType();
 
         public Image(int width, int height, bool clear = true)
         {
-            CreateNew(width, height);
+            InitializeNew(width, height);
             if (clear)
                 this.Clear();
         }
 
         public Image(Image<TPixelType> img)
         {
-            CreateFromExisting(img);
+            InitializeFrom(img);
         }
 
-        public Image<TNewPixelType> CopyAs<TNewPixelType>(Func<TPixelType, TNewPixelType> convertFunc)
+        public Image<TNewPixelType> CopyAs<TNewPixelType>(CopyHandler<TPixelType, TNewPixelType> convertFunc)
             where TNewPixelType : struct, IPixel<TNewPixelType>
         {
             var result = new Image<TNewPixelType>(Width, Height);
@@ -44,6 +46,11 @@ namespace ImageProcessingLib
         {
             var data = GetData(x, y);
             return pixelSource.From(data);
+        }
+
+        public void InvokeResize()
+        {
+            OnResize?.Invoke();
         }
 
         public TPixelType this[int x, int y]

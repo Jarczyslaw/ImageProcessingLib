@@ -21,13 +21,12 @@ namespace ImageProcessingLib.GDI
         public GDImage32(int width, int height)
         {
             Image = new Image<Pixel32>(width, height);
-            Initialize();
+            Initialize(Image);
         }
 
         public GDImage32(Image<Pixel32> image)
         {
-            Image = image;
-            Initialize();
+            Initialize(Image);
         }
 
         public GDImage32(string filePath)
@@ -46,12 +45,20 @@ namespace ImageProcessingLib.GDI
         private void FromBitmap(Bitmap bitmap)
         {
             Image = new Image<Pixel32>(bitmap.Width, bitmap.Height);
-            Initialize();
+            Initialize(Image);
             GraphicsUtils.Copy(bitmap, Bitmap);
         }
 
-        private void Initialize()
+        private void Initialize(Image<Pixel32> image)
         {
+            Image = image;
+            Image.OnResize += CreateBitmap;
+            CreateBitmap();
+        }
+
+        private void CreateBitmap()
+        {
+            ReleaseResources();
             dataHandle = GCHandle.Alloc(Image.Data, GCHandleType.Pinned);
             Bitmap = new Bitmap(Image.Width, Image.Height, Image.Width * 4, PixelFormat.Format32bppArgb, dataHandle.AddrOfPinnedObject());
         }
@@ -79,9 +86,15 @@ namespace ImageProcessingLib.GDI
             if (disposed)
                 return;
 
-            dataHandle.Free();
-            Bitmap.Dispose();
+            ReleaseResources();
             disposed = true;
+        }
+
+        private void ReleaseResources()
+        {
+            if (dataHandle != null && dataHandle.IsAllocated)
+                dataHandle.Free();
+            Bitmap?.Dispose();
         }
     }
 }
