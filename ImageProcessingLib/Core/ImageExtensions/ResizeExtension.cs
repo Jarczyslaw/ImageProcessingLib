@@ -16,11 +16,9 @@ namespace ImageProcessingLib
             var rh = (double)imageCopy.Height / image.Height;
             image.ForEach((x, y) =>
             {
-                var sourceX = MathUtils.RoundToInt(x * rw);
-                sourceX = MathUtils.Clamp(sourceX, 0, imageCopy.Width);
-                var sourceY = MathUtils.RoundToInt(y * rh);
-                sourceY = MathUtils.Clamp(sourceY, 0, imageCopy.Height);
-                var nearestPixel = imageCopy.Get(sourceX, sourceY);
+                var x0 = imageCopy.ClampWidth(MathUtils.RoundToInt(x * rw));
+                var y0 = imageCopy.ClampHeight(MathUtils.RoundToInt(y * rh));
+                var nearestPixel = imageCopy.Get(x0, y0);
                 image.Set(x, y, nearestPixel);
             });
             image.InvokeResize();

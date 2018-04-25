@@ -63,6 +63,16 @@ namespace ImageProcessingLib
             Data[destinationIndex] = temp;
         }
 
+        public int ClampWidth(int value)
+        {
+            return MathUtils.Clamp(value, 0, Width - 1);
+        }
+
+        public int ClampHeight(int value)
+        {
+            return MathUtils.Clamp(value, 0, Height - 1);
+        }
+
         public bool Equals(ImageBase other)
         {
             return Equals((object)other);

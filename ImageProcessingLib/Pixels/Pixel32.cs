@@ -137,7 +137,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Red: {0}, Green: {1}, Blue: {2}, HEX: 0x{3:X8}", R, G, B, Data);
+            return string.Format("Alpha: {0}, Red: {1}, Green: {2}, Blue: {3}, HEX: 0x{4:X8}", A, R, G, B, Data);
         }
     }
 }
