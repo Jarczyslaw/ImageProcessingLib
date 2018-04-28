@@ -1,4 +1,4 @@
-﻿namespace TestApp.Forms
+﻿namespace TestApps.Apps
 {
     partial class MainForm
     {

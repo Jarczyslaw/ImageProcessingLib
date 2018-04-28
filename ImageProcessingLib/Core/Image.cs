@@ -58,5 +58,10 @@ namespace ImageProcessingLib
             get { return Get(x, y); }
             set { Set(x, y, value); }
         }
+
+        public override string ToString()
+        {
+            return string.Format("Image<{0}> {1}x{2}", nameof(TPixelType), Width, Height);
+        }
     }
 }

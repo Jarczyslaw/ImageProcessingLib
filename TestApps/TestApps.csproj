@@ -48,35 +48,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormsLoader.cs" />
-    <Compile Include="Forms\ImageTest.cs">
+    <Compile Include="Apps\ImageTest\ImageEntry.cs" />
+    <Compile Include="Apps\MainForm\FormsLoader.cs" />
+    <Compile Include="Apps\ImageTest\ImageTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ImageTest.Designer.cs">
+    <Compile Include="Apps\ImageTest\ImageTest.Designer.cs">
       <DependentUpon>ImageTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Apps\MainForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="Apps\MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MemoryLeaksTest.cs">
+    <Compile Include="Apps\MemoryLeaksTest\MemoryLeaksTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MemoryLeaksTest.Designer.cs">
+    <Compile Include="Apps\MemoryLeaksTest\MemoryLeaksTest.Designer.cs">
       <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageBoxEx.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollection.cs" />
+    <Compile Include="Utils\MessageBoxEx.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\ImageTest.resx">
+    <EmbeddedResource Include="Apps\ImageTest\ImageTest.resx">
       <DependentUpon>ImageTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Apps\MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MemoryLeaksTest.resx">
+    <EmbeddedResource Include="Apps\MemoryLeaksTest\MemoryLeaksTest.resx">
       <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -26,7 +26,7 @@ namespace ImageProcessingLib.GDI
 
         public GDImage32(Image<Pixel32> image)
         {
-            Initialize(Image);
+            Initialize(image);
         }
 
         public GDImage32(string filePath)
