@@ -9,7 +9,7 @@ namespace ImageProcessingLib.ImageProcessing
     {
         public static Image<Pixel32> Resize(this Image<Pixel32> image, int width, int height, ResizeMethod method)
         {
-            switch(method)
+            switch (method)
             {
                 case ResizeMethod.BilinearInterpolation:
                     BilinearInterpolation(image, width, height);

@@ -28,7 +28,7 @@ namespace TestApps.Apps
 
         private async void ImageTest_Load(object sender, EventArgs e)
         {
-            originalImage = new GDImage32(ImagesFolder.Images.Lena);
+            originalImage = new GDImage32(ImagesFolder.Images.Test);
             Enabled = false;
             imagesCollection = await Task.Run(() =>
             {
@@ -48,13 +48,20 @@ namespace TestApps.Apps
             var collection = new ImagesCollection();
             collection.Add("Original", image);
 
-            var size = 1024;
+            /*var size = 1024;
             var copy = new Image<Pixel32>(image);
             copy.Resize(size, size);
             collection.Add("NearestNeighbour", copy);
             copy = new Image<Pixel32>(image);
             copy.Resize(size, size, ResizeMethod.BilinearInterpolation);
-            collection.Add("BilinearInterpolation", copy);
+            collection.Add("BilinearInterpolation", copy);*/
+
+            var copy = image.Copy();
+            copy.RotateClockwise();
+            collection.Add("Clockwise", copy);
+            copy = image.Copy();
+            copy.RotateCounterClockwise();
+            collection.Add("CounterClockwise", copy);
 
             return collection;
         }

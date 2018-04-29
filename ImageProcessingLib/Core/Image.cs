@@ -37,6 +37,11 @@ namespace ImageProcessingLib
             return result;
         }
 
+        public Image<TPixelType> Copy()
+        {
+            return new Image<TPixelType>(this);
+        }
+
         public void Set(int x, int y, TPixelType pixel)
         {
             SetData(x, y, pixel.Data);

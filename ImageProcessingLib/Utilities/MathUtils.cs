@@ -10,7 +10,7 @@ namespace ImageProcessingLib.Utilities
     {
         public static byte RoundToByte(double value)
         {
-            return (byte)Math.Round(value);
+            return ByteClamp(Math.Round(value));
         }
 
         public static int RoundToInt(double value)
@@ -42,7 +42,21 @@ namespace ImageProcessingLib.Utilities
             return value;
         }
 
+        public static double Clamp(double value, double min, double max)
+        {
+            if (value > max)
+                return max;
+            if (value < min)
+                return min;
+            return value;
+        }
+
         public static byte ByteClamp(int value)
+        {
+            return (byte)Clamp(value, byte.MinValue, byte.MaxValue);
+        }
+
+        public static byte ByteClamp(double value)
         {
             return (byte)Clamp(value, byte.MinValue, byte.MaxValue);
         }
