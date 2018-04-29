@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -36,6 +37,38 @@ namespace ImageProcessingLib
                 }
             }
             return image;
+        }
+
+        public static Image<TPixelType> Rotate<TPixelType>(this Image<TPixelType> image, double angle, int axisX, int axisY)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            var originalImage = image.Copy();
+            var radAngle = MathUtils.DegToRad(-angle);
+            var sinAngle = Math.Sin(radAngle);
+            var cosAngle = Math.Cos(radAngle);
+            var blank = new TPixelType().Blank;
+            image.ForEach((x, y) =>
+            {
+                var dx = x - axisX;
+                var dy = y - axisY;
+                int x1 = MathUtils.RoundToInt(cosAngle * dx - sinAngle * dy + axisX);
+                int y1 = MathUtils.RoundToInt(sinAngle * dx + cosAngle * dy + axisY);
+
+                if (image.ExceedsWidth(x1) || image.ExceedsHeight(y1))
+                    image.Set(x, y, blank);
+                else
+                {
+                    var pixel = originalImage.Get(x1, y1);
+                    image.Set(x, y, pixel);
+                }
+            });
+            return image;
+        }
+
+        public static Image<TPixelType> Rotate<TPixelType>(this Image<TPixelType> image, double angle)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            return image.Rotate(angle, image.Width / 2, image.Height / 2);
         }
     }
 }

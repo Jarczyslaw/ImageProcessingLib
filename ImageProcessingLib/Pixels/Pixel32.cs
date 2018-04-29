@@ -89,12 +89,12 @@ namespace ImageProcessingLib
 
         public static Pixel32 White
         {
-            get { return new Pixel32(255); }
+            get { return new Pixel32(255, 255, 255); }
         }
 
         public static Pixel32 Black
         {
-            get { return new Pixel32(0); }
+            get { return new Pixel32(0, 0, 0); }
         }
 
         public Pixel32 Blank

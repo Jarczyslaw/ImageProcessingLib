@@ -60,5 +60,15 @@ namespace ImageProcessingLib.Utilities
         {
             return (byte)Clamp(value, byte.MinValue, byte.MaxValue);
         }
+
+        public static double DegToRad(double deg)
+        {
+            return deg * Math.PI / 180d;
+        }
+
+        public static double RadToDeg(double rad)
+        {
+            return rad * 180d / Math.PI;
+        }
     }
 }

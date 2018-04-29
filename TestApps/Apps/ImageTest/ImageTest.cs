@@ -28,7 +28,7 @@ namespace TestApps.Apps
 
         private async void ImageTest_Load(object sender, EventArgs e)
         {
-            originalImage = new GDImage32(ImagesFolder.Images.Test);
+            originalImage = new GDImage32(ImagesFolder.Images.Lena);
             Enabled = false;
             imagesCollection = await Task.Run(() =>
             {
@@ -62,6 +62,9 @@ namespace TestApps.Apps
             copy = image.Copy();
             copy.RotateCounterClockwise();
             collection.Add("CounterClockwise", copy);
+            copy = image.Copy();
+            copy.Rotate(45);
+            collection.Add("By45Degrees", copy);
 
             return collection;
         }

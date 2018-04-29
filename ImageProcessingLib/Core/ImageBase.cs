@@ -73,6 +73,16 @@ namespace ImageProcessingLib
             return MathUtils.Clamp(value, 0, Height - 1);
         }
 
+        public bool ExceedsWidth(int value)
+        {
+            return value < 0 || value >= Width;
+        }
+
+        public bool ExceedsHeight(int value)
+        {
+            return value < 0 || value >= Height;
+        }
+
         public bool Equals(ImageBase other)
         {
             return Equals((object)other);
