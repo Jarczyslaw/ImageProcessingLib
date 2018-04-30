@@ -13,7 +13,7 @@ namespace TestApps
         public List<Type> GetAllForms(params Type[] excluded)
         {
             var types = Assembly.GetExecutingAssembly().GetTypes();
-            return types.Where(t => t.IsSubclassOf(typeof(Form)))
+            return types.Where(t => t.IsSubclassOf(typeof(Form)) && t.GetCustomAttribute<AppAttribute>() != null)
                 .Where(t => !excluded.Contains(t))
                 .OrderBy(t => t.Name)
                 .ToList();
