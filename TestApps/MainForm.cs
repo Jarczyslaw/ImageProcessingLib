@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,10 +37,10 @@ namespace TestApps.Apps
             var button = new Button()
             {
                 Tag = childForm,
-                Name = childForm.Name,
+                Name = "btn" + childForm.Name,
                 Dock = DockStyle.Top,
                 Height = 40,
-                Text = childForm.Name
+                Text = childForm.GetCustomAttribute<AppAttribute>().Title
             };
             button.Click += (sender, args) =>
             {

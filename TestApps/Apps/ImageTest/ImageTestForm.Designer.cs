@@ -1,6 +1,6 @@
-﻿namespace TestApps.Apps
+﻿namespace TestApps.Apps.ImageTest
 {
-    partial class ImageTest
+    partial class ImageTestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -116,15 +116,15 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // ImageTest
+            // ImageTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 624);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Name = "ImageTest";
-            this.Text = "ImageTest";
+            this.Name = "ImageTestForm";
+            this.Text = "ImageTestForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImageTest_FormClosing);
             this.Load += new System.EventHandler(this.ImageTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();

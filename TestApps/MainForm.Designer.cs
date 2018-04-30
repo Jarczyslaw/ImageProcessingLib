@@ -49,7 +49,7 @@
             this.ClientSize = new System.Drawing.Size(300, 226);
             this.Controls.Add(this.plButtons);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Test Apps";
             this.ResumeLayout(false);
 
         }

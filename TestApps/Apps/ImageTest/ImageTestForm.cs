@@ -13,60 +13,38 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestApps.Utils;
 using TestApps;
+using TestApps.Apps.ImageTest.ImagesCollectionSources;
 
-namespace TestApps.Apps
+namespace TestApps.Apps.ImageTest
 {
-    public partial class ImageTest : Form
+    [App("Images Test")]
+    public partial class ImageTestForm : Form
     {
         private GDImage32 originalImage;
         private ImagesCollection imagesCollection;
+        private IImageCollectionSource imageCollectionSource;
 
-        public ImageTest()
+        public ImageTestForm()
         {
             InitializeComponent();
+            AppAttribute.ApplyTitle(this);
+            imageCollectionSource = new RotationCollectionSource();
         }
 
         private async void ImageTest_Load(object sender, EventArgs e)
         {
             originalImage = new GDImage32(ImagesFolder.Images.HalfLena);
             Enabled = false;
-            imagesCollection = await Task.Run(() =>
+            await Task.Run(() =>
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var collection = CreateImages(originalImage.Image);
-                stopwatch.Stop();
-                Debug.WriteLine(string.Format("Loaded images in {0} ms", stopwatch.ElapsedMilliseconds));
-                return collection;
+                var execTime = ExecTime.Run(() =>
+                {
+                    imagesCollection = imageCollectionSource.GetCollection(originalImage.Image);
+                });
+                Debug.WriteLine(string.Format("Loaded images in {0} ms", execTime.TotalMilliseconds));
             });
             LoadImagesList();
             Enabled = true;
-        }
-
-        private ImagesCollection CreateImages(Image<Pixel32> image)
-        {
-            var collection = new ImagesCollection();
-            collection.Add("Original", image);
-
-            /*var size = 1024;
-            var copy = new Image<Pixel32>(image);
-            copy.Resize(size, size);
-            collection.Add("NearestNeighbour", copy);
-            copy = new Image<Pixel32>(image);
-            copy.Resize(size, size, ResizeMethod.BilinearInterpolation);
-            collection.Add("BilinearInterpolation", copy);*/
-
-            var copy = image.Copy();
-            copy.RotateClockwise();
-            collection.Add("Clockwise", copy);
-            copy = image.Copy();
-            copy.RotateCounterClockwise();
-            collection.Add("CounterClockwise", copy);
-            copy = image.Copy();
-            copy.Rotate(45);
-            collection.Add("By45Degrees", copy);
-
-            return collection;
         }
 
         private void LoadImagesList()

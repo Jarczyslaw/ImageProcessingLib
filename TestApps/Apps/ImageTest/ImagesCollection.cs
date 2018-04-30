@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
 
-namespace TestApps.Apps
+namespace TestApps.Apps.ImageTest
 {
     public class ImagesCollection
     {

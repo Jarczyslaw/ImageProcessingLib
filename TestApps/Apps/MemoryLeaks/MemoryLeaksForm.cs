@@ -10,9 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApps.Apps
+namespace TestApps.Apps.MemoryLeaks
 {
-    public partial class MemoryLeaksTest : Form
+    [App("Memory Leaks")]
+    public partial class MemoryLeaksForm : Form
     {
         private List<object> images = new List<object>();
         private int disposeAfter = 30;
@@ -22,9 +23,10 @@ namespace TestApps.Apps
 
         private int iteration = 0;
 
-        public MemoryLeaksTest()
+        public MemoryLeaksForm()
         {
             InitializeComponent();
+            AppAttribute.ApplyTitle(this);
             UpdateStartStopButton();
         }
 

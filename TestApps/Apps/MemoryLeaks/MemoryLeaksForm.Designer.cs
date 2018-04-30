@@ -1,6 +1,6 @@
-﻿namespace TestApps.Apps
+﻿namespace TestApps.Apps.MemoryLeaks
 {
-    partial class MemoryLeaksTest
+    partial class MemoryLeaksForm
     {
         /// <summary>
         /// Required designer variable.
@@ -147,7 +147,7 @@
             this.btnStartStop.UseVisualStyleBackColor = true;
             this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
             // 
-            // MemoryLeaksTest
+            // MemoryLeaksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,8 +163,8 @@
             this.Controls.Add(this.tbImagesCount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbMemoryUsage);
-            this.Name = "MemoryLeaksTest";
-            this.Text = "Form1";
+            this.Name = "MemoryLeaksForm";
+            this.Text = "MemoryLeaksForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemoryLeaksTest_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

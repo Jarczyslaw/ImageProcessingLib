@@ -48,38 +48,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppAttribute.cs" />
     <Compile Include="Apps\ImageTest\ImageEntry.cs" />
-    <Compile Include="Apps\MainForm\FormsLoader.cs" />
-    <Compile Include="Apps\ImageTest\ImageTest.cs">
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\IImageCollectionSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\ResizeCollectionSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\RotationCollectionSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\SourceBase.cs" />
+    <Compile Include="FormsLoader.cs" />
+    <Compile Include="Apps\ImageTest\ImageTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Apps\ImageTest\ImageTest.Designer.cs">
-      <DependentUpon>ImageTest.cs</DependentUpon>
+    <Compile Include="Apps\ImageTest\ImageTestForm.Designer.cs">
+      <DependentUpon>ImageTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Apps\MainForm\MainForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Apps\MainForm\MainForm.Designer.cs">
+    <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Apps\MemoryLeaksTest\MemoryLeaksTest.cs">
+    <Compile Include="Apps\MemoryLeaks\MemoryLeaksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Apps\MemoryLeaksTest\MemoryLeaksTest.Designer.cs">
-      <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
+    <Compile Include="Apps\MemoryLeaks\MemoryLeaksForm.Designer.cs">
+      <DependentUpon>MemoryLeaksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Apps\ImageTest\ImagesCollection.cs" />
+    <Compile Include="Utils\ExecTime.cs" />
     <Compile Include="Utils\MessageBoxEx.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Apps\ImageTest\ImageTest.resx">
-      <DependentUpon>ImageTest.cs</DependentUpon>
+    <EmbeddedResource Include="Apps\ImageTest\ImageTestForm.resx">
+      <DependentUpon>ImageTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Apps\MainForm\MainForm.resx">
+    <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Apps\MemoryLeaksTest\MemoryLeaksTest.resx">
-      <DependentUpon>MemoryLeaksTest.cs</DependentUpon>
+    <EmbeddedResource Include="Apps\MemoryLeaks\MemoryLeaksForm.resx">
+      <DependentUpon>MemoryLeaksForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

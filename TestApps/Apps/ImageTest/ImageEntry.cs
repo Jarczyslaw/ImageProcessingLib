@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestApps.Apps
+namespace TestApps.Apps.ImageTest
 {
     public class ImageEntry
     {
