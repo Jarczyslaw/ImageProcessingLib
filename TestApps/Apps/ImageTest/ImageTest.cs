@@ -28,7 +28,7 @@ namespace TestApps.Apps
 
         private async void ImageTest_Load(object sender, EventArgs e)
         {
-            originalImage = new GDImage32(ImagesFolder.Images.Lena);
+            originalImage = new GDImage32(ImagesFolder.Images.HalfLena);
             Enabled = false;
             imagesCollection = await Task.Run(() =>
             {

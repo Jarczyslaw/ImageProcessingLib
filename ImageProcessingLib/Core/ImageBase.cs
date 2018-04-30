@@ -83,6 +83,12 @@ namespace ImageProcessingLib
             return value < 0 || value >= Height;
         }
 
+        public void GetCenter(out int x, out int y)
+        {
+            x = Width / 2;
+            y = Height / 2;
+        }
+
         public bool Equals(ImageBase other)
         {
             return Equals((object)other);

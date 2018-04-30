@@ -28,5 +28,10 @@ namespace ImagesFolder
         {
             get { return Resources.Test; }
         }
+
+        public static Bitmap HalfLena
+        {
+            get { return Resources.HalfLena; }
+        }
     }
 }

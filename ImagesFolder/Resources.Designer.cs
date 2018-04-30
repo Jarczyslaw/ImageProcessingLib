@@ -63,6 +63,16 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HalfLena {
+            get {
+                object obj = ResourceManager.GetObject("HalfLena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Lena {
             get {
                 object obj = ResourceManager.GetObject("Lena", resourceCulture);
