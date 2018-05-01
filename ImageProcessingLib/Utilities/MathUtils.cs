@@ -18,6 +18,26 @@ namespace ImageProcessingLib.Utilities
             return (int)Math.Round(value);
         }
 
+        public static byte CeilToByte(double value)
+        {
+            return ByteClamp(Math.Ceiling(value));
+        }
+
+        public static int CeilToInt(double value)
+        {
+            return (int)Math.Ceiling(value);
+        }
+
+        public static byte FloorToByte(double value)
+        {
+            return ByteClamp(Math.Floor(value));
+        }
+
+        public static int FloorToInt(double value)
+        {
+            return (int)Math.Floor(value);
+        }
+
         public static byte Max(byte val1, byte val2, byte val3)
         {
             return Math.Max(val1, Math.Max(val2, val3));

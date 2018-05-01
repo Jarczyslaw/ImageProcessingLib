@@ -7,7 +7,7 @@ using ImageProcessingLib;
 
 namespace TestApps.Apps.ImageTest.ImagesCollectionSources
 {
-    public abstract class SourceBase : IImageCollectionSource
+    public abstract class SourceBase
     {
         public ImagesCollection GetCollection(Image<Pixel32> image)
         {

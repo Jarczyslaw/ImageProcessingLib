@@ -17,6 +17,7 @@ namespace ImageProcessingLib
                 var pixel = originalImage.Get(y, image.Width - 1 - x);
                 image.Set(x, y, pixel);
             });
+            image.InvokeResize();
             return image;
         }
 
@@ -30,6 +31,7 @@ namespace ImageProcessingLib
                 var pixel = originalImage.Get(image.Height - 1 - y, x);
                 image.Set(x, y, pixel);
             });
+            image.InvokeResize();
             return image;
         }
 
@@ -76,6 +78,7 @@ namespace ImageProcessingLib
 
                 TransformPixel(image, x, y, originalImage, x1, y1, blank);
             });
+            image.InvokeResize();
             return image;
         }
 

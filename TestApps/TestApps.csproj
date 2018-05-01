@@ -50,9 +50,9 @@
   <ItemGroup>
     <Compile Include="AppAttribute.cs" />
     <Compile Include="Apps\ImageTest\ImageEntry.cs" />
-    <Compile Include="Apps\ImageTest\ImagesCollectionSources\IImageCollectionSource.cs" />
-    <Compile Include="Apps\ImageTest\ImagesCollectionSources\ResizeCollectionSource.cs" />
-    <Compile Include="Apps\ImageTest\ImagesCollectionSources\RotationCollectionSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\NaiveQuantizationSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\ResizeSource.cs" />
+    <Compile Include="Apps\ImageTest\ImagesCollectionSources\RotationSource.cs" />
     <Compile Include="Apps\ImageTest\ImagesCollectionSources\SourceBase.cs" />
     <Compile Include="FormsLoader.cs" />
     <Compile Include="Apps\ImageTest\ImageTestForm.cs">

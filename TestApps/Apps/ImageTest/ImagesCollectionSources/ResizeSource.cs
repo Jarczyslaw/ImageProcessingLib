@@ -8,7 +8,7 @@ using ImageProcessingLib.ImageProcessing;
 
 namespace TestApps.Apps.ImageTest.ImagesCollectionSources
 {
-    public class ResizeCollectionSource : SourceBase
+    public class ResizeSource : SourceBase
     {
         public override void AddImages(ImagesCollection collection, Image<Pixel32> originalImage)
         {

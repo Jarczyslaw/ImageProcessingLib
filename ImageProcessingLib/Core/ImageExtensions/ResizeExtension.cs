@@ -10,7 +10,7 @@ namespace ImageProcessingLib
         public static Image<TPixelType> Resize<TPixelType>(this Image<TPixelType> image, int width, int height)
             where TPixelType : struct, IPixel<TPixelType>
         {
-            var originalImage = new Image<TPixelType>(image);
+            var originalImage = image.Copy();
             image.InitializeNew(width, height);
             var rw = (double)originalImage.Width / image.Width;
             var rh = (double)originalImage.Height / image.Height;

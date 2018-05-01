@@ -7,7 +7,7 @@ using ImageProcessingLib;
 
 namespace TestApps.Apps.ImageTest.ImagesCollectionSources
 {
-    public class RotationCollectionSource : SourceBase
+    public class RotationSource : SourceBase
     {
         public override void AddImages(ImagesCollection collection, Image<Pixel32> originalImage)
         {

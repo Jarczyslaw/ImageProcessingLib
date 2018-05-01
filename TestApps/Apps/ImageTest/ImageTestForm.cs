@@ -22,13 +22,13 @@ namespace TestApps.Apps.ImageTest
     {
         private GDImage32 originalImage;
         private ImagesCollection imagesCollection;
-        private IImageCollectionSource imageCollectionSource;
+        private SourceBase imageCollectionSource;
 
         public ImageTestForm()
         {
             InitializeComponent();
             AppAttribute.ApplyTitle(this);
-            imageCollectionSource = new RotationCollectionSource();
+            imageCollectionSource = new NaiveQuantizationSource();
         }
 
         private async void ImageTest_Load(object sender, EventArgs e)
