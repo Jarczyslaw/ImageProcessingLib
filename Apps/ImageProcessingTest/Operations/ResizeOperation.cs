@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
 using ImageProcessingLib.ImageProcessing;
+using ImageProcessingLib.GDI;
 
-namespace ImageProcessingTest
+namespace ImageProcessingTest.Operations
 {
-    public class ResizeSource : SourceBase
+    public class ResizeOperation : OperationBase
     {
-        public override void AddImages(ImagesCollection collection, Image<Pixel32> originalImage)
+        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var size = 1024;
             var image = originalImage.Copy();
             image.Resize(size, size);
-            collection.Add("NearestNeighbour", image);
+            images.Add("NearestNeighbour", new GDImage32(image));
             image = originalImage.Copy();
             image.Resize(size, size, ResizeMethod.BilinearInterpolation);
-            collection.Add("BilinearInterpolation", image);
+            images.Add("BilinearInterpolation", new GDImage32(image));
         }
     }
 }

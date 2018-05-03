@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,6 +10,18 @@ namespace ImagesFolder
 {
     public class Images
     {
+        public static Dictionary<string, Bitmap> AllBitmaps
+        {
+            get
+            {
+                var set = Resources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentUICulture, true, true);
+                return set.OfType<DictionaryEntry>()
+                    .Where(i => i.Value.GetType() == typeof(Bitmap))
+                    .OrderBy(i => i.Key)
+                    .ToDictionary(i => i.Key.ToString(), i => (Bitmap)i.Value);
+            }
+        }
+
         public static Bitmap Lena
         {
             get { return Resources.Lena; }
