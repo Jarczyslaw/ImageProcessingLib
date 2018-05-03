@@ -15,7 +15,7 @@ namespace ImageProcessingLib.ImageProcessing
                 var r = MathUtils.Negative(pixel.R);
                 var g = MathUtils.Negative(pixel.G);
                 var b = MathUtils.Negative(pixel.B);
-                image.Set(x, y, new Pixel32(r, g, b));
+                image.Set(x, y, new Pixel32(pixel.A, r, g, b));
             });
         }
     }
