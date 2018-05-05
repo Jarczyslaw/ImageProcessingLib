@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ImageProcessingTest.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingTest.Operations
+namespace ImageProcessingTest
 {
     public static class OperationsLoader
     {

@@ -51,10 +51,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\BlackAndWhite.cs" />
+    <Compile Include="Operations\BlackAndWhiteOperation.cs" />
+    <Compile Include="Operations\InversionOperation.cs" />
     <Compile Include="Operations\NaiveQuantizationOperation.cs" />
     <Compile Include="Operations\OperationBase.cs" />
-    <Compile Include="Operations\OperationsLoader.cs" />
+    <Compile Include="OperationsLoader.cs" />
     <Compile Include="Operations\ResizeOperation.cs" />
     <Compile Include="Operations\RotateOperation.cs" />
     <Compile Include="Program.cs" />

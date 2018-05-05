@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.ImageProcessing;
 using ImageProcessingLib.GDI;
+using ImageProcessingLib.ImageProcessing;
 
 namespace ImageProcessingTest.Operations
 {
-    public class BlackAndWhite : OperationBase
+    public class InversionOperation : OperationBase
     {
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
-            var thresholds = new byte[] { 32, 64, 128, 192 };
-            foreach(var threshold in thresholds)
+            var conversionPoints = new byte[] { 64, 128, 196 };
+            foreach(var conversionPoint in conversionPoints)
             {
                 var image = originalImage.Copy();
-                image.BlackAndWhite(threshold);
-                images.Add("Threshold" + threshold, new GDImage32(image));
+                image.Inverse(conversionPoint);
+                images.Add("Inversion" + conversionPoint, new GDImage32(image));
             }
         }
     }
