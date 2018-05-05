@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ImageProcessingLib
+namespace ImageProcessingLib.ImageProcessing
 {
     public enum ResizeMethod
     {

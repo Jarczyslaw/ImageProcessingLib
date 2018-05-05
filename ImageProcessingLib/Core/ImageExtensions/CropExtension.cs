@@ -9,7 +9,7 @@ namespace ImageProcessingLib
         public static Image<TPixelType> Crop<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height)
             where TPixelType : struct, IPixel<TPixelType>
         {
-            if (x + width > image.Width || y + height > image.Height)
+            if (image.ExceedsWidth(x + width) || image.ExceedsHeight(y + height))
                 throw new ArgumentException("Cropped area extends beyond the boundaries of the image");
 
             var originalImage = image.Copy();

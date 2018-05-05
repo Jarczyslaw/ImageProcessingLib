@@ -14,7 +14,7 @@ namespace ImageProcessingLib.ImageProcessing
 
         public static Image<Pixel32> Sampling(this Image<Pixel32> image, int blockWidth, int blockHeight)
         {
-            ValidateDimensions(image, blockWidth, blockHeight);
+            ValidateInput(image, blockWidth, blockHeight);
 
             var accumulator = new PixelAccumulator();
             int widthBlocksCount = image.Width / blockWidth;
@@ -34,7 +34,7 @@ namespace ImageProcessingLib.ImageProcessing
             return null;
         }
 
-        private static void ValidateDimensions(Image<Pixel32> image, int widthDivide, int heightDivide)
+        private static void ValidateInput(Image<Pixel32> image, int widthDivide, int heightDivide)
         {
             if (image.Width % widthDivide != 0)
                 throw new ArgumentException("Invalid width division. The width must be divided without rest");

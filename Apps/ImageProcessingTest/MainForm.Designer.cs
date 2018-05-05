@@ -32,6 +32,8 @@
             this.cbImages = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSaveAll = new System.Windows.Forms.Button();
+            this.btnSaveCurrent = new System.Windows.Forms.Button();
             this.cbResults = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbOperations = new System.Windows.Forms.ComboBox();
@@ -40,8 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSaveCurrent = new System.Windows.Forms.Button();
-            this.btnSaveAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,6 +99,26 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
+            // 
+            // btnSaveAll
+            // 
+            this.btnSaveAll.Location = new System.Drawing.Point(936, 17);
+            this.btnSaveAll.Name = "btnSaveAll";
+            this.btnSaveAll.Size = new System.Drawing.Size(105, 23);
+            this.btnSaveAll.TabIndex = 10;
+            this.btnSaveAll.Text = "Save all";
+            this.btnSaveAll.UseVisualStyleBackColor = true;
+            this.btnSaveAll.Click += new System.EventHandler(this.btnSaveAll_Click);
+            // 
+            // btnSaveCurrent
+            // 
+            this.btnSaveCurrent.Location = new System.Drawing.Point(825, 17);
+            this.btnSaveCurrent.Name = "btnSaveCurrent";
+            this.btnSaveCurrent.Size = new System.Drawing.Size(105, 23);
+            this.btnSaveCurrent.TabIndex = 9;
+            this.btnSaveCurrent.Text = "Save current";
+            this.btnSaveCurrent.UseVisualStyleBackColor = true;
+            this.btnSaveCurrent.Click += new System.EventHandler(this.btnSaveCurrent_Click);
             // 
             // cbResults
             // 
@@ -180,26 +200,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
             // 
-            // btnSaveCurrent
-            // 
-            this.btnSaveCurrent.Location = new System.Drawing.Point(825, 17);
-            this.btnSaveCurrent.Name = "btnSaveCurrent";
-            this.btnSaveCurrent.Size = new System.Drawing.Size(105, 23);
-            this.btnSaveCurrent.TabIndex = 9;
-            this.btnSaveCurrent.Text = "Save current";
-            this.btnSaveCurrent.UseVisualStyleBackColor = true;
-            this.btnSaveCurrent.Click += new System.EventHandler(this.btnSaveCurrent_Click);
-            // 
-            // btnSaveAll
-            // 
-            this.btnSaveAll.Location = new System.Drawing.Point(936, 17);
-            this.btnSaveAll.Name = "btnSaveAll";
-            this.btnSaveAll.Size = new System.Drawing.Size(105, 23);
-            this.btnSaveAll.TabIndex = 10;
-            this.btnSaveAll.Text = "Save all";
-            this.btnSaveAll.UseVisualStyleBackColor = true;
-            this.btnSaveAll.Click += new System.EventHandler(this.btnSaveAll_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,7 +208,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "MainForm";
-            this.Text = "ImageProcessing Test";
+            this.Text = "ImageProcessingTest";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.panel1.ResumeLayout(false);
