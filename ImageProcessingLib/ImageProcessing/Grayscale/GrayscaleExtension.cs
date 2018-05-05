@@ -46,22 +46,32 @@ namespace ImageProcessingLib.ImageProcessing
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var max = MathUtils.Max(pixel.R, pixel.G, pixel.B);
-                var min = MathUtils.Min(pixel.R, pixel.G, pixel.B);
-                var grayscale = MathUtils.RoundToByte(0.5d * (max + min));
+                var grayscale = Lightness(pixel);
                 image.Set(x, y, new Pixel32(grayscale));
             });
         }
 
+        public static byte Lightness(Pixel32 pixel)
+        {
+            var max = MathUtils.Max(pixel.R, pixel.G, pixel.B);
+            var min = MathUtils.Min(pixel.R, pixel.G, pixel.B);
+            return MathUtils.RoundToByte(0.5d * (max + min));
+        }
+
         private static void ByAverage(Image<Pixel32> image)
         {
-            double q = 1d / 3d;
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var grayscale = MathUtils.RoundToByte(q * (pixel.R + pixel.G + pixel.B));
+                var grayscale = Average(pixel);
                 image.Set(x, y, new Pixel32(grayscale));
             });
+        }
+
+        public static byte Average(Pixel32 pixel)
+        {
+            double q = 1d / 3d;
+            return MathUtils.RoundToByte(q * (pixel.R + pixel.G + pixel.B));
         }
     }
 }

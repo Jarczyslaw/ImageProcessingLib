@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib.ImageProcessing
 {
-    public class PixelAccumulator
+    internal class PixelAccumulator
     {
         public int Count { get; private set; }
         public int A { get; private set; }

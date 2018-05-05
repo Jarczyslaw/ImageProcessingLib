@@ -16,13 +16,19 @@ namespace ImageProcessingLib.ImageProcessing
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var grayscale = GrayscaleExtension.Luminance(pixel);
-                if (grayscale > threshold)
-                    image.Set(x, y, new Pixel32(pixel.A, 255));
-                else
-                    image.Set(x, y, new Pixel32(pixel.A, 0));
+                var blackAndWhite = BlackAndWhite(pixel, threshold);
+                image.Set(x, y, blackAndWhite);
             });
             return image;
+        }
+
+        public static Pixel32 BlackAndWhite(Pixel32 pixel, byte threshold)
+        {
+            var grayscale = GrayscaleExtension.Luminance(pixel);
+            if (grayscale > threshold)
+                return new Pixel32(pixel.A, 255);
+            else
+                return new Pixel32(pixel.A, 0);
         }
     }
 }
