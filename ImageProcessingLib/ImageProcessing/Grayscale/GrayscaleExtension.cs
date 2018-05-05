@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib.ImageProcessing
 {
-    public static class ToGrayscaleExtension
+    public static class GrayscaleExtension
     {
-        public static Image<Pixel32> ToGrayscale(this Image<Pixel32> image, ToGrayscaleMethod method = ToGrayscaleMethod.Luminance)
+        public static Image<Pixel32> Grayscale(this Image<Pixel32> image, GrayscaleMethod method = GrayscaleMethod.Luminance)
         {
             switch (method)
             {
-                case ToGrayscaleMethod.Average:
+                case GrayscaleMethod.Average:
                     ByAverage(image);
                     break;
-                case ToGrayscaleMethod.Lightness:
+                case GrayscaleMethod.Lightness:
                     ByLightness(image);
                     break;
-                case ToGrayscaleMethod.Luminance:
+                case GrayscaleMethod.Luminance:
                     ByLuminance(image);
                     break;
             }
@@ -31,9 +31,14 @@ namespace ImageProcessingLib.ImageProcessing
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var grayscale = MathUtils.RoundToByte(0.3d * pixel.R + 0.59d * pixel.G + 0.11d * pixel.B);
+                var grayscale = Luminance(pixel);
                 image.Set(x, y, new Pixel32(grayscale));
             });
+        }
+
+        public static byte Luminance(Pixel32 pixel)
+        {
+            return MathUtils.RoundToByte(0.3d * pixel.R + 0.59d * pixel.G + 0.11d * pixel.B);
         }
 
         private static void ByLightness(Image<Pixel32> image)

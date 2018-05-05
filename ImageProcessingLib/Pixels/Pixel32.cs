@@ -69,7 +69,7 @@ namespace ImageProcessingLib
         public Pixel32 ToGrayscale()
         {
             var grayscale = MathUtils.RoundToByte(0.3d * R + 0.59d * G + 0.11d * B);
-            return new Pixel32(grayscale, R, G, B);
+            return new Pixel32(A, grayscale, grayscale, grayscale);
         }
 
         public static Pixel32 Red
