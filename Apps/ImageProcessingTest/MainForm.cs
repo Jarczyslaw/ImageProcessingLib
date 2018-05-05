@@ -30,19 +30,10 @@ namespace ImageProcessingTest
             var images = ImagesFolder.Images.AllBitmaps;
             cbImages.BindDictionary(images);
             cbImages.SelectedIndex = -1;
-            LoadOperations();
+
+            operations = OperationsLoader.CreateOperationsDictionary();
             cbOperations.BindDictionary(operations);
             cbOperations.SelectedIndex = -1;
-        }
-
-        private void LoadOperations()
-        {
-            operations = new Dictionary<string, OperationBase>()
-            {
-                { "Resize", new ResizeOperation() },
-                { "Rotate", new RotateOperation() },
-                { "NaiveQuantization", new NaiveQuantizationOperation() }
-            };
         }
 
         private void cbImages_SelectionChangeCommitted(object sender, EventArgs e)
@@ -57,7 +48,7 @@ namespace ImageProcessingTest
 
         private void cbResults_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            LoadImage();
+            ShowCurrentImage();
         }
 
         private async void LoadResults()
@@ -77,12 +68,12 @@ namespace ImageProcessingTest
                 });
             });
             cbResults.BindDictionary(resultImages);
-            LoadImage();
+            ShowCurrentImage();
             if (needsInitialization)
-                MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
+                MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1:0} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
         }
 
-        private void LoadImage()
+        private void ShowCurrentImage()
         {
             var image = cbResults.SelectedValue as GDImage32;
             pbImage.Image = image.Bitmap;
@@ -90,27 +81,28 @@ namespace ImageProcessingTest
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            SelectComboBoxItem(-1);
+            SwitchComboBoxItem(cbResults, -1);
+            ShowCurrentImage();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            SelectComboBoxItem(1);
+            SwitchComboBoxItem(cbResults, 1);
+            ShowCurrentImage();
         }
 
-        private void SelectComboBoxItem(int dir)
+        private void SwitchComboBoxItem(ComboBox comboBox, int dir)
         {
-            var nextIndex = cbResults.SelectedIndex;
+            var nextIndex = comboBox.SelectedIndex;
             if (nextIndex == -1)
                 return;
 
             nextIndex += dir;
-            if (nextIndex >= cbResults.Items.Count)
+            if (nextIndex >= comboBox.Items.Count)
                 nextIndex = 0;
             else if (nextIndex < 0)
-                nextIndex = cbResults.Items.Count - 1;
-            cbResults.SelectedIndex = nextIndex;
-            cbResults_SelectionChangeCommitted(null, null);
+                nextIndex = comboBox.Items.Count - 1;
+            comboBox.SelectedIndex = nextIndex;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

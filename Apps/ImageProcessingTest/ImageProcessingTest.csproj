@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Operations\NaiveQuantizationOperation.cs" />
     <Compile Include="Operations\OperationBase.cs" />
+    <Compile Include="Operations\OperationsLoader.cs" />
     <Compile Include="Operations\ResizeOperation.cs" />
     <Compile Include="Operations\RotateOperation.cs" />
     <Compile Include="Program.cs" />

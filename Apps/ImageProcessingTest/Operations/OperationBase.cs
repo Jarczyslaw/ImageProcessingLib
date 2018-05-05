@@ -20,14 +20,20 @@ namespace ImageProcessingTest.Operations
             {
                 needsInitialization = false;
                 return value;
-            } 
+            }
 
-            var originalImage = new GDImage32(bitmap);
-            var images = new Dictionary<string, GDImage32>();
-            images.Add("Original", originalImage);
-            AddImages(images, originalImage.Image);
+            var images = CreateImagesForBitmap(bitmap);
             Images.Add(bitmap, images);
             needsInitialization = true;
+            return images;
+        }
+
+        private Dictionary<string, GDImage32> CreateImagesForBitmap(Bitmap bitmap)
+        {
+            var images = new Dictionary<string, GDImage32>();
+            var originalImage = new GDImage32(bitmap);
+            images.Add("Original", originalImage);
+            AddImages(images, originalImage.Image);
             return images;
         }
 
