@@ -52,6 +52,7 @@
   <ItemGroup>
     <Content Include="Resources\halfLena.bmp" />
     <Content Include="Resources\lena.bmp" />
+    <Content Include="Resources\lena_bw.bmp" />
     <Content Include="Resources\lena_gray.bmp" />
     <Content Include="Resources\lena_trans.png" />
     <Content Include="Resources\test.bmp" />
