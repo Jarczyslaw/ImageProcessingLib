@@ -9,8 +9,7 @@ namespace ImageProcessingLib
         public static Image<TPixelType> Clear<TPixelType>(this Image<TPixelType> image)
             where TPixelType : struct, IPixel<TPixelType>
         {
-            var blankPixel = new TPixelType();
-            image.Clear(blankPixel.Blank);
+            image.Clear(new TPixelType().Blank);
             return image;
         }
 
