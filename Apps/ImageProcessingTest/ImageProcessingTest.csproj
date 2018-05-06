@@ -52,6 +52,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
+    <Compile Include="Operations\ColorFiltrationOperation.cs" />
     <Compile Include="Operations\ComplementOperation.cs" />
     <Compile Include="Operations\InversionOperation.cs" />
     <Compile Include="Operations\NaiveQuantizationOperation.cs" />

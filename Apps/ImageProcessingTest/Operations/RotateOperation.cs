@@ -21,6 +21,9 @@ namespace ImageProcessingTest.Operations
             image = originalImage.Copy();
             image.Rotate(30);
             images.Add("By30Degrees", new GDImage32(image));
+            image = originalImage.Copy();
+            image.Rotate(-30);
+            images.Add("By-30Degrees", new GDImage32(image));
         }
     }
 }

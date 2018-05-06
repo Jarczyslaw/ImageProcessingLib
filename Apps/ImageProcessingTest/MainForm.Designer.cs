@@ -102,7 +102,8 @@
             // 
             // btnSaveAll
             // 
-            this.btnSaveAll.Location = new System.Drawing.Point(936, 17);
+            this.btnSaveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAll.Location = new System.Drawing.Point(1060, 17);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(105, 23);
             this.btnSaveAll.TabIndex = 10;
@@ -112,7 +113,8 @@
             // 
             // btnSaveCurrent
             // 
-            this.btnSaveCurrent.Location = new System.Drawing.Point(825, 17);
+            this.btnSaveCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveCurrent.Location = new System.Drawing.Point(949, 17);
             this.btnSaveCurrent.Name = "btnSaveCurrent";
             this.btnSaveCurrent.Size = new System.Drawing.Size(105, 23);
             this.btnSaveCurrent.TabIndex = 9;
@@ -126,7 +128,7 @@
             this.cbResults.FormattingEnabled = true;
             this.cbResults.Location = new System.Drawing.Point(507, 19);
             this.cbResults.Name = "cbResults";
-            this.cbResults.Size = new System.Drawing.Size(150, 21);
+            this.cbResults.Size = new System.Drawing.Size(197, 21);
             this.cbResults.TabIndex = 8;
             this.cbResults.SelectionChangeCommitted += new System.EventHandler(this.cbResults_SelectionChangeCommitted);
             // 
@@ -160,7 +162,7 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(663, 17);
+            this.btnPrevious.Location = new System.Drawing.Point(710, 17);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(75, 23);
             this.btnPrevious.TabIndex = 4;
@@ -179,7 +181,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(744, 17);
+            this.btnNext.Location = new System.Drawing.Point(791, 17);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 2;

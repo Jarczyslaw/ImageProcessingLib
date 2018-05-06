@@ -28,7 +28,7 @@ namespace ImageProcessingTest.Operations
             {
                 image = originalImage.Copy();
                 image.Complement(size.Item1, size.Item2);
-                images.Add(string.Format("BlankComplement{0}x{1}", size.Item1, size.Item2), new GDImage32(image));
+                images.Add(string.Format("BlankComplement-{0}x{1}", size.Item1, size.Item2), new GDImage32(image));
             }
         }
     }

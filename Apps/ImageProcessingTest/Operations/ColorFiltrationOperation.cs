@@ -9,16 +9,16 @@ using ImageProcessingLib.ImageProcessing;
 
 namespace ImageProcessingTest.Operations
 {
-    public class InversionOperation : OperationBase
+    public class ColorFiltrationOperation : OperationBase
     {
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
-            var conversionPoints = new byte[] { 64, 128, 196 };
-            foreach(var conversionPoint in conversionPoints)
+            var filters = Enum.GetValues(typeof(ColorFilter)).Cast<ColorFilter>();
+            foreach(var filter in filters)
             {
                 var image = originalImage.Copy();
-                image.Inverse(conversionPoint);
-                images.Add("Inversion-" + conversionPoint, new GDImage32(image));
+                image.ColorFiltration(filter);
+                images.Add("ColorFiltration-" + filter.ToString(), new GDImage32(image));
             }
         }
     }

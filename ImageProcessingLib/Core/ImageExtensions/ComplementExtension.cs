@@ -16,7 +16,7 @@ namespace ImageProcessingLib
             where TPixelType : struct, IPixel<TPixelType>
         {
             if (image.Width > width || image.Height > height)
-                throw new ArgumentException("Complemented images should be larger than original one");
+                throw new ArgumentException("Complemented image should be larger than original one");
 
             int startX = (width - image.Width) / 2;
             int startY = (height - image.Height) / 2;
