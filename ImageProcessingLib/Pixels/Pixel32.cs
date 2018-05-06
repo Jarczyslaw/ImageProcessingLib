@@ -102,6 +102,30 @@ namespace ImageProcessingLib
             get { return Black; }
         }
 
+        public double[] ToHSV()
+        {
+            var cmin = MathUtils.Min(R, G, B);
+            var cmax = MathUtils.Max(R, G, B);
+            var delta = cmax - cmin;
+
+            var h = 0d;
+            if (delta == 0)
+                h = 0d;
+            else if (cmax == R)
+                h = (((G - B) / (double)delta) % 6) * 60; 
+            else if (cmax == G)
+                h = (((B - R) / (double)delta) + 2) * 60;
+            else if (cmax == B)
+                h = (((R - G) / (double)delta) + 4) * 60;
+
+            var s = 0d;
+            if (cmax != 0)
+                s = 100d * delta / cmax;
+
+            var v = 100d * cmax / 255d;
+            return new double[] { h, s, v };
+        }
+
         public bool Equals(Pixel32 other)
         {
             return Equals((object)other);
