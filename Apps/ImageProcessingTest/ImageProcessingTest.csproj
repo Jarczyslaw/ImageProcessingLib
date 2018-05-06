@@ -61,6 +61,7 @@
     <Compile Include="OperationsLoader.cs" />
     <Compile Include="Operations\ResizeOperation.cs" />
     <Compile Include="Operations\RotateOperation.cs" />
+    <Compile Include="Operations\SepiaOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
