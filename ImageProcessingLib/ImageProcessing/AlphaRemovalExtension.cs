@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ImageProcessingLib.ImageProcessing
 {
-    public static class RemoveAlphaExtension
+    public static class AlphaRemovalExtension
     {
-        public static Image<Pixel32> RemoveAlpha(this Image<Pixel32> image)
+        public static Image<Pixel32> AlphaRemoval(this Image<Pixel32> image)
         {
             return image.ForEach((x, y) =>
             {

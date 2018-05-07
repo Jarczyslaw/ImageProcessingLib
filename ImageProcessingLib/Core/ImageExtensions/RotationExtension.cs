@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public static class RotateExtension
+    public static class RotationExtension
     {
-        public static Image<TPixelType> RotateClockwise<TPixelType>(this Image<TPixelType> image)
+        public static Image<TPixelType> RotationClockwise<TPixelType>(this Image<TPixelType> image)
             where TPixelType : struct, IPixel<TPixelType>
         {
             var originalImage = image.Copy();
@@ -21,7 +21,7 @@ namespace ImageProcessingLib
             return image;
         }
 
-        public static Image<TPixelType> RotateCounterClockwise<TPixelType>(this Image<TPixelType> image)
+        public static Image<TPixelType> RotationCounterClockwise<TPixelType>(this Image<TPixelType> image)
             where TPixelType : struct, IPixel<TPixelType>
         {
             var originalImage = image.Copy();
@@ -35,7 +35,7 @@ namespace ImageProcessingLib
             return image;
         }
 
-        public static Image<TPixelType> RotateWithSizePreserving<TPixelType>(this Image<TPixelType> image, double angle)
+        public static Image<TPixelType> RotationWithSizePreserving<TPixelType>(this Image<TPixelType> image, double angle)
             where TPixelType : struct, IPixel<TPixelType>
         {
             GetAngles(angle, out double sAlpha, out double cAlpha);
@@ -54,7 +54,7 @@ namespace ImageProcessingLib
             return image;
         }
 
-        public static Image<TPixelType> Rotate<TPixelType>(this Image<TPixelType> image, double angle)
+        public static Image<TPixelType> Rotation<TPixelType>(this Image<TPixelType> image, double angle)
             where TPixelType : struct, IPixel<TPixelType>
         {
             GetAngles(angle, out double sAlpha, out double cAlpha);

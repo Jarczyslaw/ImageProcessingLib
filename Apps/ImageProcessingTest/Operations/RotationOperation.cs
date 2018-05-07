@@ -8,21 +8,21 @@ using ImageProcessingLib.GDI;
 
 namespace ImageProcessingTest.Operations
 {
-    public class RotateOperation : OperationBase
+    public class RotationOperation : OperationBase
     {
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var image = originalImage.Copy();
-            image.RotateClockwise();
+            image.RotationClockwise();
             images.Add("Clockwise", new GDImage32(image));
             image = originalImage.Copy();
-            image.RotateCounterClockwise();
+            image.RotationCounterClockwise();
             images.Add("CounterClockwise", new GDImage32(image));
             image = originalImage.Copy();
-            image.Rotate(30);
+            image.Rotation(30);
             images.Add("By30Degrees", new GDImage32(image));
             image = originalImage.Copy();
-            image.Rotate(-30);
+            image.Rotation(-30);
             images.Add("By-30Degrees", new GDImage32(image));
         }
     }

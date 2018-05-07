@@ -58,19 +58,26 @@ namespace ImageProcessingTest
             if (image == null || operation == null)
                 return;
 
-            bool needsInitialization = false;
-            TimeSpan initializationTime = TimeSpan.Zero;
-            await Task.Run(() =>
+            try
             {
-                initializationTime = ExecTime.Run(() =>
+                bool needsInitialization = false;
+                TimeSpan initializationTime = TimeSpan.Zero;
+                await Task.Run(() =>
                 {
-                    resultImages = operation.ApplyOperation(image, out needsInitialization);
+                    initializationTime = ExecTime.Run(() =>
+                    {
+                        resultImages = operation.ApplyOperation(image, out needsInitialization);
+                    });
                 });
-            });
-            cbResults.BindDictionary(resultImages);
-            ShowCurrentImage();
-            if (needsInitialization)
-                MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1:0} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
+                cbResults.BindDictionary(resultImages);
+                ShowCurrentImage();
+                if (needsInitialization)
+                    MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1:0} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
+            }
+            catch(Exception e)
+            {
+                MessageBoxEx.ShowError(e);
+            }
         }
 
         private void ShowCurrentImage()
@@ -131,7 +138,7 @@ namespace ImageProcessingTest
                 }
                 catch (Exception exc)
                 {
-                    MessageBoxEx.ShowError(exc.ToString());
+                    MessageBoxEx.ShowError(exc);
                 }
             }
         }
@@ -161,7 +168,7 @@ namespace ImageProcessingTest
                 }
                 catch (Exception exc)
                 {
-                    MessageBoxEx.ShowError(exc.ToString());
+                    MessageBoxEx.ShowError(exc);
                 }
             }
         }
