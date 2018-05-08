@@ -18,11 +18,11 @@ namespace ImageProcessingLib
             {
                 var originalPixel = originalImage.Get(x, y);
                 var pixel = image.Get(x, y);
-                errorR += Math.Pow(originalPixel.R - pixel.R , 2d);
+                errorR += Math.Pow(originalPixel.R - pixel.R, 2d);
                 errorG += Math.Pow(originalPixel.G - pixel.G, 2d);
                 errorB += Math.Pow(originalPixel.B - pixel.B, 2d);
             });
-            return (errorR + errorG + errorB) / (image.Width * image.Height * 3);
+            return (errorR + errorG + errorB) / (image.Size * 3d);
         }
 
         public static double PSNR(Image<Pixel32> originalImage, Image<Pixel32> image)
