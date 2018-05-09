@@ -53,6 +53,27 @@ namespace ImageProcessingLib
             return pixelSource.From(data);
         }
 
+        public TPixelType[] GetNeighbourhood(int x, int y, int range)
+        {
+            var size = 1 + 2 * range;
+            var result = new TPixelType[size * size];
+
+            var startX = x - range;
+            var endX = x + range;
+            var startY = y - range;
+            var endY = y + range;
+            for (int i = startY; i < endY; i++)
+            {
+                for (int j = startX; j < endX; j++)
+                {
+                    int targetI = ClampHeight(i);
+                    int targetJ = ClampWidth(j);
+                    result[i + size * j] = Get(targetI, targetJ);
+                }
+            }
+            return result;
+        }
+
         public void InvokeResize()
         {
             OnResize?.Invoke();
