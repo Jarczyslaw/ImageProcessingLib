@@ -59,9 +59,11 @@ namespace ImageProcessingTest
                 return;
 
             this.DisableControls();
+            Application.UseWaitCursor = true;
             await LaunchOperation(image, operation);
             ShowResults();
             this.EnableControls();
+            Application.UseWaitCursor = false;
         }
 
         private void ShowResults()

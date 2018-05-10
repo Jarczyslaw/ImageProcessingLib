@@ -12,8 +12,10 @@ namespace Commons
         public static void SetControlsEnabled(this Control control, bool enabled)
         {
             foreach (Control childControl in control.Controls)
+            {
+                childControl.Enabled = enabled;
                 childControl.SetControlsEnabled(enabled);
-            control.Enabled = enabled;
+            }
         }
 
         public static void DisableControls(this Control control)
