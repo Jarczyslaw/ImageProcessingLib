@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ComboBoxExtension.cs" />
     <Compile Include="ExecTime.cs" />
+    <Compile Include="FormExtensions.cs" />
     <Compile Include="MessageBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,39 +12,20 @@ namespace ImageProcessingTest.Operations
 {
     public abstract class OperationBase
     {
-        public Dictionary<Bitmap, Dictionary<string, GDImage32>> Images { get; private set; } = new Dictionary<Bitmap, Dictionary<string, GDImage32>>();
+        public Dictionary<string, GDImage32> Images { get; private set; } = new Dictionary<string, GDImage32>();
 
-        public Dictionary<string, GDImage32> ApplyOperation(Bitmap bitmap, out bool needsInitialization)
+        public void ApplyOperation(Bitmap bitmap)
         {
-            if (Images.TryGetValue(bitmap, out Dictionary<string, GDImage32> value))
-            {
-                needsInitialization = false;
-                return value;
-            }
-
-            var images = CreateImagesForBitmap(bitmap);
-            Images.Add(bitmap, images);
-            needsInitialization = true;
-            return images;
-        }
-
-        private Dictionary<string, GDImage32> CreateImagesForBitmap(Bitmap bitmap)
-        {
-            var images = new Dictionary<string, GDImage32>();
+            Images = new Dictionary<string, GDImage32>();
             var originalImage = new GDImage32(bitmap);
-            images.Add("Original", originalImage);
-            AddImages(images, originalImage.Image);
-            return images;
+            Images.Add("Original", originalImage);
+            AddImages(Images, originalImage.Image);
         }
 
-        public void Dispose()
+        public void CleanUp()
         {
-            foreach (var val in Images.Values)
-                foreach (var gdimage in val.Values)
-                    gdimage.Dispose();
-
-            foreach (var val in Images.Keys)
-                val.Dispose();
+            foreach (var gdimage in Images.Values)
+                gdimage.Dispose();
         }
 
         public abstract void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage);

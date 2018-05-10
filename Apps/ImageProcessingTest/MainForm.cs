@@ -21,7 +21,7 @@ namespace ImageProcessingTest
     public partial class MainForm : Form
     {
         private Dictionary<string, OperationBase> operations = new Dictionary<string, OperationBase>();
-        private Dictionary<string, GDImage32> resultImages = null;
+        private OperationBase currentOperation = null;
 
         public MainForm()
         {
@@ -38,12 +38,12 @@ namespace ImageProcessingTest
 
         private void cbImages_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            LoadResults();
+            PerformOperation();
         }
 
         private void cbOperations_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            LoadResults();
+            PerformOperation();
         }
 
         private void cbResults_SelectionChangeCommitted(object sender, EventArgs e)
@@ -51,28 +51,37 @@ namespace ImageProcessingTest
             ShowCurrentImage();
         }
 
-        private async void LoadResults()
+        private async void PerformOperation()
         {
             var image = cbImages.SelectedValue as Bitmap;
             var operation = cbOperations.SelectedValue as OperationBase;
             if (image == null || operation == null)
                 return;
 
+            this.DisableControls();
+            await LaunchOperation(image, operation);
+            ShowResults();
+            this.EnableControls();
+        }
+
+        private void ShowResults()
+        {
+            cbResults.BindDictionary(currentOperation.Images);
+            ShowCurrentImage();
+        }
+
+        private async Task LaunchOperation(Bitmap bitmap, OperationBase operation)
+        {
+            currentOperation?.CleanUp();
+            currentOperation = operation;
             try
             {
-                bool needsInitialization = false;
                 TimeSpan initializationTime = TimeSpan.Zero;
                 await Task.Run(() =>
                 {
-                    initializationTime = ExecTime.Run(() =>
-                    {
-                        resultImages = operation.ApplyOperation(image, out needsInitialization);
-                    });
+                    initializationTime = ExecTime.Run(() => operation.ApplyOperation(bitmap));
                 });
-                cbResults.BindDictionary(resultImages);
-                ShowCurrentImage();
-                if (needsInitialization)
-                    MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1:0} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
+                MessageBoxEx.ShowInfo(string.Format("{0} initialized in {1:0} ms", operation.GetType().Name, initializationTime.TotalMilliseconds));
             }
             catch(Exception e)
             {
@@ -114,8 +123,7 @@ namespace ImageProcessingTest
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (var operation in operations.Values)
-                operation.Dispose();
+            currentOperation?.CleanUp();
         }
 
         private void btnSaveCurrent_Click(object sender, EventArgs e)
@@ -145,7 +153,7 @@ namespace ImageProcessingTest
 
         private void btnSaveAll_Click(object sender, EventArgs e)
         {
-            if (resultImages == null)
+            if (currentOperation == null)
                 return;
 
             var fbd = new FolderBrowserDialog()
@@ -157,12 +165,12 @@ namespace ImageProcessingTest
             {
                 try
                 {
-                    foreach (var entry in resultImages)
+                    foreach (var operationResult in currentOperation.Images)
                     {
-                        var fileName = entry.Key;
-                        var image = entry.Value;
+                        var fileName = operationResult.Key;
+                        var image = operationResult.Value;
                         var filePath = Path.Combine(fbd.SelectedPath, fileName + ".bmp");
-                        image.Bitmap.Save(filePath, ImageFormat.Bmp);
+                        image.ToFile(filePath, ImageFormat.Bmp);
                     }
                     MessageBoxEx.ShowInfo("Saved all images in " + fbd.SelectedPath);
                 }
