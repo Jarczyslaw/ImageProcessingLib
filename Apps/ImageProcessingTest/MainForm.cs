@@ -1,17 +1,12 @@
 ﻿using Commons;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
-using ImageProcessingLib.ImageProcessing;
 using ImageProcessingTest.Operations;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,12 +56,12 @@ namespace ImageProcessingTest
             this.DisableControls();
             Application.UseWaitCursor = true;
             await LaunchOperation(image, operation);
-            ShowResults();
+            LoadResults();
             this.EnableControls();
             Application.UseWaitCursor = false;
         }
 
-        private void ShowResults()
+        private void LoadResults()
         {
             cbResults.BindDictionary(currentOperation.Images);
             ShowCurrentImage();
@@ -180,6 +175,29 @@ namespace ImageProcessingTest
                 {
                     MessageBoxEx.ShowError(exc);
                 }
+            }
+        }
+
+        private void btnShowMetrics_Click(object sender, EventArgs e)
+        {
+            if (currentOperation == null)
+                return;
+
+            var originalImage = currentOperation.OriginalImage.Image;
+            var currentImage = (cbResults.SelectedValue as GDImage32).Image;
+            try
+            {
+                var mse = ErrorMetrics.MSE(originalImage, currentImage);
+                var psnr = ErrorMetrics.PSNR(originalImage, currentImage);
+                var message = new StringBuilder();
+                message.AppendLine("Current image metrics:");
+                message.AppendLine(string.Format("MSE: {0:0.00}", mse));
+                message.AppendLine(string.Format("PSNR: {0:0.00}", psnr));
+                MessageBoxEx.ShowInfo(message.ToString());
+            }
+            catch(Exception exc)
+            {
+                MessageBoxEx.ShowError(exc);
             }
         }
     }

@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnShowMetrics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -76,13 +77,14 @@
             this.panel1.Controls.Add(this.pbImage);
             this.panel1.Location = new System.Drawing.Point(6, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1159, 521);
+            this.panel1.Size = new System.Drawing.Size(1279, 521);
             this.panel1.TabIndex = 2;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnShowMetrics);
             this.groupBox1.Controls.Add(this.btnSaveAll);
             this.groupBox1.Controls.Add(this.btnSaveCurrent);
             this.groupBox1.Controls.Add(this.cbResults);
@@ -95,7 +97,7 @@
             this.groupBox1.Controls.Add(this.cbImages);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1171, 48);
+            this.groupBox1.Size = new System.Drawing.Size(1291, 48);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
@@ -103,7 +105,7 @@
             // btnSaveAll
             // 
             this.btnSaveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveAll.Location = new System.Drawing.Point(1060, 17);
+            this.btnSaveAll.Location = new System.Drawing.Point(1180, 17);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(105, 23);
             this.btnSaveAll.TabIndex = 10;
@@ -114,7 +116,7 @@
             // btnSaveCurrent
             // 
             this.btnSaveCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveCurrent.Location = new System.Drawing.Point(949, 17);
+            this.btnSaveCurrent.Location = new System.Drawing.Point(1069, 17);
             this.btnSaveCurrent.Name = "btnSaveCurrent";
             this.btnSaveCurrent.Size = new System.Drawing.Size(105, 23);
             this.btnSaveCurrent.TabIndex = 9;
@@ -197,16 +199,27 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(12, 66);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1171, 546);
+            this.groupBox2.Size = new System.Drawing.Size(1291, 546);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
+            // 
+            // btnShowMetrics
+            // 
+            this.btnShowMetrics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowMetrics.Location = new System.Drawing.Point(958, 17);
+            this.btnShowMetrics.Name = "btnShowMetrics";
+            this.btnShowMetrics.Size = new System.Drawing.Size(105, 23);
+            this.btnShowMetrics.TabIndex = 11;
+            this.btnShowMetrics.Text = "Show metrics";
+            this.btnShowMetrics.UseVisualStyleBackColor = true;
+            this.btnShowMetrics.Click += new System.EventHandler(this.btnShowMetrics_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 624);
+            this.ClientSize = new System.Drawing.Size(1315, 624);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "MainForm";
@@ -238,5 +251,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSaveAll;
         private System.Windows.Forms.Button btnSaveCurrent;
+        private System.Windows.Forms.Button btnShowMetrics;
     }
 }

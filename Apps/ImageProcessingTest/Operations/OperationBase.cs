@@ -13,13 +13,14 @@ namespace ImageProcessingTest.Operations
     public abstract class OperationBase
     {
         public Dictionary<string, GDImage32> Images { get; private set; } = new Dictionary<string, GDImage32>();
+        public GDImage32 OriginalImage { get; private set; }
 
         public void ApplyOperation(Bitmap bitmap)
         {
             Images = new Dictionary<string, GDImage32>();
-            var originalImage = new GDImage32(bitmap);
-            Images.Add("Original", originalImage);
-            AddImages(Images, originalImage.Image);
+            OriginalImage = new GDImage32(bitmap);
+            Images.Add("Original", OriginalImage);
+            AddImages(Images, OriginalImage.Image);
         }
 
         public void CleanUp()
