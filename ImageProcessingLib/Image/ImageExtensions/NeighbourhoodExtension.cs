@@ -15,8 +15,8 @@ namespace ImageProcessingLib
             {
                 for (int j = x; j < widthEnd; j++)
                 {
-                    var neighbourhood = image.GetNeighbourhood(x, y, range);
-                    action(x, y, neighbourhood);
+                    var neighbourhood = image.GetNeighbourhood(j, i, range);
+                    action(j, i, neighbourhood);
                 }
             }
             return image;
