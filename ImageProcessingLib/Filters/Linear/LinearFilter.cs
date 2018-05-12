@@ -17,7 +17,7 @@ namespace ImageProcessingLib
             Validate(kernel);
 
             Size = kernel.GetLength(0);
-            Range = (int)Math.Ceiling(Size / 2d) - 1;
+            Range = (int)Math.Floor(Size / 2d);
             KernelFlattening(multiplier, kernel);
             KernelLength = Kernel.Length;
         }

@@ -17,6 +17,7 @@ namespace ImageProcessingTest
     {
         private Dictionary<string, OperationBase> operations = new Dictionary<string, OperationBase>();
         private OperationBase currentOperation = null;
+        private Bitmap currentBitmap = null;
 
         public MainForm()
         {
@@ -52,6 +53,11 @@ namespace ImageProcessingTest
             var operation = cbOperations.SelectedValue as OperationBase;
             if (image == null || operation == null)
                 return;
+            if (image == currentBitmap && currentOperation == operation)
+                return;
+
+            currentBitmap = image;
+            currentOperation = operation;
 
             this.DisableControls();
             Application.UseWaitCursor = true;
