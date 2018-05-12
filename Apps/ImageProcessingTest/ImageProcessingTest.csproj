@@ -54,6 +54,7 @@
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
     <Compile Include="Operations\ColorFiltrationOperation.cs" />
     <Compile Include="Operations\ComplementOperation.cs" />
+    <Compile Include="Operations\Filters\HighPassFiltersOperation.cs" />
     <Compile Include="Operations\Filters\LowPassFiltersOperation.cs" />
     <Compile Include="Operations\FlipOperation.cs" />
     <Compile Include="Operations\GammaCorrectionOperation.cs" />

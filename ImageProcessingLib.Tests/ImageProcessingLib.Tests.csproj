@@ -52,7 +52,7 @@
     <Compile Include="ImageBaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pixel32Tests.cs" />
-    <Compile Include="FilterBaseTests.cs" />
+    <Compile Include="LinearFilterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ImageProcessingLib.Tests
 {
     [TestClass]
-    public class FilterBaseTests
+    public class LinearFilterTests
     {
         [TestMethod]
         public void ValidCreation()

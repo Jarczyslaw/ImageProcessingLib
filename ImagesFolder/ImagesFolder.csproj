@@ -56,6 +56,7 @@
     <Content Include="Resources\lena_gray.bmp" />
     <Content Include="Resources\lena_trans.png" />
     <Content Include="Resources\test.bmp" />
+    <Content Include="Resources\test2.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
