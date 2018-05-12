@@ -10,7 +10,7 @@ namespace ImageProcessingLib
             new int[,]
             {
                 { 1, -2, 1 },
-                { -2, 9, -2 },
+                { -2, 5, -2 },
                 { 1, -2, 1 }
             })
         { }

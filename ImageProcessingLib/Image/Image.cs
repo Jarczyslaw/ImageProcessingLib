@@ -65,8 +65,8 @@ namespace ImageProcessingLib
             {
                 for (int j = 0; j < size; j++)
                 {
-                    int sourceI = ClampHeight(startY + i);
                     int sourceJ = ClampWidth(startX + j);
+                    int sourceI = ClampHeight(startY + i);
                     result[index++] = Get(sourceJ, sourceI);
                 }
             }
