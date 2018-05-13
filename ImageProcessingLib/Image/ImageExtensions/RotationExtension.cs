@@ -64,8 +64,8 @@ namespace ImageProcessingLib
             var newHeight = (int)Math.Ceiling(image.Width * sAlphaAbs + image.Height * cAlphaAbs);
 
             var originalImage = image.Copy();
-            image.InitializeNew(newWidth, newHeight);
             originalImage.GetCenter(out int originalAxisX, out int originalAxisY);
+            image.InitializeNew(newWidth, newHeight);
             image.GetCenter(out int axisX, out int axisY);
 
             var blank = new TPixelType().Blank;

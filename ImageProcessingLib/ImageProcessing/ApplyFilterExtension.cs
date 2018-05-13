@@ -9,10 +9,10 @@ namespace ImageProcessingLib.ImageProcessing
     {
         public static Image<Pixel32> ApplyFilter(this Image<Pixel32> image, IFilter filter)
         {
-            var imageCopy = image.Copy();
-            return imageCopy.ForEachNeighbourhood(filter.Range, (x, y, neighbourhood) =>
+            var originalImage = image.Copy();
+            return originalImage.ForEachNeighbourhood(filter.Range, (x, y, neighbourhood) =>
             {
-                var pixel = imageCopy.Get(x, y);
+                var pixel = originalImage.Get(x, y);
                 var r = filter.Apply(GetComponentsFromNeighbourhood(neighbourhood, (p) => p.R));
                 var g = filter.Apply(GetComponentsFromNeighbourhood(neighbourhood, (p) => p.G));
                 var b = filter.Apply(GetComponentsFromNeighbourhood(neighbourhood, (p) => p.B));
