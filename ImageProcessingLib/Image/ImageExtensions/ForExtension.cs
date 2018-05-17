@@ -9,12 +9,21 @@ namespace ImageProcessingLib
         public static Image<TPixelType> ForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height, ForHandler action)
             where TPixelType : struct, IPixel<TPixelType>
         {
+            ValidateForBlock(image, x, y, width, height);
+
             int widthEnd = x + width;
             int heightEnd = y + height;
             for (int i = y; i < heightEnd; i++)
                 for (int j = x; j < widthEnd; j++)
                     action(j, i);
             return image;
+        }
+
+        private static void ValidateForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height))
+                throw new ArgumentException("Given arguments exceeds image's area");
         }
 
         public static Image<TPixelType> ForEach<TPixelType>(this Image<TPixelType> image, ForHandler action)
@@ -26,10 +35,18 @@ namespace ImageProcessingLib
         public static Image<TPixelType> ForStripe<TPixelType>(this Image<TPixelType> image, int segment, int segmentsCount, ForHandler action)
             where TPixelType : struct, IPixel<TPixelType>
         {
+            ValidateForStripe(segment, segmentsCount);
+
             float len = (float)image.Height / segmentsCount;
             int start = (int)Math.Round(segment * len);
             int end = (int)Math.Round((segment + 1) * len);
             return image.ForBlock(0, start, image.Width, end - start, action);
+        }
+
+        private static void ValidateForStripe(int segment, int segmentsCount)
+        {
+            if (segment >= segmentsCount)
+                throw new ArgumentException("Segment exceeds segments count. Segments are indexed from zero");
         }
     }
 }

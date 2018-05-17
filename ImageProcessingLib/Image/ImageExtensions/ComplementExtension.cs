@@ -15,8 +15,7 @@ namespace ImageProcessingLib
         public static Image<TPixelType> Complement<TPixelType>(this Image<TPixelType> image, int width, int height, TPixelType fillColor)
             where TPixelType : struct, IPixel<TPixelType>
         {
-            if (image.Width > width || image.Height > height)
-                throw new ArgumentException("Complemented image should be larger than original one");
+            Validate(image, width, height);
 
             int startX = (width - image.Width) / 2;
             int startY = (height - image.Height) / 2;
@@ -29,6 +28,13 @@ namespace ImageProcessingLib
                 image.Set(startX + x, startY + y, pixel);
             });
             return image;
+        }
+
+        private static void Validate<TPixelType>(this Image<TPixelType> image, int width, int height)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            if (image.Width > width || image.Height > height)
+                throw new ArgumentException("Complemented image should be larger than original one");
         }
     }
 }

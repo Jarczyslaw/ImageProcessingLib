@@ -8,8 +8,7 @@ namespace ImageProcessingLib.ImageProcessing
     {
         public static Image<Pixel32> NaiveQuantize(this Image<Pixel32> image, int levels)
         {
-            if (levels < 2 || levels > 256)
-                throw new ArgumentException("Levels should be in range from 2 to 256");
+            Validate(levels);
 
             var lookupTable = GetLookupTable(levels);
             image.ForEach((x, y) =>
@@ -21,6 +20,12 @@ namespace ImageProcessingLib.ImageProcessing
                 image.Set(x, y, new Pixel32(pixel.A, newR, newG, newB));
             });
             return image;
+        }
+
+        private static void Validate(int levels)
+        {
+            if (levels < 2 || levels > 256)
+                throw new ArgumentException("Levels should be between 2 and 256");
         }
 
         private static byte[] GetLookupTable(int levels)

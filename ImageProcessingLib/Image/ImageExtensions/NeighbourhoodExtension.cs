@@ -9,6 +9,8 @@ namespace ImageProcessingLib
         public static Image<TPixelType> ForBlockNeighbourhood<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height, int range, ForNeighbourhoodHandler<TPixelType> action)
             where TPixelType : struct, IPixel<TPixelType>
         {
+            ValidateForBlockNeighbourhood(image, x, y, width, height);
+
             int widthEnd = x + width;
             int heightEnd = y + height;
             for (int i = y; i < heightEnd; i++)
@@ -20,6 +22,13 @@ namespace ImageProcessingLib
                 }
             }
             return image;
+        }
+
+        private static void ValidateForBlockNeighbourhood<TPixelType>(Image<TPixelType> image, int x, int y, int width, int height)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height))
+                throw new ArgumentException("Given arguments exceeds image's area");
         }
 
         public static Image<TPixelType> ForEachNeighbourhood<TPixelType>(this Image<TPixelType> image, int range, ForNeighbourhoodHandler<TPixelType> action)
