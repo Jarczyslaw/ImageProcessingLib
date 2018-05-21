@@ -25,6 +25,7 @@ namespace ImageProcessingLib
                 var pixel = originalImage.Get(w0 + i, h0 + j);
                 image.Set(i, j, pixel);
             });
+            image.InvokeResize();
             return image;
         }
 
