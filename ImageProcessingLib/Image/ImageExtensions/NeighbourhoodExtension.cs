@@ -27,7 +27,7 @@ namespace ImageProcessingLib
         private static void ValidateForBlockNeighbourhood<TPixelType>(Image<TPixelType> image, int x, int y, int width, int height)
             where TPixelType : struct, IPixel<TPixelType>
         {
-            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height))
+            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width - 1) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height - 1))
                 throw new ArgumentException("Given arguments exceeds image's area");
         }
 
