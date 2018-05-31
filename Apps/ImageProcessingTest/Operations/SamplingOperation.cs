@@ -18,7 +18,7 @@ namespace ImageProcessingTest.Operations
             {
                 var image = originalImage.Copy();
                 image.Sampling(size);
-                images.Add("BlockSize-" + size, new GDImage32(image));
+                images.Add("BlockSize" + size, new GDImage32(image));
             }
         }
     }

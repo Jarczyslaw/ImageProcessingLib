@@ -18,7 +18,7 @@ namespace ImageProcessingTest.Operations
             {
                 var image = originalImage.Copy();
                 image.Inversion(conversionPoint);
-                images.Add("Inversion-" + conversionPoint, new GDImage32(image));
+                images.Add("Inversion" + conversionPoint, new GDImage32(image));
             }
         }
     }

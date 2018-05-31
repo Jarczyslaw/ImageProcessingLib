@@ -18,7 +18,7 @@ namespace ImageProcessingTest.Operations
             {
                 var image = originalImage.Copy();
                 image.ColorFiltration(filter);
-                images.Add("ColorFiltration-" + filter.ToString(), new GDImage32(image));
+                images.Add("ColorFiltration" + filter.ToString(), new GDImage32(image));
             }
         }
     }

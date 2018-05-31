@@ -20,10 +20,10 @@ namespace ImageProcessingTest.Operations
             images.Add("CounterClockwise", new GDImage32(image));
             image = originalImage.Copy();
             image.Rotation(30);
-            images.Add("By30Degrees", new GDImage32(image));
+            images.Add("Degress30", new GDImage32(image));
             image = originalImage.Copy();
             image.Rotation(-30);
-            images.Add("By-30Degrees", new GDImage32(image));
+            images.Add("Degrees-30", new GDImage32(image));
         }
     }
 }

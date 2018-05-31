@@ -18,10 +18,10 @@ namespace ImageProcessingLib
             int commonWidth = w1 - w0;
             int commonHeight = h1 - h0;
 
-            imageToInsert.ForBlock(w0, h0, commonWidth, commonHeight, (i, j) =>
+            image.ForBlock(w0, h0, commonWidth, commonHeight, (i, j) =>
             {
-                var pixel = imageToInsert.Get(i, j);
-                image.Set(w0 - i, h0 - j, pixel);
+                var pixel = imageToInsert.Get(i - x, j - y);
+                image.Set(i, j, pixel);
             });
             return image;
         }

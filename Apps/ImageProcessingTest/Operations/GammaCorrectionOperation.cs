@@ -18,7 +18,7 @@ namespace ImageProcessingTest.Operations
             {
                 var image = originalImage.Copy();
                 image.GammaCorrection(gamma);
-                images.Add("Gamma-" + gamma, new GDImage32(image));
+                images.Add("Gamma" + gamma, new GDImage32(image));
             }
         }
     }

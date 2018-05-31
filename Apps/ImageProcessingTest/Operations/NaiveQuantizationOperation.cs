@@ -18,7 +18,7 @@ namespace ImageProcessingTest.Operations
             {
                 var image = originalImage.Copy();
                 image.NaiveQuantize(level);
-                images.Add("NaiveQuantization-" + level, new GDImage32(image));
+                images.Add("NaiveQuantization" + level, new GDImage32(image));
             }
         }
     }

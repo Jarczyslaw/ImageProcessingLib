@@ -53,7 +53,12 @@
     </Compile>
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
     <Compile Include="Operations\ColorFiltrationOperation.cs" />
+    <Compile Include="Operations\InsertOperation.cs" />
+    <Compile Include="Operations\Parameters\PointParameter.cs" />
+    <Compile Include="Operations\Parameters\RectangleParameter.cs" />
+    <Compile Include="Operations\Parameters\SizeParameter.cs" />
     <Compile Include="Operations\ComplementOperation.cs" />
+    <Compile Include="Operations\CropOperation.cs" />
     <Compile Include="Operations\Filters\HighPassFiltersOperation.cs" />
     <Compile Include="Operations\Filters\LowPassFiltersOperation.cs" />
     <Compile Include="Operations\FlipOperation.cs" />

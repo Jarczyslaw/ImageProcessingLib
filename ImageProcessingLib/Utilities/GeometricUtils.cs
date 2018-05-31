@@ -16,7 +16,7 @@ namespace ImageProcessingLib.Utilities
         {
             m = Math.Max(a, c);
             n = Math.Min(b, d);
-            return m >= n;
+            return m <= n;
         }
     }
 }
