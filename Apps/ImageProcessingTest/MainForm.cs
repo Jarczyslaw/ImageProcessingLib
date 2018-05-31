@@ -94,6 +94,9 @@ namespace ImageProcessingTest
 
         private void ShowCurrentImage()
         {
+            if (cbResults.SelectedValue == null)
+                return;
+
             var image = cbResults.SelectedValue as GDImage32;
             pbImage.Image = image.Bitmap;
         }
