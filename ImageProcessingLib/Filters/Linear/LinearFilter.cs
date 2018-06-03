@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public class LinearFilter : IFilter
+    public abstract class LinearFilter : IFilter
     {
         public int Range { get; private set; }
         public int Size { get; private set; }
@@ -17,7 +17,7 @@ namespace ImageProcessingLib
             Validate(kernel);
 
             Size = kernel.GetLength(0);
-            Range = (int)Math.Floor(Size / 2d);
+            Range = Size / 2;
             KernelFlattening(multiplier, kernel);
             KernelLength = Kernel.Length;
         }
