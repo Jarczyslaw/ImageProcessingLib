@@ -12,14 +12,14 @@ namespace ImageProcessingLib.ImageProcessing
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                image.Set(x, y, ApplyColorFilter(pixel, filter));
+                image.Set(x, y, ApplyColorFilter(pixel, mask));
             });
             return image;
         }
 
-        public static Pixel32 ApplyColorFilter(Pixel32 pixel, ColorFilter filter)
+        public static Pixel32 ApplyColorFilter(Pixel32 pixel, int mask)
         {
-            var newData = pixel.Data & GetColorFilterMask(filter);
+            var newData = pixel.Data & mask;
             return new Pixel32(newData);
         }
 

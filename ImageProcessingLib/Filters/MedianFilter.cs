@@ -15,7 +15,7 @@ namespace ImageProcessingLib
             Validate(maskSize);
 
             Range = maskSize / 2;
-            Center = maskSize * maskSize / 2 + 1;
+            Center = maskSize * maskSize / 2;
         }
 
         public byte Apply(byte[] neighbourhood)
