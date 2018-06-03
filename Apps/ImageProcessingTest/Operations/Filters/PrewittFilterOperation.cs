@@ -15,10 +15,10 @@ namespace ImageProcessingTest.Operations
         {
             var image = originalImage.Copy();
             image.ApplyFilter(new PrewittFilter());
-            images.Add("SobelFilterAccurate", new GDImage32(image));
+            images.Add("PrewittFilterAccurate", new GDImage32(image));
             image = originalImage.Copy();
             image.ApplyFilter(new PrewittFilter(true));
-            images.Add("SobelFilterApproximation", new GDImage32(image));
+            images.Add("PrewittFilterApproximation", new GDImage32(image));
         }
     }
 }
