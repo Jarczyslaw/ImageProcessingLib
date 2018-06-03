@@ -9,17 +9,16 @@ using ImageProcessingLib.ImageProcessing;
 
 namespace ImageProcessingTest.Operations
 {
-    public class MedianFilterOperation : OperationBase
+    public class SobelFilterOperation : OperationBase
     {
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
-            var filters = new List<IFilter>() { new MedianFilter3(), new MedianFilter5() };
-            foreach(var filter in filters)
-            {
-                var image = originalImage.Copy();
-                image.ApplyFilter(filter);
-                images.Add(filter.GetType().Name, new GDImage32(image));
-            }
+            var image = originalImage.Copy();
+            image.ApplyFilter(new SobelFilter());
+            images.Add("SobelFilterAccurate", new GDImage32(image));
+            image = originalImage.Copy();
+            image.ApplyFilter(new SobelFilter(true));
+            images.Add("SobelFilterApproximation", new GDImage32(image));
         }
     }
 }

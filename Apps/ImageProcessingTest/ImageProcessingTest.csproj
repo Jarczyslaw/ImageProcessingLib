@@ -54,7 +54,10 @@
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
     <Compile Include="Operations\ColorFiltrationOperation.cs" />
     <Compile Include="Operations\Filters\GaussianFiltersOperation.cs" />
-    <Compile Include="Operations\Filters\MedianFilterOperation.cs" />
+    <Compile Include="Operations\Filters\LaplaceFiltersOperation.cs" />
+    <Compile Include="Operations\Filters\MedianFiltersOperation.cs" />
+    <Compile Include="Operations\Filters\PrewittFilterOperation.cs" />
+    <Compile Include="Operations\Filters\SobelFilterOperation.cs" />
     <Compile Include="Operations\InsertOperation.cs" />
     <Compile Include="Operations\Parameters\PointParameter.cs" />
     <Compile Include="Operations\Parameters\RectangleParameter.cs" />

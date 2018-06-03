@@ -32,20 +32,16 @@ namespace ImageProcessingLib
 
         private void Validate(int[,] kernel)
         {
-            if (kernel.GetLength(0) != kernel.GetLength(1))
-                throw new ArgumentException("Kernel must to be a square matrix");
-
-            if (kernel.GetLength(0) % 2 == 0)
-                throw new ArgumentException("Kernel sizes must be odd");
+            if (!ArrayUtils.IsFilterMask(kernel))
+                throw new ArgumentException("Filter mask must be square, with odd number of rows and columns. Filter mask must be higher or equal than 3");
         }
 
         private void KernelFlattening(double multiplier, int[,] kernel)
         {
-            Kernel = new double[Size * Size];
-            int index = 0;
-            for (int i = 0; i < Size; i++)
-                for (int j = 0; j < Size; j++)
-                    Kernel[index++] = multiplier * kernel[i, j];
+            var flat = ArrayUtils.Flatten(kernel);
+            Kernel = new double[flat.Length];
+            for (int i = 0; i < flat.Length; i++)
+                Kernel[i] = multiplier * flat[i];
         }
     }
 }

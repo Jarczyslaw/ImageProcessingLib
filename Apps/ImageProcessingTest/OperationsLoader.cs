@@ -15,6 +15,7 @@ namespace ImageProcessingTest
             var assembly = Assembly.GetExecutingAssembly();
             return assembly.GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(OperationBase)))
+                .OrderBy(t => t.Name)
                 .ToList();
         }
 
