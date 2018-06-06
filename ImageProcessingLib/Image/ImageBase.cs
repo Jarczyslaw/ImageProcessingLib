@@ -42,10 +42,20 @@ namespace ImageProcessingLib
             return x + y * Width;
         }
 
+        public int GetData(int i)
+        {
+            return Data[i];
+        }
+
         public int GetData(int x, int y)
         {
             var index = GetIndex(x, y);
             return Data[index];
+        }
+
+        public void SetData(int i, int data)
+        {
+            Data[i] = data;
         }
 
         public void SetData(int x, int y, int data)

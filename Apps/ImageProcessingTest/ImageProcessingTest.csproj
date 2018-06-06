@@ -59,6 +59,7 @@
     <Compile Include="Operations\Filters\PrewittFilterOperation.cs" />
     <Compile Include="Operations\Filters\SobelFilterOperation.cs" />
     <Compile Include="Operations\InsertOperation.cs" />
+    <Compile Include="Operations\NoiseOperation.cs" />
     <Compile Include="Operations\Parameters\PointParameter.cs" />
     <Compile Include="Operations\Parameters\RectangleParameter.cs" />
     <Compile Include="Operations\Parameters\SizeParameter.cs" />

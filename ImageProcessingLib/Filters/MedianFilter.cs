@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public abstract class MedianFilter : IFilter
+    public class MedianFilter : IFilter
     {
         public int Range { get; private set; }
         public int Center { get; private set; }

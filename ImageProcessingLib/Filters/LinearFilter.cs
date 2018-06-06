@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public abstract class LinearFilter : IFilter
+    public class LinearFilter : IFilter
     {
         public int Range { get; private set; }
         public int Size { get; private set; }

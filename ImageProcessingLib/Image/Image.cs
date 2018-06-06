@@ -42,9 +42,20 @@ namespace ImageProcessingLib
             return new Image<TPixelType>(this);
         }
 
+        public void Set(int i, TPixelType pixel)
+        {
+            SetData(i, pixel.Data);
+        }
+
         public void Set(int x, int y, TPixelType pixel)
         {
             SetData(x, y, pixel.Data);
+        }
+
+        public TPixelType Get(int i)
+        {
+            var data = GetData(i);
+            return pixelSource.From(data);
         }
 
         public TPixelType Get(int x, int y)

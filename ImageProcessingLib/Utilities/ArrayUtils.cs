@@ -29,5 +29,22 @@ namespace ImageProcessingLib.Utilities
             var rows = arr.GetLength(0);
             return IsSquare(arr) && rows >= 3 && rows % 2 == 1;
         }
+
+        public static T[,] SubArray<T>(T[,] arr, int x, int y, int rows, int cols)
+        {
+            var result = new T[rows, cols];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    result[i, j] = arr[i + x, j + y];
+            return result;
+        }
+
+        public static T[] SubArray<T>(T[] arr, int x, int width)
+        {
+            var result = new T[width];
+            for (int i = 0; i < width; i++)
+                result[i] = arr[i + x];
+            return result;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public abstract class DirectionalFilter : IFilter
+    public class DirectionalFilter : IFilter
     {
         public int[] HorizontalMask { get; private set; }
         public int[] VerticalMask { get; private set; }
