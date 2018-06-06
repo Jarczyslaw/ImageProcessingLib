@@ -46,5 +46,14 @@ namespace ImageProcessingLib.Utilities
                 result[i] = arr[i + x];
             return result;
         }
+
+        public static T[,] Reshape<T>(T[] arr, int rows, int cols)
+        {
+            var result = new T[rows, cols];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    result[i, j] = arr[i * cols + j];
+            return result;
+        }
     }
 }

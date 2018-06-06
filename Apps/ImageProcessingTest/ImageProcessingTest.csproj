@@ -54,6 +54,7 @@
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
     <Compile Include="Operations\ColorFiltrationOperation.cs" />
     <Compile Include="Operations\Filters\GaussianFiltersOperation.cs" />
+    <Compile Include="Operations\Filters\KuwaharaFilterOperation.cs" />
     <Compile Include="Operations\Filters\LaplaceFiltersOperation.cs" />
     <Compile Include="Operations\Filters\MedianFiltersOperation.cs" />
     <Compile Include="Operations\Filters\PrewittFilterOperation.cs" />
