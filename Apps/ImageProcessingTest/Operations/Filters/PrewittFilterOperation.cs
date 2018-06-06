@@ -1,6 +1,5 @@
 ﻿using ImageProcessingLib;
 using ImageProcessingLib.GDI;
-using ImageProcessingLib.ImageProcessing;
 using System;
 using System.Collections.Generic;
 using System.Linq;

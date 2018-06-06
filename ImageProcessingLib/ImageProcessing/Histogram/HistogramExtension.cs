@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ImageProcessingLib.ImageProcessing
+namespace ImageProcessingLib
 {
     public static class HistogramExtension
     {

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
-using ImageProcessingLib.ImageProcessing;
 
 namespace ImageProcessingTest.Operations
 {

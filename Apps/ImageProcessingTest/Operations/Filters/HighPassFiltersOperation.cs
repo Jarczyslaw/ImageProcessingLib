@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.ImageProcessing;
 using ImageProcessingLib.GDI;
 using System.IO;
 

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ImageProcessingLib.ImageProcessing
+namespace ImageProcessingLib
 {
     internal class PixelAccumulator
     {
