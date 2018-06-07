@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		..\ImageProcessing - Copy\SolutionItems\jt_icon.ico = ..\ImageProcessing - Copy\SolutionItems\jt_icon.ico
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{E89D97B1-CED4-4F10-B98C-91A975C988B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Apps\Benchmarking\Benchmarking.csproj", "{E89D97B1-CED4-4F10-B98C-91A975C988B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{ED14173D-1898-45F3-9864-8939F367956C}"
 EndProject
@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingTest", "Apps
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIP", "FIP\FIP.csproj", "{AF1D3A2D-4CFC-42B6-BDA8-11A0AF7E159C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPTvsFIP", "IPTvsFIP\IPTvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPTvsFIP", "Apps\IPTvsFIP\IPTvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +87,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{E89D97B1-CED4-4F10-B98C-91A975C988B7} = {ED14173D-1898-45F3-9864-8939F367956C}
 		{694D1F16-1834-43F3-AAE8-C56A98511875} = {ED14173D-1898-45F3-9864-8939F367956C}
 		{2C3B756D-1F6E-4907-A48F-2211CF602010} = {ED14173D-1898-45F3-9864-8939F367956C}
 		{08C847A4-C890-46FD-BDD8-C2D4803091A8} = {ED14173D-1898-45F3-9864-8939F367956C}

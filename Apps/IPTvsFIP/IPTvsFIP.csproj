@@ -81,23 +81,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Apps\Commons\Commons.csproj">
+    <ProjectReference Include="..\Commons\Commons.csproj">
       <Project>{2c3b756d-1f6e-4907-a48f-2211cf602010}</Project>
       <Name>Commons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FIP\FIP.csproj">
+    <ProjectReference Include="..\..\FIP\FIP.csproj">
       <Project>{af1d3a2d-4cfc-42b6-bda8-11a0af7e159c}</Project>
       <Name>FIP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
+    <ProjectReference Include="..\..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
       <Project>{523c535d-5b0c-4c0d-af72-c3bfd14c2269}</Project>
       <Name>ImageProcessingLib.GDI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
+    <ProjectReference Include="..\..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}</Project>
       <Name>ImageProcessingLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ImagesFolder\ImagesFolder.csproj">
+    <ProjectReference Include="..\..\ImagesFolder\ImagesFolder.csproj">
       <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
     </ProjectReference>
