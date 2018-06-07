@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>IPTvsFIP</RootNamespace>
-    <AssemblyName>IPTvsFIP</AssemblyName>
+    <RootNamespace>IPLvsFIP</RootNamespace>
+    <AssemblyName>IPLvsFIP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,6 +54,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultSources\EmptyResult.cs" />
+    <Compile Include="ResultSources\Filters\LaplaceFilterResult.cs" />
+    <Compile Include="ResultSources\GrayscaleResult.cs" />
     <Compile Include="ResultSources\IResultSource.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -66,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,8 +105,6 @@
       <Name>ImagesFolder</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ResultSources\Filters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

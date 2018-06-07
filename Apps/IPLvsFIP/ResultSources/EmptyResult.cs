@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
 
-namespace IPTvsFIP.ResultSources
+namespace IPLvsFIP.ResultSources
 {
     public class EmptyResult : IResultSource
     {
-        public Bitmap GetFIPResults(Bitmap originalImage)
+        public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
             return originalImage;
         }
 
-        public Image<Pixel32> GetIPTResult(Image<Pixel32> originalImage)
+        public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
             return originalImage;
         }

@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingTest", "Apps
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIP", "FIP\FIP.csproj", "{AF1D3A2D-4CFC-42B6-BDA8-11A0AF7E159C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPTvsFIP", "Apps\IPTvsFIP\IPTvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPLvsFIP", "Apps\IPLvsFIP\IPLvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
