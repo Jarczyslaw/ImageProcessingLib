@@ -88,7 +88,7 @@ namespace ImageProcessingTest
             }
             catch(Exception e)
             {
-                MessageBoxEx.ShowError(e);
+                MessageBoxEx.ShowException(e);
             }
         }
 
@@ -152,7 +152,7 @@ namespace ImageProcessingTest
                 }
                 catch (Exception exc)
                 {
-                    MessageBoxEx.ShowError(exc);
+                    MessageBoxEx.ShowException(exc);
                 }
             }
         }
@@ -182,7 +182,7 @@ namespace ImageProcessingTest
                 }
                 catch (Exception exc)
                 {
-                    MessageBoxEx.ShowError(exc);
+                    MessageBoxEx.ShowException(exc);
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace ImageProcessingTest
             }
             catch(Exception exc)
             {
-                MessageBoxEx.ShowError(exc);
+                MessageBoxEx.ShowException(exc);
             }
         }
     }

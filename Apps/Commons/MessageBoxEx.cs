@@ -14,9 +14,14 @@ namespace Commons
             return MessageBox.Show(content, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static DialogResult ShowError(Exception exception)
+        public static DialogResult ShowException(Exception exception)
         {
             return MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static DialogResult ShowError(string error)
+        {
+            return MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static DialogResult ShowQuestion(string content, MessageBoxButtons buttons)
