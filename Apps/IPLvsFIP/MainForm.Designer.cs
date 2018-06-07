@@ -47,7 +47,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslInfo});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 751);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 551);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1092, 22);
             this.statusStrip1.TabIndex = 0;
@@ -70,7 +70,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 751);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 551);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -79,7 +79,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 745);
+            this.groupBox1.Size = new System.Drawing.Size(540, 545);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ImageProcessingLib";
@@ -89,7 +89,7 @@
             this.pbIPL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbIPL.Location = new System.Drawing.Point(3, 16);
             this.pbIPL.Name = "pbIPL";
-            this.pbIPL.Size = new System.Drawing.Size(534, 726);
+            this.pbIPL.Size = new System.Drawing.Size(534, 526);
             this.pbIPL.TabIndex = 0;
             this.pbIPL.TabStop = false;
             // 
@@ -99,7 +99,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(549, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 745);
+            this.groupBox2.Size = new System.Drawing.Size(540, 545);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FIP";
@@ -109,7 +109,7 @@
             this.pbFIP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbFIP.Location = new System.Drawing.Point(3, 16);
             this.pbFIP.Name = "pbFIP";
-            this.pbFIP.Size = new System.Drawing.Size(534, 726);
+            this.pbFIP.Size = new System.Drawing.Size(534, 526);
             this.pbFIP.TabIndex = 1;
             this.pbFIP.TabStop = false;
             // 
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 773);
+            this.ClientSize = new System.Drawing.Size(1092, 573);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "MainForm";

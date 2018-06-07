@@ -16,7 +16,7 @@ namespace IPLvsFIP
 {
     public partial class MainForm : Form
     {
-        private IResultSource result = new GrayscaleResult();
+        private IResultSource result = new LaplaceFilterResult();
 
         private List<GDImage32> images;
 
@@ -37,8 +37,9 @@ namespace IPLvsFIP
         {
             try
             {
-                var originalImage1 = new GDImage32(ImagesFolder.Images.Lena);
-                var originalImage2 = new GDImage32(ImagesFolder.Images.Lena);
+                var sourceImage = ImagesFolder.Images.Lena;
+                var originalImage1 = new GDImage32(sourceImage);
+                var originalImage2 = new GDImage32(sourceImage);
 
                 var fipImg = new GDImage32(result.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap));
                 var iplImg = new GDImage32(result.GetIPLResult(originalImage2.Image));

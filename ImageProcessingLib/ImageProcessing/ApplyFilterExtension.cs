@@ -10,7 +10,7 @@ namespace ImageProcessingLib
         public static Image<Pixel32> ApplyFilter(this Image<Pixel32> image, IFilter filter)
         {
             var originalImage = image.Copy();
-            return originalImage.ForEachNeighbourhood(filter.Range, (x, y, neighbourhood) =>
+            originalImage.ForEachNeighbourhood(filter.Range, (x, y, neighbourhood) =>
             {
                 var pixel = originalImage.Get(x, y);
                 var r = filter.Apply(GetComponentsFromNeighbourhood(neighbourhood, (p) => p.R));
@@ -18,6 +18,7 @@ namespace ImageProcessingLib
                 var b = filter.Apply(GetComponentsFromNeighbourhood(neighbourhood, (p) => p.B));
                 image.Set(x, y, new Pixel32(pixel.A, r, g, b));
             });
+            return image;
         }
 
         private static byte[] GetComponentsFromNeighbourhood(Pixel32[] neightbourhood, Func<Pixel32, byte> extractFunc)
