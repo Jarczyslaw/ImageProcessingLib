@@ -16,7 +16,7 @@ namespace IPLvsFIP
 {
     public partial class MainForm : Form
     {
-        private IResultSource result = new PrewittFilterResult();
+        private IResultSource result = new SobelFilterResult();
 
         private List<GDImage32> images;
 

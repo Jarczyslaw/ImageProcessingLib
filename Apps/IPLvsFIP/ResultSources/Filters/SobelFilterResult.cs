@@ -9,16 +9,16 @@ using ImageProcessingLib;
 
 namespace IPLvsFIP.ResultSources
 {
-    public class PrewittFilterResult : IResultSource
+    public class SobelFilterResult : IResultSource
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImagePrewittFilterColor(originalImage);
+            return fip.ImageSobelFilterColor(originalImage);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new PrewittFilter(true));
+            return originalImage.ApplyFilter(new SobelFilter(true));
         }
     }
 }
