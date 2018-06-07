@@ -16,7 +16,7 @@ namespace IPLvsFIP
 {
     public partial class MainForm : Form
     {
-        private IResultSource result = new LaplaceFilterResult();
+        private IResultSource result = new PrewittFilterResult();
 
         private List<GDImage32> images;
 
@@ -41,15 +41,27 @@ namespace IPLvsFIP
                 var originalImage1 = new GDImage32(sourceImage);
                 var originalImage2 = new GDImage32(sourceImage);
 
-                var fipImg = new GDImage32(result.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap));
-                var iplImg = new GDImage32(result.GetIPLResult(originalImage2.Image));
+                Bitmap fipBitmap = null;
+                var fipTime = ExecTime.Run(() =>
+                {
+                    fipBitmap = result.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap);
+                });
+                var fipResult = new GDImage32(fipBitmap);
 
-                pbFIP.Image = fipImg.Bitmap;
-                pbIPL.Image = iplImg.Bitmap;
+                Image<Pixel32> iplImage = null;
+                var iplTime = ExecTime.Run(() =>
+                {
+                    iplImage = result.GetIPLResult(originalImage2.Image);
+                });
+                var iplResult = new GDImage32(iplImage);
 
-                tsslInfo.Text = string.Format("MSE: {0:0.00}", ErrorMetrics.MSE(fipImg.Image, iplImg.Image));
+                pbFIP.Image = fipResult.Bitmap;
+                pbIPL.Image = iplResult.Bitmap;
 
-                images = new List<GDImage32>() { fipImg, iplImg, originalImage1, originalImage2 };
+                tsslInfo.Text = string.Format("MSE: {0:0.00}, IPL: {1:0}ms, FIP: {2:0}ms", 
+                    ErrorMetrics.MSE(fipResult.Image, iplResult.Image), iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
+
+                images = new List<GDImage32>() { fipResult, iplResult, originalImage1, originalImage2 };
             }
             catch (Exception e)
             {
