@@ -9,7 +9,7 @@ namespace ImageProcessingLib
         public LaplaceFilter4() : base(1d,
             new int[,]
             {
-                { -1, -1, -1 , -1, -1},
+                { -1, -1, -1, -1, -1 },
                 { -1, -1, -1, -1, -1 },
                 { -1, -1, 24, -1, -1 },
                 { -1, -1, -1, -1, -1 },

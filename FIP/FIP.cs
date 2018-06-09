@@ -19,6 +19,13 @@ namespace FIP
             return new Double[3, 3] { { 0.1111, 0.1111, 0.1111 }, { 0.1111, 0.1111, 0.1111 }, { 0.1111, 0.1111, 0.1111 }, };
         }
 
+        public int[,] LPF1Kernel()
+        {
+            return new int[3, 3] { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 }, };
+        }
+
+        public double LPF1Coeff { get { return 9d; } }
+
         /// <summary>
         /// Low pass filter
         /// </summary>
@@ -28,6 +35,13 @@ namespace FIP
             return new Double[3, 3] { { 0.1, 0.1, 0.1 }, { 0.1, 0.2, 0.1 }, { 0.1, 0.1, 0.1 }, };
         }
 
+        public int[,] LPF2Kernel()
+        {
+            return new int[,] { { 1, 1, 1 }, { 1, 2, 1 }, { 1, 1, 1 }, };
+        }
+
+        public double LPF2Coeff { get { return 10d; } }
+
         /// <summary>
         /// Low pass filter
         /// </summary>
@@ -36,6 +50,13 @@ namespace FIP
         {
             return new Double[3, 3] { { 0.0625, 0.125, 0.0625 }, { 0.125, 0.25, 0.125 }, { 0.0625, 0.125, 0.0625 }, };
         }
+
+        public int[,] LPF3Kernel()
+        {
+            return new int[,] { { 1, 2, 1 }, { 2, 4, 2 }, { 1, 2, 1 }, };
+        }
+
+        public double LPF3Coeff { get { return 16d; } }
 
         /// <summary>
         /// Low pass filter
@@ -51,6 +72,13 @@ namespace FIP
             { 0.00366, 0.01465, 0.02564, 0.01465, 0.00366 } 
             };
         }
+
+        public int[,] LPF4Kernel()
+        {
+            return new int[,] { { 1, 4, 7, 4, 1 },{ 4, 16, 26, 16, 4 },{ 7, 26, 41, 26, 7},{ 4, 16, 26, 16, 4 }, { 1, 4, 7, 4, 1 } };
+        }
+
+        public double LPF4Coeff { get { return 273d; } }
 
         /// <summary>
         /// High pass filter
