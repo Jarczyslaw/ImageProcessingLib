@@ -5094,7 +5094,7 @@ namespace FIP
                     }
 
                     int tmp3 = 0;
-                    for (int i = (FilterSize - 1); i < roi.GetLength(0); i++)
+                    for (int i = (FilterSize - 1); i < roi.GetLength(1); i++)
                     {
                         for (int j = 0; j < FilterSize; j++)
                         {
@@ -5109,7 +5109,7 @@ namespace FIP
                     }
 
                     int tmp4 = 0;
-                    for (int i = (FilterSize - 1); i < roi.GetLength(0); i++)
+                    for (int i = (FilterSize - 1); i < roi.GetLength(1); i++)
                     {
                         for (int j = (FilterSize - 1); j < roi.GetLength(1); j++)
                         {

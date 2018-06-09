@@ -62,7 +62,7 @@ namespace ImageProcessingLib
             SubArrayStatistics bestStatistics = statistics.First();
             for (int i = 1; i < statistics.Count; i++)
             {
-                if (bestStatistics.Variance < statistics[i].Variance)
+                if (statistics[i].Variance < bestStatistics.Variance)
                     bestStatistics = statistics[i];
             }
             return MathUtils.ByteClamp(bestStatistics.MeanValue);

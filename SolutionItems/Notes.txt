@@ -1,1 +1,2 @@
 differences between FIP and IPL might be caused by rounding/truncating results
+there is a bug in FIP Kuwahara implementation - invalid for conditions when creating subareas
