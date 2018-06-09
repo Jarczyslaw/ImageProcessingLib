@@ -13,11 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagesFolder", "ImagesFolder\ImagesFolder.csproj", "{3B4B5C35-BAC6-4166-885C-C9788A3DF32C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{E41158B3-C828-4636-A145-464F9092228D}"
-	ProjectSection(SolutionItems) = preProject
-		..\ImageProcessing - Copy\SolutionItems\jt_icon.ico = ..\ImageProcessing - Copy\SolutionItems\jt_icon.ico
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Apps\Benchmarking\Benchmarking.csproj", "{E89D97B1-CED4-4F10-B98C-91A975C988B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{ED14173D-1898-45F3-9864-8939F367956C}"
@@ -31,6 +26,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIP", "FIP\FIP.csproj", "{AF1D3A2D-4CFC-42B6-BDA8-11A0AF7E159C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPLvsFIP", "Apps\IPLvsFIP\IPLvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{7D9CE5D5-3142-4EBB-BAF6-98D7A053943B}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\jt_icon.ico = SolutionItems\jt_icon.ico
+		SolutionItems\Notes.txt = SolutionItems\Notes.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
