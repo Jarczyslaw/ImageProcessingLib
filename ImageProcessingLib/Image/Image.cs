@@ -70,17 +70,13 @@ namespace ImageProcessingLib
             var result = new TPixelType[size * size];
 
             var startX = x - range;
+            var endX = x + range;
             var startY = y - range;
+            var endY = y + range;
             int index = 0;
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    int sourceJ = ClampWidth(startX + j);
-                    int sourceI = ClampHeight(startY + i);
-                    result[index++] = Get(sourceJ, sourceI);
-                }
-            }
+            for (int i = startY; i <= endY; i++)
+                for (int j = startX; j <= endX; j++)
+                    result[index++] = Get(ClampWidth(j), ClampHeight(i));
             return result;
         }
 
