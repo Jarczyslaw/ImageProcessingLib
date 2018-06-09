@@ -17,7 +17,7 @@ namespace IPLvsFIP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new LaplaceFilterResult()));
+            Application.Run(new MainForm(new LowPassFilterResult()));
         }
     }
 }
