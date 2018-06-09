@@ -13,7 +13,7 @@ namespace ImageProcessingLib
         public int Range { get; private set; }
         public bool UseApproximation { get; private set; }
 
-        private Func<byte, byte, double> ResultCalc;
+        private Func<int, int, double> ResultCalc;
 
         public DirectionalFilter(int[,] horizontalMask, int[,] verticalMask, bool useApproximation)
         {
@@ -37,23 +37,23 @@ namespace ImageProcessingLib
             return MathUtils.RoundToByte(ResultCalc(horizontalValue, verticalValue));
         }
 
-        private double AccurateResult(byte horizontalValue, byte verticalValue)
+        private double AccurateResult(int horizontalValue, int verticalValue)
         {
             return Math.Sqrt(horizontalValue * horizontalValue + verticalValue * verticalValue);
         }
 
-        private double ApproximateResult(byte horizontalValue, byte verticalValue)
+        private double ApproximateResult(int horizontalValue, int verticalValue)
         {
             return Math.Abs(horizontalValue) + Math.Abs(verticalValue);
         }
 
-        private byte ApplyDirectionMask(byte[] neighbourhood, int[] mask)
+        private int ApplyDirectionMask(byte[] neighbourhood, int[] mask)
         {
             var len = neighbourhood.Length;
             int result = 0;
             for (int i = 0; i < len; i++)
                 result += neighbourhood[i] * mask[i];
-            return MathUtils.RoundToByte(result);
+            return result;
         }
 
         private void Validate(int[,] horizontalMask, int[,] verticalMask)
