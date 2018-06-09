@@ -8,16 +8,21 @@ namespace ImageProcessingLib
     {
         public static double MSE(Image<Pixel32> originalImage, Image<Pixel32> image)
         {
+            return MSE(originalImage, image, 0, 0, originalImage.Width, originalImage.Height);
+        }
+
+        public static double MSE(Image<Pixel32> originalImage, Image<Pixel32> image, int x, int y, int width, int height)
+        {
             if (originalImage.Width != image.Width || originalImage.Height != image.Height)
                 throw new ArgumentException("Can not calculate metrics for images with different sizes");
 
             var errorR = 0d;
             var errorG = 0d;
             var errorB = 0d;
-            image.ForEach((x, y) =>
+            image.ForBlock(x, y, width, height, (i, j) =>
             {
-                var originalPixel = originalImage.Get(x, y);
-                var pixel = image.Get(x, y);
+                var originalPixel = originalImage.Get(i, j);
+                var pixel = image.Get(i, j);
                 errorR += Math.Pow(originalPixel.R - pixel.R, 2d);
                 errorG += Math.Pow(originalPixel.G - pixel.G, 2d);
                 errorB += Math.Pow(originalPixel.B - pixel.B, 2d);
@@ -27,7 +32,12 @@ namespace ImageProcessingLib
 
         public static double PSNR(Image<Pixel32> originalImage, Image<Pixel32> image)
         {
-            return 10d * Math.Log10(255d * 255d / MSE(originalImage, image));
+            return 10d * Math.Log10(255d * 255d / MSE(originalImage, image, 0, 0, originalImage.Width, originalImage.Height));
+        }
+
+        public static double PSNR(Image<Pixel32> originalImage, Image<Pixel32> image, int x, int y, int width, int height)
+        {
+            return 10d * Math.Log10(255d * 255d / MSE(originalImage, image, x, y, width, height));
         }
     }
 }

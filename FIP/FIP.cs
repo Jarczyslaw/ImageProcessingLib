@@ -98,7 +98,7 @@ namespace FIP
         /// Laplace filter
         /// </summary>
         /// <returns>Laplace filter</returns>
-        public int[,] LaplaceF1()
+        public int[,] LaplaceF3()
         {
             return new int[3, 3] { { -1, -1, -1 }, { -1, 8, -1 }, { -1, -1, -1 }, };
         }
@@ -107,7 +107,7 @@ namespace FIP
         /// Laplace filter
         /// </summary>
         /// <returns>Laplace filter</returns>
-        public int[,] LaplaceF2()
+        public int[,] LaplaceF1()
         {
             return new int[3, 3] { { 0, -1, 0 }, { -1, 4, -1 }, { 0, -1, 0 }, };
         }
@@ -116,7 +116,7 @@ namespace FIP
         /// Laplace filter
         /// </summary>
         /// <returns>Laplace filter</returns>
-        public int[,] LaplaceF3()
+        public int[,] LaplaceF2()
         {
             return new int[3, 3] { { 1, -2, 1 }, { -2, 4, -2 }, { 1, -2, 1 }, };
         }
