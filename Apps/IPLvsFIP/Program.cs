@@ -1,4 +1,4 @@
-﻿using IPLvsFIP.ResultSources;
+﻿using IPLvsFIP.Comparisons;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,7 +20,7 @@ namespace IPLvsFIP
             ChangeCultureSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new ColorAccentResult()));
+            Application.Run(new MainForm(new ColorAccenComparison()));
         }
 
         private static void ChangeCultureSettings()

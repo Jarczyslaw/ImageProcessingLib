@@ -10,22 +10,22 @@ using System.Windows.Forms;
 using Commons;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
-using IPLvsFIP.ResultSources;
+using IPLvsFIP.Comparisons;
 
 namespace IPLvsFIP
 {
     public partial class MainForm : Form
     {
-        private IResultSource result;
+        private IComparison comparison;
 
         private List<GDImage32> images;
 
-        public MainForm(IResultSource result)
+        public MainForm(IComparison comparison)
         {
-            this.result = result;
+            this.comparison = comparison;
 
             InitializeComponent();
-            Text = "IPL vs FIP: " + result.GetType().Name.Replace("Result", string.Empty);
+            Text = "IPL vs FIP: " + comparison.GetType().Name.Replace("Comparison", string.Empty);
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -46,14 +46,14 @@ namespace IPLvsFIP
                 Bitmap fipBitmap = null;
                 var fipTime = ExecTime.Run(() =>
                 {
-                    fipBitmap = result.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap);
+                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap);
                 });
                 var fipResult = new GDImage32(fipBitmap);
 
                 Image<Pixel32> iplImage = null;
                 var iplTime = ExecTime.Run(() =>
                 {
-                    iplImage = result.GetIPLResult(originalImage2.Image);
+                    iplImage = comparison.GetIPLResult(originalImage2.Image);
                 });
                 var iplResult = new GDImage32(iplImage);
 
