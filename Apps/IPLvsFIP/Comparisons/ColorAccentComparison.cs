@@ -9,7 +9,7 @@ using ImageProcessingLib;
 
 namespace IPLvsFIP.Comparisons
 {
-    public class ColorAccenComparison : IComparison
+    public class ColorAccentComparison : IComparison
     {
         double hue = 270d;
         double range = 50d;

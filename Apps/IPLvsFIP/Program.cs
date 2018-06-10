@@ -20,7 +20,7 @@ namespace IPLvsFIP
             ChangeCultureSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new ColorAccenComparison()));
+            Application.Run(new MainForm(new ColorAccentComparison()));
         }
 
         private static void ChangeCultureSettings()
