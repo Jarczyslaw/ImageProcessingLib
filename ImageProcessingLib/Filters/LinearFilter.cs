@@ -15,7 +15,7 @@ namespace ImageProcessingLib
 
         public LinearFilter(double multiplier, int[,] kernel)
         {
-            Validate(kernel);
+            ValidationUtils.IsFilterMask(kernel);
 
             Size = kernel.GetLength(0);
             Range = Size / 2;
@@ -30,12 +30,6 @@ namespace ImageProcessingLib
             for (int i = 0; i < KernelLength; i++)
                 result += Kernel[i] * neighbourhood[i];
             return MathUtils.RoundToByte(result * Multiplier);
-        }
-
-        private void Validate(int[,] kernel)
-        {
-            if (!ArrayUtils.IsFilterMask(kernel))
-                throw new ArgumentException("Filter mask must be square, with odd number of rows and columns. Filter mask must be higher or equal than 3");
         }
     }
 }

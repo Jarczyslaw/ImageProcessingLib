@@ -40,7 +40,7 @@ namespace ImageProcessingLib
 
         public KuwaharaFilter(int maskSize)
         {
-            MathUtils.IsMaskSize(maskSize);
+            ValidationUtils.IsMaskSize(maskSize);
             Range = maskSize / 2;
         }
 

@@ -13,7 +13,7 @@ namespace ImageProcessingLib
 
         public MedianFilter(int maskSize)
         {
-            MathUtils.IsMaskSize(maskSize);
+            ValidationUtils.IsMaskSize(maskSize);
 
             Range = maskSize / 2;
             Center = maskSize * maskSize / 2;

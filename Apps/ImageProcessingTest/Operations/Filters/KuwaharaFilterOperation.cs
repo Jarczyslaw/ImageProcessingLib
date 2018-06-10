@@ -12,7 +12,7 @@ namespace ImageProcessingTest.Operations
     {
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
-            var filters = new List<IFilter>() { new KuwaharaFilter2(), new KuwaharaFilter3() };
+            var filters = new List<IFilter>() { new KuwaharaFilter3(), new KuwaharaFilter5() };
             foreach (var filter in filters)
             {
                 var image = originalImage.Copy();

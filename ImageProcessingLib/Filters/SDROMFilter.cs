@@ -14,7 +14,7 @@ namespace ImageProcessingLib
 
         public SDROMFilter(int maskSize, int[] thresholds)
         {
-            MathUtils.IsMaskSize(maskSize);
+            ValidationUtils.IsMaskSize(maskSize);
 
             this.thresholds = thresholds;
             MaskSize = maskSize;

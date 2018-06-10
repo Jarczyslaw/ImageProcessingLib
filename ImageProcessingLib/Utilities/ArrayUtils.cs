@@ -19,17 +19,6 @@ namespace ImageProcessingLib.Utilities
             return result;
         }
 
-        public static bool IsSquare<T>(T[,] arr)
-        {
-            return arr.GetLength(0) == arr.GetLength(1);
-        }
-
-        public static bool IsFilterMask<T>(T[,] arr)
-        {
-            var rows = arr.GetLength(0);
-            return IsSquare(arr) && rows >= 3 && rows % 2 == 1;
-        }
-
         public static T[,] SubArray<T>(T[,] arr, int x, int y, int rows, int cols)
         {
             var result = new T[rows, cols];
