@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultSources\ColorAccentResult.cs" />
     <Compile Include="ResultSources\EmptyResult.cs" />
     <Compile Include="ResultSources\Filters\HighPassFilterResult.cs" />
     <Compile Include="ResultSources\Filters\KuwaharaFilterResult.cs" />

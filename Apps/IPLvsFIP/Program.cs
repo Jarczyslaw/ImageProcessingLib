@@ -20,7 +20,7 @@ namespace IPLvsFIP
             ChangeCultureSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new SDROMFilterResult()));
+            Application.Run(new MainForm(new ColorAccentResult()));
         }
 
         private static void ChangeCultureSettings()

@@ -13,7 +13,7 @@ namespace ImageProcessingTest.Operations
         public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var image = originalImage.Copy();
-            images.Add("ColorAccent", new GDImage32(image.ColorAccent(0d, 20d)));
+            images.Add("ColorAccent", new GDImage32(image.ColorAccent(Pixel32.Red, 40d)));
         }
     }
 }

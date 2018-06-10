@@ -51,5 +51,10 @@ namespace ImagesFolder
         {
             get { return Resources.HalfLena; }
         }
+
+        public static Bitmap Baboon
+        {
+            get { return Resources.Baboon; }
+        }
     }
 }

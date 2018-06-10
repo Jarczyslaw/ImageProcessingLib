@@ -50,6 +50,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\baboon.bmp" />
     <Content Include="Resources\halfLena.bmp" />
     <Content Include="Resources\lena.bmp" />
     <Content Include="Resources\lena_bw.bmp" />
