@@ -52,6 +52,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\BlackAndWhiteOperation.cs" />
+    <Compile Include="Operations\ColorAccentOperation.cs" />
     <Compile Include="Operations\ColorFiltrationOperation.cs" />
     <Compile Include="Operations\Filters\GaussianFiltersOperation.cs" />
     <Compile Include="Operations\Filters\KuwaharaFilterOperation.cs" />

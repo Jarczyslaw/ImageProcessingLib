@@ -97,33 +97,29 @@ namespace ImageProcessingLib
             get { return new Pixel32(0, 0, 0); }
         }
 
+        public static Pixel32 Cyan
+        {
+            get { return new Pixel32(0, 255, 255); }
+        }
+
+        public static Pixel32 Magenta
+        {
+            get { return new Pixel32(255, 0, 255); }
+        }
+
+        public static Pixel32 Yellow
+        {
+            get { return new Pixel32(255, 255, 0); }
+        }
+
         public Pixel32 Blank
         {
             get { return Black; }
         }
 
-        public double[] ToHSV()
+        public HSVSet ToHSV()
         {
-            var cmin = MathUtils.Min(R, G, B);
-            var cmax = MathUtils.Max(R, G, B);
-            var delta = cmax - cmin;
-
-            var h = 0d;
-            if (delta == 0)
-                h = 0d;
-            else if (cmax == R)
-                h = (((G - B) / (double)delta) % 6) * 60; 
-            else if (cmax == G)
-                h = (((B - R) / (double)delta) + 2) * 60;
-            else if (cmax == B)
-                h = (((R - G) / (double)delta) + 4) * 60;
-
-            var s = 0d;
-            if (cmax != 0)
-                s = 100d * delta / cmax;
-
-            var v = 100d * cmax / 255d;
-            return new double[] { h, s, v };
+            return new HSVSet(this);
         }
 
         public bool Equals(Pixel32 other)
