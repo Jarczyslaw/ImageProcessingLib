@@ -4028,8 +4028,9 @@ namespace FIP
             Bitmap image = OriginalImage;
             Bitmap image2 = new Bitmap(image.Width, image.Height);
 
-            int[] thresholds = new int[4] { 20, 40, 60, 80 };
-            int size = 3;
+            //int[] thresholds = new int[4] { 20, 40, 60, 80 }; // N = 3
+            int[] thresholds = new int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120 }; // N = 5
+            int size = 5;
 
             int range = (int)Math.Floor(Convert.ToDouble(size / 2));
 

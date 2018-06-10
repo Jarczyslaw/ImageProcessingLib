@@ -7,7 +7,11 @@ namespace ImageProcessingLib
     public class SDROMFilter5 : SDROMFilter
     {
         public SDROMFilter5() :
-            base(5, new int[] { 20, 40, 60, 80, 100 })
+            this(new int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120 })
+        { }
+
+        public SDROMFilter5(int[] thresholds) :
+            base(5, thresholds)
         { }
     }
 }

@@ -14,7 +14,7 @@ namespace ImageProcessingLib
 
         public SDROMFilter(int maskSize, int[] thresholds)
         {
-            ValidationUtils.IsMaskSize(maskSize);
+            Validate(maskSize, thresholds);
 
             this.thresholds = thresholds;
             MaskSize = maskSize;
@@ -28,9 +28,9 @@ namespace ImageProcessingLib
             var rom = neighbourhood.ToList();
             rom.RemoveAt(currentValueIndex);
             rom.Sort();
-
             var romSize = rom.Count;
             var romValue = (rom[currentValueIndex - 1] + rom[currentValueIndex]) / 2d;
+
             var rodSize = romSize / 2;
             var rod = new int[rodSize];
             for (int i = 0; i < rodSize; i++)
@@ -50,6 +50,14 @@ namespace ImageProcessingLib
                 }
             }
             return currentValue;
+        }
+
+        private void Validate(int maskSize, int[] thresholds)
+        {
+            ValidationUtils.IsMaskSize(maskSize);
+
+            if (thresholds.Length != (maskSize * maskSize - 1) / 2)
+                throw new ArgumentException("Thresholds must contain (maskSize ^ 2 - 1) / 2 elements");
         }
     }
 }

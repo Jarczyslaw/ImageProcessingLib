@@ -58,6 +58,7 @@
     <Compile Include="Operations\Filters\LaplaceFiltersOperation.cs" />
     <Compile Include="Operations\Filters\MedianFiltersOperation.cs" />
     <Compile Include="Operations\Filters\PrewittFilterOperation.cs" />
+    <Compile Include="Operations\Filters\SDROMFilterOperation.cs" />
     <Compile Include="Operations\Filters\SobelFilterOperation.cs" />
     <Compile Include="Operations\InsertOperation.cs" />
     <Compile Include="Operations\NoiseOperation.cs" />

@@ -18,7 +18,7 @@ namespace IPLvsFIP.ResultSources
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new SDROMFilter3());
+            return originalImage.ApplyFilter(new SDROMFilter5());
         }
     }
 }
