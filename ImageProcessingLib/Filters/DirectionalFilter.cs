@@ -62,7 +62,7 @@ namespace ImageProcessingLib
                 throw new ArgumentException("Filter masks must be square, with odd number of rows and columns. Filter mask must be higher or equal than 3");
 
             if (horizontalMask.GetLength(0) != verticalMask.GetLength(1))
-                throw new ArgumentException("Horizontal and vertical mask have different sizes");
+                throw new ArgumentException("Horizontal and vertical mask have same sizes");
         }
     }
 }

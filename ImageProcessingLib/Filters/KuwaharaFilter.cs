@@ -38,9 +38,10 @@ namespace ImageProcessingLib
 
         public int Range { get; private set; }
 
-        public KuwaharaFilter(int size)
+        public KuwaharaFilter(int maskSize)
         {
-            Range = size - 1;
+            MathUtils.IsMaskSize(maskSize);
+            Range = maskSize / 2;
         }
 
         public byte Apply(byte[] neighbourhood)

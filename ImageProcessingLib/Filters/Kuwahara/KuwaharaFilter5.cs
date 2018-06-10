@@ -4,8 +4,8 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public class KuwaharaFilter2 : KuwaharaFilter
+    public class KuwaharaFilter5 : KuwaharaFilter
     {
-        public KuwaharaFilter2() : base(2) { }
+        public KuwaharaFilter5() : base(5) { }
     }
 }

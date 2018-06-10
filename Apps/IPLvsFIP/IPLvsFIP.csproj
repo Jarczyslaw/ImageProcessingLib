@@ -62,6 +62,7 @@
     <Compile Include="ResultSources\Filters\LaplaceFilterResult.cs" />
     <Compile Include="ResultSources\Filters\LowPassFilterResult.cs" />
     <Compile Include="ResultSources\Filters\PrewittFilterResult.cs" />
+    <Compile Include="ResultSources\Filters\SDROMFilterResult.cs" />
     <Compile Include="ResultSources\Filters\SobelFilterResult.cs" />
     <Compile Include="ResultSources\GrayscaleResult.cs" />
     <Compile Include="ResultSources\IResultSource.cs" />

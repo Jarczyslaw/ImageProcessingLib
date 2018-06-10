@@ -85,5 +85,11 @@ namespace ImageProcessingLib.Utilities
         {
             return rad * 180d / Math.PI;
         }
+
+        public static void IsMaskSize(int maskSize)
+        {
+            if (maskSize < 3 || maskSize % 2 == 0)
+                throw new ArgumentException("Mask size must be odd and not less than 3");
+        }
     }
 }
