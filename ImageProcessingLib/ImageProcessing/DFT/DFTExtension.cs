@@ -13,7 +13,7 @@ namespace ImageProcessingLib
             var height = image.Height;
             var size = width * height;
             var sizeSqrt = Math.Sqrt(size);
-            var result = new ComplexNumber[width, height];
+            var result = new ComplexNumber[height, width];
             image.Grayscale();
             image.ForEach((x, y) =>
             {
@@ -23,7 +23,7 @@ namespace ImageProcessingLib
                     var phi = (double)x * i / width + (double)y * j / height;
                     sum += ComplexNumber.Exp(-ComplexNumber.ImaginaryOne * 2d * Math.PI * phi);
                 });
-                result[x, y] = sum / sizeSqrt;
+                result[y, x] = sum / sizeSqrt;
             });
             return result;
         }
@@ -32,15 +32,11 @@ namespace ImageProcessingLib
         {
             var width = image.Width;
             var height = image.Height;
-            var result = new Image<Pixel32>(width, height, Pixel32.Black);
-
             var dft = image.DFT();
             var magnitudes = GetMagnitudes(dft);
             var shiftedMagnitudes = Shift(magnitudes);
             var resultData = ArrayUtils.NormalizeWithLog10(shiftedMagnitudes);
-
-
-            return result;
+            return Image32Utils.GetGrayscaleImageFromArray(resultData);
         }
 
         private static double[,] GetMagnitudes(ComplexNumber[,] dft)
