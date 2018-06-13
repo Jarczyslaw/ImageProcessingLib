@@ -10,11 +10,15 @@ namespace ImageProcessingLib
 
         protected TPixelType pixelSource = new TPixelType();
 
-        public Image(int width, int height, bool clear = true)
+        public Image(int width, int height)
         {
             InitializeNew(width, height);
-            if (clear)
-                this.Clear();
+        }
+
+        public Image(int width, int height, TPixelType clearPixel)
+        {
+            InitializeNew(width, height);
+            ClearExtension.Clear(this, clearPixel);
         }
 
         public Image(Image<TPixelType> img)

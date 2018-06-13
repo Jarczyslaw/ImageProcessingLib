@@ -44,5 +44,42 @@ namespace ImageProcessingLib.Utilities
                     result[i, j] = arr[i * cols + j];
             return result;
         }
+
+        public static double Max(double[,] arr)
+        {
+            var rows = arr.GetLength(0);
+            var cols = arr.GetLength(1);
+            var max = arr[0, 0];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    var value = arr[i, j];
+                    if (value > max)
+                        max = value;
+                }
+            }
+            return max;
+        }
+
+        public static byte[,] NormalizeWithLog10(double[,] arr)
+        {
+            var rows = arr.GetLength(0);
+            var cols = arr.GetLength(1);
+            var max = Max(arr);
+            if (max == 0d)
+                throw new ArgumentException("Array can not be normalized because max value is equal to 0");
+
+            var result = new byte[rows, cols];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    var value = arr[i, j];
+                    result[i, j] = MathUtils.ByteClamp(255 * Math.Log10(1d + value) / Math.Log10(1d + max));
+                }
+            }
+            return result;
+        }
     }
 }
