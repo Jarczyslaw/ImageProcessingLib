@@ -97,5 +97,10 @@ namespace ImageProcessingLib
         {
             return new ComplexNumber(value, 0d);
         }
+
+        public override string ToString()
+        {
+            return string.Format("Re: {0}, Im: {1}", Real, Imaginary);
+        }
     }
 }

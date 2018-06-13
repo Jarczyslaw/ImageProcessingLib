@@ -89,6 +89,12 @@ namespace ImageProcessingLib
             OnResize?.Invoke();
         }
 
+        public TPixelType this[int i]
+        {
+            get { return Get(i); }
+            set { Set(i, value); }
+        }
+
         public TPixelType this[int x, int y]
         {
             get { return Get(x, y); }

@@ -30,8 +30,6 @@ namespace ImageProcessingLib
 
         public static Image<Pixel32> DFTImage(this Image<Pixel32> image)
         {
-            var width = image.Width;
-            var height = image.Height;
             var dft = image.DFT();
             var magnitudes = GetMagnitudes(dft);
             var shiftedMagnitudes = Shift(magnitudes);
