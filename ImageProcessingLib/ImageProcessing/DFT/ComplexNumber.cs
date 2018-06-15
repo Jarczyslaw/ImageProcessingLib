@@ -61,6 +61,11 @@ namespace ImageProcessingLib
             return new ComplexNumber(complex.Real, -complex.Imaginary);
         }
 
+        public static ComplexNumber Negate(ComplexNumber complex)
+        {
+            return new ComplexNumber(-complex.Real, -complex.Imaginary);
+        }
+
         public static ComplexNumber operator+(ComplexNumber left, ComplexNumber right)
         {
             return new ComplexNumber(left.Real + right.Real, left.Imaginary + right.Imaginary);
