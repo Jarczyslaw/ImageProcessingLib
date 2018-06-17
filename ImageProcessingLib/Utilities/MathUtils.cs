@@ -85,5 +85,30 @@ namespace ImageProcessingLib.Utilities
         {
             return rad * 180d / Math.PI;
         }
+
+        public static void Swap<T>(ref T left, ref T right)
+        {
+            T temp = left;
+            left = right;
+            right = temp;
+        }
+
+        public static void Orientate(ref byte val1, ref byte val2)
+        {
+            if (val1 > val2)
+                Swap(ref val1, ref val2);
+        }
+
+        public static void Orientate(ref int val1, ref int val2)
+        {
+            if (val1 > val2)
+                Swap(ref val1, ref val2);
+        }
+
+        public static void Orientate(ref double val1, ref double val2)
+        {
+            if (val1 > val2)
+                Swap(ref val1, ref val2);
+        }
     }
 }
