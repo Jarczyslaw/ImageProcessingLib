@@ -16,30 +16,66 @@ namespace IPLvsFIP
 {
     public partial class MainForm : Form
     {
-        private IComparison comparison;
         private Bitmap sourceImage;
         private List<GDImage32> images;
 
-        public MainForm(Bitmap sourceImage, IComparison comparison)
+        private string title = "IPL vs FIP";
+        private string selectedComparisonName;
+
+        public MainForm(Bitmap sourceImage)
         {
             this.sourceImage = sourceImage;
-            this.comparison = comparison;
 
             InitializeComponent();
-            Text = "IPL vs FIP: " + comparison.GetType().Name.Replace("Comparison", string.Empty);
+            InitializeControls();
         }
 
-        private async void MainForm_Load(object sender, EventArgs e)
+        private void InitializeControls()
         {
-            Application.UseWaitCursor = true;
-            await LoadResultsAsync();
-            Application.UseWaitCursor = false;
+            PopulateComparisonsItems();
+            tsslInfo.Text = string.Empty;
+            ProgressBarState(false);
+            Text = title;
         }
 
-        private void LoadResults()
+        private void PopulateComparisonsItems()
+        {
+            var comparisons = AssemblyUtils.GetTypesImplements<IComparison>()
+                .OrderBy(t => t.Name).ToList();
+
+            foreach (var comparison in comparisons)
+            {
+                var item = new ToolStripMenuItem()
+                {
+                    Text = comparison.Name.Replace("Comparison", string.Empty),
+                    Tag = (IComparison)Activator.CreateInstance(comparison)
+                };
+                item.Click += Item_Click;
+                tssdComparisons.DropDownItems.Add(item);
+            }
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+            var selectedMenuItem = sender as ToolStripMenuItem;
+            selectedComparisonName = selectedMenuItem.Text;
+            var comparison = selectedMenuItem.Tag as IComparison;
+            RunComparison(comparison);
+        }
+
+        private async void RunComparison(IComparison comparison)
+        {
+            StartProcessing();
+            await LoadResultsAsync(comparison);
+            StopProcessing();
+        }
+
+        private void LoadResults(IComparison comparison)
         {
             try
             {
+                DisposeImages();
+
                 var originalImage1 = new GDImage32(sourceImage);
                 var originalImage2 = new GDImage32(sourceImage);
 
@@ -61,7 +97,7 @@ namespace IPLvsFIP
                 pbIPL.Image = iplResult.Bitmap;
 
                 tsslInfo.Text = string.Format("MSE: {0:0.00}, IPL: {1:0}ms, FIP: {2:0}ms",
-                    GetMetrics(fipResult.Image, iplResult.Image), 
+                    GetMetrics(fipResult.Image, iplResult.Image),
                     iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
 
                 images = new List<GDImage32>() { fipResult, iplResult, originalImage1, originalImage2 };
@@ -80,18 +116,51 @@ namespace IPLvsFIP
             return ErrorMetrics.MSE(fipImage, iplImage, margin, margin, marginWidth, marginHeight);
         }
 
-        private async Task LoadResultsAsync()
+        private async Task LoadResultsAsync(IComparison comparison)
         {
-            await Task.Run(() => LoadResults());
+            await Task.Run(() => LoadResults(comparison));
+        }
+
+        private void UnloadImages()
+        {
+            pbFIP.Image = null;
+            pbIPL.Image = null;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DisposeImages();
+        }
+
+        private void DisposeImages()
         {
             if (images != null)
             {
                 foreach (var image in images)
                     image.Dispose();
             }
+        }
+
+        private void ProgressBarState(bool enabled)
+        {
+            tspbProgress.Enabled = enabled;
+            tspbProgress.Visible = enabled;
+        }
+
+        private void StartProcessing()
+        {
+            Text = string.Format("{0}: {1}", title, selectedComparisonName);
+            UnloadImages();
+            Application.UseWaitCursor = true;
+            ProgressBarState(true);
+            tssdComparisons.Enabled = false;
+        }
+
+        private void StopProcessing()
+        {
+            Application.UseWaitCursor = false;
+            ProgressBarState(false);
+            tssdComparisons.Enabled = true;
         }
     }
 }

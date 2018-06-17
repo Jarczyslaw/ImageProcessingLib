@@ -30,12 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tssdComparisons = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsslInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbIPL = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pbFIP = new System.Windows.Forms.PictureBox();
+            this.tsslDummy = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -47,17 +50,31 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslInfo});
+            this.tssdComparisons,
+            this.tsslInfo,
+            this.tsslDummy,
+            this.tspbProgress});
             this.statusStrip1.Location = new System.Drawing.Point(0, 551);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1092, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // tssdComparisons
+            // 
+            this.tssdComparisons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tssdComparisons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tssdComparisons.Image = ((System.Drawing.Image)(resources.GetObject("tssdComparisons.Image")));
+            this.tssdComparisons.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tssdComparisons.Name = "tssdComparisons";
+            this.tssdComparisons.Size = new System.Drawing.Size(90, 20);
+            this.tssdComparisons.Text = "Comparisons";
+            // 
             // tsslInfo
             // 
             this.tsslInfo.Name = "tsslInfo";
-            this.tsslInfo.Size = new System.Drawing.Size(0, 17);
+            this.tsslInfo.Size = new System.Drawing.Size(45, 17);
+            this.tsslInfo.Text = "tsslInfo";
             // 
             // tableLayoutPanel1
             // 
@@ -91,6 +108,7 @@
             this.pbIPL.Location = new System.Drawing.Point(3, 16);
             this.pbIPL.Name = "pbIPL";
             this.pbIPL.Size = new System.Drawing.Size(534, 526);
+            this.pbIPL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbIPL.TabIndex = 0;
             this.pbIPL.TabStop = false;
             // 
@@ -111,8 +129,22 @@
             this.pbFIP.Location = new System.Drawing.Point(3, 16);
             this.pbFIP.Name = "pbFIP";
             this.pbFIP.Size = new System.Drawing.Size(534, 526);
+            this.pbFIP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbFIP.TabIndex = 1;
             this.pbFIP.TabStop = false;
+            // 
+            // tsslDummy
+            // 
+            this.tsslDummy.Name = "tsslDummy";
+            this.tsslDummy.Size = new System.Drawing.Size(809, 17);
+            this.tsslDummy.Spring = true;
+            // 
+            // tspbProgress
+            // 
+            this.tspbProgress.MarqueeAnimationSpeed = 50;
+            this.tspbProgress.Name = "tspbProgress";
+            this.tspbProgress.Size = new System.Drawing.Size(100, 16);
+            this.tspbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // MainForm
             // 
@@ -125,7 +157,6 @@
             this.Name = "MainForm";
             this.Text = "IPL vs FIP";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -141,12 +172,15 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsslInfo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pbIPL;
         private System.Windows.Forms.PictureBox pbFIP;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolStripDropDownButton tssdComparisons;
+        private System.Windows.Forms.ToolStripStatusLabel tsslInfo;
+        private System.Windows.Forms.ToolStripStatusLabel tsslDummy;
+        private System.Windows.Forms.ToolStripProgressBar tspbProgress;
     }
 }
 

@@ -22,8 +22,7 @@ namespace IPLvsFIP
             Application.SetCompatibleTextRenderingDefault(false);
 
             var sourceImage = ImagesFolder.Images.Lena128;
-            var comparison = new DFTComparison();
-            Application.Run(new MainForm(sourceImage, comparison));
+            Application.Run(new MainForm(sourceImage));
         }
 
         private static void ChangeCultureSettings()

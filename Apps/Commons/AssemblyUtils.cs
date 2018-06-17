@@ -16,13 +16,13 @@ namespace Commons
 
         public static IEnumerable<Type> GetTypesImplements<T>()
         {
-            return GetTypes<T>((t1, t2) => t1.IsAssignableFrom(t2));
+            return GetTypes<T>((t1, t2) => t1.GetInterfaces().Contains(t2));
         }
 
         private static IEnumerable<Type> GetTypes<T>(Func<Type, Type, bool> predicate)
         {
             var type = typeof(T);
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetEntryAssembly();
             return assembly.GetTypes().
                 Where(t => predicate(t, type));
         }
