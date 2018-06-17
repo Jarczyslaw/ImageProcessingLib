@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ImageProcessingLib
@@ -66,24 +67,16 @@ namespace ImageProcessingLib
             return new ComplexNumber(-complex.Real, -complex.Imaginary);
         }
 
-        public static ComplexNumber operator+(ComplexNumber left, ComplexNumber right)
-        {
-            return new ComplexNumber(left.Real + right.Real, left.Imaginary + right.Imaginary);
-        }
-
-        public static ComplexNumber operator-(ComplexNumber left, ComplexNumber right)
-        {
-            return new ComplexNumber(left.Real - right.Real, left.Imaginary - right.Imaginary);
-        }
-
-        public static ComplexNumber operator *(ComplexNumber left, ComplexNumber right)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ComplexNumber Mul(ComplexNumber left, ComplexNumber right)
         {
             var real = left.Real * right.Real - left.Imaginary * right.Imaginary;
             var imaginary = left.Imaginary * right.Real + left.Real * right.Imaginary;
             return new ComplexNumber(real, imaginary);
         }
 
-        public static ComplexNumber operator /(ComplexNumber left, ComplexNumber right)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ComplexNumber Div(ComplexNumber left, ComplexNumber right)
         {
             double q = right.Real * right.Real + right.Imaginary * right.Imaginary;
             if (q == 0d)
@@ -91,6 +84,38 @@ namespace ImageProcessingLib
             double real = (left.Real * right.Real + left.Imaginary * right.Imaginary) / q;
             double imaginary = (left.Imaginary * right.Real - left.Real * right.Imaginary) / q;
             return new ComplexNumber(real, imaginary);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ComplexNumber Add(ComplexNumber left, ComplexNumber right)
+        {
+            return new ComplexNumber(left.Real + right.Real, left.Imaginary + right.Imaginary);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ComplexNumber Sub(ComplexNumber left, ComplexNumber right)
+        {
+            return new ComplexNumber(left.Real - right.Real, left.Imaginary - right.Imaginary);
+        }
+
+        public static ComplexNumber operator +(ComplexNumber left, ComplexNumber right)
+        {
+            return Add(left, right);
+        }
+
+        public static ComplexNumber operator -(ComplexNumber left, ComplexNumber right)
+        {
+            return Sub(left, right);
+        }
+
+        public static ComplexNumber operator *(ComplexNumber left, ComplexNumber right)
+        {
+            return Mul(left, right);
+        }
+
+        public static ComplexNumber operator /(ComplexNumber left, ComplexNumber right)
+        {
+            return Div(left, right);
         }
 
         public static ComplexNumber operator -(ComplexNumber complex)

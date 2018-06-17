@@ -1,4 +1,5 @@
-﻿using ImageProcessingTest.Operations;
+﻿using Commons;
+using ImageProcessingTest.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,7 @@ namespace ImageProcessingTest
     {
         public static List<Type> GetOperations()
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            return assembly.GetTypes()
-                .Where(t => t.IsSubclassOf(typeof(OperationBase)))
+            return AssemblyUtils.GetTypesSubclassOf<OperationBase>()
                 .OrderBy(t => t.Name)
                 .ToList();
         }

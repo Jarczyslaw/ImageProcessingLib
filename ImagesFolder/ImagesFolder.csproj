@@ -53,6 +53,7 @@
     <Content Include="Resources\baboon.bmp" />
     <Content Include="Resources\halfLena.bmp" />
     <Content Include="Resources\lena.bmp" />
+    <Content Include="Resources\lena128.bmp" />
     <Content Include="Resources\lena_bw.bmp" />
     <Content Include="Resources\lena_gray.bmp" />
     <Content Include="Resources\lena_trans.png" />

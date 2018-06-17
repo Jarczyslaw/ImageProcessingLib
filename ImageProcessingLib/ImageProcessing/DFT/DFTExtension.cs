@@ -7,33 +7,51 @@ namespace ImageProcessingLib
 {
     public static class DFTExtension
     {
-        public static ComplexNumber[,] DFT(this Image<Pixel32> image)
+        public static ComplexNumber[,] DFT(double[,] imageData)
         {
-            var width = image.Width;
-            var height = image.Height;
-            var size = width * height;
-            var sizeSqrt = Math.Sqrt(size);
-            var result = new ComplexNumber[height, width];
-            image.Grayscale();
-            image.ForEach((x, y) =>
+            var rows = imageData.GetLength(0);
+            var cols = imageData.GetLength(1);
+            var sizeSqrt = Math.Sqrt(rows * cols);
+            var result = new ComplexNumber[rows, cols];
+            var q = -ComplexNumber.ImaginaryOne * 2d * Math.PI;
+            for (int x = 0; x < rows; x++)
             {
-                var sum = ComplexNumber.Zero;
-                image.ForEach((i, j) =>
+                for (int y = 0; y < cols; y++)
                 {
-                    var phi = (double)x * i / width + (double)y * j / height;
-                    sum += ComplexNumber.Exp(-ComplexNumber.ImaginaryOne * 2d * Math.PI * phi);
-                });
-                result[y, x] = sum / sizeSqrt;
-            });
+                    var sum = ComplexNumber.Zero;
+                    for (int i = 0; i < rows; i++)
+                    {
+                        for (int j = 0; j < cols; j++)
+                        {
+                            var phi = (double)x * i / rows + (double)y * j / cols;
+                            sum += imageData[i, j] * ComplexNumber.Exp(ComplexNumber.Mul(q, phi));
+                        }
+                    }
+                    result[x, y] = sum / sizeSqrt;
+                }
+            }
             return result;
         }
 
-        public static Image<Pixel32> DFTImage(this Image<Pixel32> image)
+        public static Image<Pixel32> SDFT(this Image<Pixel32> image)
         {
-            var dft = image.DFT();
+            image.Grayscale();
+            var data = Shift(image);
+            return ImageDFT(data);
+        }
+
+        public static Image<Pixel32> DFT(this Image<Pixel32> image)
+        {
+            image.Grayscale();
+            var data = GetImageData(image);
+            return ImageDFT(data);
+        }
+
+        private static Image<Pixel32> ImageDFT(double[,] imageData)
+        {
+            var dft = DFT(imageData);
             var magnitudes = GetMagnitudes(dft);
-            var shiftedMagnitudes = Shift(magnitudes);
-            var resultData = ArrayUtils.NormalizeWithLog10(shiftedMagnitudes);
+            var resultData = ArrayUtils.NormalizeWithLog10(magnitudes);
             return Image32Utils.GetGrayscaleImageFromArray(resultData);
         }
 
@@ -48,14 +66,32 @@ namespace ImageProcessingLib
             return magnitudes;
         }
 
-        private static double[,] Shift(double[,] data)
+        private static double[,] PrepareDataFromImage(Image<Pixel32> image)
         {
-            var rows = data.GetLength(0);
-            var cols = data.GetLength(1);
-            var shifted = new double[rows, cols];
-            for (int i = 0; i < rows; i++)
-                for (int j = 0; j < cols; j++)
-                    shifted[i, j] = Math.Pow(-1d, i + j) * data[i, j];
+            image.Grayscale();
+            var shiftedImage = Shift(image);
+            return shiftedImage;
+        }
+
+        private static double[,] Shift(Image<Pixel32> image)
+        {
+            var width = image.Width;
+            var height = image.Height;
+            var shifted = new double[height, width];
+            for (int i = 0; i < height; i++)
+                for (int j = 0; j < width; j++)
+                    shifted[i, j] = Math.Pow(-1d, i + j) * image.Get(j, i).R;
+            return shifted;
+        }
+
+        private static double[,] GetImageData(Image<Pixel32> image)
+        {
+            var width = image.Width;
+            var height = image.Height;
+            var shifted = new double[height, width];
+            for (int i = 0; i < height; i++)
+                for (int j = 0; j < width; j++)
+                    shifted[i, j] = image.Get(j, i).R;
             return shifted;
         }
     }

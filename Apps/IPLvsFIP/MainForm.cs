@@ -17,11 +17,12 @@ namespace IPLvsFIP
     public partial class MainForm : Form
     {
         private IComparison comparison;
-
+        private Bitmap sourceImage;
         private List<GDImage32> images;
 
-        public MainForm(IComparison comparison)
+        public MainForm(Bitmap sourceImage, IComparison comparison)
         {
+            this.sourceImage = sourceImage;
             this.comparison = comparison;
 
             InitializeComponent();
@@ -39,7 +40,6 @@ namespace IPLvsFIP
         {
             try
             {
-                var sourceImage = ImagesFolder.Images.Lena;
                 var originalImage1 = new GDImage32(sourceImage);
                 var originalImage2 = new GDImage32(sourceImage);
 

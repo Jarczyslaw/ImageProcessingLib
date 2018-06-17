@@ -20,7 +20,10 @@ namespace IPLvsFIP
             ChangeCultureSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new ColorAccentComparison()));
+
+            var sourceImage = ImagesFolder.Images.Lena128;
+            var comparison = new DFTComparison();
+            Application.Run(new MainForm(sourceImage, comparison));
         }
 
         private static void ChangeCultureSettings()

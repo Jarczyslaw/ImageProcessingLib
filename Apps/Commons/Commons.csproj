@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyUtils.cs" />
     <Compile Include="ComboBoxExtension.cs" />
     <Compile Include="ExecTime.cs" />
     <Compile Include="FormExtensions.cs" />

@@ -56,5 +56,10 @@ namespace ImagesFolder
         {
             get { return Resources.Baboon; }
         }
+
+        public static Bitmap Lena128
+        {
+            get { return Resources.Lena128; }
+        }
     }
 }
