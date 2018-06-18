@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyUtils.cs" />
-    <Compile Include="ComboBoxExtension.cs" />
-    <Compile Include="ExecTime.cs" />
-    <Compile Include="FormExtensions.cs" />
-    <Compile Include="MessageBoxEx.cs" />
+    <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="Utils\ComboBoxExtension.cs" />
+    <Compile Include="Utils\ExecTime.cs" />
+    <Compile Include="Utils\FormExtensions.cs" />
+    <Compile Include="Utils\MessageBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

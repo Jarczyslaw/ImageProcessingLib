@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Commons;
+using Commons.Utils;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
 using IPLvsFIP.Comparisons;
