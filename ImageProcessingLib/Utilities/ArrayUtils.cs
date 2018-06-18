@@ -88,5 +88,16 @@ namespace ImageProcessingLib.Utilities
         {
             return Normalize(arr, (value, max) => 255d * Math.Log10(1d + value) / Math.Log10(1d + max));
         }
+
+        public static List<int> IndicesOf<T>(IList<T> arr, T value)
+        {
+            var result = new List<int>();
+            for (int i = 0;i < arr.Count;i++)
+            {
+                if (arr[i].Equals(value))
+                    result.Add(i);
+            }
+            return result;
+        }
     }
 }

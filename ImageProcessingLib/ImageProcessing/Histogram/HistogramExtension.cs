@@ -12,9 +12,9 @@ namespace ImageProcessingLib
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                result.R[pixel.R]++;
-                result.G[pixel.G]++;
-                result.B[pixel.B]++;
+                result.R.Add(pixel.R);
+                result.G.Add(pixel.G);
+                result.B.Add(pixel.B);
             });
             return result;
         }

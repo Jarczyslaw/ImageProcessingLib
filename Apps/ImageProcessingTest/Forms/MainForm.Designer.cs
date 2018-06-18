@@ -1,4 +1,4 @@
-﻿namespace ImageProcessingTest
+﻿namespace ImageProcessingTest.Forms
 {
     partial class MainForm
     {
@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.cbImages = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowMetrics = new System.Windows.Forms.Button();
             this.btnSaveAll = new System.Windows.Forms.Button();
             this.btnSaveCurrent = new System.Windows.Forms.Button();
             this.cbResults = new System.Windows.Forms.ComboBox();
@@ -42,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnShowMetrics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -77,7 +78,7 @@
             this.panel1.Controls.Add(this.pbImage);
             this.panel1.Location = new System.Drawing.Point(6, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1279, 521);
+            this.panel1.Size = new System.Drawing.Size(1323, 521);
             this.panel1.TabIndex = 2;
             // 
             // groupBox1
@@ -97,15 +98,26 @@
             this.groupBox1.Controls.Add(this.cbImages);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1291, 48);
+            this.groupBox1.Size = new System.Drawing.Size(1335, 48);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
             // 
+            // btnShowMetrics
+            // 
+            this.btnShowMetrics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowMetrics.Location = new System.Drawing.Point(1002, 17);
+            this.btnShowMetrics.Name = "btnShowMetrics";
+            this.btnShowMetrics.Size = new System.Drawing.Size(105, 23);
+            this.btnShowMetrics.TabIndex = 11;
+            this.btnShowMetrics.Text = "Show metrics";
+            this.btnShowMetrics.UseVisualStyleBackColor = true;
+            this.btnShowMetrics.Click += new System.EventHandler(this.btnShowMetrics_Click);
+            // 
             // btnSaveAll
             // 
             this.btnSaveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveAll.Location = new System.Drawing.Point(1180, 17);
+            this.btnSaveAll.Location = new System.Drawing.Point(1224, 17);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(105, 23);
             this.btnSaveAll.TabIndex = 10;
@@ -116,7 +128,7 @@
             // btnSaveCurrent
             // 
             this.btnSaveCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveCurrent.Location = new System.Drawing.Point(1069, 17);
+            this.btnSaveCurrent.Location = new System.Drawing.Point(1113, 17);
             this.btnSaveCurrent.Name = "btnSaveCurrent";
             this.btnSaveCurrent.Size = new System.Drawing.Size(105, 23);
             this.btnSaveCurrent.TabIndex = 9;
@@ -199,29 +211,19 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(12, 66);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1291, 546);
+            this.groupBox2.Size = new System.Drawing.Size(1335, 546);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
-            // 
-            // btnShowMetrics
-            // 
-            this.btnShowMetrics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowMetrics.Location = new System.Drawing.Point(958, 17);
-            this.btnShowMetrics.Name = "btnShowMetrics";
-            this.btnShowMetrics.Size = new System.Drawing.Size(105, 23);
-            this.btnShowMetrics.TabIndex = 11;
-            this.btnShowMetrics.Text = "Show metrics";
-            this.btnShowMetrics.UseVisualStyleBackColor = true;
-            this.btnShowMetrics.Click += new System.EventHandler(this.btnShowMetrics_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 624);
+            this.ClientSize = new System.Drawing.Size(1359, 624);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "ImageProcessingTest";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
