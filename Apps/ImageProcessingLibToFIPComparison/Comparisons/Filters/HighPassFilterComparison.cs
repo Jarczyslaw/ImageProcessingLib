@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using FIP;
 using ImageProcessingLib;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class PrewittFilterComparison : IComparison
+    public class HighPassFilterComparison : IComparison
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImagePrewittFilterColor(originalImage);
+            return fip.ImageFilterColor(originalImage, fip.HPF4());
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new PrewittFilter(true));
+            return originalImage.ApplyFilter(new HighPassFilter4());
         }
     }
 }

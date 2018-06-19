@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using FIP;
 using ImageProcessingLib;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class LowPassFilterComparison : IComparison
+    public class SobelFilterComparison : IComparison
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImageFilterColor(originalImage, fip.LPF4Kernel(), fip.LPF4Coeff);
+            return fip.ImageSobelFilterColor(originalImage);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new LowPassFilter4());
+            return originalImage.ApplyFilter(new SobelFilter(true));
         }
     }
 }

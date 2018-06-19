@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
     public interface IComparison
     {

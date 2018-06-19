@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLibExamples"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIP", "FIP\FIP.csproj", "{AF1D3A2D-4CFC-42B6-BDA8-11A0AF7E159C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPLvsFIP", "Apps\IPLvsFIP\IPLvsFIP.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLibToFIPComparison", "Apps\ImageProcessingLibToFIPComparison\ImageProcessingLibToFIPComparison.csproj", "{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{7D9CE5D5-3142-4EBB-BAF6-98D7A053943B}"
 	ProjectSection(SolutionItems) = preProject

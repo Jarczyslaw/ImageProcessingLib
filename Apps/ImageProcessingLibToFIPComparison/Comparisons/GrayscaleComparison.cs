@@ -4,24 +4,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FIP;
 using ImageProcessingLib;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class ColorAccentComparison : IComparison
+    public class GrayscaleComparison : IComparison
     {
-        double hue = 270d;
-        double range = 50d;
-
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ColorAccent(originalImage, hue, range);
+            return fip.ToGreyscale(originalImage);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ColorAccent(hue, range);
+            return originalImage.Grayscale(GrayscaleMethod.Luminance);
         }
     }
 }

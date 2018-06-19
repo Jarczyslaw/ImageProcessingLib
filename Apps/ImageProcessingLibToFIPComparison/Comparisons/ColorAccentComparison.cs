@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 using FIP;
 using ImageProcessingLib;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class DFTComparison : IComparison
+    public class ColorAccentComparison : IComparison
     {
+        double hue = 270d;
+        double range = 50d;
+
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            var data = fip.SDFT(originalImage);
-            var mag = fip.Magnitude(data);
-            return fip.Matrix2ImageLog(mag);
+            return fip.ColorAccent(originalImage, hue, range);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.SDFT();
+            return originalImage.ColorAccent(hue, range);
         }
     }
 }

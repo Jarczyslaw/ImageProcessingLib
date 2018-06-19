@@ -1,4 +1,4 @@
-﻿using IPLvsFIP.Comparisons;
+﻿using ImageProcessingLibToFIPComparison.Comparisons;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IPLvsFIP
+namespace ImageProcessingLibToFIPComparison
 {
     static class Program
     {

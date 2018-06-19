@@ -1,4 +1,4 @@
-﻿namespace IPLvsFIP
+﻿namespace ImageProcessingLibToFIPComparison
 {
     partial class MainForm
     {
@@ -32,13 +32,13 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssdComparisons = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsslInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslDummy = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbIPL = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pbFIP = new System.Windows.Forms.PictureBox();
-            this.tsslDummy = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,6 +75,19 @@
             this.tsslInfo.Name = "tsslInfo";
             this.tsslInfo.Size = new System.Drawing.Size(45, 17);
             this.tsslInfo.Text = "tsslInfo";
+            // 
+            // tsslDummy
+            // 
+            this.tsslDummy.Name = "tsslDummy";
+            this.tsslDummy.Size = new System.Drawing.Size(840, 17);
+            this.tsslDummy.Spring = true;
+            // 
+            // tspbProgress
+            // 
+            this.tspbProgress.MarqueeAnimationSpeed = 50;
+            this.tspbProgress.Name = "tspbProgress";
+            this.tspbProgress.Size = new System.Drawing.Size(100, 16);
+            this.tspbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // tableLayoutPanel1
             // 
@@ -133,19 +146,6 @@
             this.pbFIP.TabIndex = 1;
             this.pbFIP.TabStop = false;
             // 
-            // tsslDummy
-            // 
-            this.tsslDummy.Name = "tsslDummy";
-            this.tsslDummy.Size = new System.Drawing.Size(809, 17);
-            this.tsslDummy.Spring = true;
-            // 
-            // tspbProgress
-            // 
-            this.tspbProgress.MarqueeAnimationSpeed = 50;
-            this.tspbProgress.Name = "tspbProgress";
-            this.tspbProgress.Size = new System.Drawing.Size(100, 16);
-            this.tspbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,7 +155,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "IPL vs FIP";
+            this.Text = "ImageProcessingLibToFIPComparison";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

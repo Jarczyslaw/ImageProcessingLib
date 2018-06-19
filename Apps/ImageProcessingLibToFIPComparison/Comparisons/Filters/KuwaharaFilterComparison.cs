@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FIP;
 using ImageProcessingLib;
 
-namespace IPLvsFIP.Comparisons
+namespace ImageProcessingLibToFIPComparison.Comparisons
 {
     public class KuwaharaFilterComparison : IComparison
     {

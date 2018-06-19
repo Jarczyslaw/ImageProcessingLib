@@ -11,16 +11,16 @@ using Commons;
 using Commons.Utils;
 using ImageProcessingLib;
 using ImageProcessingLib.GDI;
-using IPLvsFIP.Comparisons;
+using ImageProcessingLibToFIPComparison.Comparisons;
 
-namespace IPLvsFIP
+namespace ImageProcessingLibToFIPComparison
 {
     public partial class MainForm : Form
     {
         private Bitmap sourceImage;
         private List<GDImage32> images;
 
-        private string title = "IPL vs FIP";
+        private string title = "ImageProcessingLibToFIPComparison";
         private string selectedComparisonName;
 
         public MainForm(Bitmap sourceImage)

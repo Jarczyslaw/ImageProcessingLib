@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>IPLvsFIP</RootNamespace>
-    <AssemblyName>IPLvsFIP</AssemblyName>
+    <RootNamespace>ImageProcessingLibToFIPComparison</RootNamespace>
+    <AssemblyName>ImageProcessingLibToFIPComparison</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
