@@ -48,7 +48,6 @@ namespace ImageProcessingLibToFIPComparison
             {
                 var item = new ToolStripMenuItem()
                 {
-                    Text = comparison.Name.Replace("Comparison", string.Empty),
                     Tag = (IComparison)Activator.CreateInstance(comparison)
                 };
                 item.Click += Item_Click;

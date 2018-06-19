@@ -4,20 +4,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FIP;
 using ImageProcessingLib;
 
 namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class LaplaceFilterComparison : IComparison
+    public class SobelFilter : IComparison
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImageFilterColor(originalImage, fip.LaplaceF4());
+            return fip.ImageSobelFilterColor(originalImage);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new LaplaceFilter4());
+            return originalImage.ApplyFilter(new ImageProcessingLib.SobelFilter(true));
         }
     }
 }

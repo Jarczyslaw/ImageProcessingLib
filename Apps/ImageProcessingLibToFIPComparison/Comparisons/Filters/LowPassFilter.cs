@@ -9,16 +9,16 @@ using ImageProcessingLib;
 
 namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class HighPassFilterComparison : IComparison
+    public class LowPassFilter : IComparison
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImageFilterColor(originalImage, fip.HPF4());
+            return fip.ImageFilterColor(originalImage, fip.LPF4Kernel(), fip.LPF4Coeff);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new HighPassFilter4());
+            return originalImage.ApplyFilter(new LowPassFilter4());
         }
     }
 }

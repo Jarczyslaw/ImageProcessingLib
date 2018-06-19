@@ -9,16 +9,16 @@ using ImageProcessingLib;
 
 namespace ImageProcessingLibToFIPComparison.Comparisons
 {
-    public class SobelFilterComparison : IComparison
+    public class SDROMFilter : IComparison
     {
         public Bitmap GetFIPResults(FIP.FIP fip, Bitmap originalImage)
         {
-            return fip.ImageSobelFilterColor(originalImage);
+            return fip.ImageSDROMFilterColor(originalImage);
         }
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.ApplyFilter(new SobelFilter(true));
+            return originalImage.ApplyFilter(new SDROMFilter5());
         }
     }
 }
