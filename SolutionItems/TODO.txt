@@ -1,0 +1,8 @@
+change examples to MVP
+change examples UI
+add Histogram calculation to examples
+implement histogram operations
+implement morphological operations
+add more example images
+add CMYK conversion
+add pen sketch effect, charcoal and oil paint

@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	ProjectSection(SolutionItems) = preProject
 		SolutionItems\jt_icon.ico = SolutionItems\jt_icon.ico
 		SolutionItems\Notes.txt = SolutionItems\Notes.txt
+		SolutionItems\TODO.txt = SolutionItems\TODO.txt
 	EndProjectSection
 EndProject
 Global
