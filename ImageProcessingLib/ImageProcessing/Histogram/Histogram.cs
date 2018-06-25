@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public class HistogramComponent
+    public class Histogram
     {
         private int[] data;
         public ReadOnlyCollection<int> Data
@@ -23,12 +23,20 @@ namespace ImageProcessingLib
             get
             {
                 int max = data.Max();
-                return ArrayUtils.IndicesOf(data, max)
-                    .Cast<byte>().ToList();
+                var indices = ArrayUtils.IndicesOf(data, max);
+                return indices.Select(i => (byte)i).ToList();    
             }
         }
 
-        public HistogramComponent()
+        public int Count
+        {
+            get
+            {
+                return data.Sum();
+            }
+        }
+
+        public Histogram()
         {
             data = new int[byte.MaxValue + 1];
         }
@@ -46,6 +54,12 @@ namespace ImageProcessingLib
                 Max = value;
             if (Min == null || value < Min)
                 Min = value;
+        }
+
+        public void Add(params byte[] values)
+        {
+            foreach (var value in values)
+                Add(value);
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Pixel32Tests.cs" />
     <Compile Include="LinearFilterTests.cs" />
     <Compile Include="ComplexNumberTests.cs" />
+    <Compile Include="HistogramTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
