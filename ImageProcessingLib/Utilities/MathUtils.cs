@@ -43,7 +43,17 @@ namespace ImageProcessingLib.Utilities
             return Math.Max(val1, Math.Max(val2, val3));
         }
 
+        public static double Max(double val1, double val2, double val3)
+        {
+            return Math.Max(val1, Math.Max(val2, val3));
+        }
+
         public static byte Min(byte val1, byte val2, byte val3)
+        {
+            return Math.Min(val1, Math.Min(val2, val3));
+        }
+
+        public static double Min(double val1, double val2, double val3)
         {
             return Math.Min(val1, Math.Min(val2, val3));
         }

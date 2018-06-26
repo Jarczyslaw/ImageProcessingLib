@@ -88,11 +88,11 @@ namespace ImageProcessingLib
         {
             var width = image.Width;
             var height = image.Height;
-            var shifted = new double[height, width];
+            var data = new double[height, width];
             for (int i = 0; i < height; i++)
                 for (int j = 0; j < width; j++)
-                    shifted[i, j] = image.Get(j, i).R;
-            return shifted;
+                    data[i, j] = image.Get(j, i).R;
+            return data;
         }
     }
 }

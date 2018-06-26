@@ -117,9 +117,9 @@ namespace ImageProcessingLib
             get { return Black; }
         }
 
-        public HSVSet ToHSV()
+        public HSV ToHSV()
         {
-            return new HSVSet(this);
+            return new HSV(this);
         }
 
         public bool Equals(Pixel32 other)

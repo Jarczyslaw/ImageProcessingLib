@@ -5,20 +5,20 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public struct HSVSet
+    public struct HSV
     {
         public double Hue { get; private set; }
         public double Saturation { get; private set; }
         public double Value { get; private set; }
 
-        public HSVSet(double h, double s, double v)
+        public HSV(double h, double s, double v)
         {
             Hue = h;
             Saturation = s;
             Value = v;
         }
 
-        public HSVSet(Pixel32 pixel)
+        public HSV(Pixel32 pixel)
         {
             var r = pixel.R;
             var g = pixel.G;
