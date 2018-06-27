@@ -8,7 +8,7 @@ namespace ImageProcessingLib.Tests
     {
         private void CMYKAssert(CMYK expected, CMYK current)
         {
-            var tolerance = Math.Pow(1d, -3d);
+            var tolerance = 1d;
             Assert.AreEqual(expected.C, current.C, tolerance);
             Assert.AreEqual(expected.M, current.M, tolerance);
             Assert.AreEqual(expected.Y, current.Y, tolerance);
@@ -27,7 +27,7 @@ namespace ImageProcessingLib.Tests
         public void Black()
         {
             var current = new CMYK(Pixel32.Black);
-            var expected = new CMYK(0d, 0d, 0d, 1d);
+            var expected = new CMYK(0d, 0d, 0d, 100d);
             CMYKAssert(expected, current);
         }
 
@@ -35,7 +35,7 @@ namespace ImageProcessingLib.Tests
         public void Pink()
         {
             var current = new CMYK(new Pixel32(240, 76, 255));
-            var expected = new CMYK(0.66d, 0.7d, 0d, 0d);
+            var expected = new CMYK(6d, 70d, 0d, 0d);
             CMYKAssert(expected, current);
         }
 
@@ -43,7 +43,7 @@ namespace ImageProcessingLib.Tests
         public void Green()
         {
             var current = new CMYK(new Pixel32(100, 211, 109));
-            var expected = new CMYK(0.53d, 0d, 0.48d, 0.17d);
+            var expected = new CMYK(53d, 0d, 48d, 17d);
             CMYKAssert(expected, current);
         }
 
@@ -51,7 +51,7 @@ namespace ImageProcessingLib.Tests
         public void Gold()
         {
             var current = new CMYK(new Pixel32(255, 211, 109));
-            var expected = new CMYK(0d, 0.17d, 0.57d, 0d);
+            var expected = new CMYK(0d, 17d, 57d, 0d);
             CMYKAssert(expected, current);
         }
     }

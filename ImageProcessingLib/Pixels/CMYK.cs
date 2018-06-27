@@ -14,6 +14,7 @@ namespace ImageProcessingLib
 
         public CMYK(double c, double m, double y, double k)
         {
+
             C = c;
             M = m;
             Y = y;
@@ -31,10 +32,16 @@ namespace ImageProcessingLib
             C = M = Y = 0d;
             if (den != 0d)
             {
-                C = -nr / den + 1d;
-                M = -ng / den + 1d;
-                Y = -nb / den + 1d;
+                C = GetComponent(nr, den);
+                M = GetComponent(ng, den);
+                Y = GetComponent(nb, den);
             }
+            K = 100d * K;
+        }
+
+        private double GetComponent(double nc, double den)
+        {
+            return 100d * (-nc / den + 1d);
         }
     }
 }
