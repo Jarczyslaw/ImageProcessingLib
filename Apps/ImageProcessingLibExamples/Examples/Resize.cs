@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Resize : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var size = 1024;
             var image = originalImage.Copy();

@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class GaussianFiltersExample : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var filters = new List<IFilter>() { new GaussianFilter1(), new GaussianFilter2(), new GaussianFilter3() };
             foreach(var filter in filters)

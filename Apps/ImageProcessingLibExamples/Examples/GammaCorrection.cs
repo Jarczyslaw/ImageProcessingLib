@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class GammaCorrection : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var gammas = new double[] { 0.25d, 0.5d, 0.75d, 1.5d, 2d };
             foreach(var gamma in gammas)

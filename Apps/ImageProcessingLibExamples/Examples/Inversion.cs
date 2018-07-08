@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Inversion : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var conversionPoints = new byte[] { 64, 128, 196 };
             foreach(var conversionPoint in conversionPoints)

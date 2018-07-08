@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class KuwaharaFiltersExample : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var filters = new List<IFilter>() { new KuwaharaFilter3(), new KuwaharaFilter5() };
             foreach (var filter in filters)

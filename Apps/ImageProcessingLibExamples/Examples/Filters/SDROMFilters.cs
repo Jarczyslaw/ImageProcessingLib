@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class SDROMFilters : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             IFilter[] filters = new IFilter[] { new SDROMFilter3(), new SDROMFilter5() };
             foreach (var filter in filters)

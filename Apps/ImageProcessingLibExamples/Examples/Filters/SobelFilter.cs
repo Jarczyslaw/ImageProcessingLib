@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class SobelFilter : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.SobelFilter());

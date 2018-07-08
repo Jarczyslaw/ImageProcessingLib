@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Sampling : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var sizes = new int[] { 4, 16, 32 };
             foreach (var size in sizes)

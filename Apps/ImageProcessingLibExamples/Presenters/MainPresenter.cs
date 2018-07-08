@@ -49,14 +49,24 @@ namespace ImageProcessingLibExamples.Presenters
                 var resultImage = view.SelectedResultImage.Image;
 
                 view.IsBusy = true;
-                var result = await Task.Run(() =>
+                try
                 {
-                    var mse = ErrorMetrics.MSE(originalImage, resultImage);
-                    var psnr = ErrorMetrics.PSNR(originalImage, resultImage);
-                    return Tuple.Create(mse, psnr);
-                });
-                view.IsBusy = false;
-                view.ShowMetrics(result.Item1, result.Item2);
+                    var result = await Task.Run(() =>
+                    {
+                        var mse = ErrorMetrics.MSE(originalImage, resultImage);
+                        var psnr = ErrorMetrics.PSNR(originalImage, resultImage);
+                        return Tuple.Create(mse, psnr);
+                    });
+                    view.ShowMetrics(result.Item1, result.Item2);
+                }
+                catch(Exception e)
+                {
+                    view.ShowException(e);
+                }
+                finally
+                {
+                    view.IsBusy = false;
+                }
             }
             catch (Exception ex)
             {

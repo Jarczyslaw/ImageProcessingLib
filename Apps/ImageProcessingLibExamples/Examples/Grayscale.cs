@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Grayscale : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var methods = Enum.GetValues(typeof(GrayscaleMethod)).Cast<GrayscaleMethod>();
             foreach (var method in methods)

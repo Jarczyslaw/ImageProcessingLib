@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Noise : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var saltAndPepperIntensities = new double[] { 0.1d, 1d, 5d, 10d };
             foreach (var intensity in saltAndPepperIntensities)

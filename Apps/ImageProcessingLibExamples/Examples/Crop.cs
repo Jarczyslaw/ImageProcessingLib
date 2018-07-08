@@ -11,7 +11,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class Crop : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var width = originalImage.Width;
             var height = originalImage.Height;

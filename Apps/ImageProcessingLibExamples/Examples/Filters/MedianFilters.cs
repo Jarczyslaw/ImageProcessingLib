@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class MedianFilters : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var filters = new List<IFilter>() { new MedianFilter3(), new MedianFilter5() };
             foreach(var filter in filters)

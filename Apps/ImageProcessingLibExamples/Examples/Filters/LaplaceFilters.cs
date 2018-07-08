@@ -10,7 +10,7 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class LaplaceFiltersExample : ExampleBase
     {
-        public override void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
             var filters = new List<IFilter>() { new LaplaceFilter1(), new LaplaceFilter2(), new LaplaceFilter3(), new LaplaceFilter4() };
             foreach (var filter in filters)

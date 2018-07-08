@@ -22,7 +22,7 @@ namespace ImageProcessingLibExamples.Examples
             Images = new Dictionary<string, GDImage32>();
             OriginalImage = new GDImage32(bitmap);
             Images.Add("Original", OriginalImage);
-            AddImages(Images, OriginalImage.Image);
+            AddExampleImages(Images, OriginalImage.Image);
         }
 
         public void CleanUp()
@@ -42,6 +42,6 @@ namespace ImageProcessingLibExamples.Examples
             }
         }
 
-        public abstract void AddImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage);
+        public abstract void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage);
     }
 }
