@@ -38,39 +38,37 @@ namespace ImageProcessingLibExamples.Presenters
             view.SetExamples(examples);
         }
 
-        private async void MetricsShow()
+        private void MetricsShow()
         {
             if (currentExample == null || view.SelectedResultImage == null)
                 return;
 
+            var originalImage = currentExample.OriginalImage.Image;
+            var resultImage = view.SelectedResultImage.Image;
+
+            LaunchMetrics(originalImage, resultImage);
+        }
+
+        private async void LaunchMetrics(Image<Pixel32> originalImage, Image<Pixel32> resultImage)
+        {
+            view.IsBusy = true;
             try
             {
-                var originalImage = currentExample.OriginalImage.Image;
-                var resultImage = view.SelectedResultImage.Image;
-
-                view.IsBusy = true;
-                try
+                var result = await Task.Run(() =>
                 {
-                    var result = await Task.Run(() =>
-                    {
-                        var mse = ErrorMetrics.MSE(originalImage, resultImage);
-                        var psnr = ErrorMetrics.PSNR(originalImage, resultImage);
-                        return Tuple.Create(mse, psnr);
-                    });
-                    view.ShowMetrics(result.Item1, result.Item2);
-                }
-                catch(Exception e)
-                {
-                    view.ShowException(e);
-                }
-                finally
-                {
-                    view.IsBusy = false;
-                }
+                    var mse = ErrorMetrics.MSE(originalImage, resultImage);
+                    var psnr = ErrorMetrics.PSNR(originalImage, resultImage);
+                    return Tuple.Create(mse, psnr);
+                });
+                view.ShowMetrics(result.Item1, result.Item2);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                view.ShowException(ex);
+                view.ShowException(e);
+            }
+            finally
+            {
+                view.IsBusy = false;
             }
         }
 
