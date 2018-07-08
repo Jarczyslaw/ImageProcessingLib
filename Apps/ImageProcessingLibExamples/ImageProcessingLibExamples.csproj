@@ -55,6 +55,7 @@
     <Compile Include="Controls\ScrollablePictureBox.Designer.cs">
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExamplesSource\IExamplesSource.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\MainView\IMainView.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="Examples\NaiveQuantization.cs" />
     <Compile Include="Examples\Negative.cs" />
     <Compile Include="Examples\ExampleBase.cs" />
-    <Compile Include="ExamplesLoader.cs" />
+    <Compile Include="ExamplesSource\ExamplesSource.cs" />
     <Compile Include="Examples\Resize.cs" />
     <Compile Include="Examples\Rotation.cs" />
     <Compile Include="Examples\Sampling.cs" />

@@ -22,7 +22,7 @@ namespace ImageProcessingLibExamples.Presenters
         private ExampleBase currentExample;
         private Bitmap currentImage;
 
-        public MainPresenter(IMainView view)
+        public MainPresenter(IMainView view, IExamplesSource examplesSource)
         {
             this.view = view;
 
@@ -34,7 +34,7 @@ namespace ImageProcessingLibExamples.Presenters
             view.OnMetricsShow += MetricsShow;
 
             view.SetImages(Images.AllBitmaps);
-            examples = ExamplesLoader.CreateExamplesDictionary();
+            examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
         }
 

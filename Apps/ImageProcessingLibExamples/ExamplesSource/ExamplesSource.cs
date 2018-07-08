@@ -9,17 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ImageProcessingLibExamples
-{
-    public static class ExamplesLoader
+{ 
+    public class ExamplesSource : IExamplesSource
     {
-        public static List<Type> GetExamples()
+        public List<Type> GetExamples()
         {
             return AssemblyUtils.GetTypesSubclassOf<ExampleBase>()
                 .OrderBy(t => t.Name)
                 .ToList();
         }
 
-        public static Dictionary<string, ExampleBase> CreateExamplesDictionary()
+        public Dictionary<string, ExampleBase> CreateExamplesDictionary()
         {
             var result = new Dictionary<string, ExampleBase>();
             var examples = GetExamples();
