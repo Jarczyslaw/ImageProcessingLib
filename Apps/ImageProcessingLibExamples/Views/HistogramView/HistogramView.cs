@@ -31,9 +31,6 @@ namespace ImageProcessingLibExamples.Views
         public HistogramView()
         {
             InitializeComponent();
-            chRed.Color = Brushes.Red;
-            chGreen.Color = Brushes.Green;
-            chBlue.Color = Brushes.Blue;
         }
 
         private void HistogramView_Load(object sender, EventArgs e)

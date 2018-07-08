@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Media.SolidColorBrush solidColorBrush1 = new System.Windows.Media.SolidColorBrush();
+            System.Windows.Media.SolidColorBrush solidColorBrush2 = new System.Windows.Media.SolidColorBrush();
+            System.Windows.Media.SolidColorBrush solidColorBrush3 = new System.Windows.Media.SolidColorBrush();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistogramView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chRed = new ImageProcessingLibExamples.Views.HistogramChart();
@@ -50,33 +53,39 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1110, 617);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 761);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // chRed
             // 
+            solidColorBrush1.Color = System.Windows.Media.Color.FromArgb(((byte)(255)), ((byte)(255)), ((byte)(0)), ((byte)(0)));
+            this.chRed.Color = solidColorBrush1;
             this.chRed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chRed.Location = new System.Drawing.Point(3, 3);
             this.chRed.Name = "chRed";
-            this.chRed.Size = new System.Drawing.Size(1104, 197);
+            this.chRed.Size = new System.Drawing.Size(1078, 245);
             this.chRed.TabIndex = 0;
             this.chRed.Text = "histogramChart1";
             // 
             // chGreen
             // 
+            solidColorBrush2.Color = System.Windows.Media.Color.FromArgb(((byte)(255)), ((byte)(0)), ((byte)(255)), ((byte)(0)));
+            this.chGreen.Color = solidColorBrush2;
             this.chGreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chGreen.Location = new System.Drawing.Point(3, 206);
+            this.chGreen.Location = new System.Drawing.Point(3, 254);
             this.chGreen.Name = "chGreen";
-            this.chGreen.Size = new System.Drawing.Size(1104, 197);
+            this.chGreen.Size = new System.Drawing.Size(1078, 245);
             this.chGreen.TabIndex = 1;
             this.chGreen.Text = "histogramChart1";
             // 
             // chBlue
             // 
+            solidColorBrush3.Color = System.Windows.Media.Color.FromArgb(((byte)(255)), ((byte)(0)), ((byte)(0)), ((byte)(255)));
+            this.chBlue.Color = solidColorBrush3;
             this.chBlue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chBlue.Location = new System.Drawing.Point(3, 409);
+            this.chBlue.Location = new System.Drawing.Point(3, 505);
             this.chBlue.Name = "chBlue";
-            this.chBlue.Size = new System.Drawing.Size(1104, 205);
+            this.chBlue.Size = new System.Drawing.Size(1078, 253);
             this.chBlue.TabIndex = 2;
             this.chBlue.Text = "histogramChart1";
             // 
@@ -84,11 +93,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 617);
+            this.ClientSize = new System.Drawing.Size(1084, 761);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HistogramView";
-            this.Text = "HistogramView";
+            this.Text = "Examples - Histogram";
             this.Load += new System.EventHandler(this.HistogramView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
