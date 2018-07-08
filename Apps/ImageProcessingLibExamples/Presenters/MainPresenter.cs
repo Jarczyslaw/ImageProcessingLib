@@ -32,10 +32,23 @@ namespace ImageProcessingLibExamples.Presenters
             view.OnCurrentImageSave += CurrentImageSave;
             view.OnImagesSave += ImagesSave;
             view.OnMetricsShow += MetricsShow;
+            view.OnHistogramShow += HistogramShow;
 
             view.SetImages(Images.AllBitmaps);
             examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
+        }
+
+        private void HistogramShow(IHistogramView histogramView)
+        {
+            var image = view.SelectedResultImage;
+            if (image == null)
+            {
+                view.ShowInfo("No image selected");
+                return;
+            }
+
+            new HistogramPresenter(histogramView, image.Image);
         }
 
         private void MetricsShow()

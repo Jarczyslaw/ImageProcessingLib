@@ -21,6 +21,7 @@ namespace ImageProcessingLibExamples.Views
         public event Action<string> OnCurrentImageSave;
         public event Action<string> OnImagesSave;
         public event Action OnMetricsShow;
+        public event Action<IHistogramView> OnHistogramShow;
 
         public Bitmap SelectedSourceImage
         {
@@ -214,6 +215,12 @@ namespace ImageProcessingLibExamples.Views
             var image = cbResults.SelectedValue as GDImage32;
             if (image != null)
                 spbImage.Image = image.Bitmap;
+        }
+
+        private void miHistogram_Click(object sender, EventArgs e)
+        {
+            IHistogramView histogramView = new HistogramView();
+            OnHistogramShow?.Invoke(histogramView);
         }
     }
 }

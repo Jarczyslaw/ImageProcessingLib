@@ -221,6 +221,7 @@
             this.miHistogram.Name = "miHistogram";
             this.miHistogram.Size = new System.Drawing.Size(75, 20);
             this.miHistogram.Text = "Histogram";
+            this.miHistogram.Click += new System.EventHandler(this.miHistogram_Click);
             // 
             // statusStrip1
             // 
