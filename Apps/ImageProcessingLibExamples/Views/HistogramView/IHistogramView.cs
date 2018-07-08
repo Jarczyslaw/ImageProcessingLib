@@ -9,6 +9,8 @@ namespace ImageProcessingLibExamples.Views
 {
     public interface IHistogramView : IView
     {
+        event Action OnLoad;
+
         ImageHistogram Histogram { set; }
     }
 }
