@@ -18,7 +18,7 @@ namespace ImageProcessingLibExamples.Presenters
             this.view = view;
             this.image = image;
 
-            view.OnLoad += OnLoad;
+            view.OnViewLoad += OnLoad;
             view.ShowViewAsDialog();
         }
 

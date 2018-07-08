@@ -15,7 +15,7 @@ namespace ImageProcessingLibExamples.Views
 {
     public partial class HistogramView : Form, IHistogramView
     {
-        public event Action OnLoad;
+        public event Action OnViewLoad;
 
         public ImageHistogram Histogram
         {
@@ -35,7 +35,7 @@ namespace ImageProcessingLibExamples.Views
 
         private void HistogramView_Load(object sender, EventArgs e)
         {
-            OnLoad?.Invoke();
+            OnViewLoad?.Invoke();
         }
 
         public void CloseView()
