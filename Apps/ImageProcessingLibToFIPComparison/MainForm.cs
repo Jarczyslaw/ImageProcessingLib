@@ -48,7 +48,8 @@ namespace ImageProcessingLibToFIPComparison
             {
                 var item = new ToolStripMenuItem()
                 {
-                    Tag = (IComparison)Activator.CreateInstance(comparison)
+                    Tag = (IComparison)Activator.CreateInstance(comparison),
+                    Text = comparison.Name
                 };
                 item.Click += Item_Click;
                 tssdComparisons.DropDownItems.Add(item);

@@ -1,4 +1,5 @@
-﻿using ImageProcessingLibExamples.Forms;
+﻿using ImageProcessingLibExamples.Presenters;
+using ImageProcessingLibExamples.Views;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,7 +21,10 @@ namespace ImageProcessingLibExamples
             ChangeCultureSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            var mainView = new MainView();
+            var mainPresenter = new MainPresenter(mainView);
+            Application.Run(mainView);
         }
 
         private static void ChangeCultureSettings()

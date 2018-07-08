@@ -14,7 +14,6 @@ namespace ImageProcessingLib
 
         public CMYK(double c, double m, double y, double k)
         {
-
             C = c;
             M = m;
             Y = y;

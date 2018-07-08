@@ -44,7 +44,7 @@
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="Utils\ComboBoxExtension.cs" />
     <Compile Include="Utils\ExecTime.cs" />
-    <Compile Include="Utils\FormExtensions.cs" />
+    <Compile Include="Utils\ControlExtensions.cs" />
     <Compile Include="Utils\MessageBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
