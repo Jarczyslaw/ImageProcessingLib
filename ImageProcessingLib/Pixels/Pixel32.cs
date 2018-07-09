@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ImageProcessingLib
@@ -158,6 +159,24 @@ namespace ImageProcessingLib
         public override string ToString()
         {
             return string.Format("Alpha: {0}, Red: {1}, Green: {2}, Blue: {3}, HEX: 0x{4:X8}", A, R, G, B, Data);
+        }
+
+        public static Pixel32 FromHex(string hex)
+        {
+            if (hex.Length != 8 || !Regex.IsMatch(hex, @"\A\b[0-9a-fA-F]+\b\Z"))
+                throw new ArgumentException("Invalid hex string");
+
+            var comp = new byte[4];
+            for (int i = 0; i < 4; i++)
+                comp[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+
+            return new Pixel32(comp[0], comp[1], comp[2], comp[3]);
+        }
+
+        public string ToHex()
+        {
+            var hexFormat = "X2";
+            return A.ToString(hexFormat) + R.ToString(hexFormat) + G.ToString(hexFormat) + B.ToString(hexFormat);
         }
     }
 }

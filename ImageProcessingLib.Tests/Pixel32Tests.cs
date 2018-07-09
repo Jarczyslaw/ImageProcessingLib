@@ -39,5 +39,22 @@ namespace ImageProcessingLib.Tests
             Assert.AreEqual(g, rgbSet.G);
             Assert.AreEqual(b, rgbSet.B);
         }
+
+        [TestMethod]
+        public void ToHexString()
+        {
+            var pixel = new Pixel32(255, 130, 209, 255);
+            Assert.AreEqual("FF82D1FF", pixel.ToHex());
+        }
+
+        [TestMethod]
+        public void FromHexString()
+        {
+            var pixel = Pixel32.FromHex("FF78715D");
+            Assert.AreEqual(255, pixel.A);
+            Assert.AreEqual(120, pixel.R);
+            Assert.AreEqual(113, pixel.G);
+            Assert.AreEqual(93, pixel.B);
+        }
     }
 }
