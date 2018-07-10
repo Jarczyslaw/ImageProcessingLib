@@ -163,7 +163,7 @@ namespace ImageProcessingLib
 
         public static Pixel32 FromHex(string hex)
         {
-            if (hex.Length != 8 || !Regex.IsMatch(hex, @"\A\b[0-9a-fA-F]+\b\Z"))
+            if (!Regex.IsMatch(hex, @"\b[0-9a-fA-F]{8}\b"))
                 throw new ArgumentException("Invalid hex string");
 
             var comp = new byte[4];
