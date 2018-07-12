@@ -14,10 +14,10 @@ namespace ImageProcessingLib
 
         public CMYK(double c, double m, double y, double k)
         {
-            C = c;
-            M = m;
-            Y = y;
-            K = k;
+            C = MathUtils.Clamp(c, 0d, 100d);
+            M = MathUtils.Clamp(m, 0d, 100d);
+            Y = MathUtils.Clamp(y, 0d, 100d);
+            K = MathUtils.Clamp(k, 0d, 100d);
         }
 
         public CMYK(Pixel32 pixel)
@@ -40,16 +40,33 @@ namespace ImageProcessingLib
 
         public Pixel32 GetPixel(byte alpha = 255)
         {
-            var q = 100d - K;
-            var r = MathUtils.RoundToByte(255d * (100d - C) * q);
-            var g = MathUtils.RoundToByte(255d * (100d - M) * q);
-            var b = MathUtils.RoundToByte(255d * (100d - Y * q));
+            var q = 1d - K / 100d;
+            var r = MathUtils.RoundToByte(255d * (1d - C / 100d) * q);
+            var g = MathUtils.RoundToByte(255d * (1d - M / 100d) * q);
+            var b = MathUtils.RoundToByte(255d * (1d - Y / 100d) * q);
             return new Pixel32(alpha, r, g, b);
         }
 
         private double GetComponent(double nc, double den)
         {
             return MathUtils.Clamp(100d * (-nc / den + 1d), 0d, 100d);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CMYK))
+                return false;
+
+            var other = (CMYK)obj;
+            return MathUtils.AreEqual(C, other.C) && 
+                MathUtils.AreEqual(M, other.M) && 
+                MathUtils.AreEqual(Y, other.Y) &&
+                MathUtils.AreEqual(K, other.K);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

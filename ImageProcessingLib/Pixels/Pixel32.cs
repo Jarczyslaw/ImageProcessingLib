@@ -125,20 +125,15 @@ namespace ImageProcessingLib
 
         public bool Equals(Pixel32 other)
         {
-            return Equals((object)other);
+            return other.Data == Data;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(obj, null))
-                return false;
-            if (ReferenceEquals(obj, this))
-                return true;
-            if (obj.GetType() != GetType())
+            if (obj == null || !(obj is Pixel32))
                 return false;
 
-            var other = (Pixel32)obj;
-            return other.Data == Data;
+            return Equals((Pixel32)obj);
         }
 
         public override int GetHashCode()
