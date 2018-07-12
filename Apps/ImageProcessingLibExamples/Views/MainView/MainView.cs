@@ -222,5 +222,10 @@ namespace ImageProcessingLibExamples.Views
             IHistogramView histogramView = new HistogramView();
             OnHistogramShow?.Invoke(histogramView);
         }
+
+        private void miColorCalculator_Click(object sender, EventArgs e)
+        {
+            new ColorCalculatorView().Show();
+        }
     }
 }

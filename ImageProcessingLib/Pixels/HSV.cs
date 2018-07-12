@@ -7,15 +7,15 @@ namespace ImageProcessingLib
 {
     public struct HSV
     {
-        public double Hue { get; private set; }
-        public double Saturation { get; private set; }
-        public double Value { get; private set; }
+        public double H { get; private set; }
+        public double S { get; private set; }
+        public double V { get; private set; }
 
         public HSV(double h, double s, double v)
         {
-            Hue = h;
-            Saturation = s;
-            Value = v;
+            H = h;
+            S = s;
+            V = v;
         }
 
         public HSV(Pixel32 pixel)
@@ -28,21 +28,22 @@ namespace ImageProcessingLib
             var cmax = MathUtils.Max(r, g, b);
             var delta = cmax - cmin;
 
-            Hue = 0d;
+            H = 0d;
             if (delta == 0)
-                Hue = 0d;
+                H = 0d;
             else if (cmax == r)
-                Hue = (((g - b) / (double)delta) % 6) * 60;
+                H = (((g - b) / (double)delta) % 6) * 60;
             else if (cmax == g)
-                Hue = (((b - r) / (double)delta) + 2) * 60;
+                H = (((b - r) / (double)delta) + 2) * 60;
             else if (cmax == b)
-                Hue = (((r - g) / (double)delta) + 4) * 60;
+                H = (((r - g) / (double)delta) + 4) * 60;
+            H = MathUtils.Clamp(H, 0d, 360d);
 
-            Saturation = 0d;
+            S = 0d;
             if (cmax != 0)
-                Saturation = 100d * delta / cmax;
+                S = MathUtils.Clamp(100d * delta / cmax, 0d, 100d);
 
-            Value = 100d * cmax / 255d;
+            V = MathUtils.Clamp(100d * cmax / 255d, 0d, 100d);
         }
     }
 }

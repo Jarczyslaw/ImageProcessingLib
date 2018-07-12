@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.spbImage = new ImageProcessingLibExamples.Controls.ScrollablePictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miCurrentImage = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,7 @@
             this.miHistogram = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slSummary = new System.Windows.Forms.ToolStripStatusLabel();
-            this.spbImage = new ImageProcessingLibExamples.Controls.ScrollablePictureBox();
+            this.miColorCalculator = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -163,12 +164,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
             // 
+            // spbImage
+            // 
+            this.spbImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spbImage.Image = null;
+            this.spbImage.Location = new System.Drawing.Point(6, 19);
+            this.spbImage.Name = "spbImage";
+            this.spbImage.Size = new System.Drawing.Size(1228, 629);
+            this.spbImage.TabIndex = 0;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
             this.miMetrics,
-            this.miHistogram});
+            this.miHistogram,
+            this.miColorCalculator});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -227,16 +240,12 @@
             this.slSummary.Name = "slSummary";
             this.slSummary.Size = new System.Drawing.Size(0, 17);
             // 
-            // spbImage
+            // miColorCalculator
             // 
-            this.spbImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.spbImage.Image = null;
-            this.spbImage.Location = new System.Drawing.Point(6, 19);
-            this.spbImage.Name = "spbImage";
-            this.spbImage.Size = new System.Drawing.Size(1228, 629);
-            this.spbImage.TabIndex = 0;
+            this.miColorCalculator.Name = "miColorCalculator";
+            this.miColorCalculator.Size = new System.Drawing.Size(103, 20);
+            this.miColorCalculator.Text = "Color calculator";
+            this.miColorCalculator.Click += new System.EventHandler(this.miColorCalculator_Click);
             // 
             // MainView
             // 
@@ -283,5 +292,6 @@
         private System.Windows.Forms.ToolStripMenuItem miHistogram;
         private Controls.ScrollablePictureBox spbImage;
         private System.Windows.Forms.ToolStripStatusLabel slSummary;
+        private System.Windows.Forms.ToolStripMenuItem miColorCalculator;
     }
 }

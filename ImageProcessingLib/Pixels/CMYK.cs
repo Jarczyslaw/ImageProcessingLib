@@ -35,12 +35,21 @@ namespace ImageProcessingLib
                 M = GetComponent(ng, den);
                 Y = GetComponent(nb, den);
             }
-            K = 100d * K;
+            K = MathUtils.Clamp(100d * K, 0d, 100d);
+        }
+
+        public Pixel32 GetPixel(byte alpha = 255)
+        {
+            var q = 100d - K;
+            var r = MathUtils.RoundToByte(255d * (100d - C) * q);
+            var g = MathUtils.RoundToByte(255d * (100d - M) * q);
+            var b = MathUtils.RoundToByte(255d * (100d - Y * q));
+            return new Pixel32(alpha, r, g, b);
         }
 
         private double GetComponent(double nc, double den)
         {
-            return 100d * (-nc / den + 1d);
+            return MathUtils.Clamp(100d * (-nc / den + 1d), 0d, 100d);
         }
     }
 }

@@ -120,5 +120,10 @@ namespace ImageProcessingLib.Utilities
             if (val1 > val2)
                 Swap(ref val1, ref val2);
         }
+
+        public static bool AreEqual(double val1, double val2, double tolerance = 0.001d)
+        {
+            return Math.Abs(val1 - val2) < tolerance;
+        }
     }
 }

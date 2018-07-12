@@ -14,7 +14,7 @@ namespace ImageProcessingLib
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var pixelHue = pixel.ToHSV().Hue;
+                var pixelHue = pixel.ToHSV().H;
 
                 bool toGrayscale = false;
                 if (h1 <= h2)
@@ -39,7 +39,7 @@ namespace ImageProcessingLib
 
         public static Image<Pixel32> ColorAccent(this Image<Pixel32> image, Pixel32 color, double hueRange)
         {
-            return image.ColorAccent(color.ToHSV().Hue, hueRange);
+            return image.ColorAccent(color.ToHSV().H, hueRange);
         }
     }
 }

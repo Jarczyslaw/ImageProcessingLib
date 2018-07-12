@@ -9,9 +9,9 @@ namespace ImageProcessingLib.Tests
         private void HSVAssert(HSV expected, HSV current)
         {
             var tolerance = Math.Pow(1d, -3d);
-            Assert.AreEqual(expected.Hue, current.Hue, tolerance);
-            Assert.AreEqual(expected.Saturation, current.Saturation, tolerance);
-            Assert.AreEqual(expected.Value, current.Value, tolerance);
+            Assert.AreEqual(expected.H, current.H, tolerance);
+            Assert.AreEqual(expected.S, current.S, tolerance);
+            Assert.AreEqual(expected.V, current.V, tolerance);
         }
 
         [TestMethod]
