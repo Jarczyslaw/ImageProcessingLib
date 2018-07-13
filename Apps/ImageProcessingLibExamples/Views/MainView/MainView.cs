@@ -22,6 +22,7 @@ namespace ImageProcessingLibExamples.Views
         public event Action<string> OnImagesSave;
         public event Action OnMetricsShow;
         public event Action<IHistogramView> OnHistogramShow;
+        public event Action<IColorCalculatorView> OnColorCalculatorShow;
 
         public Bitmap SelectedSourceImage
         {
@@ -225,7 +226,8 @@ namespace ImageProcessingLibExamples.Views
 
         private void miColorCalculator_Click(object sender, EventArgs e)
         {
-            new ColorCalculatorView().Show();
+            IColorCalculatorView colorCalculatorView = new ColorCalculatorView();
+            OnColorCalculatorShow?.Invoke(colorCalculatorView);
         }
     }
 }

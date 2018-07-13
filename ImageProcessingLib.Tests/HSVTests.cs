@@ -65,7 +65,7 @@ namespace ImageProcessingLib.Tests
         [TestMethod]
         public void ToBlackPixel()
         {
-            var hsv = new HSV(0d, 0d, 0d);
+            var hsv = new HSV(360d, 0d, 0d);
             var pixel = hsv.GetPixel();
             Assert.AreEqual(Pixel32.Black, pixel);
         }

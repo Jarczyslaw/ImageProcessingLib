@@ -1,4 +1,6 @@
-﻿namespace ImageProcessingLibExamples.Views
+﻿using ImageProcessingLibExamples.Controls;
+
+namespace ImageProcessingLibExamples.Views
 {
     partial class HistogramView
     {
@@ -33,9 +35,9 @@
             System.Windows.Media.SolidColorBrush solidColorBrush3 = new System.Windows.Media.SolidColorBrush();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistogramView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.chRed = new ImageProcessingLibExamples.Views.HistogramChart();
-            this.chGreen = new ImageProcessingLibExamples.Views.HistogramChart();
-            this.chBlue = new ImageProcessingLibExamples.Views.HistogramChart();
+            this.chRed = new ImageProcessingLibExamples.Controls.HistogramChart();
+            this.chGreen = new ImageProcessingLibExamples.Controls.HistogramChart();
+            this.chBlue = new ImageProcessingLibExamples.Controls.HistogramChart();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 

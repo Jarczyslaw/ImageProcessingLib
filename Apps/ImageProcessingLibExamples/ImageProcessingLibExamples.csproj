@@ -70,18 +70,20 @@
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ExamplesSource\IExamplesSource.cs" />
+    <Compile Include="Presenters\ColorCalculatorPresenter.cs" />
     <Compile Include="Presenters\HistogramPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
-    <Compile Include="Views\ColorCalculator\AnemicNumericUpDown.cs">
+    <Compile Include="Controls\AnemicNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\ColorCalculator\ColorCalculatorView.cs">
+    <Compile Include="Views\ColorCalculatorView\ColorCalculatorView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ColorCalculator\ColorCalculatorView.Designer.cs">
+    <Compile Include="Views\ColorCalculatorView\ColorCalculatorView.Designer.cs">
       <DependentUpon>ColorCalculatorView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HistogramView\HistogramChart.cs" />
+    <Compile Include="Controls\HistogramChart.cs" />
+    <Compile Include="Views\ColorCalculatorView\IColorCalculatorView.cs" />
     <Compile Include="Views\HistogramView\HistogramView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,7 +136,7 @@
     <EmbeddedResource Include="Controls\ScrollablePictureBox.resx">
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ColorCalculator\ColorCalculatorView.resx">
+    <EmbeddedResource Include="Views\ColorCalculatorView\ColorCalculatorView.resx">
       <DependentUpon>ColorCalculatorView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HistogramView\HistogramView.resx">

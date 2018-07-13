@@ -5,6 +5,6 @@ add color calculator + color picker from image
 implement histogram operations
 implement morphological operations
 add more example images
-add CMYK conversion
+//add CMYK conversion
 add pen sketch effect, charcoal and oil paint
 add WPF wrapper, rename GDI for something else

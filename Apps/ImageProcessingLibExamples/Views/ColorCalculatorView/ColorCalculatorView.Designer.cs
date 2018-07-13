@@ -1,4 +1,4 @@
-﻿using ImageProcessingLibExamples.Views.ColorCalculator;
+﻿using ImageProcessingLibExamples.Controls;
 
 namespace ImageProcessingLibExamples.Views
 {
@@ -32,22 +32,22 @@ namespace ImageProcessingLibExamples.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorCalculatorView));
             this.plColorPreview = new System.Windows.Forms.Panel();
-            this.nudA = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
+            this.nudA = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.nudB = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudG = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudR = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
+            this.nudB = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudG = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudR = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.nudV = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudS = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudH = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
+            this.nudV = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudS = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudH = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.tbHex = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,10 +55,10 @@ namespace ImageProcessingLibExamples.Views
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.nudK = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudY = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudM = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
-            this.nudC = new ImageProcessingLibExamples.Views.ColorCalculator.AnemicNumericUpDown();
+            this.nudK = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudY = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudM = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
+            this.nudC = new ImageProcessingLibExamples.Controls.AnemicNumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudA)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -270,6 +270,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudV.Name = "nudV";
             this.nudV.Size = new System.Drawing.Size(50, 20);
             this.nudV.TabIndex = 5;
+            this.nudV.AnemicValueChanged += new System.EventHandler(this.hsv_AnemicValueChanged);
             // 
             // nudS
             // 
@@ -288,6 +289,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudS.Name = "nudS";
             this.nudS.Size = new System.Drawing.Size(50, 20);
             this.nudS.TabIndex = 4;
+            this.nudS.AnemicValueChanged += new System.EventHandler(this.hsv_AnemicValueChanged);
             // 
             // nudH
             // 
@@ -311,6 +313,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudH.Name = "nudH";
             this.nudH.Size = new System.Drawing.Size(50, 20);
             this.nudH.TabIndex = 1;
+            this.nudH.AnemicValueChanged += new System.EventHandler(this.hsv_AnemicValueChanged);
             // 
             // label2
             // 
@@ -398,6 +401,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudK.Name = "nudK";
             this.nudK.Size = new System.Drawing.Size(50, 20);
             this.nudK.TabIndex = 6;
+            this.nudK.AnemicValueChanged += new System.EventHandler(this.cmyk_AnemicValueChanged);
             // 
             // nudY
             // 
@@ -416,6 +420,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudY.Name = "nudY";
             this.nudY.Size = new System.Drawing.Size(50, 20);
             this.nudY.TabIndex = 5;
+            this.nudY.AnemicValueChanged += new System.EventHandler(this.cmyk_AnemicValueChanged);
             // 
             // nudM
             // 
@@ -434,6 +439,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudM.Name = "nudM";
             this.nudM.Size = new System.Drawing.Size(50, 20);
             this.nudM.TabIndex = 4;
+            this.nudM.AnemicValueChanged += new System.EventHandler(this.cmyk_AnemicValueChanged);
             // 
             // nudC
             // 
@@ -452,6 +458,7 @@ namespace ImageProcessingLibExamples.Views
             this.nudC.Name = "nudC";
             this.nudC.Size = new System.Drawing.Size(50, 20);
             this.nudC.TabIndex = 1;
+            this.nudC.AnemicValueChanged += new System.EventHandler(this.cmyk_AnemicValueChanged);
             // 
             // label4
             // 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace ImageProcessingLibExamples.Views
+namespace ImageProcessingLibExamples.Controls
 {
     public class HistogramChart : LiveCharts.WinForms.CartesianChart
     {

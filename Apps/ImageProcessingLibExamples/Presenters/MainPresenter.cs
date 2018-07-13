@@ -33,10 +33,16 @@ namespace ImageProcessingLibExamples.Presenters
             view.OnImagesSave += ImagesSave;
             view.OnMetricsShow += MetricsShow;
             view.OnHistogramShow += HistogramShow;
+            view.OnColorCalculatorShow += OnColorCalculatorShow;
 
             view.SetImages(Images.AllBitmaps);
             examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
+        }
+
+        private void OnColorCalculatorShow(IColorCalculatorView colorCaculatorView)
+        {
+            new ColorCalculatorPresenter(colorCaculatorView);
         }
 
         private void HistogramShow(IHistogramView histogramView)

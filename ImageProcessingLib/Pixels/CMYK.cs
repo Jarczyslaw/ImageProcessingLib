@@ -68,5 +68,10 @@ namespace ImageProcessingLib
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return string.Format("Cyan: {0:0.00}, Magenta: {1:0.00}, Yellow: {2:0.00}, Key: {3:0.00}", C, M, Y, K);
+        }
     }
 }

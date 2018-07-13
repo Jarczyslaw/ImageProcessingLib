@@ -110,5 +110,10 @@ namespace ImageProcessingLib
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return string.Format("Hue: {0:0.00}, Saturation: {1:0.00}, Value: {2:0.00}", H, S, V);
+        }
     }
 }

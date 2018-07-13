@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class ColorCalculatorView : Form
+    public partial class ColorCalculatorView : Form, IColorCalculatorView
     {
         public Pixel32 Pixel
         {
@@ -28,7 +29,7 @@ namespace ImageProcessingLibExamples.Views
 
         public CMYK PixelCMYK
         {
-            get { return new CMYK(Pixel); }
+            get { return new CMYK((double)nudC.AnemicValue, (double)nudM.AnemicValue, (double)nudY.AnemicValue, (double)nudK.AnemicValue); }
             set
             {
                 var cmyk = value;
@@ -41,7 +42,7 @@ namespace ImageProcessingLibExamples.Views
 
         public HSV PixelHSV
         {
-            get { return new HSV(Pixel); }
+            get { return new HSV((double)nudH.AnemicValue, (double)nudS.AnemicValue, (double)nudV.AnemicValue); }
             set
             {
                 var hsv = value;
@@ -99,6 +100,38 @@ namespace ImageProcessingLibExamples.Views
             PixelCMYK = new CMYK(pixel);
             PixelHSV = new HSV(pixel);
             UpdatePixelInfo();
+        }
+
+        private void hsv_AnemicValueChanged(object sender, EventArgs e)
+        {
+            var hsv = PixelHSV;
+            Pixel = hsv.GetPixel();
+            PixelCMYK = new CMYK(Pixel);
+            UpdatePixelInfo();
+            Debug.WriteLine(PixelHSV.ToString());
+        }
+
+        private void cmyk_AnemicValueChanged(object sender, EventArgs e)
+        {
+            var cmyk = PixelCMYK;
+            Pixel = cmyk.GetPixel();
+            PixelHSV = new HSV(Pixel);
+            UpdatePixelInfo();
+        }
+
+        public void ShowView()
+        {
+            Show();
+        }
+
+        public void ShowViewAsDialog()
+        {
+            ShowDialog();
+        }
+
+        public void CloseView()
+        {
+            Close();
         }
     }
 }

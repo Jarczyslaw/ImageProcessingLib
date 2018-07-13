@@ -18,6 +18,7 @@ namespace ImageProcessingLibExamples.Views
         event Action<string> OnImagesSave;
         event Action OnMetricsShow;
         event Action<IHistogramView> OnHistogramShow;
+        event Action<IColorCalculatorView> OnColorCalculatorShow;
 
         Bitmap SelectedSourceImage { get; }
         ExampleBase SelectedExample { get; }
