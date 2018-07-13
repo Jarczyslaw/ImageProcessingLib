@@ -12,6 +12,8 @@ namespace ImageProcessingLibExamples.Controls
 {
     public partial class ScrollablePictureBox : UserControl
     {
+        public event Action<int, int> OnMouseAction;
+
         public Bitmap Image
         {
             set { pbImage.Image = value; }
@@ -21,6 +23,24 @@ namespace ImageProcessingLibExamples.Controls
         public ScrollablePictureBox()
         {
             InitializeComponent();
+        }
+
+        private void pbImage_MouseAction(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (Image == null)
+                    return;
+
+                var x = e.Location.X;
+                var y = e.Location.Y;
+                if (x < 0 || x > Image.Width)
+                    return;
+                if (y < 0 || y > Image.Height)
+                    return;
+
+                OnMouseAction?.Invoke(x, y);
+            } 
         }
     }
 }

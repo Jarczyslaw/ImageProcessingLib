@@ -5,6 +5,7 @@ using ImageProcessingLib.GDI;
 using ImageProcessingLibExamples.Examples;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -23,6 +24,7 @@ namespace ImageProcessingLibExamples.Views
         public event Action OnMetricsShow;
         public event Action<IHistogramView> OnHistogramShow;
         public event Action<IColorCalculatorView> OnColorCalculatorShow;
+        public event Action<int, int> OnColorSelect;
 
         public Bitmap SelectedSourceImage
         {
@@ -228,6 +230,11 @@ namespace ImageProcessingLibExamples.Views
         {
             IColorCalculatorView colorCalculatorView = new ColorCalculatorView();
             OnColorCalculatorShow?.Invoke(colorCalculatorView);
+        }
+
+        private void pbImage_MouseAction(int x, int y)
+        {
+            Debug.WriteLine(string.Format("X: {0}, Y: {1}", x, y));
         }
     }
 }

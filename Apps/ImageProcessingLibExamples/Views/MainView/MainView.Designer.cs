@@ -46,9 +46,9 @@
             this.miAllImages = new System.Windows.Forms.ToolStripMenuItem();
             this.miMetrics = new System.Windows.Forms.ToolStripMenuItem();
             this.miHistogram = new System.Windows.Forms.ToolStripMenuItem();
+            this.miColorCalculator = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slSummary = new System.Windows.Forms.ToolStripStatusLabel();
-            this.miColorCalculator = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -174,6 +174,7 @@
             this.spbImage.Name = "spbImage";
             this.spbImage.Size = new System.Drawing.Size(1228, 629);
             this.spbImage.TabIndex = 0;
+            this.spbImage.OnMouseAction += new System.Action<int, int>(this.pbImage_MouseAction);
             // 
             // menuStrip1
             // 
@@ -225,6 +226,13 @@
             this.miHistogram.Text = "Histogram";
             this.miHistogram.Click += new System.EventHandler(this.miHistogram_Click);
             // 
+            // miColorCalculator
+            // 
+            this.miColorCalculator.Name = "miColorCalculator";
+            this.miColorCalculator.Size = new System.Drawing.Size(103, 20);
+            this.miColorCalculator.Text = "Color calculator";
+            this.miColorCalculator.Click += new System.EventHandler(this.miColorCalculator_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -239,13 +247,6 @@
             // 
             this.slSummary.Name = "slSummary";
             this.slSummary.Size = new System.Drawing.Size(0, 17);
-            // 
-            // miColorCalculator
-            // 
-            this.miColorCalculator.Name = "miColorCalculator";
-            this.miColorCalculator.Size = new System.Drawing.Size(103, 20);
-            this.miColorCalculator.Text = "Color calculator";
-            this.miColorCalculator.Click += new System.EventHandler(this.miColorCalculator_Click);
             // 
             // MainView
             // 
