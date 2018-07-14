@@ -1,7 +1,7 @@
 //change examples to MVP
 //change examples UI
 //add Histogram calculation to examples
-add color calculator + color picker from image
+//add color calculator + color picker from image
 implement histogram operations
 implement morphological operations
 add more example images

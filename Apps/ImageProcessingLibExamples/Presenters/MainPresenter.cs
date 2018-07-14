@@ -22,6 +22,8 @@ namespace ImageProcessingLibExamples.Presenters
         private ExampleBase currentExample;
         private Bitmap currentImage;
 
+        private ColorCalculatorPresenter colorCalculatorPresenter;
+
         public MainPresenter(IMainView view, IExamplesSource examplesSource)
         {
             this.view = view;
@@ -34,15 +36,29 @@ namespace ImageProcessingLibExamples.Presenters
             view.OnMetricsShow += MetricsShow;
             view.OnHistogramShow += HistogramShow;
             view.OnColorCalculatorShow += ColorCalculatorShow;
+            view.OnColorSelect += ColorSelect;
 
             view.SetImages(Images.AllBitmaps);
             examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
         }
 
-        private void ColorCalculatorShow(IColorCalculatorView colorCaculatorView)
+        private void ColorSelect(int x, int y)
         {
-            new ColorCalculatorPresenter(view, colorCaculatorView);
+            if (colorCalculatorPresenter == null)
+                return;
+
+            if (view.SelectedResultImage == null)
+                return;
+
+            var pixel = view.SelectedResultImage.Image[x, y];
+            colorCalculatorPresenter.UpdateColor(x, y, pixel);
+        }
+
+        private void ColorCalculatorShow(IColorCalculatorView colorCalculatorView)
+        {
+            colorCalculatorPresenter = new ColorCalculatorPresenter(view, colorCalculatorView);
+            colorCalculatorPresenter.ShowView();
         }
 
         private void HistogramShow(IHistogramView histogramView)
@@ -70,7 +86,7 @@ namespace ImageProcessingLibExamples.Presenters
 
         private async void LaunchMetrics(Image<Pixel32> originalImage, Image<Pixel32> resultImage)
         {
-            view.IsBusy = true;
+            view.Busy = true;
             try
             {
                 var result = await Task.Run(() =>
@@ -87,7 +103,7 @@ namespace ImageProcessingLibExamples.Presenters
             }
             finally
             {
-                view.IsBusy = false;
+                view.Busy = false;
             }
         }
 
@@ -142,9 +158,9 @@ namespace ImageProcessingLibExamples.Presenters
             currentExample = view.SelectedExample;
             currentImage = view.SelectedSourceImage;
 
-            view.IsBusy = true;
+            view.Busy = true;
             await LaunchExample(currentImage, currentExample);
-            view.IsBusy = false;
+            view.Busy = false;
         }
 
         private async Task LaunchExample(Bitmap bmp, ExampleBase example)

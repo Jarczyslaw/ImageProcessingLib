@@ -51,18 +51,30 @@ namespace ImageProcessingLibExamples.Views
             }
         }
 
-        private bool isBusy = false;
-        public bool IsBusy
+        private bool busy = false;
+        public bool Busy
         {
-            get { return isBusy; }
+            get { return busy; }
             set
             {
-                isBusy = value;
-                Application.UseWaitCursor = isBusy;
-                if (isBusy)
+                busy = value;
+                Application.UseWaitCursor = busy;
+                if (busy)
                     this.DisableControls();
                 else
                     this.EnableControls();
+            }
+        }
+
+        public bool ColorCalculatorEnabled
+        {
+            get
+            {
+                if (colorCalculatorView == null)
+                    return false;
+                if (colorCalculatorView.IsDisposed)
+                    return false;
+                return true;
             }
         }
 
@@ -206,6 +218,14 @@ namespace ImageProcessingLibExamples.Views
                 spbImage.Image = image.Bitmap;
         }
 
+        private void ShowColorCalculator()
+        {
+            if (!ColorCalculatorEnabled)
+                colorCalculatorView = new ColorCalculatorView();
+
+            OnColorCalculatorShow?.Invoke(colorCalculatorView);
+        }
+
         private void miHistogram_Click(object sender, EventArgs e)
         {
             var histogramView = new HistogramView();
@@ -214,17 +234,21 @@ namespace ImageProcessingLibExamples.Views
 
         private void miColorCalculator_Click(object sender, EventArgs e)
         {
-            if (colorCalculatorView == null || colorCalculatorView.IsDisposed)
-            {
-                colorCalculatorView = new ColorCalculatorView();
-            }
-            
-            OnColorCalculatorShow?.Invoke(colorCalculatorView);
+            ShowColorCalculator();
         }
 
-        private void pbImage_MouseAction(int x, int y)
+        private void spbImage_OnMouseDoubleClick(int x, int y)
         {
-            
+            ShowColorCalculator();
+            OnColorSelect(x, y);
+        }
+
+        private void spbImage_OnMouseClickOrMove(int x, int y)
+        {
+            if (!ColorCalculatorEnabled)
+                return;
+
+            OnColorSelect(x, y);
         }
     }
 }

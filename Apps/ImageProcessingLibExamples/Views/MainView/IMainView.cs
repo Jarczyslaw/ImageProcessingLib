@@ -18,12 +18,13 @@ namespace ImageProcessingLibExamples.Views
         event Action OnMetricsShow;
         event Action<IHistogramView> OnHistogramShow;
         event Action<IColorCalculatorView> OnColorCalculatorShow;
+        event Action<int, int> OnColorSelect;
 
         Bitmap SelectedSourceImage { get; }
         ExampleBase SelectedExample { get; }
         GDImage32 SelectedResultImage { get; set; }
 
-        bool IsBusy { get; set; }
+        bool Busy { get; set; }
 
         void SetSummary(string exampleName, double elapsedMilliseconds);
         void ShowMetrics(double mse, double psnr);

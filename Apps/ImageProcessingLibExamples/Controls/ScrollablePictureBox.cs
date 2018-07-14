@@ -32,9 +32,9 @@ namespace ImageProcessingLibExamples.Controls
             if (Image == null)
                 return false;
 
-            if (location.X < 0 || location.X > Image.Width)
+            if (location.X < 0 || location.X >= Image.Width)
                 return false;
-            if (location.Y < 0 || location.Y > Image.Height)
+            if (location.Y < 0 || location.Y >= Image.Height)
                 return false;
 
             return true;

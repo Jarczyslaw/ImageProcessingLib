@@ -58,7 +58,7 @@ namespace ImageProcessingLibExamples.Views
         {
             InitializeComponent();
             title = Text;
-            LoadPixel(Pixel32.CreateRandom());
+            SetPixel(Pixel32.CreateRandom());
         }
 
         public void SetCoordinates(int? x, int? y)
@@ -69,7 +69,7 @@ namespace ImageProcessingLibExamples.Views
                 Text = string.Format("{0} [{1}, {2}]", title, x.Value, y.Value);
         }
 
-        public void LoadPixel(Pixel32 pixel)
+        public void SetPixel(Pixel32 pixel)
         {
             Pixel = pixel;
             PixelCMYK = new CMYK(pixel);

@@ -10,6 +10,6 @@ namespace ImageProcessingLibExamples.Views
     public interface IColorCalculatorView : IView
     {
         void SetCoordinates(int? x, int? y);
-        void LoadPixel(Pixel32 pixel);
+        void SetPixel(Pixel32 pixel);
     }
 }
