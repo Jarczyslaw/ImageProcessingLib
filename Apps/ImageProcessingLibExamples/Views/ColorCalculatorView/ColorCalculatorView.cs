@@ -58,7 +58,7 @@ namespace ImageProcessingLibExamples.Views
         {
             InitializeComponent();
             title = Text;
-            LoadPixel(new Pixel32(255, 30, 60, 90));
+            LoadPixel(Pixel32.CreateRandom());
         }
 
         public void SetCoordinates(int? x, int? y)

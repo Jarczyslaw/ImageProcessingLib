@@ -44,8 +44,9 @@ namespace ImageProcessingLib.Utilities
 
         private GaussianValuesSource gaussianSource;
 
-        public RandomEx() :
-            base((int)(new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds()))
+        public RandomEx() : this((int)(new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds())) { }
+
+        public RandomEx(int seed) : base(seed)
         {
             gaussianSource = new GaussianValuesSource(this);
         }
@@ -59,6 +60,11 @@ namespace ImageProcessingLib.Utilities
         public bool NextBool()
         {
             return Next(2) == 0;
+        }
+
+        public byte NextByte()
+        {
+            return (byte)Next(0, 256);
         }
 
         public double NextDouble(double min, double max)

@@ -118,6 +118,20 @@ namespace ImageProcessingLib
             get { return Black; }
         }
 
+        public static Pixel32 CreateRandom()
+        {
+            return CreateRandom(255);
+        }
+
+        public static Pixel32 CreateRandom(byte alpha)
+        {
+            var random = new RandomEx();
+            var r = random.NextByte();
+            var g = random.NextByte();
+            var b = random.NextByte();
+            return new Pixel32(alpha, r, g, b);
+        }
+
         public HSV ToHSV()
         {
             return new HSV(this);
