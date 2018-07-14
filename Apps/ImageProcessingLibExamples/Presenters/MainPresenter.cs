@@ -27,22 +27,22 @@ namespace ImageProcessingLibExamples.Presenters
             this.view = view;
 
             view.OnExampleRun += ExampleRun;
-            view.OnClose += OnClose;
+            view.OnViewClosing += OnClosing;
 
             view.OnCurrentImageSave += CurrentImageSave;
             view.OnImagesSave += ImagesSave;
             view.OnMetricsShow += MetricsShow;
             view.OnHistogramShow += HistogramShow;
-            view.OnColorCalculatorShow += OnColorCalculatorShow;
+            view.OnColorCalculatorShow += ColorCalculatorShow;
 
             view.SetImages(Images.AllBitmaps);
             examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
         }
 
-        private void OnColorCalculatorShow(IColorCalculatorView colorCaculatorView)
+        private void ColorCalculatorShow(IColorCalculatorView colorCaculatorView)
         {
-            new ColorCalculatorPresenter(colorCaculatorView);
+            new ColorCalculatorPresenter(view, colorCaculatorView);
         }
 
         private void HistogramShow(IHistogramView histogramView)
@@ -54,7 +54,7 @@ namespace ImageProcessingLibExamples.Presenters
                 return;
             }
 
-            new HistogramPresenter(histogramView, image.Image);
+            new HistogramPresenter(view, histogramView, image.Image);
         }
 
         private void MetricsShow()
@@ -123,9 +123,10 @@ namespace ImageProcessingLibExamples.Presenters
             }
         }
 
-        private void OnClose()
+        private bool OnClosing()
         {
             currentExample?.CleanUp();
+            return false;
         }
 
         private async void ExampleRun()

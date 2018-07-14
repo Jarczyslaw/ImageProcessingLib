@@ -13,10 +13,8 @@ using LiveCharts.Wpf;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class HistogramView : Form, IHistogramView
+    public partial class HistogramView : BaseForm, IHistogramView
     {
-        public event Action OnViewLoad;
-
         public ImageHistogram Histogram
         {
             set
@@ -31,26 +29,6 @@ namespace ImageProcessingLibExamples.Views
         public HistogramView()
         {
             InitializeComponent();
-        }
-
-        private void HistogramView_Load(object sender, EventArgs e)
-        {
-            OnViewLoad?.Invoke();
-        }
-
-        public void CloseView()
-        {
-            Close();
-        }
-
-        public void ShowView()
-        {
-            Show();
-        }
-
-        public void ShowViewAsDialog()
-        {
-            ShowDialog();
         }
     }
 }

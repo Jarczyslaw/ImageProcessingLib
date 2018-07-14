@@ -11,10 +11,10 @@ namespace ImageProcessingLibExamples.Presenters
     {
         private IColorCalculatorView view;
 
-        public ColorCalculatorPresenter(IColorCalculatorView view)
+        public ColorCalculatorPresenter(IMainView mainView, IColorCalculatorView view)
         {
             this.view = view;
-            view.ShowView();
+            view.ShowView(mainView);
         }
     }
 }

@@ -159,7 +159,7 @@
             this.groupBox2.Controls.Add(this.spbImage);
             this.groupBox2.Location = new System.Drawing.Point(12, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1240, 654);
+            this.groupBox2.Size = new System.Drawing.Size(1240, 653);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
@@ -172,7 +172,7 @@
             this.spbImage.Image = null;
             this.spbImage.Location = new System.Drawing.Point(6, 19);
             this.spbImage.Name = "spbImage";
-            this.spbImage.Size = new System.Drawing.Size(1228, 629);
+            this.spbImage.Size = new System.Drawing.Size(1228, 628);
             this.spbImage.TabIndex = 0;
             this.spbImage.OnMouseClick += new System.Action<int, int>(this.pbImage_MouseAction);
             this.spbImage.OnMouseDoubleClick += new System.Action<int, int>(this.pbImage_MouseAction);
@@ -239,7 +239,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.slSummary});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 740);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 739);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1264, 22);
             this.statusStrip1.TabIndex = 6;
@@ -254,7 +254,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 762);
+            this.ClientSize = new System.Drawing.Size(1264, 761);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

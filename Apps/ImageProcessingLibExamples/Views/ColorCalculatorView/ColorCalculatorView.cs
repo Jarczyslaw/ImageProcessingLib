@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class ColorCalculatorView : Form, IColorCalculatorView
+    public partial class ColorCalculatorView : BaseForm, IColorCalculatorView
     {
         public Pixel32 Pixel
         {
@@ -117,21 +117,6 @@ namespace ImageProcessingLibExamples.Views
             Pixel = cmyk.GetPixel();
             PixelHSV = new HSV(Pixel);
             UpdatePixelInfo();
-        }
-
-        public void ShowView()
-        {
-            Show();
-        }
-
-        public void ShowViewAsDialog()
-        {
-            ShowDialog();
-        }
-
-        public void CloseView()
-        {
-            Close();
         }
     }
 }

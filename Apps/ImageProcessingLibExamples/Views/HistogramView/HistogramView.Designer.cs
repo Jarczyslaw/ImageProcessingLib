@@ -100,7 +100,6 @@ namespace ImageProcessingLibExamples.Views
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HistogramView";
             this.Text = "Examples - Histogram";
-            this.Load += new System.EventHandler(this.HistogramView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

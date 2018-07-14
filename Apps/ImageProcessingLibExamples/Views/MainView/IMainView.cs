@@ -12,7 +12,6 @@ namespace ImageProcessingLibExamples.Views
     public interface IMainView : IView
     {
         event Action OnExampleRun;
-        event Action OnClose;
 
         event Action<string> OnCurrentImageSave;
         event Action<string> OnImagesSave;

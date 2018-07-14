@@ -482,6 +482,7 @@ namespace ImageProcessingLibExamples.Views
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ColorCalculatorView";
             this.Text = "Examples - Color Calculator";
             ((System.ComponentModel.ISupportInitialize)(this.nudA)).EndInit();

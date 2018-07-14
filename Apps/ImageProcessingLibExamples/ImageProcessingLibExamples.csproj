@@ -76,6 +76,12 @@
     <Compile Include="Controls\AnemicNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ColorCalculatorView\ColorCalculatorView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\ScrollablePictureBox.resx">
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ColorCalculatorView\ColorCalculatorView.resx">
       <DependentUpon>ColorCalculatorView.cs</DependentUpon>

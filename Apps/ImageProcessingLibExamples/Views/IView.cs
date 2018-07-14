@@ -8,8 +8,13 @@ namespace ImageProcessingLibExamples.Views
 {
     public interface IView
     {
+        event Action OnViewLoad;
+        event Func<bool> OnViewClosing;
+
         void ShowView();
+        void ShowView<T>(T owner);
         void ShowViewAsDialog();
+        void ShowViewAsDialog<T>(T owner);
         void CloseView();
     }
 }

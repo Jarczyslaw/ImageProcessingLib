@@ -15,9 +15,8 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class MainView : Form, IMainView
+    public partial class MainView : BaseForm, IMainView
     {
-        public event Action OnClose;
         public event Action OnExampleRun;
         public event Action<string> OnCurrentImageSave;
         public event Action<string> OnImagesSave;
@@ -72,22 +71,7 @@ namespace ImageProcessingLibExamples.Views
         public MainView()
         {
             InitializeComponent();
-        }
-
-        public void CloseView()
-        {
-            OnClose?.Invoke();
-            Close();
-        }
-
-        public void ShowView()
-        {
-            Show();
-        }
-
-        public void ShowViewAsDialog()
-        {
-            ShowDialog();
+            MinimumSize = Size;
         }
 
         public void SetImages(Dictionary<string, Bitmap> images)
