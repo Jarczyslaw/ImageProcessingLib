@@ -12,7 +12,9 @@ namespace ImageProcessingLibExamples.Controls
 {
     public partial class ScrollablePictureBox : UserControl
     {
-        public event Action<int, int> OnMouseAction;
+        public new event Action<int, int> OnMouseClick;
+        public new event Action<int, int> OnMouseDoubleClick;
+        public new event Action<int, int> OnMouseMove;
 
         public Bitmap Image
         {
@@ -25,22 +27,43 @@ namespace ImageProcessingLibExamples.Controls
             InitializeComponent();
         }
 
-        private void pbImage_MouseAction(object sender, MouseEventArgs e)
+        private bool CheckImageBoundaries(Point location)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                if (Image == null)
-                    return;
+            if (Image == null)
+                return false;
 
-                var x = e.Location.X;
-                var y = e.Location.Y;
-                if (x < 0 || x > Image.Width)
-                    return;
-                if (y < 0 || y > Image.Height)
-                    return;
+            if (location.X < 0 || location.X > Image.Width)
+                return false;
+            if (location.Y < 0 || location.Y > Image.Height)
+                return false;
 
-                OnMouseAction?.Invoke(x, y);
-            } 
+            return true;
+        }
+
+        private void FireMouseEvent(MouseEventArgs e, Action<int, int> mouseEvent)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            if (!CheckImageBoundaries(e.Location))
+                return;
+
+            mouseEvent?.Invoke(e.Location.X, e.Location.Y);
+        }
+
+        private void pbImage_MouseClick(object sender, MouseEventArgs e)
+        {
+            FireMouseEvent(e, OnMouseClick);
+        }
+
+        private void pbImage_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FireMouseEvent(e, OnMouseDoubleClick);
+        }
+
+        private void pbImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            FireMouseEvent(e, OnMouseMove);
         }
     }
 }

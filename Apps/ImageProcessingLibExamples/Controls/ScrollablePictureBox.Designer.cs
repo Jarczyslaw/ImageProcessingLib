@@ -52,9 +52,9 @@
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
-            this.pbImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseAction);
-            this.pbImage.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseAction);
-            this.pbImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseAction);
+            this.pbImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseClick);
+            this.pbImage.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseDoubleClick);
+            this.pbImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImage_MouseMove);
             // 
             // ScrollablePictureBox
             // 

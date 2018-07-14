@@ -174,7 +174,9 @@
             this.spbImage.Name = "spbImage";
             this.spbImage.Size = new System.Drawing.Size(1228, 629);
             this.spbImage.TabIndex = 0;
-            this.spbImage.OnMouseAction += new System.Action<int, int>(this.pbImage_MouseAction);
+            this.spbImage.OnMouseClick += new System.Action<int, int>(this.pbImage_MouseAction);
+            this.spbImage.OnMouseDoubleClick += new System.Action<int, int>(this.pbImage_MouseAction);
+            this.spbImage.OnMouseMove += new System.Action<int, int>(this.pbImage_MouseAction);
             // 
             // menuStrip1
             // 

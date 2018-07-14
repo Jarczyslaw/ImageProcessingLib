@@ -67,6 +67,8 @@ namespace ImageProcessingLibExamples.Views
             }
         }
 
+        private ColorCalculatorView colorCalculatorView;
+
         public MainView()
         {
             InitializeComponent();
@@ -222,19 +224,23 @@ namespace ImageProcessingLibExamples.Views
 
         private void miHistogram_Click(object sender, EventArgs e)
         {
-            IHistogramView histogramView = new HistogramView();
+            var histogramView = new HistogramView();
             OnHistogramShow?.Invoke(histogramView);
         }
 
         private void miColorCalculator_Click(object sender, EventArgs e)
         {
-            IColorCalculatorView colorCalculatorView = new ColorCalculatorView();
+            if (colorCalculatorView == null || colorCalculatorView.IsDisposed)
+            {
+                colorCalculatorView = new ColorCalculatorView();
+            }
+            
             OnColorCalculatorShow?.Invoke(colorCalculatorView);
         }
 
         private void pbImage_MouseAction(int x, int y)
         {
-            Debug.WriteLine(string.Format("X: {0}, Y: {1}", x, y));
+            
         }
     }
 }
