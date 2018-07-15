@@ -21,11 +21,6 @@ namespace ImageProcessingLibExamples.Presenters
         public void ShowView(IColorCalculatorView view, bool showRandomPixel = false)
         {
             this.view = view;
-            if (!view.Visible)
-                view.ShowView(mainView);
-            else
-                view.BringToFront();
-
             if (showRandomPixel)
                 view.SetPixel(Pixel32.CreateRandom());
         }

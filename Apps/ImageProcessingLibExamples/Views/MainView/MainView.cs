@@ -235,6 +235,11 @@ namespace ImageProcessingLibExamples.Views
             if (!ColorCalculatorEnabled)
                 colorCalculatorView = new ColorCalculatorView();
 
+            if (!colorCalculatorView.Visible)
+                colorCalculatorView.ShowView(this);
+            else
+                colorCalculatorView.BringToFront();
+
             OnColorCalculatorShow?.Invoke(colorCalculatorView);
         }
 
