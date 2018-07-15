@@ -14,6 +14,8 @@ namespace ImageProcessingLib
 
         public static Image<Pixel32> ContrastStretch(this Image<Pixel32> image, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
         {
+            Validate(rMin, rMax, gMin, gMax, bMin, bMax);
+
             MathUtils.Orientate(ref rMin, ref rMax);
             MathUtils.Orientate(ref gMin, ref gMax);
             MathUtils.Orientate(ref bMin, ref bMax);
@@ -32,12 +34,16 @@ namespace ImageProcessingLib
 
         private static byte Stretch(byte pixelValue, byte? histMin, byte? histMax, byte min, byte max)
         {
-            if (histMin == null)
-                histMin = min;
-            if (histMax == null)
-                histMax = max;
+            if (histMin == null || histMax == null)
+                return pixelValue;
 
             return MathUtils.RoundToByte(MathUtils.Rescale(pixelValue, histMin.Value, histMax.Value, min, max));
+        }
+
+        private static void Validate(byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
+        {
+            if (rMin == rMax || gMin == gMax || bMin == bMax)
+                throw new ArgumentException("Minimum and maximum values for pixel component can not be equal");
         }
     }
 }
