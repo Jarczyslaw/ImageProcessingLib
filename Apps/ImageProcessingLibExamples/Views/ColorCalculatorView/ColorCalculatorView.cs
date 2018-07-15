@@ -58,7 +58,6 @@ namespace ImageProcessingLibExamples.Views
         {
             InitializeComponent();
             title = Text;
-            SetPixel(Pixel32.CreateRandom());
         }
 
         public void SetCoordinates(int? x, int? y)

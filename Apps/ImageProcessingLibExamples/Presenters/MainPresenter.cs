@@ -22,11 +22,15 @@ namespace ImageProcessingLibExamples.Presenters
         private ExampleBase currentExample;
         private Bitmap currentImage;
 
+        private HistogramPresenter histogramPresenter;
         private ColorCalculatorPresenter colorCalculatorPresenter;
 
         public MainPresenter(IMainView view, IExamplesSource examplesSource)
         {
             this.view = view;
+
+            histogramPresenter = new HistogramPresenter(view);
+            colorCalculatorPresenter = new ColorCalculatorPresenter(view);
 
             view.OnExampleRun += ExampleRun;
             view.OnViewClosing += OnClosing;
@@ -57,8 +61,7 @@ namespace ImageProcessingLibExamples.Presenters
 
         private void ColorCalculatorShow(IColorCalculatorView colorCalculatorView)
         {
-            colorCalculatorPresenter = new ColorCalculatorPresenter(view, colorCalculatorView);
-            colorCalculatorPresenter.ShowView();
+            colorCalculatorPresenter.ShowView(colorCalculatorView, true);
         }
 
         private void HistogramShow(IHistogramView histogramView)
@@ -70,7 +73,7 @@ namespace ImageProcessingLibExamples.Presenters
                 return;
             }
 
-            new HistogramPresenter(view, histogramView, image.Image);
+            histogramPresenter.ShowHistogram(histogramView, image.Image, view.SelectedResultImageTitle);
         }
 
         private void MetricsShow()

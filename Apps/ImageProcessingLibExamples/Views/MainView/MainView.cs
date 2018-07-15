@@ -51,6 +51,18 @@ namespace ImageProcessingLibExamples.Views
             }
         }
 
+        public string SelectedResultImageTitle
+        {
+            get
+            {
+                if (cbResults.SelectedValue == null)
+                    return null;
+
+                var imageTitle = (KeyValuePair<string, GDImage32>)cbResults.SelectedItem;
+                return imageTitle.Key;
+            }
+        }
+
         private bool busy = false;
         public bool Busy
         {

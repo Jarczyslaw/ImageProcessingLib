@@ -26,9 +26,23 @@ namespace ImageProcessingLibExamples.Views
             }
         }
 
+        public string ImageTitle
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    Text = title;
+                else
+                    Text = string.Format("{0} [{1}]", title, value);
+            }
+        }
+
+        private string title;
+
         public HistogramView()
         {
             InitializeComponent();
+            title = Text;
         }
     }
 }

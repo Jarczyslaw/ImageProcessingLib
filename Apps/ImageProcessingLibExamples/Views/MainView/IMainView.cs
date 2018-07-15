@@ -23,6 +23,7 @@ namespace ImageProcessingLibExamples.Views
         Bitmap SelectedSourceImage { get; }
         ExampleBase SelectedExample { get; }
         GDImage32 SelectedResultImage { get; set; }
+        string SelectedResultImageTitle { get; }
 
         bool Busy { get; set; }
 

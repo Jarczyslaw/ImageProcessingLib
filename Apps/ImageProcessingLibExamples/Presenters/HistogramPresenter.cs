@@ -10,22 +10,20 @@ namespace ImageProcessingLibExamples.Presenters
 {
     public class HistogramPresenter
     {
-        private IHistogramView view;
-        private Image<Pixel32> image;
+        private IMainView mainView;
 
-        public HistogramPresenter(IMainView mainView, IHistogramView view, Image<Pixel32> image)
+        public HistogramPresenter(IMainView mainView)
         {
-            this.view = view;
-            this.image = image;
-
-            view.OnViewLoad += OnLoad;
-            view.ShowViewAsDialog(mainView);
+            this.mainView = mainView;
         }
 
-        private void OnLoad()
+        public void ShowHistogram(IHistogramView histogramView, Image<Pixel32> image, string imageTitle)
         {
-            var hist = image.Histogram();
-            view.Histogram = hist;
+            var histogram = image.Histogram();
+
+            histogramView.ImageTitle = imageTitle;
+            histogramView.Histogram = histogram;
+            histogramView.ShowView(mainView);
         }
     }
 }
