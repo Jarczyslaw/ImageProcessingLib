@@ -125,5 +125,10 @@ namespace ImageProcessingLib.Utilities
         {
             return Math.Abs(val1 - val2) < tolerance;
         }
+
+        public static double Rescale(double x, double a1, double a2, double b1, double b2)
+        {
+            return (b2 - b1) / (a2 - a1) * (x - a1) + b1;
+        }
     }
 }

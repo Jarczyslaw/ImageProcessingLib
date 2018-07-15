@@ -58,6 +58,7 @@
     <Compile Include="HistogramTests.cs" />
     <Compile Include="HSVTests.cs" />
     <Compile Include="CMYKTests.cs" />
+    <Compile Include="MathUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
