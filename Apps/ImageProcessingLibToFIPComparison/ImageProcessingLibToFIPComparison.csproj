@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Comparisons\DFT.cs" />
     <Compile Include="Comparisons\HistogramEqualization.cs" />
+    <Compile Include="Comparisons\HistogramScaling.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

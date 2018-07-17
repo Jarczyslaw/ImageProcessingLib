@@ -62,7 +62,7 @@ namespace ImageProcessingLib.Utilities
             return max;
         }
 
-        public static byte[,] Normalize(double[,] arr, Func<double, double, double> normalizeFunc)
+        private static byte[,] Normalize(double[,] arr, Func<double, double, double> normalizeFunc)
         {
             var rows = arr.GetLength(0);
             var cols = arr.GetLength(1);
@@ -79,14 +79,14 @@ namespace ImageProcessingLib.Utilities
             return result;
         }
 
-        public static byte[,] NormalizeWithLinear(double[,] arr)
+        public static byte[,] Normalize(double[,] arr)
         {
-            return Normalize(arr, (value, max) => 255d * value / max);
+            return Normalize(arr, (value, max) => MathUtils.Normalize(value, max));
         }
 
-        public static byte[,] NormalizeWithLog10(double[,] arr)
+        public static byte[,] NormalizeLog10(double[,] arr)
         {
-            return Normalize(arr, (value, max) => 255d * Math.Log10(1d + value) / Math.Log10(1d + max));
+            return Normalize(arr, (value, max) => MathUtils.NormalizeLog10(value, max));
         }
 
         public static List<int> IndicesOf<T>(IList<T> arr, T value)

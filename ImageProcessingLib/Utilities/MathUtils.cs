@@ -130,5 +130,15 @@ namespace ImageProcessingLib.Utilities
         {
             return (b2 - b1) / (a2 - a1) * (x - a1) + b1;
         }
+
+        public static double Normalize(double value, double max)
+        {
+            return byte.MaxValue * value / max;
+        }
+
+        public static double NormalizeLog10(double value, double max)
+        {
+            return byte.MaxValue * Math.Log10(1d + value) / Math.Log10(1d + max);
+        }
     }
 }

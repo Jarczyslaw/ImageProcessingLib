@@ -51,7 +51,7 @@ namespace ImageProcessingLib
         {
             var dft = DFT(imageData);
             var magnitudes = GetMagnitudes(dft);
-            var resultData = ArrayUtils.NormalizeWithLog10(magnitudes);
+            var resultData = ArrayUtils.NormalizeLog10(magnitudes);
             return Image32Utils.GetGrayscaleImageFromArray(resultData);
         }
 

@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public static class ContrastStretchExtension
+    public static class HistogramStretchExtension
     {
-        public static Image<Pixel32> ContrastStretch(this Image<Pixel32> image, byte min, byte max)
+        public static Image<Pixel32> HistogramStretch(this Image<Pixel32> image, byte min, byte max)
         {
-            return image.ContrastStretch(min, max, min, max, min, max);
+            return image.HistogramStretch(min, max, min, max, min, max);
         }
 
-        public static Image<Pixel32> ContrastStretch(this Image<Pixel32> image, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
+        public static Image<Pixel32> HistogramStretch(this Image<Pixel32> image, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
         {
             Validate(rMin, rMax, gMin, gMax, bMin, bMax);
 

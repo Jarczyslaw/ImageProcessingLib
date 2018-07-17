@@ -70,8 +70,9 @@
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ExamplesSource\IExamplesSource.cs" />
-    <Compile Include="Examples\ContrastStretch.cs" />
+    <Compile Include="Examples\HistogramStretch.cs" />
     <Compile Include="Examples\HistogramEqualization.cs" />
+    <Compile Include="Examples\HistogramScaling.cs" />
     <Compile Include="Examples\HistogramShift.cs" />
     <Compile Include="Presenters\ColorCalculatorPresenter.cs" />
     <Compile Include="Presenters\HistogramPresenter.cs" />

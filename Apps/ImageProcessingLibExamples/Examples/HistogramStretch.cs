@@ -8,7 +8,7 @@ using ImageProcessingLib.GDI;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class ContrastStretch : ExampleBase
+    public class HistogramStretch : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
         {
@@ -21,8 +21,8 @@ namespace ImageProcessingLibExamples.Examples
             foreach (var range in ranges)
             {
                 var image = originalImage.Copy();
-                image.ContrastStretch(range.Item1, range.Item2);
-                images.Add(string.Format("ContrastStretch{0}-{1}", range.Item1, range.Item2), new GDImage32(image));
+                image.HistogramStretch(range.Item1, range.Item2);
+                images.Add(string.Format("HistogramStretch{0}-{1}", range.Item1, range.Item2), new GDImage32(image));
             }
         }
     }
