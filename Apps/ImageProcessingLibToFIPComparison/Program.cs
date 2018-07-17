@@ -21,7 +21,7 @@ namespace ImageProcessingLibToFIPComparison
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var sourceImage = ImagesFolder.Images.Lena128;
+            var sourceImage = ImagesFolder.Images.Lena;
             Application.Run(new MainForm(sourceImage));
         }
 

@@ -61,5 +61,17 @@ namespace ImageProcessingLib
             foreach (var value in values)
                 Add(value);
         }
+
+        public int[] GetCummulativeData()
+        {
+            var result = new int[data.Length];
+            int sum = 0;
+            for (int i = 0;i < data.Length;i++)
+            {
+                sum += data[i];
+                result[i] = sum;
+            }
+            return result;
+        }
     }
 }
