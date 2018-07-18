@@ -6,7 +6,12 @@ namespace ImageProcessingLib
     public class Image<TPixelType> : ImageBase
         where TPixelType : struct, IPixel<TPixelType>
     {
-        public event ResizeHandler OnResize;
+        private event ResizeHandler onResize;
+        public event ResizeHandler OnResize
+        {
+            add { onResize += value; }
+            remove { onResize -= value; }
+        }
 
         protected TPixelType pixelSource = new TPixelType();
 
@@ -86,7 +91,7 @@ namespace ImageProcessingLib
 
         public void InvokeResize()
         {
-            OnResize?.Invoke();
+            onResize?.Invoke();
         }
 
         public TPixelType this[int i]
