@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace ImageProcessingLib
 
         public Pixel8 From(int data)
         {
-            return new Pixel8((byte)data);
+            return new Pixel8(MathUtils.ByteClamp(data));
         }
 
         public Pixel8 White
@@ -36,6 +37,11 @@ namespace ImageProcessingLib
         public Pixel8 Black
         {
             get { return new Pixel8(0); }
+        }
+
+        public Pixel32 ToPixel32()
+        {
+            return new Pixel32(Value, Value, Value);
         }
     }
 }

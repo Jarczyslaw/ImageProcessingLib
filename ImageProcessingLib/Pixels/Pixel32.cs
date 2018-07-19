@@ -187,5 +187,11 @@ namespace ImageProcessingLib
             var hexFormat = "X2";
             return A.ToString(hexFormat) + R.ToString(hexFormat) + G.ToString(hexFormat) + B.ToString(hexFormat);
         }
+
+        public Pixel8 ToPixel8()
+        {
+            var gs = GrayscaleExtension.Luminance(this);
+            return new Pixel8(gs);
+        }
     }
 }

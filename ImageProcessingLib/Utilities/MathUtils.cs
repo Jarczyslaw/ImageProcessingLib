@@ -140,5 +140,10 @@ namespace ImageProcessingLib.Utilities
         {
             return byte.MaxValue * Math.Log10(1d + value) / Math.Log10(1d + max);
         }
+
+        public static byte Negative(byte value)
+        {
+            return (byte)(byte.MaxValue - value);
+        }
     }
 }

@@ -192,6 +192,8 @@
     <Compile Include="Benchmarks\FieldsVsProperties\FieldsVsProperties.cs" />
     <Compile Include="Benchmarks\ForEachPixel\ForEachPixel.cs" />
     <Compile Include="Benchmarks\LookupTable\LookupTable.cs" />
+    <Compile Include="Benchmarks\PixelOperator32Vs8\ExplicitGammaCorrectionExtension.cs" />
+    <Compile Include="Benchmarks\PixelOperator32Vs8\PixelOperator32Vs8.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\Array1D.cs" />
     <Compile Include="Benchmarks\TwodimensionalArrays\TwodimensionalArrays.cs" />
     <Compile Include="Benchmarks\VsOldImplementation\ColorImages.cs" />

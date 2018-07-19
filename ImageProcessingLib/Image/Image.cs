@@ -31,7 +31,7 @@ namespace ImageProcessingLib
             InitializeFrom(img);
         }
 
-        public Image<TNewPixelType> CopyAs<TNewPixelType>(CopyHandler<TPixelType, TNewPixelType> convertFunc)
+        public Image<TNewPixelType> CopyAs<TNewPixelType>(PixelConverter<TPixelType, TNewPixelType> converter)
             where TNewPixelType : struct, IPixel<TNewPixelType>
         {
             var result = new Image<TNewPixelType>(Width, Height);
@@ -39,7 +39,7 @@ namespace ImageProcessingLib
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    var newValue = convertFunc(Get(j, i));
+                    var newValue = converter(Get(j, i));
                     result.Set(j, i, newValue);
                 }
             }
