@@ -44,26 +44,23 @@ namespace ImageProcessingLib
         private static Image<TPixelType> HistogramStretch<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
              where TPixelType : struct, IPixel<TPixelType>
         {
-            Validate(rMin, rMax, gMin, gMax, bMin, bMax);
-
             MathUtils.Orientate(ref rMin, ref rMax);
             MathUtils.Orientate(ref gMin, ref gMax);
             MathUtils.Orientate(ref bMin, ref bMax);
+
+            Validate(rMin, rMax, gMin, gMax, bMin, bMax);
 
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
                 var newPixel = pixelOperator(pixel);
-                image.Set(x, y, pixel);
+                image.Set(x, y, newPixel);
             });
             return image;
         }
 
         private static byte Stretch(byte pixelValue, byte? histMin, byte? histMax, byte min, byte max)
         {
-            if (histMin == null || histMax == null)
-                return pixelValue;
-
             return MathUtils.RoundToByte(MathUtils.Rescale(pixelValue, histMin.Value, histMax.Value, min, max));
         }
 
