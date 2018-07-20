@@ -7,13 +7,13 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public class ImageHistogram
+    public class RGBHistogram
     {
         public Histogram R { get; private set; }
         public Histogram G { get; private set; }
         public Histogram B { get; private set; }
 
-        public ImageHistogram()
+        public RGBHistogram()
         {
             R = new Histogram();
             G = new Histogram();

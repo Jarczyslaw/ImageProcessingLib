@@ -29,13 +29,13 @@ namespace ImageProcessingLib
             return image.Negative(pixelOperator);
         }
 
-        private static Image<TPixelType> Negative<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> negative)
+        private static Image<TPixelType> Negative<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator)
             where TPixelType : struct, IPixel<TPixelType>
         {
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var newPixel = negative(pixel);
+                var newPixel = pixelOperator(pixel);
                 image.Set(x, y, newPixel);
             });
             return image;

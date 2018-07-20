@@ -24,6 +24,12 @@ namespace ImageProcessingLib.GDI
             Initialize(Image);
         }
 
+        public GDImage32(Image<Pixel8> image)
+        {
+            var image32 = image.CopyAs(p => p.ToPixel32());
+            Initialize(image32);
+        }
+
         public GDImage32(Image<Pixel32> image)
         {
             Initialize(image);

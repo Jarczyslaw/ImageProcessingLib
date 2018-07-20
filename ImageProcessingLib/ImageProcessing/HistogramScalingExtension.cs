@@ -7,6 +7,27 @@ namespace ImageProcessingLib
 {
     public static class HistogramScalingExtension
     {
+        public static Image<Pixel8> HistogramScaling(this Image<Pixel8> image)
+        {
+            return image.HistogramScaling(MathUtils.Normalize);
+        }
+
+        public static Image<Pixel8> HistogramScalingLog10(this Image<Pixel8> image)
+        {
+            return image.HistogramScaling(MathUtils.NormalizeLog10);
+        }
+
+        public static Image<Pixel8> HistogramScaling(this Image<Pixel8> image, Func<double, double, double> scaling)
+        {
+            var histogram = image.Histogram();
+            Pixel8 pixelOperator(Pixel8 pixel)
+            {
+                var value = MathUtils.RoundToByte(scaling(pixel.Value, histogram.Max.Value));
+                return new Pixel8(value);
+            };
+            return image.HistogramScaling(pixelOperator);
+        }
+
         public static Image<Pixel32> HistogramScaling(this Image<Pixel32> image)
         {
             return image.HistogramScaling(MathUtils.Normalize);
@@ -17,16 +38,27 @@ namespace ImageProcessingLib
             return image.HistogramScaling(MathUtils.NormalizeLog10);
         }
 
-        private static Image<Pixel32> HistogramScaling(this Image<Pixel32> image, Func<double, double, double> scaling)
+        public static Image<Pixel32> HistogramScaling(this Image<Pixel32> image, Func<double, double, double> scaling)
         {
             var histogram = image.Histogram();
-            image.ForEach((x, y) =>
+            Pixel32 pixelOperator(Pixel32 pixel)
             {
-                var pixel = image.Get(x, y);
                 var r = MathUtils.RoundToByte(scaling(pixel.R, histogram.R.Max.Value));
                 var g = MathUtils.RoundToByte(scaling(pixel.G, histogram.G.Max.Value));
                 var b = MathUtils.RoundToByte(scaling(pixel.B, histogram.B.Max.Value));
-                image.Set(x, y, new Pixel32(pixel.A, r, g, b));
+                return new Pixel32(pixel.A, r, g, b);
+            };
+            return image.HistogramScaling(pixelOperator);
+        }
+
+        private static Image<TPixelType> HistogramScaling<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            image.ForEach((x, y) =>
+            {
+                var pixel = image.Get(x, y);
+                var newPixel = pixelOperator(pixel);
+                image.Set(x, y, newPixel);
             });
             return image;
         }

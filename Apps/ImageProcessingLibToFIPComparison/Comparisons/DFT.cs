@@ -20,7 +20,8 @@ namespace ImageProcessingLibToFIPComparison.Comparisons
 
         public Image<Pixel32> GetIPLResult(Image<Pixel32> originalImage)
         {
-            return originalImage.SDFT();
+            var sdft = originalImage.SDFT();
+            return sdft.CopyAs(p => p.ToPixel32());
         }
     }
 }

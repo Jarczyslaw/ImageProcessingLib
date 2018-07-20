@@ -10,6 +10,6 @@ namespace ImageProcessingLibExamples.Views
     public interface IHistogramView : IView
     {
         string ImageTitle { set; }
-        ImageHistogram Histogram { set; }
+        RGBHistogram Histogram { set; }
     }
 }

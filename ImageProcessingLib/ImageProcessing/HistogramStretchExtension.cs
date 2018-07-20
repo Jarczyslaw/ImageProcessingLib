@@ -7,6 +7,22 @@ namespace ImageProcessingLib
 {
     public static class HistogramStretchExtension
     {
+        public static Image<Pixel8> HistogramStretch(this Image<Pixel8> image, byte min, byte max)
+        {
+            return image.HistogramStretch(min, max, min, max, min, max);
+        }
+
+        public static Image<Pixel8> HistogramStretch(this Image<Pixel8> image, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
+        {
+            var histogram = image.Histogram();
+            Pixel8 pixelOperator(Pixel8 pixel)
+            {
+                var val = Stretch(pixel.Value, histogram.Min, histogram.Max, rMin, rMax);
+                return new Pixel8(val);
+            };
+            return image.HistogramStretch(pixelOperator, rMin, rMax, gMin, gMax, bMin, bMax);
+        }
+
         public static Image<Pixel32> HistogramStretch(this Image<Pixel32> image, byte min, byte max)
         {
             return image.HistogramStretch(min, max, min, max, min, max);
@@ -14,20 +30,31 @@ namespace ImageProcessingLib
 
         public static Image<Pixel32> HistogramStretch(this Image<Pixel32> image, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
         {
+            var histogram = image.Histogram();
+            Pixel32 pixelOperator(Pixel32 pixel)
+            {
+                var r = Stretch(pixel.R, histogram.R.Min, histogram.R.Max, rMin, rMax);
+                var g = Stretch(pixel.G, histogram.G.Min, histogram.G.Max, gMin, gMax);
+                var b = Stretch(pixel.B, histogram.B.Min, histogram.B.Max, bMin, bMax);
+                return new Pixel32(pixel.A, r, g, b);
+            };
+            return image.HistogramStretch(pixelOperator, rMin, rMax, gMin, gMax, bMin, bMax);
+        }
+
+        private static Image<TPixelType> HistogramStretch<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
+             where TPixelType : struct, IPixel<TPixelType>
+        {
             Validate(rMin, rMax, gMin, gMax, bMin, bMax);
 
             MathUtils.Orientate(ref rMin, ref rMax);
             MathUtils.Orientate(ref gMin, ref gMax);
             MathUtils.Orientate(ref bMin, ref bMax);
 
-            var histogram = image.Histogram();
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var r = Stretch(pixel.R, histogram.R.Min, histogram.R.Max, rMin, rMax);
-                var g = Stretch(pixel.G, histogram.G.Min, histogram.G.Max, gMin, gMax);
-                var b = Stretch(pixel.B, histogram.B.Min, histogram.B.Max, bMin, bMax);
-                image.Set(x, y, new Pixel32(pixel.A, r, g, b));
+                var newPixel = pixelOperator(pixel);
+                image.Set(x, y, pixel);
             });
             return image;
         }

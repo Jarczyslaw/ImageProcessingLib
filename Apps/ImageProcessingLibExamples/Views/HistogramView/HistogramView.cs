@@ -15,7 +15,7 @@ namespace ImageProcessingLibExamples.Views
 {
     public partial class HistogramView : BaseForm, IHistogramView
     {
-        public ImageHistogram Histogram
+        public RGBHistogram Histogram
         {
             set
             {

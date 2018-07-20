@@ -6,18 +6,39 @@ namespace ImageProcessingLib
 {
     public static class NaiveQuantizationExtension
     {
+        public static Image<Pixel8> NaiveQuantize(this Image<Pixel8> image, int levels)
+        {
+            var lookupTable = GetLookupTable(levels);
+            Pixel8 pixelOperator(Pixel8 pixel)
+            {
+                var val = lookupTable[pixel.Value];
+                return new Pixel8(val);
+            };
+            return image.NaiveQuantize(pixelOperator, levels);
+        }
+
         public static Image<Pixel32> NaiveQuantize(this Image<Pixel32> image, int levels)
         {
-            Validate(levels);
-
             var lookupTable = GetLookupTable(levels);
+            Pixel32 pixelOperator(Pixel32 pixel)
+            {
+                var r = lookupTable[pixel.R];
+                var g = lookupTable[pixel.G];
+                var b = lookupTable[pixel.B];
+                return new Pixel32(pixel.A, r, g, b);
+            };
+            return image.NaiveQuantize(pixelOperator, levels);
+        }
+
+        private static Image<TPixelType> NaiveQuantize<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, int levels)
+            where TPixelType : struct, IPixel<TPixelType>
+        {
+            Validate(levels);
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                var newR = lookupTable[pixel.R];
-                var newG = lookupTable[pixel.G];
-                var newB = lookupTable[pixel.B];
-                image.Set(x, y, new Pixel32(pixel.A, newR, newG, newB));
+                var newPixel = pixelOperator(pixel);
+                image.Set(x, y, newPixel);
             });
             return image;
         }

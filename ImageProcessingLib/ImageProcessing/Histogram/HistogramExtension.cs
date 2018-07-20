@@ -6,9 +6,20 @@ namespace ImageProcessingLib
 {
     public static class HistogramExtension
     {
-        public static ImageHistogram Histogram(this Image<Pixel32> image)
+        public static Histogram Histogram(this Image<Pixel8> image)
         {
-            var result = new ImageHistogram();
+            var result = new Histogram();
+            image.ForEach((x, y) =>
+            {
+                var pixel = image.Get(x, y);
+                result.Add(pixel.Value);
+            });
+            return result;
+        }
+
+        public static RGBHistogram Histogram(this Image<Pixel32> image)
+        {
+            var result = new RGBHistogram();
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
