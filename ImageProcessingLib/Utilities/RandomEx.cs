@@ -81,5 +81,27 @@ namespace ImageProcessingLib.Utilities
         {
             return gaussianSource.Next(mean, stdDev);
         }
+
+        public Pixel1 NextPixel1()
+        {
+            return new Pixel1(NextBool());
+        }
+
+        public Pixel8 NextPixel8()
+        {
+            return new Pixel8(NextByte());
+        }
+
+        public Pixel32 NextPixel32()
+        {
+            return NextPixel32(NextByte());
+        }
+
+        public Pixel32 NextPixel32(byte alpha)
+        {
+            var buf = new byte[3];
+            NextBytes(buf);
+            return new Pixel32(alpha, buf[0], buf[1], buf[2]);
+        }
     }
 }

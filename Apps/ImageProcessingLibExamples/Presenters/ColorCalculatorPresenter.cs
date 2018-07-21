@@ -1,4 +1,5 @@
 ﻿using ImageProcessingLib;
+using ImageProcessingLib.Utilities;
 using ImageProcessingLibExamples.Views;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,10 @@ namespace ImageProcessingLibExamples.Presenters
         {
             this.view = view;
             if (showRandomPixel)
-                view.SetPixel(Pixel32.CreateRandom());
+            {
+                var random = new RandomEx();
+                view.SetPixel(random.NextPixel32());
+            }    
         }
 
         public void UpdateColor(int x, int y, Pixel32 pixel)

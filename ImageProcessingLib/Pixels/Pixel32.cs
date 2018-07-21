@@ -22,7 +22,7 @@ namespace ImageProcessingLib
             R = r;
             G = g;
             B = b;
-            Data = a << 24 | r << 16 | g << 8 | b;
+            Data = BytesUtils.GetDataFromArgb(a, r, g, b);
         }
 
         public Pixel32(byte r, byte g, byte b) : this(byte.MaxValue, r, g, b) { }
@@ -34,10 +34,11 @@ namespace ImageProcessingLib
         public Pixel32(int data)
         {
             Data = data;
-            A = (byte)((data >> 24) & 0xFF);
-            R = (byte)((data >> 16) & 0xFF);
-            G = (byte)((data >> 8) & 0xFF);
-            B = (byte)(data & 0xFF);
+            BytesUtils.GetArgbFromData(data, out byte a, out byte r, out byte g, out byte b);
+            A = a;
+            R = r;
+            G = g;
+            B = b;
         }
 
         public Pixel32(Pixel32 pixel) : this(pixel.A, pixel.R, pixel.G, pixel.B) { }
@@ -118,20 +119,6 @@ namespace ImageProcessingLib
             get { return Black; }
         }
 
-        public static Pixel32 CreateRandom()
-        {
-            return CreateRandom(255);
-        }
-
-        public static Pixel32 CreateRandom(byte alpha)
-        {
-            var random = new RandomEx();
-            var r = random.NextByte();
-            var g = random.NextByte();
-            var b = random.NextByte();
-            return new Pixel32(alpha, r, g, b);
-        }
-
         public HSV ToHSV()
         {
             return new HSV(this);
@@ -152,7 +139,7 @@ namespace ImageProcessingLib
 
         public override int GetHashCode()
         {
-            return Data;
+            return Data.GetHashCode();
         }
 
         public static bool operator ==(Pixel32 set1, Pixel32 set2)
@@ -167,7 +154,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Alpha: {0}, Red: {1}, Green: {2}, Blue: {3}, HEX: {4}", A, R, G, B, ToHex());
+            return string.Format("Pixel32 - Data: {0}, Alpha: {1}, Red: {2}, Green: {3}, Blue: {4}, HEX: {5}", Data, A, R, G, B, ToHex());
         }
 
         public static Pixel32 FromHex(string hex)
@@ -186,6 +173,13 @@ namespace ImageProcessingLib
         {
             var hexFormat = "X2";
             return A.ToString(hexFormat) + R.ToString(hexFormat) + G.ToString(hexFormat) + B.ToString(hexFormat);
+        }
+
+
+        public Pixel1 ToPixel1()
+        {
+            var gs = GrayscaleExtension.Luminance(this);
+            return new Pixel1(gs > 127);
         }
 
         public Pixel8 ToPixel8()
