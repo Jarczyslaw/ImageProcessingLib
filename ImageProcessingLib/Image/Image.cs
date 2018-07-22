@@ -20,6 +20,11 @@ namespace ImageProcessingLib
             InitializeNew(width, height);
         }
 
+        public Image(int[] data, int width, int height)
+        {
+            InitializeNew(data, width, height);
+        }
+
         public Image(int width, int height, TPixelType clearPixel)
         {
             InitializeNew(width, height);

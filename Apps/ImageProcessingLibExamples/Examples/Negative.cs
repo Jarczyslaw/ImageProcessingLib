@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class Negative : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var image = originalImage.Copy();
             image.Negative();
-            images.Add("Negative", new GDImage32(image));
+            images.Add("Negative", new ImageWrapper(image));
         }
     }
 }

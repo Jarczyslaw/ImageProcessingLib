@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class Noise : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var saltAndPepperIntensities = new double[] { 0.1d, 1d, 5d, 10d };
             foreach (var intensity in saltAndPepperIntensities)
             {
                 var image = originalImage.Copy();
                 image.AddSaltAndPepper(intensity);
-                images.Add("SaltAndPepper" + intensity, new GDImage32(image));
+                images.Add("SaltAndPepper" + intensity, new ImageWrapper(image));
             }
 
             var noiseIntensity = 5d;
@@ -27,7 +27,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.AddUniformNoise(noiseIntensity, range);
-                images.Add("UniformNoise" + range, new GDImage32(image));
+                images.Add("UniformNoise" + range, new ImageWrapper(image));
             }
 
             var stdDevs = new double[] { 5d, 10d, 25d };
@@ -35,7 +35,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.AddGaussianNoise(noiseIntensity, stdDev);
-                images.Add("GaussianNoise" + stdDev, new GDImage32(image));
+                images.Add("GaussianNoise" + stdDev, new ImageWrapper(image));
             }
         }
     }

@@ -64,10 +64,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
-      <Project>{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}</Project>
-      <Name>ImageProcessingLib.GDI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
@@ -75,6 +71,10 @@
     <ProjectReference Include="..\ImagesFolder\ImagesFolder.csproj">
       <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj">
+      <Project>{75dcb806-3b24-4f4e-9061-91ce107935a2}</Project>
+      <Name>ImageProcessingLib.Wrappers.WF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

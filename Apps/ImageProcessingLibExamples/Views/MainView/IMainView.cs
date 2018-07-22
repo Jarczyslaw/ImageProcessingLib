@@ -1,4 +1,4 @@
-﻿using ImageProcessingLib.GDI;
+﻿using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibExamples.Examples;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace ImageProcessingLibExamples.Views
 
         Bitmap SelectedSourceImage { get; }
         ExampleBase SelectedExample { get; }
-        GDImage32 SelectedResultImage { get; set; }
+        ImageWrapper SelectedResultImage { get; set; }
         string SelectedResultImageTitle { get; }
 
         bool Busy { get; set; }
@@ -34,7 +34,7 @@ namespace ImageProcessingLibExamples.Views
 
         void SetImages(Dictionary<string, Bitmap> images);
         void SetExamples(Dictionary<string, ExampleBase> examples);
-        void SetResultImages(Dictionary<string, GDImage32> resultImages);
+        void SetResultImages(Dictionary<string, ImageWrapper> resultImages);
 
         void ShowInfo(string info);
         void ShowException(Exception exception);

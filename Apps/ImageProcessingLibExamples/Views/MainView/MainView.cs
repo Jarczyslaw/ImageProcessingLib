@@ -1,7 +1,7 @@
 ﻿using Commons;
 using Commons.Utils;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibExamples.Examples;
 using System;
 using System.Collections.Generic;
@@ -35,9 +35,9 @@ namespace ImageProcessingLibExamples.Views
             get { return cbExamples.SelectedValue as ExampleBase; }
         }
 
-        public GDImage32 SelectedResultImage
+        public ImageWrapper SelectedResultImage
         {
-            get { return cbResults.SelectedValue as GDImage32; }
+            get { return cbResults.SelectedValue as ImageWrapper; }
             set
             {
                 var resultImage = value;
@@ -58,7 +58,7 @@ namespace ImageProcessingLibExamples.Views
                 if (cbResults.SelectedValue == null)
                     return null;
 
-                var imageTitle = (KeyValuePair<string, GDImage32>)cbResults.SelectedItem;
+                var imageTitle = (KeyValuePair<string, ImageWrapper>)cbResults.SelectedItem;
                 return imageTitle.Key;
             }
         }
@@ -139,7 +139,7 @@ namespace ImageProcessingLibExamples.Views
             MessageBoxEx.ShowException(exception);
         }
 
-        public void SetResultImages(Dictionary<string, GDImage32> resultImages)
+        public void SetResultImages(Dictionary<string, ImageWrapper> resultImages)
         {
             cbResults.BindDictionary(resultImages);
         }
@@ -225,7 +225,7 @@ namespace ImageProcessingLibExamples.Views
 
         private void SwitchImage()
         {
-            var image = cbResults.SelectedValue as GDImage32;
+            var image = cbResults.SelectedValue as ImageWrapper;
             if (image != null)
                 spbImage.Image = image.Bitmap;
         }

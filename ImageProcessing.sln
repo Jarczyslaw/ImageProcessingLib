@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageProcessingLib", "ImageProcessingLib\ImageProcessingLib.csproj", "{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.GDI", "ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj", "{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Old", "ImageProcessingLib.Old\ImageProcessingLib.Old.csproj", "{2889B6F7-29DB-4574-B7AB-7130BF73E68C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Tests", "ImageProcessingLib.Tests\ImageProcessingLib.Tests.csproj", "{A3C253BE-B4C4-457E-9B0C-1C40E79C1FF3}"
@@ -36,6 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "Apps\TestApp\TestApp.csproj", "{2FA40AF2-BEE9-4915-879D-BF145CCE6009}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Wrappers.WF", "Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj", "{75DCB806-3B24-4F4E-9061-91CE107935A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wrappers", "Wrappers", "{4831751D-7FF4-4606-9DDB-9B959948276A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +48,6 @@ Global
 		{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{523C535D-5B0C-4C0D-AF72-C3BFD14C2269}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2889B6F7-29DB-4574-B7AB-7130BF73E68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2889B6F7-29DB-4574-B7AB-7130BF73E68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2889B6F7-29DB-4574-B7AB-7130BF73E68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -90,6 +88,10 @@ Global
 		{2FA40AF2-BEE9-4915-879D-BF145CCE6009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA40AF2-BEE9-4915-879D-BF145CCE6009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FA40AF2-BEE9-4915-879D-BF145CCE6009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75DCB806-3B24-4F4E-9061-91CE107935A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75DCB806-3B24-4F4E-9061-91CE107935A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75DCB806-3B24-4F4E-9061-91CE107935A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75DCB806-3B24-4F4E-9061-91CE107935A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +103,7 @@ Global
 		{08C847A4-C890-46FD-BDD8-C2D4803091A8} = {ED14173D-1898-45F3-9864-8939F367956C}
 		{BFB68B3E-B6A9-4E0D-9F51-DB87BD32B36A} = {ED14173D-1898-45F3-9864-8939F367956C}
 		{2FA40AF2-BEE9-4915-879D-BF145CCE6009} = {ED14173D-1898-45F3-9864-8939F367956C}
+		{75DCB806-3B24-4F4E-9061-91CE107935A2} = {4831751D-7FF4-4606-9DDB-9B959948276A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1F53FB3-12FD-473C-81B6-56BBD713DE27}

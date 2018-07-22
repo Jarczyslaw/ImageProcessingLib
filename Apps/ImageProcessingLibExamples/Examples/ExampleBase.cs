@@ -1,5 +1,5 @@
 ﻿using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,15 +14,15 @@ namespace ImageProcessingLibExamples.Examples
 {
     public abstract class ExampleBase
     {
-        public Dictionary<string, GDImage32> Images { get; private set; } = new Dictionary<string, GDImage32>();
-        public GDImage32 OriginalImage { get; private set; }
+        public Dictionary<string, ImageWrapper> Images { get; private set; } = new Dictionary<string, ImageWrapper>();
+        public ImageWrapper OriginalImage { get; private set; }
 
         public void ApplyExample(Bitmap bitmap)
         {
-            Images = new Dictionary<string, GDImage32>();
-            OriginalImage = new GDImage32(bitmap);
+            Images = new Dictionary<string, ImageWrapper>();
+            OriginalImage = new ImageWrapper(bitmap);
             Images.Add("Original", OriginalImage);
-            AddExampleImages(Images, OriginalImage.Image);
+            AddExampleImages(Images, OriginalImage.Image32);
         }
 
         public void CleanUp()
@@ -42,6 +42,6 @@ namespace ImageProcessingLibExamples.Examples
             }
         }
 
-        public abstract void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage);
+        public abstract void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage);
     }
 }

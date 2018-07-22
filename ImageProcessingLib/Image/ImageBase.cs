@@ -20,8 +20,16 @@ namespace ImageProcessingLib
 
         public void InitializeNew(int width, int height)
         {
+            var data = new int[width * height];
+            InitializeNew(data, width, height);
+        }
+
+        public void InitializeNew(int[] data, int width, int height)
+        {
+            if (data.Length != width * height)
+                throw new ArgumentException("Invalid data size");
             SetSizes(width, height);
-            Data = new int[Size];
+            Data = data;
         }
 
         public void InitializeFrom(ImageBase img)
@@ -101,22 +109,17 @@ namespace ImageProcessingLib
 
         public bool Equals(ImageBase other)
         {
-            return Equals((object)other);
+            if (other.Width != Width || other.Height != Height)
+                return false;
+            return Enumerable.SequenceEqual(other.Data, Data);
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(obj, null))
+            var img = obj as ImageBase;
+            if (obj == null)
                 return false;
-            if (ReferenceEquals(obj, this))
-                return true;
-            if (obj.GetType() != GetType())
-                return false;
-
-            var other = (ImageBase)obj;
-            if (other.Width != Width || other.Height != Height)
-                return false;
-            return Enumerable.SequenceEqual(other.Data, Data);
+            return Equals(img);
         }
 
         public override int GetHashCode()
@@ -126,16 +129,6 @@ namespace ImageProcessingLib
             for (int i = 0; i < len; i++)
                 hash ^= Data[i].GetHashCode();
             return hash;
-        }
-
-        public static bool operator ==(ImageBase image1, ImageBase image2)
-        {
-            return image1.Equals(image2);
-        }
-
-        public static bool operator !=(ImageBase image1, ImageBase image2)
-        {
-            return !(image1 == image2);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Wrappers.WF;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace TestApp
         [STAThread]
         static void Main()
         {
-            Run(null);   
+            var img = new ImageWrapper(ImagesFolder.Images.Lena);
+            var x = img.Image32;
+
+            Run(img.Bitmap);   
         }
 
         private static void Run(Bitmap bitmap)

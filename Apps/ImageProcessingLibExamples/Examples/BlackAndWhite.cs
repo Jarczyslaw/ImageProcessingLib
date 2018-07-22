@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class BlackAndWhite : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var thresholds = new byte[] { 32, 64, 128, 192 };
             foreach(var threshold in thresholds)
             {
                 var image = originalImage.Copy();
                 image.BlackAndWhite(threshold);
-                images.Add("Threshold" + threshold, new GDImage32(image));
+                images.Add("Threshold" + threshold, new ImageWrapper(image));
             }
         }
     }

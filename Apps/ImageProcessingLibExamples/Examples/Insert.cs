@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibExamples.Examples.Parameters;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class Insert : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var width = originalImage.Width;
             var height = originalImage.Height;
@@ -31,7 +31,7 @@ namespace ImageProcessingLibExamples.Examples
             foreach (var param in insertParams)
             {
                 var image = originalImage.Copy();
-                images.Add(param.Title, new GDImage32(image.Insert(imageToInsert, param.X, param.Y)));
+                images.Add(param.Title, new ImageWrapper(image.Insert(imageToInsert, param.X, param.Y)));
             }
         }
     }

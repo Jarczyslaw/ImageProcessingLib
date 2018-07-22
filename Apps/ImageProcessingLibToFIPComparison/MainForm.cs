@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Commons;
 using Commons.Utils;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibToFIPComparison.Comparisons;
 
 namespace ImageProcessingLibToFIPComparison
@@ -18,7 +18,7 @@ namespace ImageProcessingLibToFIPComparison
     public partial class MainForm : Form
     {
         private Bitmap sourceImage;
-        private List<GDImage32> images;
+        private List<ImageWrapper> images;
 
         private string title = "ImageProcessingLibToFIPComparison";
         private string selectedComparisonName;
@@ -77,31 +77,34 @@ namespace ImageProcessingLibToFIPComparison
             {
                 DisposeImages();
 
-                var originalImage1 = new GDImage32(sourceImage);
-                var originalImage2 = new GDImage32(sourceImage);
+                var fipOriginalImage = new ImageWrapper(sourceImage);
+                var iplOriginalImage = new ImageWrapper(sourceImage);
 
                 Bitmap fipBitmap = null;
                 var fipTime = ExecTime.Run(() =>
                 {
-                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), originalImage1.Bitmap);
+                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), fipOriginalImage.Bitmap);
                 });
-                var fipResult = new GDImage32(fipBitmap);
+                var fipResult = new ImageWrapper(fipBitmap);
 
                 Image<Pixel32> iplImage = null;
                 var iplTime = ExecTime.Run(() =>
                 {
-                    iplImage = comparison.GetIPLResult(originalImage2.Image);
+                    iplImage = comparison.GetIPLResult(iplOriginalImage.Image32);
                 });
-                var iplResult = new GDImage32(iplImage);
+                var iplResult = new ImageWrapper(iplImage);
 
-                pbFIP.Image = fipResult.Bitmap;
-                pbIPL.Image = iplResult.Bitmap;
+                ThreadSafeInvoke.Invoke(this, () =>
+                {
+                    pbFIP.Image = fipResult.Bitmap;
+                    pbIPL.Image = iplResult.Bitmap;
 
-                tsslInfo.Text = string.Format("MSE: {0:0.00}, IPL: {1:0}ms, FIP: {2:0}ms",
-                    GetMetrics(fipResult.Image, iplResult.Image),
-                    iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
-
-                images = new List<GDImage32>() { fipResult, iplResult, originalImage1, originalImage2 };
+                    tsslInfo.Text = string.Format("MSE: {0:0.00}, IPL: {1:0}ms, FIP: {2:0}ms",
+                        GetMetrics(fipResult.Image32, iplResult.Image32),
+                        iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
+                });
+                
+                images = new List<ImageWrapper>() { fipResult, iplResult, fipOriginalImage, iplOriginalImage };
             }
             catch (Exception e)
             {

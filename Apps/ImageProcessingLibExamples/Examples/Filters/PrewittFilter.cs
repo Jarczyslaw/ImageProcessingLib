@@ -1,5 +1,5 @@
 ﻿using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +10,14 @@ namespace ImageProcessingLibExamples.Examples
 {
     public class PrewittFilter : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.PrewittFilter());
-            images.Add("PrewittFilterAccurate", new GDImage32(image));
+            images.Add("PrewittFilterAccurate", new ImageWrapper(image));
             image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.PrewittFilter(true));
-            images.Add("PrewittFilterApproximation", new GDImage32(image));
+            images.Add("PrewittFilterApproximation", new ImageWrapper(image));
         }
     }
 }

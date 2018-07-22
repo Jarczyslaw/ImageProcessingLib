@@ -1,5 +1,4 @@
 ﻿using System;
-using ImageProcessingLib.GDI;
 using ImagesFolder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

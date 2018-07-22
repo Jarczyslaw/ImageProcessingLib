@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingLib.GDI
+namespace ImageProcessingLib.Wrappers.WF
 {
     public static class GraphicsUtils
     {

@@ -1,5 +1,5 @@
 ﻿using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,8 +81,8 @@ namespace MemoryLeaks
         private void AddImage()
         {
             var size = 2000;
-            //var img = new Bitmap(size, size);
-            var img = new GDImage32(size, size);
+            var bmp = new Bitmap(size, size);
+            var img = new ImageWrapper(bmp);
             images.Add(img);
         }
 

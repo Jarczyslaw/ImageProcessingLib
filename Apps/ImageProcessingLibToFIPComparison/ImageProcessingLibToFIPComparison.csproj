@@ -98,6 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj">
+      <Project>{75dcb806-3b24-4f4e-9061-91ce107935a2}</Project>
+      <Name>ImageProcessingLib.Wrappers.WF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commons\Commons.csproj">
       <Project>{2c3b756d-1f6e-4907-a48f-2211cf602010}</Project>
       <Name>Commons</Name>
@@ -105,10 +109,6 @@
     <ProjectReference Include="..\..\FIP\FIP.csproj">
       <Project>{af1d3a2d-4cfc-42b6-bda8-11a0af7e159c}</Project>
       <Name>FIP</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ImageProcessingLib.GDI\ImageProcessingLib.GDI.csproj">
-      <Project>{523c535d-5b0c-4c0d-af72-c3bfd14c2269}</Project>
-      <Name>ImageProcessingLib.GDI</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}</Project>

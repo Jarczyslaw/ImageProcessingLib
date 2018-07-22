@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class HistogramStretch : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var ranges = new List<Tuple<byte, byte>>
             {
@@ -22,7 +22,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.HistogramStretch(range.Item1, range.Item2);
-                images.Add(string.Format("HistogramStretch{0}-{1}", range.Item1, range.Item2), new GDImage32(image));
+                images.Add(string.Format("HistogramStretch{0}-{1}", range.Item1, range.Item2), new ImageWrapper(image));
             }
         }
     }

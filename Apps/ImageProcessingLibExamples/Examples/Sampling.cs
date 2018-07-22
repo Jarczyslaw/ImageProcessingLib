@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class Sampling : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var sizes = new int[] { 4, 16, 32 };
             foreach (var size in sizes)
             {
                 var image = originalImage.Copy();
                 image.Sampling(size);
-                images.Add("BlockSize" + size, new GDImage32(image));
+                images.Add("BlockSize" + size, new ImageWrapper(image));
             }
         }
     }

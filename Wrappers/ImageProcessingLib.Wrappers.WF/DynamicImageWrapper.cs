@@ -7,45 +7,36 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingLib.GDI
+namespace ImageProcessingLib.Wrappers.WF
 {
-    public class GDImage32 : IDisposable
+    public class DynamicImageWrapper : IDisposable
     {
         public Image<Pixel32> Image { get; private set; }
         public Bitmap Bitmap { get; private set; }
 
+        public bool Disposed { get; private set; } = false;
         private GCHandle dataHandle;
 
-        private bool disposed = false;
-
-        public GDImage32(int width, int height)
+        public DynamicImageWrapper(int width, int height)
         {
             Image = new Image<Pixel32>(width, height);
             Initialize(Image);
         }
 
-        public GDImage32(Image<Pixel8> image)
-        {
-            var image32 = image.CopyAs(p => p.ToPixel32());
-            Initialize(image32);
-        }
-
-        public GDImage32(Image<Pixel32> image)
-        {
-            Initialize(image);
-        }
-
-        public GDImage32(string filePath)
+        public DynamicImageWrapper(string filePath)
         {
             using (var bmp = new Bitmap(filePath))
-            {
                 FromBitmap(bmp);
-            }
         }
 
-        public GDImage32(Bitmap bitmap)
+        public DynamicImageWrapper(Bitmap bitmap)
         {
             FromBitmap(bitmap);
+        }
+
+        public DynamicImageWrapper(Image<Pixel32> image)
+        {
+            Initialize(image);
         }
 
         private void FromBitmap(Bitmap bitmap)
@@ -72,9 +63,7 @@ namespace ImageProcessingLib.GDI
         public void Graphics(Action<Graphics> action)
         {
             using (var graphics = System.Drawing.Graphics.FromImage(Bitmap))
-            {
                 action(graphics);
-            }
         }
 
         public void ToFile(string filePath)
@@ -89,11 +78,11 @@ namespace ImageProcessingLib.GDI
 
         public void Dispose()
         {
-            if (disposed)
+            if (Disposed)
                 return;
 
             ReleaseResources();
-            disposed = true;
+            Disposed = true;
         }
 
         private void ReleaseResources()

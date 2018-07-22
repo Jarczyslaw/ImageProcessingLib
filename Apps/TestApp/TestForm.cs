@@ -19,8 +19,14 @@ namespace TestApp
 
         public TestForm(Bitmap bitmap) : this()
         {
-            if (bitmap != null)
-                pbImage.Image = bitmap;
+            if (bitmap == null)
+                return;
+   
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.FillRectangle(Brushes.Aqua, new Rectangle(0, 0, 32, 64));
+            }
+            pbImage.Image = bitmap;
         }
     }
 }

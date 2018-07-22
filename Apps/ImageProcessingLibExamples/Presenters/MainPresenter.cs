@@ -55,7 +55,8 @@ namespace ImageProcessingLibExamples.Presenters
             if (view.SelectedResultImage == null)
                 return;
 
-            var pixel = view.SelectedResultImage.Image[x, y];
+            var image32 = view.SelectedResultImage.Image32;
+            var pixel = image32.Get(x, y);
             colorCalculatorPresenter.UpdateColor(x, y, pixel);
         }
 
@@ -73,7 +74,7 @@ namespace ImageProcessingLibExamples.Presenters
                 return;
             }
 
-            histogramPresenter.ShowHistogram(histogramView, image.Image, view.SelectedResultImageTitle);
+            histogramPresenter.ShowHistogram(histogramView, image.Image32, view.SelectedResultImageTitle);
         }
 
         private void MetricsShow()
@@ -81,8 +82,8 @@ namespace ImageProcessingLibExamples.Presenters
             if (currentExample == null || view.SelectedResultImage == null)
                 return;
 
-            var originalImage = currentExample.OriginalImage.Image;
-            var resultImage = view.SelectedResultImage.Image;
+            var originalImage = currentExample.OriginalImage.Image32;
+            var resultImage = view.SelectedResultImage.Image32;
 
             LaunchMetrics(originalImage, resultImage);
         }

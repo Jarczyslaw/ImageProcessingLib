@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
-using ImageProcessingLib.GDI;
+using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibExamples.Examples.Parameters;
 
 namespace ImageProcessingLibExamples.Examples
 {
     public class Crop : ExampleBase
     {
-        public override void AddExampleImages(Dictionary<string, GDImage32> images, Image<Pixel32> originalImage)
+        public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
             var width = originalImage.Width;
             var height = originalImage.Height;
@@ -30,7 +30,7 @@ namespace ImageProcessingLibExamples.Examples
             foreach (var cropParam in cropParams)
             {
                 var image = originalImage.Copy();
-                images.Add(cropParam.Title, new GDImage32(image.Crop(cropParam.X, cropParam.Y, cropParam.Width, cropParam.Height)));
+                images.Add(cropParam.Title, new ImageWrapper(image.Crop(cropParam.X, cropParam.Y, cropParam.Width, cropParam.Height)));
             }
         }
     }
