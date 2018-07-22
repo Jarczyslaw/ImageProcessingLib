@@ -82,7 +82,7 @@ namespace MemoryLeaks
         {
             var size = 2000;
             var bmp = new Bitmap(size, size);
-            var img = new ImageWrapper(bmp);
+            var img = new DynamicImageWrapper(bmp);
             images.Add(img);
         }
 
