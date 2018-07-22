@@ -27,8 +27,8 @@ namespace ImageProcessingLibExamples.Examples
 
         public void CleanUp()
         {
-            foreach (var gdimage in Images.Values)
-                gdimage.Dispose();
+            foreach (var image in Images.Values)
+                image.Dispose();
         }
 
         public void Save(string selectedPath)

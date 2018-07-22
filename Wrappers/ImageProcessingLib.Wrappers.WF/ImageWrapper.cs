@@ -61,22 +61,22 @@ namespace ImageProcessingLib.Wrappers.WF
             Bitmap.Save(filePath, format);
         }
 
-        private Bitmap CreateBitmap(Image<Pixel32> image)
+        private Bitmap CreateBitmap(Image<Pixel32> img)
         {
-            var bmp = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
-            var bmpData = bmp.LockBits(new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-            Marshal.Copy(image.Data, 0, bmpData.Scan0, image.Width * image.Height);
+            var bmp = new Bitmap(img.Width, img.Height, PixelFormat.Format32bppArgb);
+            var bmpData = bmp.LockBits(new Rectangle(0, 0, img.Width, img.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(img.Data, 0, bmpData.Scan0, img.Width * img.Height);
             bmp.UnlockBits(bmpData);
             return bmp;
         }
 
-        private Image<Pixel32> CreateImage(Bitmap bitmap)
+        private Image<Pixel32> CreateImage(Bitmap bmp)
         {
-            var bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-            var length = bitmap.Width * bitmap.Height;
+            var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            var length = bmp.Width * bmp.Height;
             var data = new int[length];
-            Marshal.Copy(bitmapData.Scan0, data, 0, length);
-            bitmap.UnlockBits(bitmapData);
+            Marshal.Copy(bmpData.Scan0, data, 0, length);
+            bmp.UnlockBits(bmpData);
             return new Image<Pixel32>(data, Bitmap.Width, Bitmap.Height);
         }
 
