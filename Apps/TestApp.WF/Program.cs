@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApp
+namespace TestApp.WF
 {
     static class Program
     {
@@ -17,8 +17,6 @@ namespace TestApp
         static void Main()
         {
             var img = new ImageWrapper(ImagesFolder.Images.Lena);
-            var x = img.Image32;
-
             Run(img.Bitmap);   
         }
 

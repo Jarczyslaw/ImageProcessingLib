@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+namespace ImageProcessingLib.Wrappers.WPF
+{
+    public class ImageWrapper
+    {
+        private BitmapSource bitmapImage = null;
+        public BitmapSource BitmapImage
+        {
+            get
+            {
+                if (bitmapImage == null)
+                    bitmapImage = CreateBitmapSource(image32);
+                return bitmapImage;
+            }
+        }
+
+        private Image<Pixel32> image32 = null;
+        public Image<Pixel32> Image32
+        {
+            get
+            {
+                if (image32 == null)
+                    image32 = CreateImage(bitmapImage);
+                return image32;
+            }
+        }
+
+        public ImageWrapper(string filePath)
+        {
+            bitmapImage = new BitmapImage(new Uri(filePath));
+        }
+
+        public ImageWrapper(BitmapImage bitmapImage)
+        {
+            this.bitmapImage = bitmapImage.Clone();
+        }
+
+        public ImageWrapper(Image<Pixel32> image)
+        {
+            image32 = image;
+        }
+
+        public void ToFile(string filePath)
+        {
+            var encoder = new PngBitmapEncoder();
+            ToFile(filePath, encoder);
+        }
+
+        public void ToFile(string filePath, BitmapEncoder encoder)
+        {
+            encoder.Frames.Add(BitmapFrame.Create(BitmapImage));
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                encoder.Save(fileStream);
+        }
+
+        public static BitmapSource CreateBitmapSource(Image<Pixel32> img)
+        {
+            var bytes = new byte[img.Data.Length * 4];
+            for (int i = 0; i < img.Data.Length; i++)
+            {
+                int index = i * 4;
+                var pixel = img.Get(i);
+                bytes[index] = pixel.B;
+                bytes[index + 1] = pixel.G;
+                bytes[index + 2] = pixel.R;
+                bytes[index + 3] = pixel.A;
+            }
+            var dpi = 96;
+            var stride = img.Width * 4;
+            return BitmapSource.Create(img.Width, img.Height, dpi, dpi, PixelFormats.Bgra32, null, bytes, stride);
+        }
+
+        public static Image<Pixel32> CreateImage(BitmapSource bmp)
+        {
+            if (bmp.Format != PixelFormats.Bgra32)
+                throw new ArgumentException("Only Brga32 format is allowed");
+
+            var width = bmp.PixelWidth;
+            var height = bmp.PixelHeight;
+            var stride = width * 4;
+            var bytes = new byte[stride * height];
+            bmp.CopyPixels(bytes, stride, 0);
+
+            var img = new Image<Pixel32>(width, height);
+            for (int i = 0; i < img.Size; i++)
+            {
+                int index = i * 4;
+                var b = bytes[index];
+                var g = bytes[index + 1];
+                var r = bytes[index + 2];
+                var a = bytes[index + 3];
+                img.Set(i, new Pixel32(a, r, g, b));
+            }
+            return img;
+        }
+    }
+}

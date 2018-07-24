@@ -1,4 +1,4 @@
-﻿namespace TestApp
+﻿namespace TestApp.WF
 {
     partial class TestForm
     {

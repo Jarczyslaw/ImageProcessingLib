@@ -61,7 +61,7 @@ namespace ImageProcessingLib.Wrappers.WF
             Bitmap.Save(filePath, format);
         }
 
-        private Bitmap CreateBitmap(Image<Pixel32> img)
+        public static Bitmap CreateBitmap(Image<Pixel32> img)
         {
             var bmp = new Bitmap(img.Width, img.Height, PixelFormat.Format32bppArgb);
             var bmpData = bmp.LockBits(new Rectangle(0, 0, img.Width, img.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
@@ -70,14 +70,14 @@ namespace ImageProcessingLib.Wrappers.WF
             return bmp;
         }
 
-        private Image<Pixel32> CreateImage(Bitmap bmp)
+        public static Image<Pixel32> CreateImage(Bitmap bmp)
         {
             var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
             var length = bmp.Width * bmp.Height;
             var data = new int[length];
             Marshal.Copy(bmpData.Scan0, data, 0, length);
             bmp.UnlockBits(bmpData);
-            return new Image<Pixel32>(data, Bitmap.Width, Bitmap.Height);
+            return new Image<Pixel32>(data, bmp.Width, bmp.Height);
         }
 
         public void Dispose()
