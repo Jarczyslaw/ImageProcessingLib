@@ -11,6 +11,6 @@
         MinHeight="{StaticResource WindowHeight}"
         MinWidth="{StaticResource WindowWidth}">
     <Grid>
-        <Image Source="{Binding ImageSource}" />
+        <Image Source="{Binding ImageSource}" Stretch="None" />
     </Grid>
 </Window>

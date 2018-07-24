@@ -11,14 +11,14 @@ namespace ImageProcessingLib.Wrappers.WPF
 {
     public class ImageWrapper
     {
-        private BitmapSource bitmapImage = null;
-        public BitmapSource BitmapImage
+        private BitmapSource bitmapSource = null;
+        public BitmapSource BitmapSource
         {
             get
             {
-                if (bitmapImage == null)
-                    bitmapImage = CreateBitmapSource(image32);
-                return bitmapImage;
+                if (bitmapSource == null)
+                    bitmapSource = CreateBitmapSource(image32);
+                return bitmapSource;
             }
         }
 
@@ -28,19 +28,19 @@ namespace ImageProcessingLib.Wrappers.WPF
             get
             {
                 if (image32 == null)
-                    image32 = CreateImage(bitmapImage);
+                    image32 = CreateImage(bitmapSource);
                 return image32;
             }
         }
 
         public ImageWrapper(string filePath)
         {
-            bitmapImage = new BitmapImage(new Uri(filePath));
+            bitmapSource = new BitmapImage(new Uri(filePath));
         }
 
         public ImageWrapper(BitmapImage bitmapImage)
         {
-            this.bitmapImage = bitmapImage.Clone();
+            bitmapSource = bitmapImage.Clone();
         }
 
         public ImageWrapper(Image<Pixel32> image)
@@ -56,7 +56,7 @@ namespace ImageProcessingLib.Wrappers.WPF
 
         public void ToFile(string filePath, BitmapEncoder encoder)
         {
-            encoder.Frames.Add(BitmapFrame.Create(BitmapImage));
+            encoder.Frames.Add(BitmapFrame.Create(BitmapSource));
             using (var fileStream = new FileStream(filePath, FileMode.Create))
                 encoder.Save(fileStream);
         }

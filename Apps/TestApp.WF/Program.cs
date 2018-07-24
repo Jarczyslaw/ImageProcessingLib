@@ -16,8 +16,10 @@ namespace TestApp.WF
         [STAThread]
         static void Main()
         {
-            var img = new ImageWrapper(ImagesFolder.Images.Lena);
-            Run(img.Bitmap);   
+            var bmp = ImagesFolder.Images.Lena;
+            var wrapper = new ImageWrapper(bmp);
+            var result = new ImageWrapper(wrapper.Image32);
+            Run(result.Bitmap);   
         }
 
         private static void Run(Bitmap bitmap)
