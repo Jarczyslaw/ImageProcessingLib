@@ -10,7 +10,11 @@
         Width="{StaticResource WindowWidth}"
         MinHeight="{StaticResource WindowHeight}"
         MinWidth="{StaticResource WindowWidth}">
-    <Grid>
-        <Image Source="{Binding ImageSource}" Stretch="None" />
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Load file" Command="{Binding LoadFileCommand}" />
+            <MenuItem Header="Save file" Command="{Binding SaveFileCommand}" />
+        </Menu>
+        <Image DockPanel.Dock="Top" Source="{Binding ImageSource, Mode=OneWay}" Stretch="None" />
+    </DockPanel>
 </Window>

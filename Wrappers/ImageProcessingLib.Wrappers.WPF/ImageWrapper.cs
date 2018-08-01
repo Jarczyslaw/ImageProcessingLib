@@ -35,12 +35,12 @@ namespace ImageProcessingLib.Wrappers.WPF
 
         public ImageWrapper(string filePath)
         {
-            bitmapSource = new BitmapImage(new Uri(filePath));
+            bitmapSource = CreateBitmapSourceFromFile(filePath);
         }
 
-        public ImageWrapper(BitmapImage bitmapImage)
+        public ImageWrapper(BitmapSource bitmapSource)
         {
-            bitmapSource = bitmapImage.Clone();
+            this.bitmapSource = bitmapSource.Clone();
         }
 
         public ImageWrapper(Image<Pixel32> image)
@@ -50,7 +50,7 @@ namespace ImageProcessingLib.Wrappers.WPF
 
         public void ToFile(string filePath)
         {
-            var encoder = new PngBitmapEncoder();
+            var encoder = new BmpBitmapEncoder();
             ToFile(filePath, encoder);
         }
 
@@ -76,6 +76,18 @@ namespace ImageProcessingLib.Wrappers.WPF
             var dpi = 96;
             var stride = img.Width * 4;
             return BitmapSource.Create(img.Width, img.Height, dpi, dpi, PixelFormats.Bgra32, null, bytes, stride);
+        }
+
+        private BitmapSource CreateBitmapSourceFromFile(string filePath)
+        {
+            var bitmapImage = new BitmapImage(new Uri(filePath));
+
+            var result = new FormatConvertedBitmap();
+            result.BeginInit();
+            result.Source = bitmapImage;
+            result.DestinationFormat = PixelFormats.Bgra32;
+            result.EndInit();
+            return result;
         }
 
         public static Image<Pixel32> CreateImage(BitmapSource bmp)

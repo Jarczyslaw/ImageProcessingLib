@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessingLib.Wrappers.WF;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace TestApp.WF
 {
     public partial class TestForm : Form
     {
+        private ImageWrapper imageWrapper;
+
         public TestForm()
         {
             InitializeComponent();
@@ -23,6 +26,21 @@ namespace TestApp.WF
                 return;
    
             pbImage.Image = bitmap;
+        }
+
+        private void miSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

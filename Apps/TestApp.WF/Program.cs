@@ -17,9 +17,11 @@ namespace TestApp.WF
         static void Main()
         {
             var bmp = ImagesFolder.Images.Lena;
-            var wrapper = new ImageWrapper(bmp);
-            var result = new ImageWrapper(wrapper.Image32);
-            Run(result.Bitmap);   
+            using (var wrapper = new ImageWrapper(bmp))
+            {
+                using (var result = new ImageWrapper(wrapper.Image32))
+                    Run(result.Bitmap);
+            }
         }
 
         private static void Run(Bitmap bitmap)

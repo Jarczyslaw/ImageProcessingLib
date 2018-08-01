@@ -8,4 +8,4 @@ add more example images
 add possibility to add custom images to examples
 //add CMYK conversion
 add pen sketch effect, charcoal and oil paint
-add WPF wrapper, rename GDI for something else
+//add WPF wrapper, rename GDI for something else

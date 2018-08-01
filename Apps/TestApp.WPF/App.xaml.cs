@@ -1,5 +1,7 @@
 ﻿using ImageProcessingLib;
+using ImageProcessingLib.Converters.WF.WPF;
 using ImageProcessingLib.Wrappers.WPF;
+using ImagesFolder;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,14 +20,15 @@ namespace TestApp.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var img = new Image<Pixel32>(500, 500, Pixel32.Red);
-            var wrapper = new ImageWrapper(img);
-            Run(wrapper.BitmapSource);
+            var bitmapSource = ImageConverter.FromBitmap(Images.Lena);
+            var wrapper = new ImageWrapper(bitmapSource);
+            var targetWrapper = new ImageWrapper(wrapper.Image32);
+            Run(targetWrapper);
         }
 
-        private void Run(BitmapSource bitmapSource)
+        private void Run(ImageWrapper imageWrapper)
         {
-            var testWindow = new TestWindow(bitmapSource);
+            var testWindow = new TestWindow(imageWrapper);
             testWindow.Show();
         }
     }

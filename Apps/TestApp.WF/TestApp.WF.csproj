@@ -83,6 +83,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Converters\ImageProcessingLib.Converters.WF.WPF\ImageProcessingLib.Converters.WF.WPF.csproj">
+      <Project>{0b917bac-af9f-4000-942e-d118b97f843b}</Project>
+      <Name>ImageProcessingLib.Converters.WF.WPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}</Project>
       <Name>ImageProcessingLib</Name>

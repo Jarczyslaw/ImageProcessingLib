@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command.cs" />
     <Compile Include="TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,9 +99,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Converters\ImageProcessingLib.Converters.WF.WPF\ImageProcessingLib.Converters.WF.WPF.csproj">
+      <Project>{0B917BAC-AF9F-4000-942E-D118B97F843B}</Project>
+      <Name>ImageProcessingLib.Converters.WF.WPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61d55dcb-5cae-430a-b933-da56bbab35fa}</Project>
       <Name>ImageProcessingLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ImagesFolder\ImagesFolder.csproj">
+      <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
+      <Name>ImagesFolder</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Wrappers\ImageProcessingLib.Wrappers.WPF\ImageProcessingLib.Wrappers.WPF.csproj">
       <Project>{85a42fb7-62e0-4a9b-9fce-7d711257e7ee}</Project>
