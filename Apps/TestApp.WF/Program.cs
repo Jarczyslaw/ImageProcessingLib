@@ -19,16 +19,16 @@ namespace TestApp.WF
             var bmp = ImagesFolder.Images.Lena;
             using (var wrapper = new ImageWrapper(bmp))
             {
-                using (var result = new ImageWrapper(wrapper.Image32))
-                    Run(result.Bitmap);
+                var result = new ImageWrapper(wrapper.Image32);
+                Run(result);
             }
         }
 
-        private static void Run(Bitmap bitmap)
+        private static void Run(ImageWrapper imageWrapper)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestForm(bitmap));
+            Application.Run(new TestForm(imageWrapper));
         }
     }
 }
