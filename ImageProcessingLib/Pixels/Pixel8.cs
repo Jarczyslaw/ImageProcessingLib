@@ -15,7 +15,7 @@ namespace ImageProcessingLib
         public Pixel8(byte value)
         {
             Value = value;
-            Data = BytesUtils.GetDataFromArgb(byte.MaxValue, value, value, value);
+            Data = value;
         }
 
         public Pixel8(Pixel8 pixel) : this(pixel.Value) { }
@@ -27,7 +27,7 @@ namespace ImageProcessingLib
 
         public Pixel8 From(int data)
         {
-            var value = BytesUtils.GetValueFromData(data);
+            var value = MathUtils.ByteClamp(data);
             return new Pixel8(value);
         }
 

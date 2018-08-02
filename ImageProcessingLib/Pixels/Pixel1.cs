@@ -13,8 +13,7 @@ namespace ImageProcessingLib
         public Pixel1(bool value)
         {
             Value = value;
-            var val = value ? byte.MaxValue : byte.MinValue;
-            Data = BytesUtils.GetDataFromArgb(255, val, val, val);
+            Data = value ? byte.MaxValue : byte.MinValue;
         }
 
         public Pixel1(Pixel1 pixel) : this(pixel.Value) { }
@@ -26,8 +25,8 @@ namespace ImageProcessingLib
 
         public Pixel1 From(int data)
         {
-            var val = BytesUtils.GetValueFromData(data);
-            return new Pixel1(val > 127);
+            var val = data != 0;
+            return new Pixel1(val);
         }
 
         public Pixel1 White
