@@ -22,9 +22,10 @@ namespace ImageProcessingLibExamples
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            IImagesSource imagesSource = new ImagesSource();
             IExamplesSource examplesSource = new ExamplesSource();
             IMainView mainView = new MainView();
-            var mainPresenter = new MainPresenter(mainView, examplesSource);
+            var mainPresenter = new MainPresenter(mainView, imagesSource, examplesSource);
             Application.Run(mainView as Form);
         }
 

@@ -17,6 +17,8 @@ namespace ImageProcessingLibExamples.Presenters
     public class MainPresenter
     {
         private IMainView view;
+        private IImagesSource imagesSource;
+        private IExamplesSource examplesSource;
 
         private Dictionary<string, ExampleBase> examples;
         private ExampleBase currentExample;
@@ -25,9 +27,11 @@ namespace ImageProcessingLibExamples.Presenters
         private HistogramPresenter histogramPresenter;
         private ColorCalculatorPresenter colorCalculatorPresenter;
 
-        public MainPresenter(IMainView view, IExamplesSource examplesSource)
+        public MainPresenter(IMainView view, IImagesSource imagesSource, IExamplesSource examplesSource)
         {
             this.view = view;
+            this.imagesSource = imagesSource;
+            this.examplesSource = examplesSource;
 
             histogramPresenter = new HistogramPresenter(view);
             colorCalculatorPresenter = new ColorCalculatorPresenter(view);
@@ -42,7 +46,7 @@ namespace ImageProcessingLibExamples.Presenters
             view.OnColorCalculatorShow += ColorCalculatorShow;
             view.OnColorSelect += ColorSelect;
 
-            view.SetImages(Images.AllBitmaps);
+            view.SetImages(imagesSource.Images);
             examples = examplesSource.CreateExamplesDictionary();
             view.SetExamples(examples);
         }
