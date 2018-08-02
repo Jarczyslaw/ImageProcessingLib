@@ -141,6 +141,7 @@ namespace ImageProcessingLibExamples.Views
 
         public void SetResultImages(Dictionary<string, ImageWrapper> resultImages)
         {
+            cbResults.Enabled = true;
             cbResults.BindDictionary(resultImages);
         }
 
@@ -177,8 +178,11 @@ namespace ImageProcessingLibExamples.Views
         private void miCurrentImage_Click(object sender, EventArgs e)
         {
             if (SelectedResultImage == null)
+            {
+                ShowNoImageInfo();
                 return;
-
+            }
+                
             var sfd = new SaveFileDialog
             {
                 Filter = "Bitmap Image (.bmp)|*.bmp",
@@ -192,8 +196,11 @@ namespace ImageProcessingLibExamples.Views
         private void miAllImages_Click(object sender, EventArgs e)
         {
             if (SelectedResultImage == null)
+            {
+                ShowInfo("No images created");
                 return;
-
+            }
+                
             var fbd = new FolderBrowserDialog()
             {
                 SelectedPath = Environment.SpecialFolder.DesktopDirectory.ToString()
@@ -201,11 +208,6 @@ namespace ImageProcessingLibExamples.Views
             var dr = fbd.ShowDialog();
             if (dr == DialogResult.OK)
                 OnImagesSave?.Invoke(fbd.SelectedPath);
-        }
-
-        private void miMetrics_Click(object sender, EventArgs e)
-        {
-            OnMetricsShow?.Invoke();
         }
 
         private void SwitchComboBoxItem(ComboBox comboBox, int dir)
@@ -243,8 +245,25 @@ namespace ImageProcessingLibExamples.Views
             OnColorCalculatorShow?.Invoke(colorCalculatorView);
         }
 
+        private void miMetrics_Click(object sender, EventArgs e)
+        {
+            if (SelectedResultImage == null)
+            {
+                ShowNoImageInfo();
+                return;
+            }
+
+            OnMetricsShow?.Invoke();
+        }
+
         private void miHistogram_Click(object sender, EventArgs e)
         {
+            if (SelectedResultImage == null)
+            {
+                ShowNoImageInfo();
+                return;
+            }
+
             var histogramView = new HistogramView();
             OnHistogramShow?.Invoke(histogramView);
         }
@@ -266,6 +285,11 @@ namespace ImageProcessingLibExamples.Views
                 return;
 
             OnColorSelect(x, y);
+        }
+
+        private void ShowNoImageInfo()
+        {
+            ShowInfo("No image created");
         }
     }
 }

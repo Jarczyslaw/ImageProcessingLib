@@ -107,7 +107,6 @@ namespace ImageProcessingLibExamples.Views
             Pixel = hsv.GetPixel();
             PixelCMYK = new CMYK(Pixel);
             UpdatePixelInfo();
-            Debug.WriteLine(PixelHSV.ToString());
         }
 
         private void cmyk_AnemicValueChanged(object sender, EventArgs e)

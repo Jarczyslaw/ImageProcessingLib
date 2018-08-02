@@ -115,7 +115,7 @@ namespace ImageProcessingLibExamples.Presenters
         {
             if (currentExample == null)
                 return;
-
+ 
             try
             {
                 currentExample.Save(selectedPath);
@@ -131,7 +131,7 @@ namespace ImageProcessingLibExamples.Presenters
         {
             if (view.SelectedResultImage == null)
                 return;
-
+            
             try
             {
                 view.SelectedResultImage.Bitmap.Save(fileName, ImageFormat.Bmp);
