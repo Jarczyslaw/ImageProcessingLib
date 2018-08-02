@@ -6,12 +6,7 @@ namespace ImageProcessingLib
 {
     public static class BlackAndWhiteExtension
     {
-        public static Image<Pixel8> BlackAndWhite(this Image<Pixel8> image)
-        {
-            return image.BlackAndWhite(127);
-        }
-
-        public static Image<Pixel8> BlackAndWhite(this Image<Pixel8> image, byte threshold)
+        public static Image<Pixel8> BlackAndWhite(this Image<Pixel8> image, byte threshold = 127)
         {
             Pixel8 pixelOperator(Pixel8 pixel)
             {
@@ -23,12 +18,7 @@ namespace ImageProcessingLib
             return image.BlackAndWhite(pixelOperator);
         }
 
-        public static Image<Pixel32> BlackAndWhite(this Image<Pixel32> image)
-        {
-            return image.BlackAndWhite(127);
-        }
-
-        public static Image<Pixel32> BlackAndWhite(this Image<Pixel32> image, byte threshold)
+        public static Image<Pixel32> BlackAndWhite(this Image<Pixel32> image, byte threshold = 127)
         {
             Pixel32 pixelOperator(Pixel32 pixel)
             {
