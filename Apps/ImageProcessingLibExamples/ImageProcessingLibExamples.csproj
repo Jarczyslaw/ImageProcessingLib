@@ -74,6 +74,7 @@
     <Compile Include="Examples\HistogramEqualization.cs" />
     <Compile Include="Examples\HistogramScaling.cs" />
     <Compile Include="Examples\HistogramShift.cs" />
+    <Compile Include="Examples\PenSketch.cs" />
     <Compile Include="ImagesSource\IImagesSource.cs" />
     <Compile Include="ImagesSource\ImagesSource.cs" />
     <Compile Include="Presenters\ColorCalculatorPresenter.cs" />

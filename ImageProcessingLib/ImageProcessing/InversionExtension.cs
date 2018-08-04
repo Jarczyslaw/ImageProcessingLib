@@ -7,7 +7,7 @@ namespace ImageProcessingLib
 {
     public static class InversionExtension
     {
-        public static Image<Pixel8> Inversion(this Image<Pixel8> image, byte inversionPoint)
+        public static Image<Pixel8> Inversion(this Image<Pixel8> image, byte inversionPoint = 127)
         {
             Pixel8 pixelOperator(Pixel8 pixel)
             {
@@ -17,7 +17,7 @@ namespace ImageProcessingLib
             return image.Inversion(pixelOperator);
         }
 
-        public static Image<Pixel32> Inversion(this Image<Pixel32> image, byte inversionPoint)
+        public static Image<Pixel32> Inversion(this Image<Pixel32> image, byte inversionPoint = 127)
         {
             return image.Inversion(new Pixel32(inversionPoint));
         }
