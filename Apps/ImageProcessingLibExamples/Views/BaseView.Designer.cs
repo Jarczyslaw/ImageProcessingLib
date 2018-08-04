@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessingLibExamples.Views
 {
-    partial class BaseForm
+    partial class BaseView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseView));
             this.SuspendLayout();
             // 
-            // BaseForm
+            // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "BaseForm";
-            this.Text = "BaseForm";
+            this.Name = "BaseView";
+            this.Text = "BaseView";
             this.ResumeLayout(false);
 
         }

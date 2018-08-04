@@ -15,6 +15,7 @@ namespace ImageProcessingLibExamples.Views
 
         event Action<string> OnCurrentImageSave;
         event Action<string> OnImagesSave;
+        event Action<string, string> OnFileOpen;
         event Action OnMetricsShow;
         event Action<IHistogramView> OnHistogramShow;
         event Action<IColorCalculatorView> OnColorCalculatorShow;

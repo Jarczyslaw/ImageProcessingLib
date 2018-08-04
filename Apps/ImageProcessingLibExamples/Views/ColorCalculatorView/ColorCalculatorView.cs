@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class ColorCalculatorView : BaseForm, IColorCalculatorView
+    public partial class ColorCalculatorView : BaseView, IColorCalculatorView
     {
         public Pixel32 Pixel
         {

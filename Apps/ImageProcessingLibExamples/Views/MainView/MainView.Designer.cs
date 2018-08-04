@@ -42,8 +42,12 @@
             this.spbImage = new ImageProcessingLibExamples.Controls.ScrollablePictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miCurrentImage = new System.Windows.Forms.ToolStripMenuItem();
             this.miAllImages = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.miClose = new System.Windows.Forms.ToolStripMenuItem();
             this.miMetrics = new System.Windows.Forms.ToolStripMenuItem();
             this.miHistogram = new System.Windows.Forms.ToolStripMenuItem();
             this.miColorCalculator = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,11 +199,29 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miOpen,
+            this.saveToolStripMenuItem1,
+            this.toolStripSeparator1,
+            this.miClose});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.saveToolStripMenuItem.Text = "File";
+            // 
+            // miOpen
+            // 
+            this.miOpen.Name = "miOpen";
+            this.miOpen.Size = new System.Drawing.Size(180, 22);
+            this.miOpen.Text = "Open";
+            this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
+            // 
+            // saveToolStripMenuItem1
+            // 
+            this.saveToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miCurrentImage,
             this.miAllImages});
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Text = "Save";
             // 
             // miCurrentImage
             // 
@@ -214,6 +236,18 @@
             this.miAllImages.Size = new System.Drawing.Size(150, 22);
             this.miAllImages.Text = "All images";
             this.miAllImages.Click += new System.EventHandler(this.miAllImages_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // miClose
+            // 
+            this.miClose.Name = "miClose";
+            this.miClose.Size = new System.Drawing.Size(180, 22);
+            this.miClose.Text = "Close";
+            this.miClose.Click += new System.EventHandler(this.miClose_Click);
             // 
             // miMetrics
             // 
@@ -289,13 +323,17 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miCurrentImage;
-        private System.Windows.Forms.ToolStripMenuItem miAllImages;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem miMetrics;
         private System.Windows.Forms.ToolStripMenuItem miHistogram;
         private Controls.ScrollablePictureBox spbImage;
         private System.Windows.Forms.ToolStripStatusLabel slSummary;
         private System.Windows.Forms.ToolStripMenuItem miColorCalculator;
+        private System.Windows.Forms.ToolStripMenuItem miOpen;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem miCurrentImage;
+        private System.Windows.Forms.ToolStripMenuItem miAllImages;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem miClose;
     }
 }

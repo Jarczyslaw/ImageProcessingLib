@@ -13,7 +13,7 @@ using LiveCharts.Wpf;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class HistogramView : BaseForm, IHistogramView
+    public partial class HistogramView : BaseView, IHistogramView
     {
         public RGBHistogram Histogram
         {

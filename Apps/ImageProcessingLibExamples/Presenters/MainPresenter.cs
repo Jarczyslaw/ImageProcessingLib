@@ -5,6 +5,7 @@ using ImageProcessingLibExamples.Views;
 using ImagesFolder;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -37,10 +38,11 @@ namespace ImageProcessingLibExamples.Presenters
             colorCalculatorPresenter = new ColorCalculatorPresenter(view);
 
             view.OnExampleRun += ExampleRun;
-            view.OnViewClosing += OnClosing;
+            view.OnViewClosing += ViewClosing;
 
             view.OnCurrentImageSave += CurrentImageSave;
             view.OnImagesSave += ImagesSave;
+            view.OnFileOpen += FileOpen;
             view.OnMetricsShow += MetricsShow;
             view.OnHistogramShow += HistogramShow;
             view.OnColorCalculatorShow += ColorCalculatorShow;
@@ -147,9 +149,24 @@ namespace ImageProcessingLibExamples.Presenters
             }
         }
 
-        private bool OnClosing()
+        private void FileOpen(string fileName, string imageName)
+        {
+            try
+            {
+                var newImage = new Bitmap(fileName);
+                imagesSource.AddImage(imageName, newImage);
+                view.SetImages(imagesSource.Images);
+            }
+            catch (Exception exc)
+            {
+                view.ShowException(exc);
+            }
+        }
+
+        private bool ViewClosing()
         {
             currentExample?.CleanUp();
+            imagesSource?.Dispose();
             return false;
         }
 

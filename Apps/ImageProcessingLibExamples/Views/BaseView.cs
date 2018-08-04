@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class BaseForm : Form, IView
+    public partial class BaseView : Form, IView
     {
         public event Action OnViewLoad;
         public event Func<bool> OnViewClosing;
 
-        public BaseForm()
+        public BaseView()
         {
             InitializeComponent();
             MinimumSize = new Size(200, 200);

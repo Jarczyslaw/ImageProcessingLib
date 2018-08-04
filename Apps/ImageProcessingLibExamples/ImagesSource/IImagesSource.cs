@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLibExamples
 {
-    public interface IImagesSource
+    public interface IImagesSource : IDisposable
     {
         Dictionary<string, Bitmap> Images { get; }
         void AddImage(string title, Bitmap image);

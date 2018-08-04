@@ -23,5 +23,11 @@ namespace ImageProcessingLibExamples
         {
             Images.Add(title, image);
         }
+
+        public void Dispose()
+        {
+            foreach (var image in Images.Values)
+                image.Dispose();
+        }
     }
 }

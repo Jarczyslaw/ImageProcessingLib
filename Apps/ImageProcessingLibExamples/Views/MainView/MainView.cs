@@ -15,11 +15,12 @@ using System.Windows.Forms;
 
 namespace ImageProcessingLibExamples.Views
 {
-    public partial class MainView : BaseForm, IMainView
+    public partial class MainView : BaseView, IMainView
     {
         public event Action OnExampleRun;
         public event Action<string> OnCurrentImageSave;
         public event Action<string> OnImagesSave;
+        public event Action<string, string> OnFileOpen;
         public event Action OnMetricsShow;
         public event Action<IHistogramView> OnHistogramShow;
         public event Action<IColorCalculatorView> OnColorCalculatorShow;
@@ -100,8 +101,14 @@ namespace ImageProcessingLibExamples.Views
 
         public void SetImages(Dictionary<string, Bitmap> images)
         {
+            cbImages.SelectionChangeCommitted -= cbImages_SelectionChangeCommitted;
+            var currentValue = cbImages.SelectedValue;
             cbImages.BindDictionary(images);
-            cbImages.SelectedIndex = -1;
+            if (currentValue != null)
+                cbImages.SelectedValue = currentValue;
+            else
+                cbImages.SelectedIndex = -1;
+            cbImages.SelectionChangeCommitted += cbImages_SelectionChangeCommitted;
         }
 
         public void SetExamples(Dictionary<string, ExampleBase> examples)
@@ -276,7 +283,7 @@ namespace ImageProcessingLibExamples.Views
         private void spbImage_OnMouseDoubleClick(int x, int y)
         {
             ShowColorCalculator();
-            OnColorSelect(x, y);
+            OnColorSelect?.Invoke(x, y);
         }
 
         private void spbImage_OnMouseClickOrMove(int x, int y)
@@ -284,12 +291,37 @@ namespace ImageProcessingLibExamples.Views
             if (!ColorCalculatorEnabled)
                 return;
 
-            OnColorSelect(x, y);
+            OnColorSelect?.Invoke(x, y);
         }
 
         private void ShowNoImageInfo()
         {
             ShowInfo("No image created");
+        }
+
+        private void miClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void miOpen_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog
+            {
+                Filter = "Image files (*.jpg; *.jpeg; *.bmp; *.png) | *.jpg; *.jpeg; *.bmp; *.png"
+            };
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+
+            var filePath = ofd.FileName;
+            var fileName = Path.GetFileNameWithoutExtension(filePath);
+
+            var imageName = string.Empty;
+            var enterForm = new EnterStringForm();
+            if (enterForm.GetString("Enter image's name:", fileName, ref imageName) != DialogResult.OK)
+                return;
+
+            OnFileOpen?.Invoke(filePath, imageName);
         }
     }
 }

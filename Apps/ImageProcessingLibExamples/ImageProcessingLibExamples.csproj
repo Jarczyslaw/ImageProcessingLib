@@ -82,11 +82,11 @@
     <Compile Include="Controls\AnemicNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\BaseForm.cs">
+    <Compile Include="Views\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <Compile Include="Views\BaseView.Designer.cs">
+      <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ColorCalculatorView\ColorCalculatorView.cs">
       <SubType>Form</SubType>
@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="Controls\HistogramChart.cs" />
     <Compile Include="Views\ColorCalculatorView\IColorCalculatorView.cs" />
+    <Compile Include="Views\EnterStringForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EnterStringForm.Designer.cs">
+      <DependentUpon>EnterStringForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HistogramView\HistogramView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,11 +154,14 @@
     <EmbeddedResource Include="Controls\ScrollablePictureBox.resx">
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\BaseView.resx">
+      <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ColorCalculatorView\ColorCalculatorView.resx">
       <DependentUpon>ColorCalculatorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EnterStringForm.resx">
+      <DependentUpon>EnterStringForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HistogramView\HistogramView.resx">
       <DependentUpon>HistogramView.cs</DependentUpon>
