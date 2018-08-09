@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessingLib.Utilities
+namespace ImageProcessingLib
 {
     public class RandomEx : Random
     {
