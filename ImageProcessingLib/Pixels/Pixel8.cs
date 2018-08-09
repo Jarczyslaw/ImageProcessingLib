@@ -31,12 +31,12 @@ namespace ImageProcessingLib
             return new Pixel8(value);
         }
 
-        public Pixel8 White
+        public static Pixel8 White
         {
             get { return new Pixel8(255); }
         }
 
-        public Pixel8 Black
+        public static Pixel8 Black
         {
             get { return new Pixel8(0); }
         }

@@ -29,12 +29,12 @@ namespace ImageProcessingLib
             return new Pixel1(val);
         }
 
-        public Pixel1 White
+        public static Pixel1 White
         {
             get { return new Pixel1(true); }
         }
 
-        public Pixel1 Black
+        public static Pixel1 Black
         {
             get { return new Pixel1(false); }
         }

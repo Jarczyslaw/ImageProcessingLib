@@ -8,13 +8,13 @@ using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class ColorAccent : ExampleBase
+    public class Cartoon : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
-            var hue = 40d;
             var image = originalImage.Copy();
-            images.Add(string.Format("ColorAccent_Hue{0}", hue), new ImageWrapper(image.ColorAccent(Pixel32.Red, hue)));
+            image.Cartoon(5, 10, 96);
+            images.Add("Cartoon", new ImageWrapper(image));
         }
     }
 }
