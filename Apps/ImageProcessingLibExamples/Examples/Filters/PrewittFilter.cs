@@ -14,10 +14,10 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.PrewittFilter());
-            images.Add("PrewittFilterAccurate", new ImageWrapper(image));
+            images.Add("PrewittFilter_Accurate", new ImageWrapper(image));
             image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.PrewittFilter(true));
-            images.Add("PrewittFilterApproximation", new ImageWrapper(image));
+            images.Add("PrewittFilter_Approximation", new ImageWrapper(image));
         }
     }
 }

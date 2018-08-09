@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.GammaCorrection(gamma);
-                images.Add("Gamma" + gamma, new ImageWrapper(image));
+                images.Add("GammaCorrection_Gamma" + gamma, new ImageWrapper(image));
             }
         }
     }

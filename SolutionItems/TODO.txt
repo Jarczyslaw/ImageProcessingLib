@@ -9,3 +9,4 @@ add more example images
 //add CMYK conversion
 add pen sketch effect, charcoal, cartoon effect, oil paint
 //add WPF wrapper, rename GDI for something else
+add noise generator

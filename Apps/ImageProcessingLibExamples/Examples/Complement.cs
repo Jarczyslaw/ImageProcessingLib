@@ -30,7 +30,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 image = originalImage.Copy();
                 image.Complement(size.Width, size.Height);
-                images.Add(string.Format("BlankComplement{0}x{1}", size.Width, size.Height), new ImageWrapper(image));
+                images.Add(string.Format("BlankComplement_Width{0}_Height{1}", size.Width, size.Height), new ImageWrapper(image));
             }
         }
     }

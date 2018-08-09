@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.Sepia(level);
-                images.Add("Sepia" + level, new ImageWrapper(image));
+                images.Add("Sepia_Level" + level, new ImageWrapper(image));
             }
         }
     }

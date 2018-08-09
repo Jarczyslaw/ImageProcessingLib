@@ -15,10 +15,10 @@ namespace ImageProcessingLibExamples.Examples
             var size = 1024;
             var image = originalImage.Copy();
             image.Resize(size, size);
-            images.Add("NearestNeighbour", new ImageWrapper(image));
+            images.Add("Resize_NearestNeighbour", new ImageWrapper(image));
             image = originalImage.Copy();
             image.Resize(size, size, ResizeMethod.BilinearInterpolation);
-            images.Add("BilinearInterpolation", new ImageWrapper(image));
+            images.Add("Resize_BilinearInterpolation", new ImageWrapper(image));
         }
     }
 }

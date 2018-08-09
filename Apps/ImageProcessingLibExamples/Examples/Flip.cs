@@ -14,13 +14,13 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.FlipVertical();
-            images.Add("FlipVertical", new ImageWrapper(image));
+            images.Add("Flip_Vertical", new ImageWrapper(image));
             image = originalImage.Copy();
             image.FlipHorizontal();
-            images.Add("FlipHorizontal", new ImageWrapper(image));
+            images.Add("Flip_Horizontal", new ImageWrapper(image));
             image = originalImage.Copy();
             image.FlipHorizontal().FlipVertical();
-            images.Add("FlipHorizontalVertical", new ImageWrapper(image));
+            images.Add("Flip_HorizontalVertical", new ImageWrapper(image));
         }
     }
 }

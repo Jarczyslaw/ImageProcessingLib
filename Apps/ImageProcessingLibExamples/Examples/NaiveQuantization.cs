@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.NaiveQuantize(level);
-                images.Add("NaiveQuantization" + level, new ImageWrapper(image));
+                images.Add("NaiveQuantization_Level" + level, new ImageWrapper(image));
             }
         }
     }

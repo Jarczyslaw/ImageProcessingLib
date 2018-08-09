@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.HistogramShift(offset);
-                images.Add(string.Format("HistogramShift{0}", offset), new ImageWrapper(image));
+                images.Add(string.Format("HistogramShift_Offset{0}", offset), new ImageWrapper(image));
             }
         }
     }

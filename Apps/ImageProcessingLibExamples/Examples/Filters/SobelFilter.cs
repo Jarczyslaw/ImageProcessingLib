@@ -14,10 +14,10 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.SobelFilter());
-            images.Add("SobelFilterAccurate", new ImageWrapper(image));
+            images.Add("SobelFilter_Accurate", new ImageWrapper(image));
             image = originalImage.Copy();
             image.ApplyFilter(new ImageProcessingLib.SobelFilter(true));
-            images.Add("SobelFilterApproximation", new ImageWrapper(image));
+            images.Add("SobelFilter_Approximation", new ImageWrapper(image));
         }
     }
 }

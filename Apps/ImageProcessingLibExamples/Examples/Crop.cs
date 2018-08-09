@@ -20,11 +20,11 @@ namespace ImageProcessingLibExamples.Examples
 
             var cropParams = new List<RectangleParameter>()
             {
-                new RectangleParameter("CropTopLeft", -halfWidth, -halfHeight, width, height),
-                new RectangleParameter("CropTopRight", halfWidth, -halfHeight, width, height),
-                new RectangleParameter("CropBottomLeft", -halfWidth, halfHeight, width, height),
-                new RectangleParameter("CropBottomRight", halfWidth, halfHeight, width, height),
-                new RectangleParameter("CropCenter", halfWidth / 2, halfHeight / 2, halfWidth, halfHeight)
+                new RectangleParameter("Crop_TopLeft", -halfWidth, -halfHeight, width, height),
+                new RectangleParameter("Crop_TopRight", halfWidth, -halfHeight, width, height),
+                new RectangleParameter("Crop_BottomLeft", -halfWidth, halfHeight, width, height),
+                new RectangleParameter("Crop_BottomRight", halfWidth, halfHeight, width, height),
+                new RectangleParameter("Crop_Center", halfWidth / 2, halfHeight / 2, halfWidth, halfHeight)
             };
 
             foreach (var cropParam in cropParams)

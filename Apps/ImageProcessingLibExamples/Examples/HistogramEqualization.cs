@@ -14,7 +14,7 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.HistogramEqualization();
-            images.Add("Equalized", new ImageWrapper(image));
+            images.Add("HistogramEqualization", new ImageWrapper(image));
         }
     }
 }

@@ -20,11 +20,11 @@ namespace ImageProcessingLibExamples.Examples
 
             var insertParams = new List<PointParameter>()
             {
-                new PointParameter("InsertTopLeft", -quarterWidth, -quarterHeight),
-                new PointParameter("InsertTopRight", width - quarterWidth, -quarterHeight),
-                new PointParameter("InsertBottomLeft", -quarterWidth, height - quarterHeight),
-                new PointParameter("InsertBottomRight", width - quarterWidth, height - quarterHeight),
-                new PointParameter("InsertCenter", quarterWidth, quarterHeight)
+                new PointParameter("Insert_TopLeft", -quarterWidth, -quarterHeight),
+                new PointParameter("Insert_TopRight", width - quarterWidth, -quarterHeight),
+                new PointParameter("Insert_BottomLeft", -quarterWidth, height - quarterHeight),
+                new PointParameter("Insert_BottomRight", width - quarterWidth, height - quarterHeight),
+                new PointParameter("Insert_Center", quarterWidth, quarterHeight)
             };
 
             var imageToInsert = originalImage.Copy().Resize(originalImage.Width / 2, originalImage.Height / 2);

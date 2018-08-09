@@ -9,21 +9,22 @@ using ImageProcessingLibExamples.Examples.Parameters;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class HistogramStretch : ExampleBase
+    public class OilPaint : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
-            var ranges = new List<MinMaxParameter>
+            var parameters = new List<OilPaintParameter>
             {
-                new MinMaxParameter(0, 255),
-                new MinMaxParameter(64, 255),
-                new MinMaxParameter(0, 192),
+                new OilPaintParameter(3, 10),
+                new OilPaintParameter(5, 10),
+                new OilPaintParameter(3, 15),
+                new OilPaintParameter(5, 15)
             };
-            foreach (var range in ranges)
+            foreach (var parameter in parameters)
             {
                 var image = originalImage.Copy();
-                image.HistogramStretch(range.Min, range.Max);
-                images.Add(string.Format("HistogramStretch_Min{0}_Max{1}", range.Min, range.Max), new ImageWrapper(image));
+                image.OilPaint(parameter.Size, parameter.Levels);
+                images.Add(string.Format("OilPaint_Size{0}_Levels{1}", parameter.Size, parameter.Levels), new ImageWrapper(image));
             }
         }
     }

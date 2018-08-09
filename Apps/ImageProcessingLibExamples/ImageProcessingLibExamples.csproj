@@ -75,6 +75,9 @@
     <Compile Include="Examples\HistogramEqualization.cs" />
     <Compile Include="Examples\HistogramScaling.cs" />
     <Compile Include="Examples\HistogramShift.cs" />
+    <Compile Include="Examples\OilPaint.cs" />
+    <Compile Include="Examples\Parameters\MinMaxParameter.cs" />
+    <Compile Include="Examples\Parameters\OilPaintParameter.cs" />
     <Compile Include="Examples\PenSketch.cs" />
     <Compile Include="ImagesSource\IImagesSource.cs" />
     <Compile Include="ImagesSource\ImagesSource.cs" />

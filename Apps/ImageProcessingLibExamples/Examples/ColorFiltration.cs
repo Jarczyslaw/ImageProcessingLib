@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.ColorFiltration(filter);
-                images.Add("ColorFiltration" + filter.ToString(), new ImageWrapper(image));
+                images.Add("ColorFiltration_Filter" + filter.ToString(), new ImageWrapper(image));
             }
         }
     }

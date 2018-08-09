@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.AddSaltAndPepper(intensity);
-                images.Add("SaltAndPepper" + intensity, new ImageWrapper(image));
+                images.Add("Noise_SaltAndPepper_Intensity" + intensity, new ImageWrapper(image));
             }
 
             var noiseIntensity = 5d;
@@ -27,7 +27,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.AddUniformNoise(noiseIntensity, range);
-                images.Add("UniformNoise" + range, new ImageWrapper(image));
+                images.Add("Noise_UniformNoise_Range" + range, new ImageWrapper(image));
             }
 
             var stdDevs = new double[] { 5d, 10d, 25d };
@@ -35,7 +35,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.AddGaussianNoise(noiseIntensity, stdDev);
-                images.Add("GaussianNoise" + stdDev, new ImageWrapper(image));
+                images.Add("Noise_GaussianNoise_StdDev" + stdDev, new ImageWrapper(image));
             }
         }
     }

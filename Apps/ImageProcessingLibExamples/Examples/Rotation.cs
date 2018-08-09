@@ -14,16 +14,16 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.RotationClockwise();
-            images.Add("Clockwise", new ImageWrapper(image));
+            images.Add("Rotation_Clockwise", new ImageWrapper(image));
             image = originalImage.Copy();
             image.RotationCounterClockwise();
-            images.Add("CounterClockwise", new ImageWrapper(image));
+            images.Add("Rotation_CounterClockwise", new ImageWrapper(image));
             image = originalImage.Copy();
             image.Rotation(30);
-            images.Add("Degress30", new ImageWrapper(image));
+            images.Add("Rotation_Degress30", new ImageWrapper(image));
             image = originalImage.Copy();
             image.Rotation(-30);
-            images.Add("Degrees-30", new ImageWrapper(image));
+            images.Add("Rotation_Degrees-30", new ImageWrapper(image));
         }
     }
 }

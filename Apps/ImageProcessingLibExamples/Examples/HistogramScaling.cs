@@ -14,10 +14,10 @@ namespace ImageProcessingLibExamples.Examples
         {
             var image = originalImage.Copy();
             image.HistogramScaling();
-            images.Add("HistogramScaling", new ImageWrapper(image));
+            images.Add("HistogramScaling_LinearScale", new ImageWrapper(image));
             image = originalImage.Copy();
             image.HistogramScalingLog10();
-            images.Add("HistogramScalingLog10", new ImageWrapper(image));
+            images.Add("HistogramScaling_Log10", new ImageWrapper(image));
         }
     }
 }

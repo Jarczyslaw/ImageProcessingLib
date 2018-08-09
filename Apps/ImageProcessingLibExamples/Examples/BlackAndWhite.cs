@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.BlackAndWhite(threshold);
-                images.Add("Threshold" + threshold, new ImageWrapper(image));
+                images.Add("BlackAndWhite_Threshold" + threshold, new ImageWrapper(image));
             }
         }
     }

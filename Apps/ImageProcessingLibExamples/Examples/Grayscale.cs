@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.Grayscale(method);
-                images.Add(method.ToString(), new ImageWrapper(image));
+                images.Add("Grayscale_Method" + method.ToString(), new ImageWrapper(image));
             }
         }
     }

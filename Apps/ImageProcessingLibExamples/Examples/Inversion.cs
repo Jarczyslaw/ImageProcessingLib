@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.Inversion(conversionPoint);
-                images.Add("Inversion" + conversionPoint, new ImageWrapper(image));
+                images.Add("Inversion_ConversionPoint" + conversionPoint, new ImageWrapper(image));
             }
         }
     }

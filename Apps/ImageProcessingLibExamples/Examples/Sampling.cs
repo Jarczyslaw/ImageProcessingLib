@@ -17,7 +17,7 @@ namespace ImageProcessingLibExamples.Examples
             {
                 var image = originalImage.Copy();
                 image.Sampling(size);
-                images.Add("BlockSize" + size, new ImageWrapper(image));
+                images.Add("Rotation_Size" + size, new ImageWrapper(image));
             }
         }
     }
