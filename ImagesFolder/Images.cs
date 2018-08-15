@@ -22,44 +22,74 @@ namespace ImagesFolder
             }
         }
 
-        public static Bitmap Lena
-        {
-            get { return Resources.Lena; }
-        }
-
-        public static Bitmap LenaGray
-        {
-            get { return Resources.LenaGray; }
-        }
-
-        public static Bitmap LenaTrans
-        {
-            get { return Resources.LenaTrans; }
-        }
-
-        public static Bitmap Test
-        {
-            get { return Resources.Test; }
-        }
-
-        public static Bitmap Test2
-        {
-            get { return Resources.Test2; }
-        }
-
-        public static Bitmap HalfLena
-        {
-            get { return Resources.HalfLena; }
-        }
-
         public static Bitmap Baboon
         {
-            get { return Resources.Baboon; }
+            get { return Resources.baboon; }
+        }
+
+        public static Bitmap Cablecar
+        {
+            get { return Resources.cablecar; }
+        }
+
+        public static Bitmap Earth
+        {
+            get { return Resources.earth; }
+        }
+
+        public static Bitmap Fruits
+        {
+            get { return Resources.fruits; }
+        }
+
+        public static Bitmap Goldhill
+        {
+            get { return Resources.goldhill; }
+        }
+
+        public static Bitmap Lena
+        {
+            get { return Resources.lena; }
         }
 
         public static Bitmap Lena128
         {
-            get { return Resources.Lena128; }
+            get { return Resources.lena_128; }
+        }
+
+        public static Bitmap LenaGrayscale
+        {
+            get { return Resources.lena_grayscale; }
+        }
+
+        public static Bitmap Machcolor
+        {
+            get { return Resources.machcolor; }
+        }
+
+        public static Bitmap Monarch
+        {
+            get { return Resources.monarch; }
+        }
+
+        public static Bitmap Pens
+        {
+            get { return Resources.pens; }
+        }
+
+        public static Bitmap Pepper
+        {
+            get { return Resources.pepper; }
+        }
+
+        public static Bitmap Shapes
+        {
+            get { return Resources.shapes; }
+        }
+
+        public static Bitmap Yacht
+        {
+            get { return Resources.yacht; }
         }
     }
 }

@@ -51,14 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\baboon.bmp" />
-    <Content Include="Resources\halfLena.bmp" />
+    <None Include="Resources\lena_128.bmp" />
+    <None Include="Resources\yacht.bmp" />
+    <None Include="Resources\cablecar.bmp" />
+    <None Include="Resources\earth.bmp" />
+    <None Include="Resources\fruits.bmp" />
+    <None Include="Resources\goldhill.bmp" />
     <Content Include="Resources\lena.bmp" />
-    <Content Include="Resources\lena128.bmp" />
-    <Content Include="Resources\lena_bw.bmp" />
-    <Content Include="Resources\lena_gray.bmp" />
-    <Content Include="Resources\lena_trans.png" />
-    <Content Include="Resources\test.bmp" />
-    <Content Include="Resources\test2.bmp" />
+    <None Include="Resources\lena_grayscale.bmp" />
+    <None Include="Resources\machcolor.bmp" />
+    <None Include="Resources\monarch.bmp" />
+    <None Include="Resources\pens.bmp" />
+    <None Include="Resources\pepper.bmp" />
+    <None Include="Resources\shapes.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">

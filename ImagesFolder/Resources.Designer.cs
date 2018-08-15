@@ -63,9 +63,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Baboon {
+        internal static System.Drawing.Bitmap baboon {
             get {
-                object obj = ResourceManager.GetObject("Baboon", resourceCulture);
+                object obj = ResourceManager.GetObject("baboon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HalfLena {
+        internal static System.Drawing.Bitmap cablecar {
             get {
-                object obj = ResourceManager.GetObject("HalfLena", resourceCulture);
+                object obj = ResourceManager.GetObject("cablecar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Lena {
+        internal static System.Drawing.Bitmap earth {
             get {
-                object obj = ResourceManager.GetObject("Lena", resourceCulture);
+                object obj = ResourceManager.GetObject("earth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Lena128 {
+        internal static System.Drawing.Bitmap fruits {
             get {
-                object obj = ResourceManager.GetObject("Lena128", resourceCulture);
+                object obj = ResourceManager.GetObject("fruits", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LenaBlackAndWhite {
+        internal static System.Drawing.Bitmap goldhill {
             get {
-                object obj = ResourceManager.GetObject("LenaBlackAndWhite", resourceCulture);
+                object obj = ResourceManager.GetObject("goldhill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LenaGray {
+        internal static System.Drawing.Bitmap lena {
             get {
-                object obj = ResourceManager.GetObject("LenaGray", resourceCulture);
+                object obj = ResourceManager.GetObject("lena", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LenaTrans {
+        internal static System.Drawing.Bitmap lena_128 {
             get {
-                object obj = ResourceManager.GetObject("LenaTrans", resourceCulture);
+                object obj = ResourceManager.GetObject("lena_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Test {
+        internal static System.Drawing.Bitmap lena_grayscale {
             get {
-                object obj = ResourceManager.GetObject("Test", resourceCulture);
+                object obj = ResourceManager.GetObject("lena_grayscale", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,59 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Test2 {
+        internal static System.Drawing.Bitmap machcolor {
             get {
-                object obj = ResourceManager.GetObject("Test2", resourceCulture);
+                object obj = ResourceManager.GetObject("machcolor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monarch {
+            get {
+                object obj = ResourceManager.GetObject("monarch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pens {
+            get {
+                object obj = ResourceManager.GetObject("pens", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pepper {
+            get {
+                object obj = ResourceManager.GetObject("pepper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shapes {
+            get {
+                object obj = ResourceManager.GetObject("shapes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yacht {
+            get {
+                object obj = ResourceManager.GetObject("yacht", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

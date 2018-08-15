@@ -1,4 +1,7 @@
-differences between FIP and IPL might be caused by rounding/truncating results
-there is a bug in FIP Kuwahara implementation - invalid for conditions when creating subareas
-why operators in .net are slower than functions? (ComplexNumber.Mul vs *)
-CMYK conversion in FIP - division by zero
+Remarks to FIP:
+	differences between FIP and IPL might be caused by rounding/truncating results
+	there is a bug in FIP Kuwahara implementation - invalid for conditions when creating subareas
+	why operators in .net are slower than functions? (ComplexNumber.Mul vs *)
+	CMYK conversion in FIP - division by zero
+
+Images are taken from http://www.hlevkin.com/06testimages.htm

@@ -118,31 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Baboon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="baboon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\baboon.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HalfLena" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\halfLena.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cablecar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\cablecar.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Lena" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="earth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\earth.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fruits" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\fruits.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="goldhill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\goldhill.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\lena.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Lena128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\lena128.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lena_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\lena_128.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LenaBlackAndWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\lena_bw.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lena_grayscale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\lena_grayscale.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LenaGray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\lena_gray.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="machcolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\machcolor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LenaTrans" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\lena_trans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="monarch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\monarch.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Test" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\test.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pens" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pens.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Test2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\test2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pepper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pepper.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shapes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\shapes.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yacht" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\yacht.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
