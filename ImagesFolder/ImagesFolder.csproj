@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\baboon.bmp" />
+    <None Include="Resources\morph.bmp" />
     <None Include="Resources\lena_128.bmp" />
     <None Include="Resources\yacht.bmp" />
     <None Include="Resources\cablecar.bmp" />

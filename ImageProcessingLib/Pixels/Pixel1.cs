@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public class Pixel1 : IPixel<Pixel1>, IEquatable<Pixel1>
+    public struct Pixel1 : IPixel<Pixel1>, IEquatable<Pixel1>
     {
         public int Data { get; }
         public bool Value { get; }

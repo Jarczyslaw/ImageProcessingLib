@@ -12,7 +12,10 @@ namespace ImageProcessingLibExamples.Examples
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
-            var thresholds = new byte[] { 32, 64, 128, 192 };
+            var thresholds = new List<byte>();
+            for (int i = 32; i < byte.MaxValue; i += 32)
+                thresholds.Add((byte)i);
+
             foreach(var threshold in thresholds)
             {
                 var image = originalImage.Copy();

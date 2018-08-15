@@ -91,5 +91,10 @@ namespace ImagesFolder
         {
             get { return Resources.yacht; }
         }
+
+        public static Bitmap Morph
+        {
+            get { return Resources.morph; }
+        }
     }
 }

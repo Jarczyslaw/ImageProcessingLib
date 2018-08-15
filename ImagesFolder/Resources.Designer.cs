@@ -163,6 +163,16 @@ namespace ImagesFolder {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap morph {
+            get {
+                object obj = ResourceManager.GetObject("morph", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pens {
             get {
                 object obj = ResourceManager.GetObject("pens", resourceCulture);

@@ -148,6 +148,9 @@
   <data name="monarch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\monarch.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="morph" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\morph.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pens" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\pens.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
