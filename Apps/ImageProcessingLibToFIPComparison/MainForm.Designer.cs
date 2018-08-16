@@ -86,7 +86,7 @@
             // tsslDummy
             // 
             this.tsslDummy.Name = "tsslDummy";
-            this.tsslDummy.Size = new System.Drawing.Size(840, 17);
+            this.tsslDummy.Size = new System.Drawing.Size(1098, 17);
             this.tsslDummy.Spring = true;
             // 
             // tspbProgress
@@ -179,7 +179,7 @@
             // 
             this.tscbImages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbImages.Name = "tscbImages";
-            this.tscbImages.Size = new System.Drawing.Size(140, 25);
+            this.tscbImages.Size = new System.Drawing.Size(160, 25);
             // 
             // toolStripLabel2
             // 
@@ -191,7 +191,7 @@
             // 
             this.tscbComparisons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbComparisons.Name = "tscbComparisons";
-            this.tscbComparisons.Size = new System.Drawing.Size(140, 25);
+            this.tscbComparisons.Size = new System.Drawing.Size(160, 25);
             // 
             // tsbRun
             // 
