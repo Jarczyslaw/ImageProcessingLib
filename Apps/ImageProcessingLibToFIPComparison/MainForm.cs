@@ -158,6 +158,7 @@ namespace ImageProcessingLibToFIPComparison
             Application.UseWaitCursor = true;
             ProgressBarState(true);
             tssdComparisons.Enabled = false;
+            tsslInfo.Text = string.Empty;
         }
 
         private void StopProcessing()
