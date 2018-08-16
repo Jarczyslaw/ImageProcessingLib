@@ -61,9 +61,9 @@
             this.tsslInfo,
             this.tsslDummy,
             this.tspbProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 551);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1092, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -110,7 +110,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 523);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1350, 679);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -119,7 +119,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 517);
+            this.groupBox1.Size = new System.Drawing.Size(669, 673);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ImageProcessingLib";
@@ -129,7 +129,7 @@
             this.pbIPL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbIPL.Location = new System.Drawing.Point(3, 16);
             this.pbIPL.Name = "pbIPL";
-            this.pbIPL.Size = new System.Drawing.Size(534, 498);
+            this.pbIPL.Size = new System.Drawing.Size(663, 654);
             this.pbIPL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbIPL.TabIndex = 0;
             this.pbIPL.TabStop = false;
@@ -138,9 +138,9 @@
             // 
             this.groupBox2.Controls.Add(this.pbFIP);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(549, 3);
+            this.groupBox2.Location = new System.Drawing.Point(678, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 517);
+            this.groupBox2.Size = new System.Drawing.Size(669, 673);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FIP";
@@ -150,7 +150,7 @@
             this.pbFIP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbFIP.Location = new System.Drawing.Point(3, 16);
             this.pbFIP.Name = "pbFIP";
-            this.pbFIP.Size = new System.Drawing.Size(534, 498);
+            this.pbFIP.Size = new System.Drawing.Size(663, 654);
             this.pbFIP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbFIP.TabIndex = 1;
             this.pbFIP.TabStop = false;
@@ -165,7 +165,7 @@
             this.tsbRun});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1092, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1350, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -179,7 +179,7 @@
             // 
             this.tscbImages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbImages.Name = "tscbImages";
-            this.tscbImages.Size = new System.Drawing.Size(121, 25);
+            this.tscbImages.Size = new System.Drawing.Size(140, 25);
             // 
             // toolStripLabel2
             // 
@@ -191,7 +191,7 @@
             // 
             this.tscbComparisons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbComparisons.Name = "tscbComparisons";
-            this.tscbComparisons.Size = new System.Drawing.Size(121, 25);
+            this.tscbComparisons.Size = new System.Drawing.Size(140, 25);
             // 
             // tsbRun
             // 
@@ -207,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 573);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);

@@ -118,9 +118,12 @@ namespace ImageProcessingLibToFIPComparison
 
         private double GetMetrics(Image<Pixel32> fipImage, Image<Pixel32> iplImage)
         {
+            if (fipImage.Width != iplImage.Width || fipImage.Height != iplImage.Height)
+                throw new Exception("Result images have different size. Something went really wrong");
+
             int margin = 2;
             int marginWidth = fipImage.Width - 2 * margin;
-            int marginHeight = fipImage.Width - 2 * margin;
+            int marginHeight = fipImage.Height - 2 * margin;
             return ErrorMetrics.MSE(fipImage, iplImage, margin, margin, marginWidth, marginHeight);
         }
 
