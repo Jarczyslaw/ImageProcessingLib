@@ -55,6 +55,7 @@
     <Compile Include="Comparisons\HistogramScaling.cs" />
     <Compile Include="Comparisons\OilPaint.cs" />
     <Compile Include="Comparisons\Opening.cs" />
+    <Compile Include="Comparisons\Skeletonization.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
