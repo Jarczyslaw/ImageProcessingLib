@@ -39,12 +39,19 @@
             this.pbIPL = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pbFIP = new System.Windows.Forms.PictureBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tscbImages = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tscbComparisons = new System.Windows.Forms.ToolStripComboBox();
+            this.tsbRun = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIPL)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFIP)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -91,17 +98,19 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 551);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 523);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -110,7 +119,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 545);
+            this.groupBox1.Size = new System.Drawing.Size(540, 517);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ImageProcessingLib";
@@ -120,7 +129,7 @@
             this.pbIPL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbIPL.Location = new System.Drawing.Point(3, 16);
             this.pbIPL.Name = "pbIPL";
-            this.pbIPL.Size = new System.Drawing.Size(534, 526);
+            this.pbIPL.Size = new System.Drawing.Size(534, 498);
             this.pbIPL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbIPL.TabIndex = 0;
             this.pbIPL.TabStop = false;
@@ -131,7 +140,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(549, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 545);
+            this.groupBox2.Size = new System.Drawing.Size(540, 517);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FIP";
@@ -141,16 +150,65 @@
             this.pbFIP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbFIP.Location = new System.Drawing.Point(3, 16);
             this.pbFIP.Name = "pbFIP";
-            this.pbFIP.Size = new System.Drawing.Size(534, 526);
+            this.pbFIP.Size = new System.Drawing.Size(534, 498);
             this.pbFIP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbFIP.TabIndex = 1;
             this.pbFIP.TabStop = false;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.tscbImages,
+            this.toolStripLabel2,
+            this.tscbComparisons,
+            this.tsbRun});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1092, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(43, 22);
+            this.toolStripLabel1.Text = "Image:";
+            // 
+            // tscbImages
+            // 
+            this.tscbImages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbImages.Name = "tscbImages";
+            this.tscbImages.Size = new System.Drawing.Size(121, 25);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(75, 22);
+            this.toolStripLabel2.Text = "Comparison:";
+            // 
+            // tscbComparisons
+            // 
+            this.tscbComparisons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbComparisons.Name = "tscbComparisons";
+            this.tscbComparisons.Size = new System.Drawing.Size(121, 25);
+            // 
+            // tsbRun
+            // 
+            this.tsbRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbRun.Image = ((System.Drawing.Image)(resources.GetObject("tsbRun.Image")));
+            this.tsbRun.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRun.Name = "tsbRun";
+            this.tsbRun.Size = new System.Drawing.Size(32, 22);
+            this.tsbRun.Text = "Run";
+            this.tsbRun.Click += new System.EventHandler(this.tsbRun_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 573);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -164,6 +222,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbIPL)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFIP)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +241,12 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslInfo;
         private System.Windows.Forms.ToolStripStatusLabel tsslDummy;
         private System.Windows.Forms.ToolStripProgressBar tspbProgress;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox tscbImages;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripComboBox tscbComparisons;
+        private System.Windows.Forms.ToolStripButton tsbRun;
     }
 }
 

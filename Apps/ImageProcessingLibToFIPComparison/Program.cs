@@ -21,8 +21,7 @@ namespace ImageProcessingLibToFIPComparison
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var sourceImage = ImagesFolder.Images.Morph;
-            Application.Run(new MainForm(sourceImage));
+            Application.Run(new MainForm());
         }
 
         private static void ChangeCultureSettings()

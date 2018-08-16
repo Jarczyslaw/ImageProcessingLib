@@ -17,16 +17,12 @@ namespace ImageProcessingLibToFIPComparison
 {
     public partial class MainForm : Form
     {
-        private Bitmap sourceImage;
         private List<ImageWrapper> images;
 
         private string title = "ImageProcessingLibToFIPComparison";
-        private string selectedComparisonName;
 
-        public MainForm(Bitmap sourceImage)
+        public MainForm()
         {
-            this.sourceImage = sourceImage;
-
             InitializeComponent();
             InitializeControls();
         }
@@ -34,6 +30,7 @@ namespace ImageProcessingLibToFIPComparison
         private void InitializeControls()
         {
             PopulateComparisonsItems();
+            PopulateImagesItems();
             tsslInfo.Text = string.Empty;
             ProgressBarState(false);
             Text = title;
@@ -43,42 +40,49 @@ namespace ImageProcessingLibToFIPComparison
         {
             var comparisons = AssemblyUtils.GetTypesImplements<IComparison>()
                 .OrderBy(t => t.Name).ToList();
-
+            var dict = new Dictionary<string, IComparison>();
             foreach (var comparison in comparisons)
-            {
-                var item = new ToolStripMenuItem()
-                {
-                    Tag = (IComparison)Activator.CreateInstance(comparison),
-                    Text = comparison.Name
-                };
-                item.Click += Item_Click;
-                tssdComparisons.DropDownItems.Add(item);
-            }
+                dict.Add(comparison.Name, (IComparison)Activator.CreateInstance(comparison));
+
+            tscbComparisons.ComboBox.BindDictionary(dict);
+            tscbComparisons.ComboBox.SelectedIndex = -1;
         }
 
-        private void Item_Click(object sender, EventArgs e)
+        private void PopulateImagesItems()
         {
-            var selectedMenuItem = sender as ToolStripMenuItem;
-            selectedComparisonName = selectedMenuItem.Text;
-            var comparison = selectedMenuItem.Tag as IComparison;
-            RunComparison(comparison);
+            var images = ImagesFolder.Images.AllBitmaps;
+            tscbImages.ComboBox.BindDictionary(images);
+            tscbImages.ComboBox.SelectedIndex = -1;
         }
 
-        private async void RunComparison(IComparison comparison)
+        private void tsbRun_Click(object sender, EventArgs e)
         {
-            StartProcessing();
-            await LoadResultsAsync(comparison);
+            var selectedImage = tscbImages.ComboBox.SelectedValue as Bitmap;
+            if (selectedImage == null)
+                return;
+
+            if (tscbComparisons.ComboBox.SelectedValue == null)
+                return;
+
+            var selectedComparison = (KeyValuePair<string, IComparison>)tscbComparisons.ComboBox.SelectedItem;
+            RunComparison(selectedImage, selectedComparison.Value, selectedComparison.Key);
+        }
+
+        private async void RunComparison(Bitmap image, IComparison comparison, string comparisonName)
+        {
+            StartProcessing(comparisonName);
+            await LoadResultsAsync(image, comparison);
             StopProcessing();
         }
 
-        private void LoadResults(IComparison comparison)
+        private void LoadResults(Bitmap image, IComparison comparison)
         {
             try
             {
                 DisposeImages();
 
-                var fipOriginalImage = new ImageWrapper(sourceImage);
-                var iplOriginalImage = new ImageWrapper(sourceImage);
+                var fipOriginalImage = new ImageWrapper(image);
+                var iplOriginalImage = new ImageWrapper(image);
 
                 Bitmap fipBitmap = null;
                 var fipTime = ExecTime.Run(() =>
@@ -120,9 +124,9 @@ namespace ImageProcessingLibToFIPComparison
             return ErrorMetrics.MSE(fipImage, iplImage, margin, margin, marginWidth, marginHeight);
         }
 
-        private async Task LoadResultsAsync(IComparison comparison)
+        private async Task LoadResultsAsync(Bitmap image, IComparison comparison)
         {
-            await Task.Run(() => LoadResults(comparison));
+            await Task.Run(() => LoadResults(image, comparison));
         }
 
         private void UnloadImages()
@@ -151,7 +155,7 @@ namespace ImageProcessingLibToFIPComparison
             tspbProgress.Visible = enabled;
         }
 
-        private void StartProcessing()
+        private void StartProcessing(string selectedComparisonName)
         {
             Text = string.Format("{0}: {1}", title, selectedComparisonName);
             UnloadImages();
