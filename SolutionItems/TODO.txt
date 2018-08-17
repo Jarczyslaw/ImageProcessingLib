@@ -3,7 +3,7 @@
 //add Histogram calculation to examples
 //add color calculator + color picker from image
 //implement histogram operations
-implement morphological operations
+//implement morphological operations
 //add more example images
 //add possibility to add custom images to examples
 //add CMYK conversion
