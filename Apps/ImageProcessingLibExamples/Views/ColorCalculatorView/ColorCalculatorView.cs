@@ -1,4 +1,5 @@
 ﻿using ImageProcessingLib;
+using ImageProcessingLib.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,7 +85,7 @@ namespace ImageProcessingLibExamples.Views
 
         private void UpdatePreview()
         {
-            var color = Color.FromArgb(Pixel.Data);
+            var color = Color.FromArgb(BytesUtils.GetDataFromArgb(Pixel.A, Pixel.R, Pixel.G, Pixel.B));
             plColorPreview.BackColor = color;
         }
 

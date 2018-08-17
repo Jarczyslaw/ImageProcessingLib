@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ImageProcessingLib.Utilities;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageProcessingLib.Wrappers.WF
 {
@@ -61,11 +58,22 @@ namespace ImageProcessingLib.Wrappers.WF
             Bitmap.Save(filePath, format);
         }
 
-        public static Bitmap CreateBitmap(Image<Pixel32> img)
+        public static Bitmap CreateBitmap(Image<Pixel32> image)
         {
-            var bmp = new Bitmap(img.Width, img.Height, PixelFormat.Format32bppArgb);
-            var bmpData = bmp.LockBits(new Rectangle(0, 0, img.Width, img.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-            Marshal.Copy(img.Data, 0, bmpData.Scan0, img.Width * img.Height);
+            var data = new int[image.Size];
+            for (int i = 0; i < data.Length; i++)
+            {
+                var pixel = image.Get(i);
+                data[i] = BytesUtils.GetDataFromArgb(pixel.A, pixel.R, pixel.G, pixel.B);
+            }
+            return CreateBitmapFromData(data, image.Width, image.Height);
+        }
+
+        private static Bitmap CreateBitmapFromData(int[] data, int width, int height)
+        {
+            var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            var bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(data, 0, bmpData.Scan0, width * height);
             bmp.UnlockBits(bmpData);
             return bmp;
         }
@@ -77,7 +85,18 @@ namespace ImageProcessingLib.Wrappers.WF
             var data = new int[length];
             Marshal.Copy(bmpData.Scan0, data, 0, length);
             bmp.UnlockBits(bmpData);
-            return new Image<Pixel32>(data, bmp.Width, bmp.Height);
+            return CreateImageFromData(data, bmp.Width, bmp.Height);
+        }
+
+        private static Image<Pixel32> CreateImageFromData(int[] data, int width, int height)
+        {
+            var result = new Image<Pixel32>(width, height);
+            for (int i = 0; i < data.Length; i++)
+            {
+                BytesUtils.GetArgbFromData(data[i], out byte a, out byte r, out byte g, out byte b);
+                result.Set(i, new Pixel32(a, r, g, b));
+            }
+            return result;
         }
 
         public void Dispose()

@@ -32,7 +32,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> Resize<TPixelType>(this Image<TPixelType> image, PixelInterpolationOperator<TPixelType> pixelOperator, int width, int height, ResizeMethod method)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             switch (method)
             {
@@ -47,24 +46,22 @@ namespace ImageProcessingLib
         }
 
         private static void BilinearInterpolation<TPixelType>(Image<TPixelType> image, PixelInterpolationOperator<TPixelType> pixelOperator, int width, int height)
-            where TPixelType : struct, IPixel<TPixelType>
         {
-            var originalImage = new Image<TPixelType>(image);
-            image.InitializeNew(width, height);
-            var rw = (double)originalImage.Width / image.Width;
-            var rh = (double)originalImage.Height / image.Height;
-            image.ForEach((x, y) =>
+            var result = new Image<TPixelType>(width, height);
+            var rw = (double)image.Width / result.Width;
+            var rh = (double)image.Height / result.Height;
+            result.ForEach((x, y) =>
             {
                 var xrw = x * rw;
                 var yrh = y * rh;
 
-                var m = originalImage.ClampWidth((int)xrw);
-                var n = originalImage.ClampWidth((int)yrh);
+                var m = image.ClampWidth((int)xrw);
+                var n = image.ClampWidth((int)yrh);
 
-                var x0 = originalImage.ClampWidth(m);
-                var y0 = originalImage.ClampHeight(n);
-                var x1 = originalImage.ClampWidth(x0 + 1);
-                var y1 = originalImage.ClampHeight(y0 + 1);
+                var x0 = image.ClampWidth(m);
+                var y0 = image.ClampHeight(n);
+                var x1 = image.ClampWidth(x0 + 1);
+                var y1 = image.ClampHeight(y0 + 1);
 
                 var a = xrw % m;
                 if (double.IsNaN(a))
@@ -73,15 +70,14 @@ namespace ImageProcessingLib
                 if (double.IsNaN(b))
                     b = 0;
 
-                var p00 = originalImage.Get(x0, y0);
-                var p01 = originalImage.Get(x0, y1);
-                var p10 = originalImage.Get(x1, y0);
-                var p11 = originalImage.Get(x1, y1);
+                var p00 = image.Get(x0, y0);
+                var p01 = image.Get(x0, y1);
+                var p10 = image.Get(x1, y0);
+                var p11 = image.Get(x1, y1);
 
                 var newPixel = pixelOperator(p00, p01, p10, p11, a, b);
                 image.Set(x, y, newPixel);
             });
-            image.InvokeResize();
         }
 
         private static byte Interpolate(byte c00, byte c01, byte c10, byte c11,

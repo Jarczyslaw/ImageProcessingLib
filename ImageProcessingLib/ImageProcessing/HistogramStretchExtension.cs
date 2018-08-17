@@ -42,7 +42,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> HistogramStretch<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, byte rMin, byte rMax, byte gMin, byte gMax, byte bMin, byte bMax)
-             where TPixelType : struct, IPixel<TPixelType>
         {
             MathUtils.Orientate(ref rMin, ref rMax);
             MathUtils.Orientate(ref gMin, ref gMax);

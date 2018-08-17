@@ -1,81 +1,49 @@
-﻿using System;
+﻿using ImageProcessingLib.Utilities;
+using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace ImageProcessingLib
 {
-    public class Image<TPixelType> : ImageBase
-        where TPixelType : struct, IPixel<TPixelType>
+    public class Image<TPixelType> : IEquatable<Image<TPixelType>>
     {
-        private event ResizeHandler onResize;
-        public event ResizeHandler OnResize
+        public int Width { get; protected set; }
+        public int Height { get; protected set; }
+        public int Size
         {
-            add { onResize += value; }
-            remove { onResize -= value; }
+            get
+            {
+                return Width * Height;
+            }
         }
-
-        protected TPixelType pixelSource = new TPixelType();
-
+        public TPixelType[] Pixels { get; protected set; }
+        
         public Image(int width, int height)
         {
-            InitializeNew(width, height);
+            Width = width;
+            Height = height;
+            Pixels = new TPixelType[Size];
         }
 
-        public Image(int[] data, int width, int height)
+        public Image(int width, int height, TPixelType clearPixel) : this(width, height)
         {
-            InitializeNew(data, width, height);
-        }
-
-        public Image(int width, int height, TPixelType clearPixel)
-        {
-            InitializeNew(width, height);
             ClearExtension.Clear(this, clearPixel);
         }
 
-        public Image(Image<TPixelType> img)
+        public Image(Image<TPixelType> image) : this(image.Width, image.Height)
         {
-            InitializeFrom(img);
-        }
-
-        public Image<TNewPixelType> CopyAs<TNewPixelType>(PixelConverter<TPixelType, TNewPixelType> converter)
-            where TNewPixelType : struct, IPixel<TNewPixelType>
-        {
-            var result = new Image<TNewPixelType>(Width, Height);
-            for (int i = 0; i < Height; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    var newValue = converter(Get(j, i));
-                    result.Set(j, i, newValue);
-                }
-            }
-            return result;
-        }
-
-        public Image<TPixelType> Copy()
-        {
-            return new Image<TPixelType>(this);
-        }
-
-        public void Set(int i, TPixelType pixel)
-        {
-            SetData(i, pixel.Data);
-        }
-
-        public void Set(int x, int y, TPixelType pixel)
-        {
-            SetData(x, y, pixel.Data);
+            Pixels = (TPixelType[])image.Pixels.Clone();
         }
 
         public TPixelType Get(int i)
         {
-            var data = GetData(i);
-            return pixelSource.From(data);
+            return Pixels[i];
         }
 
         public TPixelType Get(int x, int y)
         {
-            var data = GetData(x, y);
-            return pixelSource.From(data);
+            var index = GetIndex(x, y);
+            return Pixels[index];
         }
 
         public TPixelType[] GetNeighbourhood(int x, int y, int range)
@@ -94,9 +62,21 @@ namespace ImageProcessingLib
             return result;
         }
 
-        public void InvokeResize()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected int GetIndex(int x, int y)
         {
-            onResize?.Invoke();
+            return x + y * Width;
+        }
+
+        public void Set(int i, TPixelType pixel)
+        {
+            Pixels[i] = pixel;
+        }
+
+        public void Set(int x, int y, TPixelType pixel)
+        {
+            var index = GetIndex(x, y);
+            Pixels[index] = pixel;
         }
 
         public TPixelType this[int i]
@@ -109,6 +89,56 @@ namespace ImageProcessingLib
         {
             get { return Get(x, y); }
             set { Set(x, y, value); }
+        }
+
+        public int ClampWidth(int value)
+        {
+            return MathUtils.Clamp(value, 0, Width - 1);
+        }
+
+        public int ClampHeight(int value)
+        {
+            return MathUtils.Clamp(value, 0, Height - 1);
+        }
+
+        public bool ExceedsWidth(int value)
+        {
+            return value < 0 || value >= Width;
+        }
+
+        public bool ExceedsHeight(int value)
+        {
+            return value < 0 || value >= Height;
+        }
+
+        public void GetCenter(out int x, out int y)
+        {
+            x = Width / 2;
+            y = Height / 2;
+        }
+
+        public bool Equals(Image<TPixelType> other)
+        {
+            if (other.Width != Width || other.Height != Height)
+                return false;
+            return Enumerable.SequenceEqual(other.Pixels, Pixels);
+        }
+
+        public override bool Equals(object obj)
+        {
+            var img = obj as Image<TPixelType>;
+            if (obj == null)
+                return false;
+            return Equals(img);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 0;
+            int len = Pixels.Length;
+            for (int i = 0; i < len; i++)
+                hash ^= Pixels[i].GetHashCode();
+            return hash;
         }
 
         public override string ToString()

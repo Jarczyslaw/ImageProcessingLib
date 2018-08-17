@@ -1,12 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
-using ImageProcessingLib;
 using Benchmarking.BenchmarkLauncher;
-using System;
-using System.Collections.Generic;
+using ImageProcessingLib;
+using ImageProcessingLib.Utilities;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Benchmarking.Benchmarks
 {
@@ -27,7 +23,8 @@ namespace Benchmarking.Benchmarks
         [Benchmark]
         public void Pixel32Initialization()
         {
-            var pixel32 = new Pixel32(startColor);
+            BytesUtils.GetArgbFromData(startColor, out byte a, out byte r, out byte g, out byte b);
+            var pixel32 = new Pixel32(a, r, g, b);
         }
     }
 }

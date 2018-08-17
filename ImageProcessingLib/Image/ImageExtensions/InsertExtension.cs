@@ -8,7 +8,6 @@ namespace ImageProcessingLib
     public static class InsertExtension
     {
         public static Image<TPixelType> Insert<TPixelType>(this Image<TPixelType> image, Image<TPixelType> imageToInsert, int x, int y)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             Validate(image, imageToInsert, x, y);
 
@@ -27,7 +26,6 @@ namespace ImageProcessingLib
         }
 
         private static void Validate<TPixelType>(Image<TPixelType> image,Image<TPixelType> imageToInsert, int x, int y)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             if (!GeometricUtils.SectionsCommon(x, x + imageToInsert.Width, 0, image.Width) || 
                 !GeometricUtils.SectionsCommon(y, y + imageToInsert.Height, 0, image.Height))

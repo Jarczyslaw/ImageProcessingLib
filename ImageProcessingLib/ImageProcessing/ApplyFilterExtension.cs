@@ -32,7 +32,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> ApplyFilter<TPixelType>(this Image<TPixelType> image, PixelFilterOperator<TPixelType> pixelOperator, IFilter filter)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             var originalImage = image.Copy();
             originalImage.ForEachNeighbourhood(filter.Range, (x, y, neighbourhood) =>

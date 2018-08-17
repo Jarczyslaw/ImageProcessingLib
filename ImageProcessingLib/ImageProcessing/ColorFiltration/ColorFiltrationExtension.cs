@@ -8,39 +8,32 @@ namespace ImageProcessingLib
     {
         public static Image<Pixel32> ColorFiltration(this Image<Pixel32> image, ColorFilter filter)
         {
-            var mask = GetColorFilterMask(filter);
             image.ForEach((x, y) =>
             {
                 var pixel = image.Get(x, y);
-                image.Set(x, y, ApplyColorFilter(pixel, mask));
+                image.Set(x, y, ApplyColorFilter(pixel, filter));
             });
             return image;
         }
 
-        public static Pixel32 ApplyColorFilter(Pixel32 pixel, int mask)
-        {
-            var newData = pixel.Data & mask;
-            return new Pixel32(newData);
-        }
-
-        public static int GetColorFilterMask(ColorFilter filter)
+        public static Pixel32 ApplyColorFilter(Pixel32 pixel, ColorFilter filter)
         {
             switch (filter)
             {
                 case ColorFilter.Magenta:
-                    return 0xFF << 24 | 0xFF << 16 | 0xFF;
+                    return new Pixel32(pixel.A, pixel.R, 0, pixel.B);
                 case ColorFilter.Yellow:
-                    return 0xFF << 24 | 0xFF << 16 | 0xFF << 8;
+                    return new Pixel32(pixel.A, pixel.R, pixel.G, 0);
                 case ColorFilter.Cyan:
-                    return 0xFF << 24 | 0xFF << 8 | 0xFF;
+                    return new Pixel32(pixel.A, 0, pixel.G, pixel.B);
                 case ColorFilter.Red:
-                    return 0xFF << 24 | 0xFF << 16;
+                    return new Pixel32(pixel.A, pixel.R, 0, 0);
                 case ColorFilter.Green:
-                    return 0xFF << 24 | 0xFF << 8;
+                    return new Pixel32(pixel.A, 0, pixel.G, 0);
                 case ColorFilter.Blue:
-                    return 0xFF << 24 | 0xFF;
+                    return new Pixel32(pixel.A, 0, 0, pixel.B);
                 default:
-                    return 0xFF << 24 | 0xFF << 16 | 0xFF << 8 | 0xFF;
+                    return pixel;
             }
         }
     }

@@ -63,8 +63,8 @@ namespace ImageProcessingLib.Wrappers.WPF
 
         public static BitmapSource CreateBitmapSource(Image<Pixel32> img)
         {
-            var bytes = new byte[img.Data.Length * 4];
-            for (int i = 0; i < img.Data.Length; i++)
+            var bytes = new byte[img.Size * 4];
+            for (int i = 0; i < img.Size; i++)
             {
                 int index = i * 4;
                 var pixel = img.Get(i);

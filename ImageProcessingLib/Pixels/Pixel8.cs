@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public struct Pixel8 : IPixel<Pixel8>, IEquatable<Pixel8>
+    public struct Pixel8 : IEquatable<Pixel8>
     {
-        public int Data { get; }
         public byte Value { get; }
 
         public Pixel8(byte value)
         {
             Value = value;
-            Data = value;
         }
 
         public Pixel8(Pixel8 pixel) : this(pixel.Value) { }
@@ -23,12 +21,6 @@ namespace ImageProcessingLib
         public Pixel8 Blank
         {
             get { return Black; }
-        }
-
-        public Pixel8 From(int data)
-        {
-            var value = MathUtils.ByteClamp(data);
-            return new Pixel8(value);
         }
 
         public static Pixel8 White
@@ -71,7 +63,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Pixel8 - Data: {0}, Value: {1}", Data, Value);
+            return string.Format("Pixel8 - Value: {0}", Value);
         }
 
         public Pixel1 ToPixel1()
@@ -79,9 +71,9 @@ namespace ImageProcessingLib
             return new Pixel1(Value > 127);
         }
 
-        public Pixel32 ToPixel32()
+        public Pixel32 ToPixel32(byte alpha = 255)
         {
-            return new Pixel32(byte.MaxValue, Value, Value, Value);
+            return new Pixel32(alpha, Value, Value, Value);
         }
     }
 }

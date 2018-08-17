@@ -30,7 +30,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> GammaCorrection<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, double gamma)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             image.ForEach((x, y) =>
             {

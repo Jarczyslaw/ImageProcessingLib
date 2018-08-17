@@ -73,10 +73,9 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> Noise<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, double intensity)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             var steps = GetNoiseSteps(image, intensity);
-            var dataLength = image.DataLength;
+            var dataLength = image.Size;
             for (double i = 0; i < dataLength; i += steps)
             {
                 var index = MathUtils.Clamp(MathUtils.RoundToInt(random.NextDouble(i, i + steps)), 0, dataLength - 1);
@@ -88,7 +87,6 @@ namespace ImageProcessingLib
         }
 
         private static double GetNoiseSteps<TPixelType>(Image<TPixelType> image, double intensity)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             intensity = MathUtils.Clamp(intensity, 0d, 100d);
             return 100d / intensity;

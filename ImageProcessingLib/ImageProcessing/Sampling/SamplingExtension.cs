@@ -32,7 +32,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> Sampling<TPixelType>(this Image<TPixelType> image, IPixelAccumulator<TPixelType> pixelAccumulator, int blockWidth, int blockHeight)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             ValidateInput(image, blockWidth, blockHeight);
 
@@ -54,7 +53,6 @@ namespace ImageProcessingLib
         }
 
         private static void ValidateInput<TPixelType>(Image<TPixelType> image, int widthDivide, int heightDivide)
-             where TPixelType : struct, IPixel<TPixelType>
         {
             if (image.Width % widthDivide != 0)
                 throw new ArgumentException("Invalid width division. The width must be divided without rest");

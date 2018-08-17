@@ -30,7 +30,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> Negative<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             image.ForEach((x, y) =>
             {

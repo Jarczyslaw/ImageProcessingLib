@@ -86,7 +86,6 @@ namespace ImageProcessingLib
 
         public static double MSE<TPixelType>(Image<TPixelType> originalImage, Image<TPixelType> image, PixelMSEOperator<TPixelType> pixelOperator, double divider,
             int x, int y, int width, int height)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             Validate(originalImage, image);
 
@@ -101,7 +100,6 @@ namespace ImageProcessingLib
         }
 
         private static void Validate<TPixelType>(Image<TPixelType> originalImage, Image<TPixelType> image)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             if (originalImage.Width != image.Width || originalImage.Height != image.Height)
                 throw new ArgumentException("Can not calculate metrics for images with different sizes");

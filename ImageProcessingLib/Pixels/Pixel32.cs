@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib
 {
-    public struct Pixel32 : IPixel<Pixel32>, IEquatable<Pixel32>
+    public struct Pixel32 : IEquatable<Pixel32>
     {
-        public int Data { get; }
         public byte A { get; }
         public byte R { get; }
         public byte G { get; }
@@ -22,7 +21,6 @@ namespace ImageProcessingLib
             R = r;
             G = g;
             B = b;
-            Data = BytesUtils.GetDataFromArgb(a, r, g, b);
         }
 
         public Pixel32(byte r, byte g, byte b) : this(byte.MaxValue, r, g, b) { }
@@ -31,22 +29,7 @@ namespace ImageProcessingLib
 
         public Pixel32(byte alpha, byte grayscale) : this(alpha, grayscale, grayscale, grayscale) { }
 
-        public Pixel32(int data)
-        {
-            Data = data;
-            BytesUtils.GetArgbFromData(data, out byte a, out byte r, out byte g, out byte b);
-            A = a;
-            R = r;
-            G = g;
-            B = b;
-        }
-
         public Pixel32(Pixel32 pixel) : this(pixel.A, pixel.R, pixel.G, pixel.B) { }
-
-        public Pixel32 From(int data)
-        {
-            return new Pixel32(data);
-        }
 
         public Pixel32 SetAlpha(byte value)
         {
@@ -126,7 +109,7 @@ namespace ImageProcessingLib
 
         public bool Equals(Pixel32 other)
         {
-            return other.Data == Data;
+            return A == other.A && R == other.R && G == other.G && B == other.B;
         }
 
         public override bool Equals(object obj)
@@ -139,7 +122,7 @@ namespace ImageProcessingLib
 
         public override int GetHashCode()
         {
-            return Data.GetHashCode();
+            return BytesUtils.GetDataFromArgb(A, R, G, B).GetHashCode();
         }
 
         public static bool operator ==(Pixel32 set1, Pixel32 set2)
@@ -154,7 +137,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Pixel32 - Data: {0}, Alpha: {1}, Red: {2}, Green: {3}, Blue: {4}, HEX: {5}", Data, A, R, G, B, ToHex());
+            return string.Format("Pixel32 - Alpha: {0}, Red: {1}, Green: {2}, Blue: {3}, HEX: {4}", A, R, G, B, ToHex());
         }
 
         public static Pixel32 FromHex(string hex)

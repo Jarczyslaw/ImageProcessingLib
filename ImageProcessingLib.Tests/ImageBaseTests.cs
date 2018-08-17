@@ -15,7 +15,7 @@ namespace ImageProcessingLib.Tests
             var image = new Image<Pixel32>(width, height);
             Assert.AreEqual(width, image.Width);
             Assert.AreEqual(height, image.Height);
-            Assert.AreEqual(image.DataLength, width * height);
+            Assert.AreEqual(image.Size, width * height);
         }
         
         [TestMethod]

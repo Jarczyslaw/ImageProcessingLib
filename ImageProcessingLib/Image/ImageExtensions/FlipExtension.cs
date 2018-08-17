@@ -9,7 +9,6 @@ namespace ImageProcessingLib
     public static class FlipExtension
     {
         public static Image<TPixelType> FlipHorizontal<TPixelType>(this Image<TPixelType> image)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             int width = image.Width;
             int height = image.Height;
@@ -24,7 +23,6 @@ namespace ImageProcessingLib
         }
 
         public static Image<TPixelType> FlipVertical<TPixelType>(this Image<TPixelType> image)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             int width = image.Width;
             int height = image.Height;

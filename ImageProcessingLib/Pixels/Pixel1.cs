@@ -5,15 +5,13 @@ using System.Text;
 
 namespace ImageProcessingLib
 {
-    public struct Pixel1 : IPixel<Pixel1>, IEquatable<Pixel1>
+    public struct Pixel1 : IEquatable<Pixel1>
     {
-        public int Data { get; }
         public bool Value { get; }
 
         public Pixel1(bool value)
         {
             Value = value;
-            Data = value ? byte.MaxValue : byte.MinValue;
         }
 
         public Pixel1(Pixel1 pixel) : this(pixel.Value) { }
@@ -21,12 +19,6 @@ namespace ImageProcessingLib
         public Pixel1 Blank
         {
             get { return Black; }
-        }
-
-        public Pixel1 From(int data)
-        {
-            var val = data != 0;
-            return new Pixel1(val);
         }
 
         public static Pixel1 White
@@ -69,7 +61,7 @@ namespace ImageProcessingLib
 
         public override string ToString()
         {
-            return string.Format("Pixel1 - Data: {0}, Value: {1}", Data, Value);
+            return string.Format("Pixel1 - Value: {0}", Value);
         }
 
         public Pixel8 ToPixel8()
@@ -78,10 +70,10 @@ namespace ImageProcessingLib
             return new Pixel8(val);
         }
 
-        public Pixel32 ToPixel32()
+        public Pixel32 ToPixel32(byte alpha = 255)
         {
             byte val = Value ? byte.MaxValue : byte.MinValue;
-            return new Pixel32(byte.MaxValue, val, val, val);
+            return new Pixel32(alpha, val, val, val);
         }
     }
 }

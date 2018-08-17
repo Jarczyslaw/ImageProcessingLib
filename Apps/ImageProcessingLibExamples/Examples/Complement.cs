@@ -13,6 +13,8 @@ namespace ImageProcessingLibExamples.Examples
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
+            var blank = Pixel32.Black;
+  
             var originalWidth = originalImage.Width;
             var originalHeight = originalImage.Height;
 
@@ -29,7 +31,7 @@ namespace ImageProcessingLibExamples.Examples
             foreach (var size in sizes)
             {
                 image = originalImage.Copy();
-                image.Complement(size.Width, size.Height);
+                image.Complement(size.Width, size.Height, blank);
                 images.Add(string.Format("BlankComplement_Width{0}_Height{1}", size.Width, size.Height), new ImageWrapper(image));
             }
         }

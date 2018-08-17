@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicImageWrapper.cs" />
     <Compile Include="GraphicsUtils.cs" />
     <Compile Include="ImageWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

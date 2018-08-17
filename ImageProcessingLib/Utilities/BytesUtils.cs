@@ -21,11 +21,5 @@ namespace ImageProcessingLib.Utilities
             g = (byte)((data >> 8) & 0xFF);
             b = (byte)(data & 0xFF);
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte GetValueFromData(int data)
-        {
-            return (byte)((data >> 16) & 0xFF);
-        }
     }
 }

@@ -7,7 +7,6 @@ namespace ImageProcessingLib
     public static class ForExtension
     {
         public static Image<TPixelType> ForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height, ForHandler action)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             ValidateForBlock(image, x, y, width, height);
 
@@ -20,20 +19,17 @@ namespace ImageProcessingLib
         }
 
         private static void ValidateForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width - 1) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height - 1))
                 throw new ArgumentException("Given arguments exceeds image's area");
         }
 
         public static Image<TPixelType> ForEach<TPixelType>(this Image<TPixelType> image, ForHandler action)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             return image.ForBlock(0, 0, image.Width, image.Height, action);
         }
 
         public static Image<TPixelType> ForStripe<TPixelType>(this Image<TPixelType> image, int segment, int segmentsCount, ForHandler action)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             ValidateForStripe(segment, segmentsCount);
 

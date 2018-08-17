@@ -12,6 +12,7 @@ namespace ImageProcessingLibExamples.Examples
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
+            var blank = Pixel32.Black;
             var image = originalImage.Copy();
             image.RotationClockwise();
             images.Add("Rotation_Clockwise", new ImageWrapper(image));
@@ -19,10 +20,10 @@ namespace ImageProcessingLibExamples.Examples
             image.RotationCounterClockwise();
             images.Add("Rotation_CounterClockwise", new ImageWrapper(image));
             image = originalImage.Copy();
-            image.Rotation(30);
+            image.Rotation(30, blank);
             images.Add("Rotation_Degress30", new ImageWrapper(image));
             image = originalImage.Copy();
-            image.Rotation(-30);
+            image.Rotation(-30, blank);
             images.Add("Rotation_Degrees-30", new ImageWrapper(image));
         }
     }

@@ -31,7 +31,6 @@ namespace ImageProcessingLib
         }
 
         private static Image<TPixelType> NaiveQuantize<TPixelType>(this Image<TPixelType> image, PixelOperator<TPixelType> pixelOperator, int levels)
-            where TPixelType : struct, IPixel<TPixelType>
         {
             Validate(levels);
             image.ForEach((x, y) =>

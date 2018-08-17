@@ -51,7 +51,7 @@ namespace ImageProcessingLib
             gaussianSource = new GaussianValuesSource(this);
         }
 
-        public void RandomImagePoint(ImageBase image, out int x, out int y)
+        public void RandomImagePoint(Image<Pixel32> image, out int x, out int y)
         {
             x = Next(image.Width);
             y = Next(image.Height);
