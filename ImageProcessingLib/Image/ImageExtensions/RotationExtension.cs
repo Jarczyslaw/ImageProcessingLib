@@ -1,7 +1,5 @@
 ﻿using ImageProcessingLib.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ImageProcessingLib
 {
@@ -10,10 +8,11 @@ namespace ImageProcessingLib
         // TODO - fix this mess
         public static Image<TPixelType> RotationClockwise<TPixelType>(this Image<TPixelType> image)
         {
-            var result = new Image<TPixelType>(image.Height, image.Width);
-            result.ForEach((x, y) =>
+            var originalImage = image.Copy();
+            image.Initialize(image.Height, image.Width);
+            image.ForEach((x, y) =>
             {
-                var pixel = image.Get(y, image.Width - 1 - x);
+                var pixel = originalImage.Get(y, image.Width - 1 - x);
                 image.Set(x, y, pixel);
             });
             return image;
@@ -21,10 +20,11 @@ namespace ImageProcessingLib
 
         public static Image<TPixelType> RotationCounterClockwise<TPixelType>(this Image<TPixelType> image)
         {
-            var result = new Image<TPixelType>(image.Height, image.Width);
-            result.ForEach((x, y) =>
+            var originalImage = image.Copy();
+            image.Initialize(image.Height, image.Width);
+            image.ForEach((x, y) =>
             {
-                var pixel = image.Get(image.Height - 1 - y, x);
+                var pixel = originalImage.Get(image.Height - 1 - y, x);
                 image.Set(x, y, pixel);
             });
             return image;
@@ -33,7 +33,7 @@ namespace ImageProcessingLib
         public static Image<TPixelType> RotationWithSizePreserving<TPixelType>(this Image<TPixelType> image, double angle, TPixelType blank)
         {
             GetAngles(angle, out double sAlpha, out double cAlpha);
-            var result = new Image<TPixelType>(image.Height, image.Width);
+            var originalImage = image.Copy();
             image.GetCenter(out int axisX, out int axisY);
             image.ForEach((x, y) =>
             {
@@ -42,7 +42,7 @@ namespace ImageProcessingLib
                 int x1 = MathUtils.RoundToInt(cAlpha * dx - sAlpha * dy + axisX);
                 int y1 = MathUtils.RoundToInt(sAlpha * dx + cAlpha * dy + axisY);
 
-                TransformPixel(image, x, y, image, x1, y1, blank);
+                TransformPixel(image, x, y, originalImage, x1, y1, blank);
             });
             return image;
         }
@@ -57,7 +57,7 @@ namespace ImageProcessingLib
 
             var originalImage = image.Copy();
             originalImage.GetCenter(out int originalAxisX, out int originalAxisY);
-            //image.InitializeNew(newWidth, newHeight);
+            image.Initialize(newWidth, newHeight);
             image.GetCenter(out int axisX, out int axisY);
 
             image.ForEach((x, y) =>

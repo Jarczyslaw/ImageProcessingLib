@@ -6,19 +6,20 @@ namespace ImageProcessingLib
 {
     public static class ComplementExtension
     {
-        public static Image<TPixelType> Complement<TPixelType>(this Image<TPixelType> image, int width, int height, TPixelType fillColor)
+        public static Image<TPixelType> Complement<TPixelType>(this Image<TPixelType> image, int width, int height, TPixelType fillPixel)
         {
             Validate(image, width, height);
 
             int startX = (width - image.Width) / 2;
             int startY = (height - image.Height) / 2;
-            var result = new Image<TPixelType>(width, height, fillColor);
-            image.ForEach((x, y) =>
+            var originalImage = image.Copy();
+            image.Initialize(width, height, fillPixel);
+            originalImage.ForEach((x, y) =>
             {
-                var pixel = image.Get(x, y);
-                result.Set(startX + x, startY + y, pixel);
+                var pixel = originalImage.Get(x, y);
+                image.Set(startX + x, startY + y, pixel);
             });
-            return result;
+            return image;
         }
 
         private static void Validate<TPixelType>(this Image<TPixelType> image, int width, int height)

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Commons;
-using Commons.Utils;
+﻿using Commons.Utils;
 using ImageProcessingLib;
 using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibToFIPComparison.Comparisons;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ImageProcessingLibToFIPComparison
 {
@@ -107,7 +104,7 @@ namespace ImageProcessingLibToFIPComparison
                         GetMetrics(fipResult.Image32, iplResult.Image32),
                         iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
                 });
-                
+
                 images = new List<ImageWrapper>() { fipResult, iplResult, fipOriginalImage, iplOriginalImage };
             }
             catch (Exception e)
@@ -162,17 +159,21 @@ namespace ImageProcessingLibToFIPComparison
         {
             Text = string.Format("{0}: {1}", title, selectedComparisonName);
             UnloadImages();
-            Application.UseWaitCursor = true;
-            ProgressBarState(true);
-            tssdComparisons.Enabled = false;
+            SetProcessingControlsState(true);
             tsslInfo.Text = string.Empty;
         }
 
         private void StopProcessing()
         {
-            Application.UseWaitCursor = false;
-            ProgressBarState(false);
-            tssdComparisons.Enabled = true;
+            SetProcessingControlsState(false);
+        }
+
+        private void SetProcessingControlsState(bool processing)
+        {
+            Application.UseWaitCursor = processing;
+            ProgressBarState(processing);
+            tscbComparisons.Enabled = !processing;
+            tscbImages.Enabled = !processing;
         }
     }
 }

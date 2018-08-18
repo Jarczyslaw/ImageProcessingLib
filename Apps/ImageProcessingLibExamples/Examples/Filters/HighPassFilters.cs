@@ -9,7 +9,7 @@ using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class HighPassFiltersExample : ExampleBase
+    public class HighPassFilters : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {

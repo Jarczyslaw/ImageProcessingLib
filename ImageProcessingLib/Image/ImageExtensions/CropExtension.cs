@@ -17,10 +17,11 @@ namespace ImageProcessingLib
             var newWidth = w1 - w0;
             var newHeight = h1 - h0;
 
-            var result = new Image<TPixelType>(newWidth, newHeight);
-            result.ForEach((i, j) =>
+            var originalImage = image.Copy();
+            image.Initialize(newWidth, newHeight);
+            image.ForEach((i, j) =>
             {
-                var pixel = image.Get(w0 + i, h0 + j);
+                var pixel = originalImage.Get(w0 + i, h0 + j);
                 image.Set(i, j, pixel);
             });
             return image;

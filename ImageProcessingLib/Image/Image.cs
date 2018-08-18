@@ -7,6 +7,7 @@ namespace ImageProcessingLib
 {
     public class Image<TPixelType> : IEquatable<Image<TPixelType>>
     {
+        public TPixelType[] Pixels { get; protected set; }
         public int Width { get; protected set; }
         public int Height { get; protected set; }
         public int Size
@@ -16,23 +17,33 @@ namespace ImageProcessingLib
                 return Width * Height;
             }
         }
-        public TPixelType[] Pixels { get; protected set; }
         
         public Image(int width, int height)
+        {
+            Initialize(width, height);
+        }
+
+        public Image(int width, int height, TPixelType clearPixel)
+        {
+            Initialize(width, height, clearPixel);
+        }
+
+        public Image(Image<TPixelType> image) : this(image.Width, image.Height)
+        {
+            Pixels = (TPixelType[])image.Pixels.Clone();
+        }
+
+        public void Initialize(int width, int height)
         {
             Width = width;
             Height = height;
             Pixels = new TPixelType[Size];
         }
 
-        public Image(int width, int height, TPixelType clearPixel) : this(width, height)
+        public void Initialize(int width, int height, TPixelType clearPixel)
         {
+            Initialize(width, height);
             ClearExtension.Clear(this, clearPixel);
-        }
-
-        public Image(Image<TPixelType> image) : this(image.Width, image.Height)
-        {
-            Pixels = (TPixelType[])image.Pixels.Clone();
         }
 
         public TPixelType Get(int i)
@@ -62,12 +73,6 @@ namespace ImageProcessingLib
             return result;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected int GetIndex(int x, int y)
-        {
-            return x + y * Width;
-        }
-
         public void Set(int i, TPixelType pixel)
         {
             Pixels[i] = pixel;
@@ -89,6 +94,12 @@ namespace ImageProcessingLib
         {
             get { return Get(x, y); }
             set { Set(x, y, value); }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected int GetIndex(int x, int y)
+        {
+            return x + y * Width;
         }
 
         public int ClampWidth(int value)

@@ -30,7 +30,8 @@ namespace ImageProcessingLibExamples.Examples
             foreach (var cropParam in cropParams)
             {
                 var image = originalImage.Copy();
-                images.Add(cropParam.Title, new ImageWrapper(image.Crop(cropParam.X, cropParam.Y, cropParam.Width, cropParam.Height)));
+                image.Crop(cropParam.X, cropParam.Y, cropParam.Width, cropParam.Height);
+                images.Add(cropParam.Title, new ImageWrapper(image));
             }
         }
     }

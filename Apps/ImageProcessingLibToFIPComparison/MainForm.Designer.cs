@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tssdComparisons = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsslInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslDummy = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -57,7 +56,6 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssdComparisons,
             this.tsslInfo,
             this.tsslDummy,
             this.tspbProgress});
@@ -66,16 +64,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tssdComparisons
-            // 
-            this.tssdComparisons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tssdComparisons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tssdComparisons.Image = ((System.Drawing.Image)(resources.GetObject("tssdComparisons.Image")));
-            this.tssdComparisons.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tssdComparisons.Name = "tssdComparisons";
-            this.tssdComparisons.Size = new System.Drawing.Size(90, 20);
-            this.tssdComparisons.Text = "Comparisons";
             // 
             // tsslInfo
             // 
@@ -86,7 +74,7 @@
             // tsslDummy
             // 
             this.tsslDummy.Name = "tsslDummy";
-            this.tsslDummy.Size = new System.Drawing.Size(1098, 17);
+            this.tsslDummy.Size = new System.Drawing.Size(1157, 17);
             this.tsslDummy.Spring = true;
             // 
             // tspbProgress
@@ -237,7 +225,6 @@
         private System.Windows.Forms.PictureBox pbFIP;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ToolStripDropDownButton tssdComparisons;
         private System.Windows.Forms.ToolStripStatusLabel tsslInfo;
         private System.Windows.Forms.ToolStripStatusLabel tsslDummy;
         private System.Windows.Forms.ToolStripProgressBar tspbProgress;

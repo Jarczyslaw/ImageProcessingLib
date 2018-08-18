@@ -8,7 +8,7 @@ using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class KuwaharaFiltersExample : ExampleBase
+    public class KuwaharaFilters : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {

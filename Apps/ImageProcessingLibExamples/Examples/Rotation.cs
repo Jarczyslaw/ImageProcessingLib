@@ -20,10 +20,13 @@ namespace ImageProcessingLibExamples.Examples
             image.RotationCounterClockwise();
             images.Add("Rotation_CounterClockwise", new ImageWrapper(image));
             image = originalImage.Copy();
-            image.Rotation(30, blank);
+            image.RotationWithSizePreserving(45d, blank);
+            images.Add("Rotation_SizePreserving", new ImageWrapper(image));
+            image = originalImage.Copy();
+            image.Rotation(30d, blank);
             images.Add("Rotation_Degress30", new ImageWrapper(image));
             image = originalImage.Copy();
-            image.Rotation(-30, blank);
+            image.Rotation(-30d, blank);
             images.Add("Rotation_Degrees-30", new ImageWrapper(image));
         }
     }

@@ -8,7 +8,7 @@ using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {
-    public class GaussianFiltersExample : ExampleBase
+    public class GaussianFilters : ExampleBase
     {
         public override void AddExampleImages(Dictionary<string, ImageWrapper> images, Image<Pixel32> originalImage)
         {
