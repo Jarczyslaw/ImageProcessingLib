@@ -69,7 +69,7 @@
     <Compile Include="Controls\ScrollablePictureBox.Designer.cs">
       <DependentUpon>ScrollablePictureBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExamplesSource\IExamplesSource.cs" />
+    <Compile Include="Content\IExamplesSource.cs" />
     <Compile Include="Examples\Cartoon.cs" />
     <Compile Include="Examples\CharcoalSketch.cs" />
     <Compile Include="Examples\Closing.cs" />
@@ -85,9 +85,9 @@
     <Compile Include="Examples\Parameters\OilPaintParameter.cs" />
     <Compile Include="Examples\PenSketch.cs" />
     <Compile Include="Examples\Skeletonization.cs" />
-    <Compile Include="ImagesSource\IImagesSource.cs" />
-    <Compile Include="ImagesSource\ImagesSource.cs" />
-    <Compile Include="ImageWrapper.cs" />
+    <Compile Include="Content\IImagesSource.cs" />
+    <Compile Include="Content\ImagesSource.cs" />
+    <Compile Include="Content\ImageWrapper.cs" />
     <Compile Include="Presenters\ColorCalculatorPresenter.cs" />
     <Compile Include="Presenters\HistogramPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
@@ -156,7 +156,7 @@
     <Compile Include="Examples\NaiveQuantization.cs" />
     <Compile Include="Examples\Negative.cs" />
     <Compile Include="Examples\ExampleBase.cs" />
-    <Compile Include="ExamplesSource\ExamplesSource.cs" />
+    <Compile Include="Content\ExamplesSource.cs" />
     <Compile Include="Examples\Resize.cs" />
     <Compile Include="Examples\Rotation.cs" />
     <Compile Include="Examples\Sampling.cs" />
@@ -225,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="jt_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

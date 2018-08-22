@@ -26,7 +26,8 @@ namespace ImageProcessingLibExamples.Examples
 
         public void CleanUp()
         {
-            foreach (var image in Images.Values)
+            var imagesToClean = Images.Values.Where(i => i != OriginalImage);
+            foreach (var image in imagesToClean)
                 image.Dispose();
         }
 
