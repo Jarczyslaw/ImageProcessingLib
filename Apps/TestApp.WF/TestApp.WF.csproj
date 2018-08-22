@@ -83,9 +83,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Converters\ImageProcessingLib.Converters.WF.WPF\ImageProcessingLib.Converters.WF.WPF.csproj">
-      <Project>{0b917bac-af9f-4000-942e-d118b97f843b}</Project>
-      <Name>ImageProcessingLib.Converters.WF.WPF</Name>
+    <ProjectReference Include="..\..\Converters\ImageProcessingLib.Converter.WF\ImageProcessingLib.Converter.WF.csproj">
+      <Project>{17949ca7-d61c-41c7-93fc-aeb597945fa8}</Project>
+      <Name>ImageProcessingLib.Converter.WF</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ImageProcessingLib\ImageProcessingLib.csproj">
       <Project>{61D55DCB-5CAE-430A-B933-DA56BBAB35FA}</Project>
@@ -94,10 +94,6 @@
     <ProjectReference Include="..\..\ImagesFolder\ImagesFolder.csproj">
       <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj">
-      <Project>{75dcb806-3b24-4f4e-9061-91ce107935a2}</Project>
-      <Name>ImageProcessingLib.Wrappers.WF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

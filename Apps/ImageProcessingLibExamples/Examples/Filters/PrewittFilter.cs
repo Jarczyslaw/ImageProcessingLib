@@ -1,5 +1,4 @@
 ﻿using ImageProcessingLib;
-using ImageProcessingLib.Wrappers.WF;
 using System;
 using System.Collections.Generic;
 using System.Linq;

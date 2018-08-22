@@ -1,4 +1,4 @@
-﻿using ImageProcessingLib.Wrappers.WF;
+﻿using ImageProcessingLib.Converter.WF;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,18 +17,16 @@ namespace TestApp.WF
         static void Main()
         {
             var bmp = ImagesFolder.Images.Lena;
-            using (var wrapper = new ImageWrapper(bmp))
-            {
-                var result = new ImageWrapper(wrapper.Image32);
-                Run(result);
-            }
+            var image = IPLConverter.CreateImageFromBitmap(bmp);
+            var result = IPLConverter.CreateBitmapFromImage(image);
+            Run(result);
         }
 
-        private static void Run(ImageWrapper imageWrapper)
+        private static void Run(Bitmap bitmap)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestForm(imageWrapper));
+            Application.Run(new TestForm(bitmap));
         }
     }
 }

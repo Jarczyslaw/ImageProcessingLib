@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ImageProcessingLib.Wrappers.WPF")]
+[assembly: AssemblyTitle("ImageProcessingLib.Converter.WF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImageProcessingLib.Wrappers.WPF")]
+[assembly: AssemblyProduct("ImageProcessingLib.Converter.WF")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("85a42fb7-62e0-4a9b-9fce-7d711257e7ee")]
+[assembly: Guid("17949ca7-d61c-41c7-93fc-aeb597945fa8")]
 
 // Version information for an assembly consists of the following four values:
 //

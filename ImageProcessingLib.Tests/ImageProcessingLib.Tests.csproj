@@ -72,10 +72,6 @@
       <Project>{3b4b5c35-bac6-4166-885c-c9788a3df32c}</Project>
       <Name>ImagesFolder</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj">
-      <Project>{75dcb806-3b24-4f4e-9061-91ce107935a2}</Project>
-      <Name>ImageProcessingLib.Wrappers.WF</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,9 +9,9 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace ImageProcessingLib.Converters.WF.WPF
+namespace ImageProcessingLib.Converter.WF.WPF
 {
-    public static class ImageConverter
+    public static class IPLConverter
     {
         public static BitmapSource FromBitmap(Bitmap bitmap)
         {

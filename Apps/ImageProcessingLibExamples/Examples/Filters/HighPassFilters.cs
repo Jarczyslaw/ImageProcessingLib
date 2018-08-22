@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageProcessingLib;
 using System.IO;
-using ImageProcessingLib.Wrappers.WF;
 
 namespace ImageProcessingLibExamples.Examples
 {

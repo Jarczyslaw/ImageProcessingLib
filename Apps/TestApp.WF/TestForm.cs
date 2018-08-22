@@ -1,9 +1,10 @@
-﻿using ImageProcessingLib.Wrappers.WF;
+﻿using ImageProcessingLib.Converter.WF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +14,21 @@ namespace TestApp.WF
 {
     public partial class TestForm : Form
     {
-        private ImageWrapper imageWrapper;
+        private Bitmap bitmap;
 
         public TestForm()
         {
             InitializeComponent();
         }
 
-        public TestForm(ImageWrapper imageWrapper) : this()
+        public TestForm(Bitmap bitmap) : this()
         {
-            this.imageWrapper = imageWrapper;
-            if (imageWrapper != null)
-                pbImage.Image = imageWrapper.Bitmap;
+            this.bitmap = bitmap;
+            pbImage.Image = bitmap;
         }
 
         private void miSave_Click(object sender, EventArgs e)
         {
-            if (imageWrapper == null)
-                return;
-
             var sfd = new SaveFileDialog();
             sfd.FileName = "image";
             sfd.DefaultExt = ".bmp";
@@ -42,7 +39,7 @@ namespace TestApp.WF
             {
                 try
                 {
-                    imageWrapper.ToFile(sfd.FileName);
+                    bitmap.Save(sfd.FileName, ImageFormat.Bmp);
                     MessageBox.Show("Image saved", "Information");
                 }
                 catch (Exception exc)
@@ -63,10 +60,11 @@ namespace TestApp.WF
             {
                 try
                 {
-                    imageWrapper?.Dispose();
-                    var tempWrapper = new ImageWrapper(ofd.FileName);
-                    imageWrapper = new ImageWrapper(tempWrapper.Image32);
-                    pbImage.Image = imageWrapper.Bitmap;
+                    bitmap.Dispose();
+                    bitmap = new Bitmap(ofd.FileName);
+                    var image = IPLConverter.CreateImageFromBitmap(bitmap);
+                    var targetBitmap = IPLConverter.CreateBitmapFromImage(image);
+                    pbImage.Image = targetBitmap;
                     MessageBox.Show("Image loaded", "Information");
                 }
                 catch (Exception exc)
@@ -78,7 +76,7 @@ namespace TestApp.WF
 
         private void TestForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            imageWrapper?.Dispose();
+            bitmap.Dispose();
         }
     }
 }

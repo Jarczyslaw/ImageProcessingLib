@@ -1,5 +1,4 @@
-﻿using ImageProcessingLib.Wrappers.WF;
-using ImageProcessingLibExamples.Examples;
+﻿using ImageProcessingLibExamples.Examples;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

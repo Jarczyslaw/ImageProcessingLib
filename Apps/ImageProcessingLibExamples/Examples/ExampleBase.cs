@@ -1,5 +1,4 @@
 ﻿using ImageProcessingLib;
-using ImageProcessingLib.Wrappers.WF;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +21,7 @@ namespace ImageProcessingLibExamples.Examples
             Images = new Dictionary<string, ImageWrapper>();
             OriginalImage = new ImageWrapper(bitmap);
             Images.Add("Original", OriginalImage);
-            AddExampleImages(Images, OriginalImage.Image32);
+            AddExampleImages(Images, OriginalImage.Image);
         }
 
         public void CleanUp()
@@ -38,7 +37,7 @@ namespace ImageProcessingLibExamples.Examples
                 var fileName = exampleResult.Key;
                 var image = exampleResult.Value;
                 var filePath = Path.Combine(selectedPath, fileName + ".bmp");
-                image.ToFile(filePath, ImageFormat.Bmp);
+                image.Bitmap.Save(filePath, ImageFormat.Bmp);
             }
         }
 

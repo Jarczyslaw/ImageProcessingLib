@@ -102,9 +102,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Wrappers\ImageProcessingLib.Wrappers.WF\ImageProcessingLib.Wrappers.WF.csproj">
-      <Project>{75dcb806-3b24-4f4e-9061-91ce107935a2}</Project>
-      <Name>ImageProcessingLib.Wrappers.WF</Name>
+    <ProjectReference Include="..\..\Converters\ImageProcessingLib.Converter.WF\ImageProcessingLib.Converter.WF.csproj">
+      <Project>{17949ca7-d61c-41c7-93fc-aeb597945fa8}</Project>
+      <Name>ImageProcessingLib.Converter.WF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commons\Commons.csproj">
       <Project>{2c3b756d-1f6e-4907-a48f-2211cf602010}</Project>

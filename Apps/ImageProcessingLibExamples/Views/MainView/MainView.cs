@@ -1,7 +1,6 @@
 ﻿using Commons;
 using Commons.Utils;
 using ImageProcessingLib;
-using ImageProcessingLib.Wrappers.WF;
 using ImageProcessingLibExamples.Examples;
 using System;
 using System.Collections.Generic;

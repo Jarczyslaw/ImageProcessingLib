@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ImageProcessingLib.Wrappers.WPF;
+using ImageProcessingLib.Converter.WPF;
 using Microsoft.Win32;
 
 namespace TestApp.WPF
@@ -59,33 +60,31 @@ namespace TestApp.WPF
             }
         }
 
-        private ImageWrapper imageWrapper;
-
         public TestWindow() : this(null) { }
 
-        public TestWindow(ImageWrapper imageWrapper)
+        public TestWindow(BitmapSource bitmap)
         {
-            InitializeComponent();
-            this.imageWrapper = imageWrapper;
-            if (imageWrapper != null)
-                ImageSource = imageWrapper.BitmapSource;
+            ImageSource = bitmap;
             DataContext = this;
         }
 
         private void LoadFile()
         {
-            var ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            ofd.Filter = "Bitmap images (.bmp)|*.bmp";
+            var ofd = new OpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                Filter = "Bitmap images (.bmp)|*.bmp"
+            };
 
             var result = ofd.ShowDialog();
             if (result == true)
             {
                 try
                 {
-                    var tempWrapper = new ImageWrapper(ofd.FileName);
-                    imageWrapper = new ImageWrapper(tempWrapper.Image32);
-                    ImageSource = imageWrapper.BitmapSource;
+                    var bitmap = CreateBitmapSourceFromFile(ofd.FileName);
+                    var image = IPLConverter.CreateImageFromBitmap(bitmap);
+                    var targetBitmap = IPLConverter.CreateBitmapFromImage(image);
+                    ImageSource = targetBitmap;
                     MessageBox.Show("Image loaded", "Information");
                 }
                 catch (Exception e)
@@ -97,20 +96,19 @@ namespace TestApp.WPF
 
         private void SaveFile()
         {
-            if (imageWrapper == null)
-                return;
-
-            var sfd = new SaveFileDialog();
-            sfd.FileName = "image";
-            sfd.DefaultExt = ".bmp";
-            sfd.Filter = "Bitmap images (.bmp)|*.bmp";
+            var sfd = new SaveFileDialog
+            {
+                FileName = "image",
+                DefaultExt = ".bmp",
+                Filter = "Bitmap images (.bmp)|*.bmp"
+            };
 
             var result = sfd.ShowDialog();
             if (result == true)
             {
                 try
                 {
-                    imageWrapper.ToFile(sfd.FileName);
+                    ToFile(sfd.FileName);
                     MessageBox.Show("Image saved", "Information");
                 }
                 catch (Exception e)
@@ -118,6 +116,25 @@ namespace TestApp.WPF
                     MessageBox.Show("Can not save file: " + e.Message, "Exception");
                 }
             }
+        }
+
+        private BitmapSource CreateBitmapSourceFromFile(string filePath)
+        {
+            var bitmapImage = new BitmapImage(new Uri(filePath));
+            var result = new FormatConvertedBitmap();
+            result.BeginInit();
+            result.Source = bitmapImage;
+            result.DestinationFormat = PixelFormats.Bgra32;
+            result.EndInit();
+            return result;
+        }
+
+        public void ToFile(string filePath)
+        {
+            var encoder = new BmpBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(ImageSource));
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                encoder.Save(fileStream);
         }
 
         private void RaisePropertyChanged(string propertyName)

@@ -1,6 +1,6 @@
 ﻿using Commons.Utils;
 using ImageProcessingLib;
-using ImageProcessingLib.Wrappers.WF;
+using ImageProcessingLib.Converter.WF;
 using ImageProcessingLibToFIPComparison.Comparisons;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace ImageProcessingLibToFIPComparison
 {
     public partial class MainForm : Form
     {
-        private List<ImageWrapper> images;
+        private List<Bitmap> createdBitmaps;
 
         private string title = "ImageProcessingLibToFIPComparison";
 
@@ -72,40 +72,40 @@ namespace ImageProcessingLibToFIPComparison
             StopProcessing();
         }
 
-        private void LoadResults(Bitmap image, IComparison comparison)
+        private void LoadResults(Bitmap bitmap, IComparison comparison)
         {
             try
             {
                 DisposeImages();
 
-                var fipOriginalImage = new ImageWrapper(image);
-                var iplOriginalImage = new ImageWrapper(image);
+                var originalBitmap = bitmap;
+                var originalImage = IPLConverter.CreateImageFromBitmap(originalBitmap);
 
                 Bitmap fipBitmap = null;
                 var fipTime = ExecTime.Run(() =>
                 {
-                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), fipOriginalImage.Bitmap);
+                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), originalBitmap);
                 });
-                var fipResult = new ImageWrapper(fipBitmap);
+                var fipImage = IPLConverter.CreateImageFromBitmap(fipBitmap);
 
                 Image<Pixel32> iplImage = null;
                 var iplTime = ExecTime.Run(() =>
                 {
-                    iplImage = comparison.GetIPLResult(iplOriginalImage.Image32);
+                    iplImage = comparison.GetIPLResult(originalImage);
                 });
-                var iplResult = new ImageWrapper(iplImage);
+                var iplBitmap = IPLConverter.CreateBitmapFromImage(iplImage);
 
                 ThreadSafeInvoke.Invoke(this, () =>
                 {
-                    pbFIP.Image = fipResult.Bitmap;
-                    pbIPL.Image = iplResult.Bitmap;
+                    pbFIP.Image = fipBitmap;
+                    pbIPL.Image = iplBitmap;
 
                     tsslInfo.Text = string.Format("MSE: {0:0.00}, IPL: {1:0}ms, FIP: {2:0}ms",
-                        GetMetrics(fipResult.Image32, iplResult.Image32),
+                        GetMetrics(fipImage, iplImage),
                         iplTime.TotalMilliseconds, fipTime.TotalMilliseconds);
                 });
 
-                images = new List<ImageWrapper>() { fipResult, iplResult, fipOriginalImage, iplOriginalImage };
+                createdBitmaps = new List<Bitmap>() { fipBitmap, iplBitmap };
             }
             catch (Exception e)
             {
@@ -142,10 +142,10 @@ namespace ImageProcessingLibToFIPComparison
 
         private void DisposeImages()
         {
-            if (images != null)
+            if (createdBitmaps != null)
             {
-                foreach (var image in images)
-                    image.Dispose();
+                foreach (var bitmap in createdBitmaps)
+                    bitmap.Dispose();
             }
         }
 
