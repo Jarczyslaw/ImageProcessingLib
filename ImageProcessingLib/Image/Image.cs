@@ -10,14 +10,8 @@ namespace ImageProcessingLib
         public TPixelType[] Pixels { get; protected set; }
         public int Width { get; protected set; }
         public int Height { get; protected set; }
-        public int Size
-        {
-            get
-            {
-                return Width * Height;
-            }
-        }
-        
+        public int Size { get { return Width * Height; } }
+
         public Image(int width, int height)
         {
             Initialize(width, height);
@@ -30,7 +24,8 @@ namespace ImageProcessingLib
 
         public Image(Image<TPixelType> image) : this(image.Width, image.Height)
         {
-            Pixels = (TPixelType[])image.Pixels.Clone();
+            for (int i = 0; i < Pixels.Length; i++)
+                Pixels[i] = image.Pixels[i];
         }
 
         public void Initialize(int width, int height)

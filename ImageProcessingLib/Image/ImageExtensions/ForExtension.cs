@@ -18,12 +18,6 @@ namespace ImageProcessingLib
             return image;
         }
 
-        private static void ValidateForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height)
-        {
-            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width - 1) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height - 1))
-                throw new ArgumentException("Given arguments exceeds image's area");
-        }
-
         public static Image<TPixelType> ForEach<TPixelType>(this Image<TPixelType> image, ForHandler action)
         {
             return image.ForBlock(0, 0, image.Width, image.Height, action);
@@ -37,6 +31,12 @@ namespace ImageProcessingLib
             int start = (int)Math.Round(segment * len);
             int end = (int)Math.Round((segment + 1) * len);
             return image.ForBlock(0, start, image.Width, end - start, action);
+        }
+
+        private static void ValidateForBlock<TPixelType>(this Image<TPixelType> image, int x, int y, int width, int height)
+        {
+            if (image.ExceedsWidth(x) || image.ExceedsWidth(x + width - 1) || image.ExceedsHeight(y) || image.ExceedsHeight(y + height - 1))
+                throw new ArgumentException("Given arguments exceeds image's area");
         }
 
         private static void ValidateForStripe(int segment, int segmentsCount)
