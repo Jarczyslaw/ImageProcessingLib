@@ -146,6 +146,7 @@ namespace ImageProcessingLibToFIPComparison
             {
                 foreach (var bitmap in createdBitmaps)
                     bitmap.Dispose();
+                createdBitmaps.Clear();
             }
         }
 
@@ -174,6 +175,7 @@ namespace ImageProcessingLibToFIPComparison
             ProgressBarState(processing);
             tscbComparisons.Enabled = !processing;
             tscbImages.Enabled = !processing;
+            tsbRun.Enabled = !processing;
         }
     }
 }
