@@ -81,11 +81,12 @@ namespace ImageProcessingLibToFIPComparison
                 var originalBitmap = bitmap;
                 var originalImage = IPLConverter.CreateImageFromBitmap(originalBitmap);
 
-                Bitmap fipBitmap = null;
+                Bitmap tempResult = null;
                 var fipTime = ExecTime.Run(() =>
                 {
-                    fipBitmap = comparison.GetFIPResults(new FIP.FIP(), originalBitmap);
+                    tempResult = comparison.GetFIPResults(new FIP.FIP(), originalBitmap);
                 });
+                var fipBitmap = (Bitmap)tempResult.Clone();
                 var fipImage = IPLConverter.CreateImageFromBitmap(fipBitmap);
 
                 Image<Pixel32> iplImage = null;
