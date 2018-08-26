@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace ImageProcessingLib.Converter.WF.WPF
 {
-    public static class IPLConverter
+    public static class ImageProcessingLibConverter
     {
         public static BitmapSource FromBitmap(Bitmap bitmap)
         {

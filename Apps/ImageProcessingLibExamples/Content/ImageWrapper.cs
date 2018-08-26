@@ -13,13 +13,13 @@ namespace ImageProcessingLibExamples
         public ImageWrapper(Bitmap bitmap)
         {
             Bitmap = bitmap;
-            Image = IPLConverter.CreateImageFromBitmap(bitmap);
+            Image = ImageProcessingLibConverter.CreateImageFromBitmap(bitmap);
         }
 
         public ImageWrapper(Image<Pixel32> image)
         {
             Image = image;
-            Bitmap = IPLConverter.CreateBitmapFromImage(image);
+            Bitmap = ImageProcessingLibConverter.CreateBitmapFromImage(image);
         }
 
         public void Dispose()

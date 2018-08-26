@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessingLib.Converter.WF
 {
-    public static class IPLConverter
+    public static class ImageProcessingLibConverter
     {
         public static Bitmap CreateBitmapFromImage(Image<Pixel32> image)
         {

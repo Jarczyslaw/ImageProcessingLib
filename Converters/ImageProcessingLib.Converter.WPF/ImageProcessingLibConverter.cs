@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace ImageProcessingLib.Converter.WPF
 {
-    public static class IPLConverter
+    public static class ImageProcessingLibConverter
     {
         public static BitmapSource CreateBitmapFromImage(Image<Pixel32> image)
         {

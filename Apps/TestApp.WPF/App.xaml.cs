@@ -20,9 +20,9 @@ namespace TestApp.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var bitmapSource = ConverterWFWPF.IPLConverter.FromBitmap(Images.Lena);
-            var image = ConverterWPF.IPLConverter.CreateImageFromBitmap(bitmapSource);
-            var result = ConverterWPF.IPLConverter.CreateBitmapFromImage(image);
+            var bitmapSource = ConverterWFWPF.ImageProcessingLibConverter.FromBitmap(Images.Lena);
+            var image = ConverterWPF.ImageProcessingLibConverter.CreateImageFromBitmap(bitmapSource);
+            var result = ConverterWPF.ImageProcessingLibConverter.CreateBitmapFromImage(image);
             Run(result);
         }
 

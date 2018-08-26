@@ -79,7 +79,7 @@ namespace ImageProcessingLibToFIPComparison
                 DisposeImages();
 
                 var originalBitmap = bitmap;
-                var originalImage = IPLConverter.CreateImageFromBitmap(originalBitmap);
+                var originalImage = ImageProcessingLibConverter.CreateImageFromBitmap(originalBitmap);
 
                 Bitmap tempResult = null;
                 var fipTime = ExecTime.Run(() =>
@@ -87,14 +87,14 @@ namespace ImageProcessingLibToFIPComparison
                     tempResult = comparison.GetFIPResults(new FIP.FIP(), originalBitmap);
                 });
                 var fipBitmap = (Bitmap)tempResult.Clone();
-                var fipImage = IPLConverter.CreateImageFromBitmap(fipBitmap);
+                var fipImage = ImageProcessingLibConverter.CreateImageFromBitmap(fipBitmap);
 
                 Image<Pixel32> iplImage = null;
                 var iplTime = ExecTime.Run(() =>
                 {
                     iplImage = comparison.GetIPLResult(originalImage);
                 });
-                var iplBitmap = IPLConverter.CreateBitmapFromImage(iplImage);
+                var iplBitmap = ImageProcessingLibConverter.CreateBitmapFromImage(iplImage);
 
                 ThreadSafeInvoke.Invoke(this, () =>
                 {

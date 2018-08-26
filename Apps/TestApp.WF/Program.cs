@@ -17,8 +17,8 @@ namespace TestApp.WF
         static void Main()
         {
             var bmp = ImagesFolder.Images.Lena;
-            var image = IPLConverter.CreateImageFromBitmap(bmp);
-            var result = IPLConverter.CreateBitmapFromImage(image);
+            var image = ImageProcessingLibConverter.CreateImageFromBitmap(bmp);
+            var result = ImageProcessingLibConverter.CreateBitmapFromImage(image);
             Run(result);
         }
 

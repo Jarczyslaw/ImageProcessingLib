@@ -62,8 +62,8 @@ namespace TestApp.WF
                 {
                     bitmap.Dispose();
                     bitmap = new Bitmap(ofd.FileName);
-                    var image = IPLConverter.CreateImageFromBitmap(bitmap);
-                    var targetBitmap = IPLConverter.CreateBitmapFromImage(image);
+                    var image = ImageProcessingLibConverter.CreateImageFromBitmap(bitmap);
+                    var targetBitmap = ImageProcessingLibConverter.CreateBitmapFromImage(image);
                     pbImage.Image = targetBitmap;
                     MessageBox.Show("Image loaded", "Information");
                 }

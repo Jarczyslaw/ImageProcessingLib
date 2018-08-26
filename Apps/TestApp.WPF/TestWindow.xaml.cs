@@ -82,8 +82,8 @@ namespace TestApp.WPF
                 try
                 {
                     var bitmap = CreateBitmapSourceFromFile(ofd.FileName);
-                    var image = IPLConverter.CreateImageFromBitmap(bitmap);
-                    var targetBitmap = IPLConverter.CreateBitmapFromImage(image);
+                    var image = ImageProcessingLibConverter.CreateImageFromBitmap(bitmap);
+                    var targetBitmap = ImageProcessingLibConverter.CreateBitmapFromImage(image);
                     ImageSource = targetBitmap;
                     MessageBox.Show("Image loaded", "Information");
                 }
