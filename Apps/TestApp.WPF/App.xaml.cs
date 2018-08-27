@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using TestApp.WPF.Services;
 
 namespace TestApp.WPF
 {
@@ -28,8 +29,10 @@ namespace TestApp.WPF
 
         private void Run(BitmapSource bitmap)
         {
-            var testWindow = new TestWindow(bitmap);
-            testWindow.Show();
+            IDialogService dialogService = new DialogService();
+            var viewModel = new TestViewModel(bitmap, dialogService);
+            var window = new TestWindow(viewModel);
+            window.Show();
         }
     }
 }
