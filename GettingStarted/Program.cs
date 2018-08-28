@@ -35,8 +35,8 @@ namespace GettingStarted
             var binaryImage = image.CopyAs(p => p.ToPixel1());
 
             // perform closing and skeletonization operations
-            binaryImage.Closing(3).
-                Skeletonization();
+            binaryImage.Closing(3)
+                .Skeletonization();
 
             // return to Image<Pixel32>, create Bitmap from it and save it
             var resultImage = binaryImage.CopyAs(p => p.ToPixel32());
