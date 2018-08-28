@@ -192,7 +192,7 @@ namespace ImageProcessingLibExamples.Views
             var sfd = new SaveFileDialog
             {
                 Filter = "Bitmap Image (.bmp)|*.bmp",
-                FileName = "image"
+                FileName = SelectedResultImageTitle
             };
             var dr = sfd.ShowDialog();
             if (dr == DialogResult.OK)
