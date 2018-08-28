@@ -9,22 +9,33 @@ namespace TestApp.WPF
 {
     public class Command : ICommand
     {
-        public event EventHandler CanExecuteChanged;
-        private Action action;
+        private Action execute;
+        private Func<bool> canExecute;
 
-        public Command(Action action)
+        public event EventHandler CanExecuteChanged
         {
-            this.action = action;
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public Command(Action execute) : this(execute, null) { }
+
+        public Command(Action execute, Func<bool> canExecute)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (canExecute == null)
+                return true;
+            return canExecute();
         }
 
         public void Execute(object parameter)
         {
-            action();
+            execute();
         }
     }
 }
