@@ -7,7 +7,7 @@ namespace ImageProcessingLib
 {
     public static class DilationExtension
     {
-        public static Image<Pixel1> Dilation(this Image<Pixel1> image, int maskSize)
+        public static Image<Pixel1> Dilation(this Image<Pixel1> image, int maskSize = 3)
         {
             ValidationUtils.IsMaskSize(maskSize);
 

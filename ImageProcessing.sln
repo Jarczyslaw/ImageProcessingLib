@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Converte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingLib.Converter.WPF", "Converters\ImageProcessingLib.Converter.WPF\ImageProcessingLib.Converter.WPF.csproj", "{7B2F6D1A-6898-466D-BA8A-986030E7D6D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{F521B5F0-A275-4826-A0A9-8B597305078E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{7B2F6D1A-6898-466D-BA8A-986030E7D6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B2F6D1A-6898-466D-BA8A-986030E7D6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B2F6D1A-6898-466D-BA8A-986030E7D6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F521B5F0-A275-4826-A0A9-8B597305078E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F521B5F0-A275-4826-A0A9-8B597305078E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F521B5F0-A275-4826-A0A9-8B597305078E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F521B5F0-A275-4826-A0A9-8B597305078E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +124,7 @@ Global
 		{0B917BAC-AF9F-4000-942E-D118B97F843B} = {7A3C9DDA-9D2F-4435-91EF-F4D0FB47B855}
 		{17949CA7-D61C-41C7-93FC-AEB597945FA8} = {7A3C9DDA-9D2F-4435-91EF-F4D0FB47B855}
 		{7B2F6D1A-6898-466D-BA8A-986030E7D6D5} = {7A3C9DDA-9D2F-4435-91EF-F4D0FB47B855}
+		{F521B5F0-A275-4826-A0A9-8B597305078E} = {ED14173D-1898-45F3-9864-8939F367956C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1F53FB3-12FD-473C-81B6-56BBD713DE27}
